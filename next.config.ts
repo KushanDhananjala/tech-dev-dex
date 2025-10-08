@@ -1,11 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Enable turbopack for faster builds
-  turbopack: {
-    root: __dirname,
-  },
-  
   // File extensions to handle
   pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
   
@@ -23,9 +18,6 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
   },
-  
-  // Output configuration for static export (if needed)
-  output: 'standalone',
   
   // Security headers
   async headers() {
