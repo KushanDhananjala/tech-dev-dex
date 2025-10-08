@@ -1,5 +1,6 @@
 {
   "name": "techdevdex",
+  "description": "A comprehensive developer resource platform providing tutorials, reviews, and guides for modern development technologies.",
   "version": "0.1.0",
   "private": true,
   "scripts": {
