@@ -1,0 +1,855 @@
+---
+title: "DevOps & Deployment: CI/CD and Cloud Deployment Guide"
+description: "Master DevOps practices with CI/CD pipelines, Docker, Kubernetes, and cloud deployment strategies. Learn automation, monitoring, and scaling techniques."
+date: "2024-12-15"
+author: "TechDevDex Team"
+category: "Web Development"
+tags: ["DevOps", "CI/CD", "Docker", "Kubernetes", "Cloud", "Deployment"]
+featured: true
+---
+
+# DevOps & Deployment: Modern Deployment Strategies
+
+DevOps bridges the gap between development and operations, enabling faster, more reliable software delivery. This comprehensive guide covers CI/CD, containerization, and cloud deployment.
+
+## What is DevOps?
+
+DevOps is a set of practices that combines software development (Dev) and IT operations (Ops) to shorten the development lifecycle and provide continuous delivery.
+
+**Key Principles:**
+- **Automation** - Automate repetitive tasks
+- **Collaboration** - Break down silos between teams
+- **Continuous Integration** - Merge code frequently
+- **Continuous Deployment** - Deploy automatically
+- **Monitoring** - Track application performance
+
+## CI/CD Pipelines
+
+### Continuous Integration (CI)
+
+CI is the practice of automatically integrating code changes from multiple developers into a shared repository.
+
+**Benefits:**
+- Early bug detection
+- Reduced integration conflicts
+- Faster feedback loops
+- Improved code quality
+
+#### GitHub Actions Example
+
+```yaml
+# .github/workflows/ci.yml
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run tests
+      run: npm test
+    
+    - name: Run linting
+      run: npm run lint
+    
+    - name: Build application
+      run: npm run build
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Deploy to production
+      run: |
+        echo "Deploying to production..."
+        # Add your deployment commands here
+```
+
+### Continuous Deployment (CD)
+
+CD automatically deploys code changes to production after passing all tests.
+
+#### Docker-based Deployment
+
+```dockerfile
+# Dockerfile
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+
+FROM node:18-alpine AS runner
+WORKDIR /app
+
+# Create non-root user
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package*.json ./
+COPY . .
+
+# Change ownership
+RUN chown -R nextjs:nodejs /app
+USER nextjs
+
+EXPOSE 3000
+ENV PORT 3000
+
+CMD ["npm", "start"]
+```
+
+#### Docker Compose for Development
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://user:password@db:5432/myapp
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=myapp
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
+```
+
+## Container Orchestration with Kubernetes
+
+### Kubernetes Basics
+
+Kubernetes (K8s) is an open-source container orchestration platform that automates container deployment, scaling, and management.
+
+#### Basic Kubernetes Manifests
+
+```yaml
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  labels:
+    app: myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: myapp:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: myapp-secrets
+              key: database-url
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+```
+
+```yaml
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  selector:
+    app: myapp
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer
+```
+
+```yaml
+# ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myapp-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+  - hosts:
+    - myapp.example.com
+    secretName: myapp-tls
+  rules:
+  - host: myapp.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: myapp-service
+            port:
+              number: 80
+```
+
+### Helm Charts
+
+Helm is a package manager for Kubernetes that simplifies application deployment.
+
+```yaml
+# Chart.yaml
+apiVersion: v2
+name: myapp
+description: A Helm chart for MyApp
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+
+# values.yaml
+replicaCount: 3
+
+image:
+  repository: myapp
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  hosts:
+    - host: myapp.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: myapp-tls
+      hosts:
+        - myapp.example.com
+```
+
+## Cloud Deployment Strategies
+
+### AWS Deployment
+
+#### AWS ECS (Elastic Container Service)
+
+```json
+{
+  "family": "myapp-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::account:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "myapp",
+      "image": "myapp:latest",
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/myapp",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
+```
+
+#### AWS Lambda (Serverless)
+
+```javascript
+// serverless.yml
+service: myapp-serverless
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  environment:
+    NODE_ENV: production
+    DATABASE_URL: ${env:DATABASE_URL}
+
+functions:
+  api:
+    handler: src/handler.api
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+```
+
+### Google Cloud Platform
+
+#### Google Cloud Run
+
+```yaml
+# cloudbuild.yaml
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/myapp', '.']
+  
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/myapp']
+  
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['run', 'deploy', 'myapp', '--image', 'gcr.io/$PROJECT_ID/myapp', '--region', 'us-central1', '--platform', 'managed']
+```
+
+### Azure Deployment
+
+#### Azure Container Instances
+
+```yaml
+# azure-pipelines.yml
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Docker@2
+  displayName: Build and push image
+  inputs:
+    command: buildAndPush
+    repository: myapp
+    dockerfile: Dockerfile
+    containerRegistry: myregistry
+
+- task: AzureContainerInstances@1
+  displayName: Deploy to Azure Container Instances
+  inputs:
+    azureSubscription: 'My Subscription'
+    resourceGroupName: 'my-rg'
+    location: 'East US'
+    imageName: 'myregistry.azurecr.io/myapp:latest'
+    containerName: 'myapp'
+    ports: '3000'
+```
+
+## Infrastructure as Code (IaC)
+
+### Terraform
+
+```hcl
+# main.tf
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_vpc" "main" {
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+
+  tags = {
+    Name = "myapp-vpc"
+  }
+}
+
+resource "aws_subnet" "public" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.1.0/24"
+  availability_zone       = "us-east-1a"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "myapp-public-subnet"
+  }
+}
+
+resource "aws_ecs_cluster" "main" {
+  name = "myapp-cluster"
+
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
+}
+
+resource "aws_ecs_service" "myapp" {
+  name            = "myapp-service"
+  cluster         = aws_ecs_cluster.main.id
+  task_definition = aws_ecs_task_definition.myapp.arn
+  desired_count   = 2
+  launch_type     = "FARGATE"
+
+  network_configuration {
+    subnets          = [aws_subnet.public.id]
+    assign_public_ip = true
+  }
+}
+```
+
+### AWS CDK
+
+```typescript
+// lib/myapp-stack.ts
+import * as cdk from 'aws-cdk-lib';
+import * as ecs from 'aws-cdk-lib/aws-ecs';
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
+
+export class MyAppStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
+
+    // Create VPC
+    const vpc = new ec2.Vpc(this, 'MyAppVPC', {
+      maxAzs: 2,
+      natGateways: 1,
+    });
+
+    // Create ECS Cluster
+    const cluster = new ecs.Cluster(this, 'MyAppCluster', {
+      vpc,
+      clusterName: 'myapp-cluster',
+    });
+
+    // Create Fargate Service
+    const taskDefinition = new ecs.FargateTaskDefinition(this, 'MyAppTask', {
+      memoryLimitMiB: 512,
+      cpu: 256,
+    });
+
+    const container = taskDefinition.addContainer('MyAppContainer', {
+      image: ecs.ContainerImage.fromRegistry('myapp:latest'),
+      logging: ecs.LogDrivers.awsLogs({
+        streamPrefix: 'myapp',
+      }),
+    });
+
+    container.addPortMappings({
+      containerPort: 3000,
+      protocol: ecs.Protocol.TCP,
+    });
+
+    new ecs.FargateService(this, 'MyAppService', {
+      cluster,
+      taskDefinition,
+      desiredCount: 2,
+    });
+  }
+}
+```
+
+## Monitoring and Observability
+
+### Application Monitoring
+
+```javascript
+// Prometheus metrics
+const prometheus = require('prom-client');
+
+// Create a Registry
+const register = new prometheus.Registry();
+
+// Add default metrics
+prometheus.collectDefaultMetrics({ register });
+
+// Custom metrics
+const httpRequestDuration = new prometheus.Histogram({
+  name: 'http_request_duration_seconds',
+  help: 'Duration of HTTP requests in seconds',
+  labelNames: ['method', 'route', 'status_code'],
+  buckets: [0.1, 0.3, 0.5, 0.7, 1, 3, 5, 7, 10],
+});
+
+const httpRequestTotal = new prometheus.Counter({
+  name: 'http_requests_total',
+  help: 'Total number of HTTP requests',
+  labelNames: ['method', 'route', 'status_code'],
+});
+
+register.registerMetric(httpRequestDuration);
+register.registerMetric(httpRequestTotal);
+
+// Middleware to collect metrics
+app.use((req, res, next) => {
+  const start = Date.now();
+  
+  res.on('finish', () => {
+    const duration = (Date.now() - start) / 1000;
+    const labels = {
+      method: req.method,
+      route: req.route?.path || req.path,
+      status_code: res.statusCode,
+    };
+    
+    httpRequestDuration.observe(labels, duration);
+    httpRequestTotal.inc(labels);
+  });
+  
+  next();
+});
+
+// Metrics endpoint
+app.get('/metrics', async (req, res) => {
+  res.set('Content-Type', register.contentType);
+  res.end(await register.metrics());
+});
+```
+
+### Logging with ELK Stack
+
+```yaml
+# docker-compose.logging.yml
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.5.0
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    ports:
+      - "5044:5044"
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.5.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+```
+
+### Health Checks
+
+```javascript
+// Health check endpoint
+app.get('/health', async (req, res) => {
+  const health = {
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    memory: process.memoryUsage(),
+    version: process.env.npm_package_version,
+  };
+
+  // Check database connection
+  try {
+    await db.authenticate();
+    health.database = 'connected';
+  } catch (error) {
+    health.database = 'disconnected';
+    health.status = 'unhealthy';
+  }
+
+  // Check external services
+  try {
+    await redis.ping();
+    health.redis = 'connected';
+  } catch (error) {
+    health.redis = 'disconnected';
+    health.status = 'unhealthy';
+  }
+
+  const statusCode = health.status === 'healthy' ? 200 : 503;
+  res.status(statusCode).json(health);
+});
+```
+
+## Security in DevOps
+
+### Container Security
+
+```dockerfile
+# Secure Dockerfile
+FROM node:18-alpine AS builder
+
+# Install security updates
+RUN apk update && apk upgrade
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
+
+WORKDIR /app
+
+# Copy package files first for better caching
+COPY package*.json ./
+RUN npm ci --only=production && npm cache clean --force
+
+# Copy application code
+COPY --chown=nextjs:nodejs . .
+
+# Remove unnecessary packages
+RUN apk del npm
+
+# Switch to non-root user
+USER nextjs
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]
+```
+
+### Secrets Management
+
+```yaml
+# Kubernetes secrets
+apiVersion: v1
+kind: Secret
+metadata:
+  name: myapp-secrets
+type: Opaque
+data:
+  database-url: <base64-encoded-value>
+  api-key: <base64-encoded-value>
+  jwt-secret: <base64-encoded-value>
+```
+
+### Network Security
+
+```yaml
+# Network policy
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: myapp-network-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: myapp
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    ports:
+    - protocol: TCP
+      port: 3000
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: database
+    ports:
+    - protocol: TCP
+      port: 5432
+```
+
+## Automation and Scripting
+
+### Deployment Scripts
+
+```bash
+#!/bin/bash
+# deploy.sh
+
+set -e
+
+# Configuration
+APP_NAME="myapp"
+ENVIRONMENT=${1:-staging}
+VERSION=${2:-latest}
+
+echo "Deploying $APP_NAME to $ENVIRONMENT with version $VERSION"
+
+# Build and push Docker image
+docker build -t $APP_NAME:$VERSION .
+docker tag $APP_NAME:$VERSION $APP_NAME:latest
+
+# Deploy to Kubernetes
+kubectl set image deployment/$APP_NAME $APP_NAME=$APP_NAME:$VERSION -n $ENVIRONMENT
+
+# Wait for rollout to complete
+kubectl rollout status deployment/$APP_NAME -n $ENVIRONMENT
+
+# Run health checks
+kubectl get pods -l app=$APP_NAME -n $ENVIRONMENT
+
+echo "Deployment completed successfully!"
+```
+
+### Database Migrations
+
+```javascript
+// migration.js
+const { Client } = require('pg');
+
+const runMigrations = async () => {
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+  });
+
+  try {
+    await client.connect();
+    
+    // Create migrations table if it doesn't exist
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS migrations (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+
+    // Run migrations
+    const migrations = [
+      {
+        name: '001_create_users_table',
+        sql: `
+          CREATE TABLE users (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(100) NOT NULL,
+            email VARCHAR(255) UNIQUE NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          )
+        `
+      },
+      {
+        name: '002_create_posts_table',
+        sql: `
+          CREATE TABLE posts (
+            id SERIAL PRIMARY KEY,
+            title VARCHAR(255) NOT NULL,
+            content TEXT,
+            user_id INTEGER REFERENCES users(id),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          )
+        `
+      }
+    ];
+
+    for (const migration of migrations) {
+      const result = await client.query(
+        'SELECT * FROM migrations WHERE name = $1',
+        [migration.name]
+      );
+
+      if (result.rows.length === 0) {
+        console.log(`Running migration: ${migration.name}`);
+        await client.query(migration.sql);
+        await client.query(
+          'INSERT INTO migrations (name) VALUES ($1)',
+          [migration.name]
+        );
+      }
+    }
+
+    console.log('All migrations completed successfully');
+  } finally {
+    await client.end();
+  }
+};
+
+runMigrations().catch(console.error);
+```
+
+## Conclusion
+
+DevOps and deployment are essential for modern software development. Focus on automation, monitoring, and security to build reliable, scalable systems.
+
+**Key Takeaways:**
+- Automate everything possible
+- Use containers for consistency
+- Implement proper monitoring
+- Secure your infrastructure
+- Plan for scalability
+- Document your processes
+- Continuously improve
+
+---
+
+*Ready to explore more development topics? Check out our [Tutorials](/tutorials) section for comprehensive guides on various technologies.*

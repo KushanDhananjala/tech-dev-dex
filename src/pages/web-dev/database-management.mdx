@@ -1,0 +1,602 @@
+---
+title: "Database Management: SQL and NoSQL Guide"
+description: "Master database management with SQL and NoSQL databases. Learn PostgreSQL, MongoDB, Redis, and database optimization techniques."
+date: "2024-12-15"
+author: "TechDevDex Team"
+category: "Web Development"
+tags: ["Database", "SQL", "NoSQL", "PostgreSQL", "MongoDB", "Redis"]
+featured: true
+---
+
+# Database Management: Mastering Data Storage
+
+Database management is crucial for building scalable applications. This comprehensive guide covers SQL and NoSQL databases, optimization techniques, and best practices.
+
+## Types of Databases
+
+### SQL Databases (Relational)
+
+**Characteristics:**
+- ACID compliance
+- Structured data with relationships
+- SQL query language
+- Strong consistency
+- Vertical scaling
+
+**Popular Options:**
+- PostgreSQL
+- MySQL
+- SQLite
+- Microsoft SQL Server
+
+### NoSQL Databases (Non-Relational)
+
+**Characteristics:**
+- Flexible schema
+- Horizontal scaling
+- Various data models
+- Eventual consistency
+- High performance
+
+**Types:**
+- Document (MongoDB)
+- Key-Value (Redis)
+- Column-family (Cassandra)
+- Graph (Neo4j)
+
+## PostgreSQL - The Advanced SQL Database
+
+### Getting Started
+
+```bash
+# Install PostgreSQL
+# Ubuntu/Debian
+sudo apt-get install postgresql postgresql-contrib
+
+# macOS
+brew install postgresql
+
+# Start PostgreSQL service
+sudo service postgresql start
+```
+
+### Basic Operations
+
+```sql
+-- Create database
+CREATE DATABASE myapp;
+
+-- Connect to database
+\c myapp;
+
+-- Create table
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    age INTEGER CHECK (age >= 0),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insert data
+INSERT INTO users (name, email, age) VALUES 
+    ('John Doe', 'john@example.com', 30),
+    ('Jane Smith', 'jane@example.com', 25);
+
+-- Query data
+SELECT * FROM users WHERE age > 25;
+
+-- Update data
+UPDATE users SET age = 31 WHERE email = 'john@example.com';
+
+-- Delete data
+DELETE FROM users WHERE age < 18;
+```
+
+### Advanced Queries
+
+```sql
+-- Joins
+SELECT u.name, p.title, p.content
+FROM users u
+JOIN posts p ON u.id = p.user_id
+WHERE u.email = 'john@example.com';
+
+-- Aggregations
+SELECT 
+    COUNT(*) as total_users,
+    AVG(age) as average_age,
+    MAX(age) as oldest_user
+FROM users;
+
+-- Subqueries
+SELECT name, email
+FROM users
+WHERE id IN (
+    SELECT user_id 
+    FROM posts 
+    WHERE created_at > '2024-01-01'
+);
+
+-- Window functions
+SELECT 
+    name,
+    age,
+    ROW_NUMBER() OVER (ORDER BY age DESC) as age_rank
+FROM users;
+```
+
+### Indexing for Performance
+
+```sql
+-- Create indexes
+CREATE INDEX idx_users_email ON users(email);
+CREATE INDEX idx_users_age ON users(age);
+CREATE INDEX idx_posts_user_id ON posts(user_id);
+
+-- Composite index
+CREATE INDEX idx_posts_user_created ON posts(user_id, created_at);
+
+-- Partial index
+CREATE INDEX idx_active_users ON users(email) WHERE age >= 18;
+
+-- Check index usage
+EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'john@example.com';
+```
+
+## MongoDB - Document Database
+
+### Getting Started
+
+```bash
+# Install MongoDB
+# Ubuntu/Debian
+sudo apt-get install mongodb
+
+# macOS
+brew install mongodb-community
+
+# Start MongoDB
+sudo service mongod start
+```
+
+### Basic Operations
+
+```javascript
+// Connect to MongoDB
+const { MongoClient } = require('mongodb');
+const client = new MongoClient('mongodb://localhost:27017');
+await client.connect();
+const db = client.db('myapp');
+
+// Create collection and insert documents
+const users = db.collection('users');
+
+// Insert single document
+await users.insertOne({
+    name: 'John Doe',
+    email: 'john@example.com',
+    age: 30,
+    address: {
+        street: '123 Main St',
+        city: 'New York',
+        zipCode: '10001'
+    },
+    hobbies: ['reading', 'gaming', 'coding'],
+    createdAt: new Date()
+});
+
+// Insert multiple documents
+await users.insertMany([
+    {
+        name: 'Jane Smith',
+        email: 'jane@example.com',
+        age: 25,
+        address: {
+            street: '456 Oak Ave',
+            city: 'Los Angeles',
+            zipCode: '90210'
+        },
+        hobbies: ['photography', 'travel'],
+        createdAt: new Date()
+    }
+]);
+
+// Query documents
+const allUsers = await users.find({}).toArray();
+const youngUsers = await users.find({ age: { $lt: 30 } }).toArray();
+const userByEmail = await users.findOne({ email: 'john@example.com' });
+
+// Update documents
+await users.updateOne(
+    { email: 'john@example.com' },
+    { $set: { age: 31 } }
+);
+
+await users.updateMany(
+    { age: { $lt: 18 } },
+    { $set: { status: 'minor' } }
+);
+
+// Delete documents
+await users.deleteOne({ email: 'john@example.com' });
+await users.deleteMany({ age: { $lt: 18 } });
+```
+
+### Advanced Queries
+
+```javascript
+// Aggregation pipeline
+const pipeline = [
+    { $match: { age: { $gte: 18 } } },
+    { $group: { 
+        _id: '$address.city', 
+        count: { $sum: 1 },
+        avgAge: { $avg: '$age' }
+    }},
+    { $sort: { count: -1 } },
+    { $limit: 5 }
+];
+
+const results = await users.aggregate(pipeline).toArray();
+
+// Text search
+await users.createIndex({ name: 'text', email: 'text' });
+const searchResults = await users.find({
+    $text: { $search: 'john' }
+}).toArray();
+
+// Geospatial queries
+await users.createIndex({ location: '2dsphere' });
+const nearbyUsers = await users.find({
+    location: {
+        $near: {
+            $geometry: {
+                type: 'Point',
+                coordinates: [-74.0059, 40.7128] // NYC coordinates
+            },
+            $maxDistance: 1000 // 1km radius
+        }
+    }
+}).toArray();
+```
+
+## Redis - In-Memory Database
+
+### Getting Started
+
+```bash
+# Install Redis
+# Ubuntu/Debian
+sudo apt-get install redis-server
+
+# macOS
+brew install redis
+
+# Start Redis
+redis-server
+```
+
+### Basic Operations
+
+```javascript
+const redis = require('redis');
+const client = redis.createClient();
+
+// String operations
+await client.set('user:1', JSON.stringify({ name: 'John', email: 'john@example.com' }));
+const user = await client.get('user:1');
+
+// Hash operations
+await client.hSet('user:1', 'name', 'John Doe');
+await client.hSet('user:1', 'email', 'john@example.com');
+const userName = await client.hGet('user:1', 'name');
+const userData = await client.hGetAll('user:1');
+
+// List operations
+await client.lPush('tasks', 'task1', 'task2', 'task3');
+const task = await client.rPop('tasks');
+
+// Set operations
+await client.sAdd('tags', 'javascript', 'nodejs', 'redis');
+const tags = await client.sMembers('tags');
+
+// Sorted set operations
+await client.zAdd('leaderboard', { score: 100, value: 'player1' });
+await client.zAdd('leaderboard', { score: 200, value: 'player2' });
+const topPlayers = await client.zRange('leaderboard', 0, -1, { REV: true });
+```
+
+### Caching Strategies
+
+```javascript
+// Cache with expiration
+const cacheUser = async (userId) => {
+    const cacheKey = `user:${userId}`;
+    const cached = await client.get(cacheKey);
+    
+    if (cached) {
+        return JSON.parse(cached);
+    }
+    
+    // Fetch from database
+    const user = await db.users.findById(userId);
+    
+    // Cache for 1 hour
+    await client.setEx(cacheKey, 3600, JSON.stringify(user));
+    
+    return user;
+};
+
+// Cache invalidation
+const updateUser = async (userId, updates) => {
+    // Update in database
+    const user = await db.users.update(userId, updates);
+    
+    // Invalidate cache
+    await client.del(`user:${userId}`);
+    
+    return user;
+};
+```
+
+## Database Design Patterns
+
+### Normalization (SQL)
+
+```sql
+-- First Normal Form (1NF) - Atomic values
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL
+);
+
+-- Second Normal Form (2NF) - No partial dependencies
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE order_items (
+    id SERIAL PRIMARY KEY,
+    order_id INTEGER REFERENCES orders(id),
+    product_id INTEGER REFERENCES products(id),
+    quantity INTEGER NOT NULL,
+    price DECIMAL(10,2) NOT NULL
+);
+
+-- Third Normal Form (3NF) - No transitive dependencies
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    category_id INTEGER REFERENCES categories(id),
+    price DECIMAL(10,2) NOT NULL
+);
+```
+
+### Denormalization for Performance
+
+```sql
+-- Denormalized table for reporting
+CREATE TABLE user_stats (
+    user_id INTEGER PRIMARY KEY,
+    username VARCHAR(100),
+    total_orders INTEGER DEFAULT 0,
+    total_spent DECIMAL(10,2) DEFAULT 0,
+    last_order_date TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Update denormalized data
+CREATE OR REPLACE FUNCTION update_user_stats()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE user_stats 
+    SET 
+        total_orders = total_orders + 1,
+        total_spent = total_spent + NEW.amount,
+        last_order_date = NEW.order_date
+    WHERE user_id = NEW.user_id;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+## Database Optimization
+
+### Query Optimization
+
+```sql
+-- Use EXPLAIN to analyze queries
+EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'john@example.com';
+
+-- Optimize with proper indexing
+CREATE INDEX CONCURRENTLY idx_users_email ON users(email);
+
+-- Use LIMIT for large result sets
+SELECT * FROM users ORDER BY created_at DESC LIMIT 10;
+
+-- Avoid SELECT * in production
+SELECT id, name, email FROM users WHERE active = true;
+```
+
+### Connection Pooling
+
+```javascript
+// Node.js with pg (PostgreSQL)
+const { Pool } = require('pg');
+
+const pool = new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
+    max: 20, // Maximum number of connections
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 2000,
+});
+
+// Use connection pool
+const getUsers = async () => {
+    const client = await pool.connect();
+    try {
+        const result = await client.query('SELECT * FROM users');
+        return result.rows;
+    } finally {
+        client.release();
+    }
+};
+```
+
+### Database Monitoring
+
+```sql
+-- PostgreSQL monitoring queries
+-- Check active connections
+SELECT count(*) FROM pg_stat_activity;
+
+-- Check slow queries
+SELECT query, mean_time, calls 
+FROM pg_stat_statements 
+ORDER BY mean_time DESC 
+LIMIT 10;
+
+-- Check table sizes
+SELECT 
+    schemaname,
+    tablename,
+    pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename)) as size
+FROM pg_tables 
+ORDER BY pg_total_relation_size(schemaname||'.'||tablename) DESC;
+```
+
+## Data Migration and Backup
+
+### Backup Strategies
+
+```bash
+# PostgreSQL backup
+pg_dump -h localhost -U username -d myapp > backup.sql
+
+# MongoDB backup
+mongodump --db myapp --out /backup/path
+
+# Redis backup
+redis-cli BGSAVE
+```
+
+### Migration Scripts
+
+```javascript
+// Database migration example
+const migrateUsers = async () => {
+    const client = new MongoClient('mongodb://localhost:27017');
+    await client.connect();
+    const db = client.db('myapp');
+    
+    // Add new field to existing documents
+    await db.collection('users').updateMany(
+        { age: { $exists: false } },
+        { $set: { age: 0 } }
+    );
+    
+    // Create new index
+    await db.collection('users').createIndex({ email: 1 });
+    
+    await client.close();
+};
+```
+
+## Security Best Practices
+
+### SQL Injection Prevention
+
+```javascript
+// Bad - SQL injection vulnerable
+const query = `SELECT * FROM users WHERE email = '${email}'`;
+
+// Good - Parameterized queries
+const query = 'SELECT * FROM users WHERE email = $1';
+const result = await client.query(query, [email]);
+```
+
+### Data Encryption
+
+```javascript
+// Encrypt sensitive data
+const crypto = require('crypto');
+
+const encrypt = (text, key) => {
+    const cipher = crypto.createCipher('aes-256-cbc', key);
+    let encrypted = cipher.update(text, 'utf8', 'hex');
+    encrypted += cipher.final('hex');
+    return encrypted;
+};
+
+const decrypt = (encryptedText, key) => {
+    const decipher = crypto.createDecipher('aes-256-cbc', key);
+    let decrypted = decipher.update(encryptedText, 'hex', 'utf8');
+    decrypted += decipher.final('utf8');
+    return decrypted;
+};
+```
+
+## Database Testing
+
+### Unit Tests
+
+```javascript
+// Database test setup
+const { MongoMemoryServer } = require('mongodb-memory-server');
+
+let mongoServer;
+
+beforeAll(async () => {
+    mongoServer = await MongoMemoryServer.create();
+    const mongoUri = mongoServer.getUri();
+    await mongoose.connect(mongoUri);
+});
+
+afterAll(async () => {
+    await mongoose.disconnect();
+    await mongoServer.stop();
+});
+
+// Test database operations
+describe('User Model', () => {
+    test('should create a new user', async () => {
+        const userData = {
+            name: 'John Doe',
+            email: 'john@example.com',
+            age: 30
+        };
+        
+        const user = new User(userData);
+        const savedUser = await user.save();
+        
+        expect(savedUser._id).toBeDefined();
+        expect(savedUser.name).toBe(userData.name);
+    });
+});
+```
+
+## Conclusion
+
+Database management is essential for building scalable applications. Choose the right database type based on your data structure, query patterns, and scalability requirements.
+
+**Key Takeaways:**
+- Understand the differences between SQL and NoSQL
+- Design your database schema carefully
+- Implement proper indexing for performance
+- Use connection pooling for efficiency
+- Plan for backup and disaster recovery
+- Monitor database performance regularly
+- Implement security best practices
+
+---
+
+*Ready to explore API development? Check out our [API Development](/web-dev/api-development) guide for building robust APIs.*

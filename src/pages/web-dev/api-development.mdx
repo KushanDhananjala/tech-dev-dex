@@ -1,0 +1,792 @@
+---
+title: "API Development: Building Robust REST and GraphQL APIs"
+description: "Master API development with REST and GraphQL. Learn authentication, rate limiting, documentation, and best practices for building scalable APIs."
+date: "2024-12-15"
+author: "TechDevDex Team"
+category: "Web Development"
+tags: ["API", "REST", "GraphQL", "Authentication", "Documentation", "Development"]
+featured: true
+---
+
+# API Development: Building Robust APIs
+
+API development is the backbone of modern applications. This comprehensive guide covers REST and GraphQL APIs, authentication, documentation, and best practices.
+
+## What is an API?
+
+An API (Application Programming Interface) is a set of protocols and tools for building software applications. APIs define how software components should interact.
+
+**Types of APIs:**
+- **REST APIs** - Representational State Transfer
+- **GraphQL APIs** - Query language for APIs
+- **gRPC APIs** - High-performance RPC framework
+- **WebSocket APIs** - Real-time communication
+
+## REST API Development
+
+### REST Principles
+
+**REST (Representational State Transfer) follows these principles:**
+- **Stateless** - Each request contains all necessary information
+- **Client-Server** - Separation of concerns
+- **Cacheable** - Responses can be cached
+- **Uniform Interface** - Consistent API design
+- **Layered System** - Hierarchical layers
+
+### HTTP Methods and Status Codes
+
+```javascript
+// HTTP Methods
+GET    /api/users          // Retrieve resources
+POST   /api/users          // Create new resource
+PUT    /api/users/123      // Update entire resource
+PATCH  /api/users/123      // Partial update
+DELETE /api/users/123      // Delete resource
+
+// Status Codes
+200 OK                    // Success
+201 Created               // Resource created
+204 No Content            // Success, no content
+400 Bad Request           // Client error
+401 Unauthorized          // Authentication required
+403 Forbidden             // Access denied
+404 Not Found             // Resource not found
+500 Internal Server Error // Server error
+```
+
+### Building a REST API with Express.js
+
+```javascript
+const express = require('express');
+const app = express();
+
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
+app.get('/api/users', async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json({
+      success: true,
+      data: users,
+      count: users.length
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+app.get('/api/users/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        error: 'User not found'
+      });
+    }
+    res.json({
+      success: true,
+      data: user
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+app.post('/api/users', async (req, res) => {
+  try {
+    const user = new User(req.body);
+    await user.save();
+    res.status(201).json({
+      success: true,
+      data: user
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+```
+
+### API Versioning
+
+```javascript
+// URL versioning
+app.use('/api/v1', v1Routes);
+app.use('/api/v2', v2Routes);
+
+// Header versioning
+app.use((req, res, next) => {
+  const version = req.headers['api-version'] || 'v1';
+  req.apiVersion = version;
+  next();
+});
+
+// Query parameter versioning
+app.use('/api', (req, res, next) => {
+  const version = req.query.version || 'v1';
+  req.apiVersion = version;
+  next();
+});
+```
+
+## GraphQL API Development
+
+### GraphQL Basics
+
+GraphQL is a query language and runtime for APIs that provides a complete description of the data in your API.
+
+**Key Features:**
+- **Single Endpoint** - One endpoint for all operations
+- **Type System** - Strongly typed schema
+- **Client-Specified Queries** - Clients request exactly what they need
+- **Real-time Subscriptions** - Live data updates
+
+### Setting up GraphQL with Apollo Server
+
+```javascript
+const { ApolloServer, gql } = require('apollo-server-express');
+const { makeExecutableSchema } = require('graphql-tools');
+
+// Type definitions
+const typeDefs = gql`
+  type User {
+    id: ID!
+    name: String!
+    email: String!
+    age: Int
+    posts: [Post!]!
+  }
+
+  type Post {
+    id: ID!
+    title: String!
+    content: String!
+    author: User!
+    createdAt: String!
+  }
+
+  type Query {
+    users: [User!]!
+    user(id: ID!): User
+    posts: [Post!]!
+    post(id: ID!): Post
+  }
+
+  type Mutation {
+    createUser(input: CreateUserInput!): User!
+    updateUser(id: ID!, input: UpdateUserInput!): User!
+    deleteUser(id: ID!): Boolean!
+    createPost(input: CreatePostInput!): Post!
+  }
+
+  input CreateUserInput {
+    name: String!
+    email: String!
+    age: Int
+  }
+
+  input UpdateUserInput {
+    name: String
+    email: String
+    age: Int
+  }
+
+  input CreatePostInput {
+    title: String!
+    content: String!
+    authorId: ID!
+  }
+`;
+
+// Resolvers
+const resolvers = {
+  Query: {
+    users: async () => {
+      return await User.find();
+    },
+    user: async (_, { id }) => {
+      return await User.findById(id);
+    },
+    posts: async () => {
+      return await Post.find().populate('author');
+    },
+    post: async (_, { id }) => {
+      return await Post.findById(id).populate('author');
+    }
+  },
+  Mutation: {
+    createUser: async (_, { input }) => {
+      const user = new User(input);
+      await user.save();
+      return user;
+    },
+    updateUser: async (_, { id, input }) => {
+      const user = await User.findByIdAndUpdate(id, input, { new: true });
+      return user;
+    },
+    deleteUser: async (_, { id }) => {
+      await User.findByIdAndDelete(id);
+      return true;
+    },
+    createPost: async (_, { input }) => {
+      const post = new Post(input);
+      await post.save();
+      return await Post.findById(post._id).populate('author');
+    }
+  },
+  User: {
+    posts: async (user) => {
+      return await Post.find({ author: user.id });
+    }
+  }
+};
+
+// Create server
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ req }) => {
+    return { user: req.user };
+  }
+});
+
+server.applyMiddleware({ app, path: '/graphql' });
+```
+
+### GraphQL Subscriptions
+
+```javascript
+const { PubSub } = require('apollo-server-express');
+const pubsub = new PubSub();
+
+const typeDefs = gql`
+  type Subscription {
+    userCreated: User!
+    postCreated: Post!
+  }
+`;
+
+const resolvers = {
+  Subscription: {
+    userCreated: {
+      subscribe: () => pubsub.asyncIterator(['USER_CREATED'])
+    },
+    postCreated: {
+      subscribe: () => pubsub.asyncIterator(['POST_CREATED'])
+    }
+  },
+  Mutation: {
+    createUser: async (_, { input }) => {
+      const user = new User(input);
+      await user.save();
+      pubsub.publish('USER_CREATED', { userCreated: user });
+      return user;
+    }
+  }
+};
+```
+
+## API Authentication
+
+### JWT Authentication
+
+```javascript
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
+// Generate JWT token
+const generateToken = (user) => {
+  return jwt.sign(
+    { userId: user.id, email: user.email },
+    process.env.JWT_SECRET,
+    { expiresIn: '24h' }
+  );
+};
+
+// Login endpoint
+app.post('/api/auth/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    
+    // Find user
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+    
+    // Check password
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+    
+    // Generate token
+    const token = generateToken(user);
+    
+    res.json({
+      success: true,
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Middleware to verify JWT
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  
+  if (!token) {
+    return res.status(401).json({ error: 'Access token required' });
+  }
+  
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).json({ error: 'Invalid token' });
+    }
+    req.user = user;
+    next();
+  });
+};
+
+// Protected route
+app.get('/api/profile', authenticateToken, (req, res) => {
+  res.json({ user: req.user });
+});
+```
+
+### OAuth 2.0 Implementation
+
+```javascript
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+// Configure Google OAuth
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: '/api/auth/google/callback'
+}, async (accessToken, refreshToken, profile, done) => {
+  try {
+    let user = await User.findOne({ googleId: profile.id });
+    
+    if (!user) {
+      user = new User({
+        googleId: profile.id,
+        name: profile.displayName,
+        email: profile.emails[0].value,
+        avatar: profile.photos[0].value
+      });
+      await user.save();
+    }
+    
+    return done(null, user);
+  } catch (error) {
+    return done(error, null);
+  }
+}));
+
+// OAuth routes
+app.get('/api/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] })
+);
+
+app.get('/api/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  (req, res) => {
+    const token = generateToken(req.user);
+    res.redirect(`/dashboard?token=${token}`);
+  }
+);
+```
+
+## API Documentation
+
+### Swagger/OpenAPI Documentation
+
+```javascript
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'User API',
+      version: '1.0.0',
+      description: 'A simple user management API',
+    },
+    servers: [
+      {
+        url: 'http://localhost:3000',
+        description: 'Development server',
+      },
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+  },
+  apis: ['./routes/*.js'],
+};
+
+const specs = swaggerJsdoc(options);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+```
+
+### API Documentation with JSDoc
+
+```javascript
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     summary: Get all users
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: List of users
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ *       401:
+ *         description: Unauthorized
+ */
+app.get('/api/users', authenticateToken, async (req, res) => {
+  // Implementation
+});
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       required:
+ *         - name
+ *         - email
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: User ID
+ *         name:
+ *           type: string
+ *           description: User name
+ *         email:
+ *           type: string
+ *           description: User email
+ */
+```
+
+## Rate Limiting and Security
+
+### Rate Limiting
+
+```javascript
+const rateLimit = require('express-rate-limit');
+
+// General rate limiting
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.'
+});
+
+// Strict rate limiting for auth endpoints
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // limit each IP to 5 requests per windowMs
+  message: 'Too many authentication attempts, please try again later.'
+});
+
+app.use('/api/', generalLimiter);
+app.use('/api/auth/', authLimiter);
+```
+
+### Security Headers
+
+```javascript
+const helmet = require('helmet');
+
+// Security headers
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrc: ["'self'"],
+      imgSrc: ["'self'", "data:", "https:"],
+    },
+  },
+  hsts: {
+    maxAge: 31536000,
+    includeSubDomains: true,
+    preload: true
+  }
+}));
+
+// CORS configuration
+const cors = require('cors');
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:3000'],
+  credentials: true,
+  optionsSuccessStatus: 200
+}));
+```
+
+## API Testing
+
+### Unit Testing with Jest
+
+```javascript
+const request = require('supertest');
+const app = require('../app');
+
+describe('User API', () => {
+  test('GET /api/users should return all users', async () => {
+    const response = await request(app)
+      .get('/api/users')
+      .expect(200);
+    
+    expect(response.body.success).toBe(true);
+    expect(Array.isArray(response.body.data)).toBe(true);
+  });
+  
+  test('POST /api/users should create a new user', async () => {
+    const newUser = {
+      name: 'John Doe',
+      email: 'john@example.com',
+      age: 30
+    };
+    
+    const response = await request(app)
+      .post('/api/users')
+      .send(newUser)
+      .expect(201);
+    
+    expect(response.body.success).toBe(true);
+    expect(response.body.data.name).toBe(newUser.name);
+  });
+  
+  test('GET /api/users/:id should return specific user', async () => {
+    const response = await request(app)
+      .get('/api/users/123')
+      .expect(200);
+    
+    expect(response.body.success).toBe(true);
+    expect(response.body.data).toHaveProperty('id');
+  });
+});
+```
+
+### GraphQL Testing
+
+```javascript
+const { gql } = require('apollo-server-express');
+
+const GET_USERS = gql`
+  query GetUsers {
+    users {
+      id
+      name
+      email
+    }
+  }
+`;
+
+const CREATE_USER = gql`
+  mutation CreateUser($input: CreateUserInput!) {
+    createUser(input: $input) {
+      id
+      name
+      email
+    }
+  }
+`;
+
+describe('GraphQL API', () => {
+  test('should fetch users', async () => {
+    const result = await server.executeOperation({
+      query: GET_USERS
+    });
+    
+    expect(result.errors).toBeUndefined();
+    expect(result.data.users).toBeDefined();
+  });
+  
+  test('should create user', async () => {
+    const result = await server.executeOperation({
+      query: CREATE_USER,
+      variables: {
+        input: {
+          name: 'John Doe',
+          email: 'john@example.com'
+        }
+      }
+    });
+    
+    expect(result.errors).toBeUndefined();
+    expect(result.data.createUser.name).toBe('John Doe');
+  });
+});
+```
+
+## API Performance Optimization
+
+### Caching Strategies
+
+```javascript
+const redis = require('redis');
+const client = redis.createClient();
+
+// Cache middleware
+const cache = (duration) => {
+  return async (req, res, next) => {
+    const key = req.originalUrl;
+    const cached = await client.get(key);
+    
+    if (cached) {
+      return res.json(JSON.parse(cached));
+    }
+    
+    res.sendResponse = res.json;
+    res.json = (body) => {
+      client.setex(key, duration, JSON.stringify(body));
+      res.sendResponse(body);
+    };
+    
+    next();
+  };
+};
+
+// Use caching
+app.get('/api/users', cache(300), async (req, res) => {
+  const users = await User.find();
+  res.json({ success: true, data: users });
+});
+```
+
+### Database Query Optimization
+
+```javascript
+// Use pagination
+app.get('/api/users', async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+  const skip = (page - 1) * limit;
+  
+  const users = await User.find()
+    .skip(skip)
+    .limit(limit)
+    .select('name email') // Only select needed fields
+    .sort({ createdAt: -1 });
+  
+  const total = await User.countDocuments();
+  
+  res.json({
+    success: true,
+    data: users,
+    pagination: {
+      page,
+      limit,
+      total,
+      pages: Math.ceil(total / limit)
+    }
+  });
+});
+```
+
+## API Monitoring and Logging
+
+### Request Logging
+
+```javascript
+const morgan = require('morgan');
+const winston = require('winston');
+
+// Configure logger
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json()
+  ),
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' })
+  ]
+});
+
+// Request logging
+app.use(morgan('combined', {
+  stream: {
+    write: (message) => logger.info(message.trim())
+  }
+}));
+
+// Error logging
+app.use((err, req, res, next) => {
+  logger.error(err.stack);
+  res.status(500).json({ error: 'Internal Server Error' });
+});
+```
+
+### API Analytics
+
+```javascript
+const analytics = require('express-analytics');
+
+app.use(analytics({
+  apiKey: process.env.ANALYTICS_API_KEY,
+  track: {
+    requests: true,
+    errors: true,
+    performance: true
+  }
+}));
+```
+
+## Conclusion
+
+API development is essential for building scalable applications. Focus on security, performance, and documentation to create robust APIs.
+
+**Key Takeaways:**
+- Choose the right API type (REST vs GraphQL)
+- Implement proper authentication and authorization
+- Use rate limiting and security headers
+- Write comprehensive tests
+- Document your APIs thoroughly
+- Monitor and optimize performance
+- Plan for scalability from the beginning
+
+---
+
+*Ready to explore DevOps and deployment? Check out our [DevOps & Deployment](/web-dev/devops-deployment) guide for CI/CD and cloud deployment strategies.*

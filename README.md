@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TechDevDex
 
-## Getting Started
+A comprehensive developer resource platform providing tutorials, reviews, and guides for modern development technologies.
 
-First, run the development server:
+## 🚀 Features
+
+- **Tutorials**: Step-by-step guides for web development, programming, and DevOps
+- **Reviews**: In-depth reviews of development tools, hardware, and software
+- **AI & ML**: Latest trends and tutorials in artificial intelligence and machine learning
+- **Hardware**: Reviews and guides for development hardware and peripherals
+- **Productivity**: Tools and techniques to boost developer productivity
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Styling**: Tailwind CSS
+- **Content**: MDX for rich content management
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **TypeScript**: Full type safety
+
+## 🚀 Getting Started
+
+First, install dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                 # Next.js app directory
+├── components/          # Reusable React components
+├── pages/              # Page components
+│   ├── tutorials/      # Tutorial pages
+│   ├── reviews/        # Review pages
+│   ├── ai-trending/    # AI & ML content
+│   ├── web-dev/        # Web development
+│   ├── hardware/       # Hardware reviews
+│   └── productivity/    # Productivity tools
+├── styles/             # Global styles
+└── lib/               # Utility functions
+```
 
-## Learn More
+## 🎨 Design System
 
-To learn more about Next.js, take a look at the following resources:
+- **Colors**: Modern gradient-based color scheme
+- **Typography**: Clean, readable fonts optimized for content
+- **Components**: Consistent card-based layout
+- **Responsive**: Mobile-first design approach
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Content Management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **MDX Support**: Rich content with React components
+- **Static Generation**: Fast loading with Next.js SSG
+- **SEO Optimized**: Meta tags and structured data
+- **Code Highlighting**: Syntax highlighting for code blocks
 
-## Deploy on Vercel
+## 🚀 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy is using [Vercel](https://vercel.com/new):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/techdevdex)
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📞 Contact
+
+For questions or suggestions, please open an issue on GitHub.

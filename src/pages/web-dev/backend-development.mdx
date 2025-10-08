@@ -1,0 +1,761 @@
+---
+title: "Backend Development: Server-Side Programming Guide"
+description: "Master backend development with Node.js, Python, and other server-side technologies. Learn APIs, databases, authentication, and deployment strategies."
+date: "2024-12-15"
+author: "TechDevDex Team"
+category: "Web Development"
+tags: ["Backend", "Node.js", "Python", "APIs", "Server", "Database"]
+featured: true
+---
+
+# Backend Development: Building Robust Server Applications
+
+Backend development is the foundation of modern web applications. This comprehensive guide covers server-side programming, APIs, databases, and deployment strategies.
+
+## What is Backend Development?
+
+Backend development involves:
+
+- **Server Logic** - Business logic and data processing
+- **API Development** - Creating endpoints for frontend consumption
+- **Database Management** - Storing and retrieving data efficiently
+- **Authentication** - User management and security
+- **Deployment** - Making applications accessible to users
+
+## Popular Backend Technologies
+
+### Node.js
+
+**Rating: ⭐⭐⭐⭐⭐**
+
+Node.js allows you to use JavaScript on the server, making it perfect for full-stack JavaScript development.
+
+**Key Features:**
+- JavaScript everywhere
+- Non-blocking I/O
+- Huge npm ecosystem
+- Excellent for real-time applications
+- Fast development cycle
+
+#### Getting Started with Node.js
+
+```bash
+# Initialize a new project
+npm init -y
+
+# Install Express.js
+npm install express
+
+# Install development dependencies
+npm install -D nodemon
+```
+
+#### Basic Express Server
+
+```javascript
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware
+app.use(express.json());
+
+// Routes
+app.get('/', (req, res) => {
+  res.json({ message: 'Hello World!' });
+});
+
+app.get('/api/users', (req, res) => {
+  res.json([
+    { id: 1, name: 'John Doe', email: 'john@example.com' },
+    { id: 2, name: 'Jane Smith', email: 'jane@example.com' }
+  ]);
+});
+
+app.post('/api/users', (req, res) => {
+  const { name, email } = req.body;
+  const newUser = { id: Date.now(), name, email };
+  res.status(201).json(newUser);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+```
+
+#### Express with Middleware
+
+```javascript
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+
+const app = express();
+
+// Security middleware
+app.use(helmet());
+
+// CORS middleware
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000'
+}));
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+});
+app.use(limiter);
+
+// Body parsing middleware
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true }));
+
+// Custom middleware
+const logger = (req, res, next) => {
+  console.log(`${req.method} ${req.path} - ${new Date().toISOString()}`);
+  next();
+};
+
+app.use(logger);
+```
+
+### Python with FastAPI
+
+**Rating: ⭐⭐⭐⭐⭐**
+
+FastAPI is a modern, fast web framework for building APIs with Python.
+
+**Key Features:**
+- Automatic API documentation
+- Type hints support
+- High performance
+- Easy to learn
+- Built-in validation
+
+#### Getting Started with FastAPI
+
+```bash
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install FastAPI
+pip install fastapi uvicorn
+```
+
+#### Basic FastAPI Application
+
+```python
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from typing import List, Optional
+
+app = FastAPI(title="User API", version="1.0.0")
+
+# Pydantic models
+class User(BaseModel):
+    id: Optional[int] = None
+    name: str
+    email: str
+    age: Optional[int] = None
+
+class UserCreate(BaseModel):
+    name: str
+    email: str
+    age: Optional[int] = None
+
+# In-memory storage (use database in production)
+users = []
+next_id = 1
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+@app.get("/users", response_model=List[User])
+async def get_users():
+    return users
+
+@app.get("/users/{user_id}", response_model=User)
+async def get_user(user_id: int):
+    user = next((u for u in users if u.id == user_id), None)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user
+
+@app.post("/users", response_model=User)
+async def create_user(user: UserCreate):
+    global next_id
+    new_user = User(id=next_id, **user.dict())
+    users.append(new_user)
+    next_id += 1
+    return new_user
+```
+
+#### FastAPI with Database
+
+```python
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+from fastapi import Depends
+
+# Database setup
+SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# Database model
+class UserDB(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    email = Column(String, unique=True, index=True)
+
+Base.metadata.create_all(bind=engine)
+
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+@app.post("/users/", response_model=User)
+async def create_user(user: UserCreate, db: Session = Depends(get_db)):
+    db_user = UserDB(**user.dict())
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return db_user
+```
+
+### Go with Gin
+
+**Rating: ⭐⭐⭐⭐**
+
+Go is excellent for building high-performance backend services.
+
+```go
+package main
+
+import (
+    "net/http"
+    "github.com/gin-gonic/gin"
+)
+
+type User struct {
+    ID    int    `json:"id"`
+    Name  string `json:"name"`
+    Email string `json:"email"`
+}
+
+var users = []User{
+    {ID: 1, Name: "John Doe", Email: "john@example.com"},
+    {ID: 2, Name: "Jane Smith", Email: "jane@example.com"},
+}
+
+func main() {
+    r := gin.Default()
+    
+    r.GET("/", func(c *gin.Context) {
+        c.JSON(http.StatusOK, gin.H{"message": "Hello World!"})
+    })
+    
+    r.GET("/users", func(c *gin.Context) {
+        c.JSON(http.StatusOK, users)
+    })
+    
+    r.POST("/users", func(c *gin.Context) {
+        var newUser User
+        if err := c.ShouldBindJSON(&newUser); err != nil {
+            c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+            return
+        }
+        
+        newUser.ID = len(users) + 1
+        users = append(users, newUser)
+        c.JSON(http.StatusCreated, newUser)
+    })
+    
+    r.Run(":8080")
+}
+```
+
+## Database Integration
+
+### MongoDB with Mongoose (Node.js)
+
+```javascript
+const mongoose = require('mongoose');
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/myapp');
+
+// Define schema
+const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  age: { type: Number, min: 0 },
+  createdAt: { type: Date, default: Date.now }
+});
+
+// Create model
+const User = mongoose.model('User', userSchema);
+
+// API routes
+app.get('/api/users', async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.post('/api/users', async (req, res) => {
+  try {
+    const user = new User(req.body);
+    await user.save();
+    res.status(201).json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+```
+
+### PostgreSQL with Prisma (Node.js)
+
+```javascript
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  age       Int?
+  createdAt DateTime @default(now())
+}
+```
+
+```javascript
+// Using Prisma client
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+app.get('/api/users', async (req, res) => {
+  try {
+    const users = await prisma.user.findMany();
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.post('/api/users', async (req, res) => {
+  try {
+    const user = await prisma.user.create({
+      data: req.body
+    });
+    res.status(201).json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+```
+
+## Authentication and Security
+
+### JWT Authentication
+
+```javascript
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
+// Middleware to verify JWT
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ error: 'Access token required' });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).json({ error: 'Invalid token' });
+    }
+    req.user = user;
+    next();
+  });
+};
+
+// Login endpoint
+app.post('/api/login', async (req, res) => {
+  const { email, password } = req.body;
+  
+  // Find user in database
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.status(401).json({ error: 'Invalid credentials' });
+  }
+  
+  // Check password
+  const validPassword = await bcrypt.compare(password, user.password);
+  if (!validPassword) {
+    return res.status(401).json({ error: 'Invalid credentials' });
+  }
+  
+  // Generate JWT
+  const token = jwt.sign(
+    { userId: user.id, email: user.email },
+    process.env.JWT_SECRET,
+    { expiresIn: '24h' }
+  );
+  
+  res.json({ token, user: { id: user.id, email: user.email } });
+});
+
+// Protected route
+app.get('/api/profile', authenticateToken, (req, res) => {
+  res.json({ user: req.user });
+});
+```
+
+### Password Hashing
+
+```javascript
+const bcrypt = require('bcryptjs');
+
+// Hash password before saving
+const saltRounds = 12;
+const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+// Verify password
+const isValid = await bcrypt.compare(password, hashedPassword);
+```
+
+## API Design Best Practices
+
+### RESTful API Design
+
+```javascript
+// Good RESTful endpoints
+GET    /api/users          // Get all users
+GET    /api/users/123      // Get user by ID
+POST   /api/users          // Create new user
+PUT    /api/users/123      // Update user
+PATCH  /api/users/123      // Partial update
+DELETE /api/users/123      // Delete user
+
+// Nested resources
+GET    /api/users/123/posts     // Get user's posts
+POST   /api/users/123/posts     // Create post for user
+```
+
+### Error Handling
+
+```javascript
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  
+  if (err.name === 'ValidationError') {
+    return res.status(400).json({
+      error: 'Validation Error',
+      details: err.message
+    });
+  }
+  
+  if (err.name === 'CastError') {
+    return res.status(400).json({
+      error: 'Invalid ID format'
+    });
+  }
+  
+  res.status(500).json({
+    error: 'Internal Server Error'
+  });
+});
+
+// Custom error class
+class AppError extends Error {
+  constructor(message, statusCode) {
+    super(message);
+    this.statusCode = statusCode;
+    this.isOperational = true;
+  }
+}
+
+// Usage
+if (!user) {
+  throw new AppError('User not found', 404);
+}
+```
+
+### API Documentation
+
+```javascript
+// Using Swagger/OpenAPI
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'User API',
+      version: '1.0.0',
+      description: 'A simple user management API',
+    },
+    servers: [
+      {
+        url: 'http://localhost:3000',
+        description: 'Development server',
+      },
+    ],
+  },
+  apis: ['./routes/*.js'],
+};
+
+const specs = swaggerJsdoc(options);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+```
+
+## Testing Backend Applications
+
+### Unit Testing with Jest
+
+```javascript
+// user.test.js
+const request = require('supertest');
+const app = require('../app');
+
+describe('User API', () => {
+  test('GET /api/users should return all users', async () => {
+    const response = await request(app)
+      .get('/api/users')
+      .expect(200);
+    
+    expect(response.body).toBeInstanceOf(Array);
+  });
+  
+  test('POST /api/users should create a new user', async () => {
+    const newUser = {
+      name: 'Test User',
+      email: 'test@example.com'
+    };
+    
+    const response = await request(app)
+      .post('/api/users')
+      .send(newUser)
+      .expect(201);
+    
+    expect(response.body.name).toBe(newUser.name);
+    expect(response.body.email).toBe(newUser.email);
+  });
+});
+```
+
+### Integration Testing
+
+```javascript
+// Integration test setup
+const mongoose = require('mongoose');
+const { MongoMemoryServer } = require('mongodb-memory-server');
+
+let mongoServer;
+
+beforeAll(async () => {
+  mongoServer = await MongoMemoryServer.create();
+  const mongoUri = mongoServer.getUri();
+  await mongoose.connect(mongoUri);
+});
+
+afterAll(async () => {
+  await mongoose.disconnect();
+  await mongoServer.stop();
+});
+
+afterEach(async () => {
+  const collections = mongoose.connection.collections;
+  for (const key in collections) {
+    const collection = collections[key];
+    await collection.deleteMany();
+  }
+});
+```
+
+## Deployment Strategies
+
+### Docker Deployment
+
+```dockerfile
+# Dockerfile
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY . .
+
+EXPOSE 3000
+
+USER node
+
+CMD ["node", "server.js"]
+```
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://user:password@db:5432/myapp
+    depends_on:
+      - db
+  
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=myapp
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+```
+
+### Environment Configuration
+
+```javascript
+// config.js
+const config = {
+  development: {
+    port: process.env.PORT || 3000,
+    database: {
+      url: process.env.DATABASE_URL || 'mongodb://localhost:27017/myapp_dev'
+    },
+    jwt: {
+      secret: process.env.JWT_SECRET || 'dev-secret',
+      expiresIn: '24h'
+    }
+  },
+  production: {
+    port: process.env.PORT || 3000,
+    database: {
+      url: process.env.DATABASE_URL
+    },
+    jwt: {
+      secret: process.env.JWT_SECRET,
+      expiresIn: '1h'
+    }
+  }
+};
+
+module.exports = config[process.env.NODE_ENV || 'development'];
+```
+
+## Performance Optimization
+
+### Caching with Redis
+
+```javascript
+const redis = require('redis');
+const client = redis.createClient(process.env.REDIS_URL);
+
+// Cache middleware
+const cache = (duration) => {
+  return async (req, res, next) => {
+    const key = req.originalUrl;
+    const cached = await client.get(key);
+    
+    if (cached) {
+      return res.json(JSON.parse(cached));
+    }
+    
+    res.sendResponse = res.json;
+    res.json = (body) => {
+      client.setex(key, duration, JSON.stringify(body));
+      res.sendResponse(body);
+    };
+    
+    next();
+  };
+};
+
+// Usage
+app.get('/api/users', cache(300), async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+});
+```
+
+### Database Optimization
+
+```javascript
+// Indexing for better performance
+userSchema.index({ email: 1 });
+userSchema.index({ createdAt: -1 });
+
+// Pagination
+app.get('/api/users', async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+  const skip = (page - 1) * limit;
+  
+  const users = await User.find()
+    .skip(skip)
+    .limit(limit)
+    .sort({ createdAt: -1 });
+  
+  const total = await User.countDocuments();
+  
+  res.json({
+    users,
+    pagination: {
+      page,
+      limit,
+      total,
+      pages: Math.ceil(total / limit)
+    }
+  });
+});
+```
+
+## Conclusion
+
+Backend development is crucial for building robust web applications. Choose the right technology stack based on your requirements, team expertise, and scalability needs.
+
+**Key Takeaways:**
+- Start with a technology you're comfortable with
+- Focus on security and authentication
+- Implement proper error handling
+- Write comprehensive tests
+- Plan for scalability from the beginning
+- Use proper deployment strategies
+
+---
+
+*Ready to explore database management? Check out our [Database Management](/web-dev/database-management) guide for data storage insights.*

@@ -1,0 +1,619 @@
+---
+title: "Docker Compose: Advanced Configuration and Best Practices"
+description: "Master Docker Compose with advanced configurations, networking, volumes, and production-ready setups."
+author: "TechDevDex Team"
+date: "2024-12-14"
+category: "Tutorial"
+tags: ["Docker", "Docker Compose", "DevOps", "Microservices"]
+readTime: "20 min"
+featured: false
+---
+
+# Docker Compose: Advanced Configuration and Best Practices
+
+Docker Compose is essential for managing multi-container applications. This guide covers advanced configurations, networking, volumes, and production-ready setups.
+
+## Advanced Docker Compose Features
+
+### 1. Multi-Environment Configuration
+
+Create environment-specific configurations:
+
+**docker-compose.yml** (base):
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "${WEB_PORT:-5000}:5000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:
+```
+
+**docker-compose.override.yml** (development):
+```yaml
+version: '3.8'
+
+services:
+  web:
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_ENV=development
+      - DEBUG=true
+    command: python app.py
+
+  db:
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: myapp_dev
+```
+
+**docker-compose.prod.yml** (production):
+```yaml
+version: '3.8'
+
+services:
+  web:
+    restart: unless-stopped
+    environment:
+      - FLASK_ENV=production
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+
+  db:
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+```
+
+### 2. Advanced Networking
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    networks:
+      - frontend
+      - backend
+
+  api:
+    build: ./api
+    networks:
+      - backend
+      - database
+
+  db:
+    image: postgres:13
+    networks:
+      - database
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+  database:
+    driver: bridge
+    internal: true
+```
+
+### 3. Volume Management
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    volumes:
+      # Named volumes
+      - app_data:/app/data
+      - logs:/app/logs
+      
+      # Bind mounts
+      - ./config:/app/config:ro
+      - /var/log:/app/host-logs:ro
+      
+      # Tmpfs mounts
+      - type: tmpfs
+        target: /tmp
+        tmpfs:
+          size: 100M
+
+volumes:
+  app_data:
+    driver: local
+  logs:
+    driver: local
+```
+
+## Production-Ready Configurations
+
+### 1. Health Checks
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  db:
+    image: postgres:13
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+```
+
+### 2. Resource Limits and Scaling
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+```
+
+### 3. Secrets Management
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    secrets:
+      - db_password
+      - api_key
+    environment:
+      - DB_PASSWORD_FILE=/run/secrets/db_password
+      - API_KEY_FILE=/run/secrets/api_key
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  api_key:
+    external: true
+```
+
+## Microservices Architecture
+
+### 1. API Gateway Pattern
+
+```yaml
+version: '3.8'
+
+services:
+  gateway:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - user-service
+      - order-service
+      - product-service
+
+  user-service:
+    build: ./services/user
+    environment:
+      - DATABASE_URL=postgresql://user:pass@user-db:5432/users
+    depends_on:
+      - user-db
+
+  user-db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: users
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+
+  order-service:
+    build: ./services/order
+    environment:
+      - DATABASE_URL=postgresql://user:pass@order-db:5432/orders
+    depends_on:
+      - order-db
+
+  order-db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: orders
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+
+  product-service:
+    build: ./services/product
+    environment:
+      - DATABASE_URL=postgresql://user:pass@product-db:5432/products
+    depends_on:
+      - product-db
+
+  product-db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: products
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+```
+
+### 2. Event-Driven Architecture
+
+```yaml
+version: '3.8'
+
+services:
+  api:
+    build: .
+    environment:
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+    depends_on:
+      - rabbitmq
+      - redis
+
+  worker:
+    build: ./worker
+    environment:
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+    depends_on:
+      - rabbitmq
+      - redis
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+
+  redis:
+    image: redis:6-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
+```
+
+## Monitoring and Logging
+
+### 1. Centralized Logging
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  fluentd:
+    image: fluent/fluentd:latest
+    volumes:
+      - ./fluentd.conf:/fluentd/etc/fluent.conf
+    ports:
+      - "24224:24224"
+
+  elasticsearch:
+    image: elasticsearch:7.14.0
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+
+  kibana:
+    image: kibana:7.14.0
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+
+volumes:
+  es_data:
+```
+
+### 2. Application Monitoring
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    environment:
+      - PROMETHEUS_ENDPOINT=http://prometheus:9090
+    labels:
+      - "prometheus.scrape=true"
+      - "prometheus.port=5000"
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+volumes:
+  grafana_data:
+```
+
+## Development Workflow
+
+### 1. Hot Reloading Setup
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: myapp_dev
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_dev_data:
+```
+
+### 2. Testing Environment
+
+```yaml
+version: '3.8'
+
+services:
+  test:
+    build: .
+    command: npm test
+    environment:
+      - NODE_ENV=test
+      - DATABASE_URL=postgresql://test:test@test-db:5432/test
+    depends_on:
+      - test-db
+
+  test-db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: test
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+    tmpfs:
+      - /var/lib/postgresql/data
+```
+
+## Security Best Practices
+
+### 1. Non-Root User
+
+```dockerfile
+FROM node:16-alpine
+
+# Create app directory
+WORKDIR /app
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
+
+# Copy package files
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copy source code
+COPY . .
+
+# Change ownership
+RUN chown -R nextjs:nodejs /app
+USER nextjs
+
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+### 2. Network Security
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    networks:
+      - frontend
+    expose:
+      - "3000"
+
+  api:
+    build: ./api
+    networks:
+      - frontend
+      - backend
+    expose:
+      - "5000"
+
+  db:
+    image: postgres:13
+    networks:
+      - backend
+    expose:
+      - "5432"
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+    internal: true
+```
+
+## Performance Optimization
+
+### 1. Multi-Stage Builds
+
+```dockerfile
+# Build stage
+FROM node:16-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# Production stage
+FROM node:16-alpine AS production
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY --from=builder /app/dist ./dist
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+### 2. Image Optimization
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
+    image: myapp:latest
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+```
+
+## Troubleshooting
+
+### 1. Common Issues
+
+```bash
+# Check container logs
+docker-compose logs web
+
+# Check specific service
+docker-compose logs -f web
+
+# Execute commands in running container
+docker-compose exec web bash
+
+# Restart specific service
+docker-compose restart web
+
+# Rebuild and restart
+docker-compose up --build web
+```
+
+### 2. Debugging Network Issues
+
+```bash
+# List networks
+docker network ls
+
+# Inspect network
+docker network inspect myapp_default
+
+# Test connectivity
+docker-compose exec web ping db
+```
+
+## Conclusion
+
+Docker Compose is a powerful tool for managing complex applications. With these advanced configurations, you can build production-ready, scalable, and maintainable containerized applications. Remember to always test your configurations in development before deploying to production.
+
+Happy composing! 🐳

@@ -1,0 +1,593 @@
+---
+title: "Git & GitHub Workflow Best Practices"
+description: "Master version control with Git and GitHub workflows, branching strategies, and collaboration techniques."
+author: "TechDevDex Team"
+date: "2024-12-12"
+category: "Tutorial"
+tags: ["Git", "GitHub", "Version Control", "Collaboration"]
+readTime: "18 min"
+featured: true
+featuredImage: "/images/posts/git-github-guide.svg"
+---
+
+# Git & GitHub Workflow Best Practices
+
+Git and GitHub are essential tools for modern software development. This comprehensive guide covers everything from basic Git operations to advanced collaboration workflows.
+
+## Table of Contents
+
+1. [Git Fundamentals](#git-fundamentals)
+2. [GitHub Setup and Configuration](#github-setup-and-configuration)
+3. [Branching Strategies](#branching-strategies)
+4. [Collaboration Workflows](#collaboration-workflows)
+5. [Advanced Git Techniques](#advanced-git-techniques)
+6. [Best Practices](#best-practices)
+7. [Troubleshooting](#troubleshooting)
+
+## Git Fundamentals
+
+### Understanding Git
+
+Git is a distributed version control system that tracks changes in files and coordinates work among multiple developers.
+
+#### Key Concepts:
+
+- **Repository**: A project folder with version control
+- **Commit**: A snapshot of your project at a specific point
+- **Branch**: A parallel version of your project
+- **Merge**: Combining changes from different branches
+- **Remote**: A version of your repository hosted elsewhere
+
+### Essential Git Commands
+
+```bash
+# Initialize a new repository
+git init
+
+# Clone an existing repository
+git clone https://github.com/username/repository.git
+
+# Check repository status
+git status
+
+# Add files to staging area
+git add filename.txt
+git add .  # Add all files
+
+# Commit changes
+git commit -m "Add new feature"
+
+# View commit history
+git log
+git log --oneline  # Compact view
+
+# Check differences
+git diff
+git diff --staged  # Staged changes
+```
+
+### Git Configuration
+
+```bash
+# Set up your identity
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+# Set default editor
+git config --global core.editor "code --wait"
+
+# Set default branch name
+git config --global init.defaultBranch main
+
+# View configuration
+git config --list
+```
+
+## GitHub Setup and Configuration
+
+### Creating a GitHub Account
+
+1. **Sign up** at [github.com](https://github.com)
+2. **Verify your email** address
+3. **Set up two-factor authentication** for security
+4. **Create your first repository**
+
+### SSH Key Setup
+
+```bash
+# Generate SSH key
+ssh-keygen -t ed25519 -C "your.email@example.com"
+
+# Add to SSH agent
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+# Copy public key to clipboard
+cat ~/.ssh/id_ed25519.pub
+
+# Add to GitHub: Settings > SSH and GPG keys > New SSH key
+```
+
+### Repository Setup
+
+```bash
+# Create new repository locally
+mkdir my-project
+cd my-project
+git init
+git remote add origin https://github.com/username/my-project.git
+
+# Or clone existing repository
+git clone https://github.com/username/my-project.git
+cd my-project
+```
+
+## Branching Strategies
+
+### Git Flow (Traditional)
+
+```bash
+# Main branches
+main        # Production-ready code
+develop     # Integration branch
+
+# Supporting branches
+feature/*   # New features
+release/*   # Preparing releases
+hotfix/*    # Critical bug fixes
+```
+
+#### Implementation:
+
+```bash
+# Create feature branch
+git checkout -b feature/user-authentication
+git push -u origin feature/user-authentication
+
+# Work on feature
+git add .
+git commit -m "Add user login functionality"
+
+# Merge back to develop
+git checkout develop
+git merge feature/user-authentication
+git branch -d feature/user-authentication
+```
+
+### GitHub Flow (Simplified)
+
+```bash
+# Main branch
+main        # Production-ready code
+
+# Feature branches
+feature/*   # All development work
+```
+
+#### Implementation:
+
+```bash
+# Create feature branch from main
+git checkout main
+git pull origin main
+git checkout -b feature/new-feature
+
+# Work and commit
+git add .
+git commit -m "Implement new feature"
+
+# Push and create pull request
+git push origin feature/new-feature
+# Create PR on GitHub
+
+# After PR approval, merge to main
+git checkout main
+git pull origin main
+git merge feature/new-feature
+git push origin main
+```
+
+### GitLab Flow (Environment-based)
+
+```bash
+# Branches
+main        # Production
+staging     # Pre-production testing
+develop     # Development integration
+feature/*   # Feature development
+```
+
+## Collaboration Workflows
+
+### Fork and Pull Request Workflow
+
+#### For Contributors:
+
+```bash
+# Fork repository on GitHub
+# Clone your fork
+git clone https://github.com/yourusername/repository.git
+cd repository
+
+# Add upstream remote
+git remote add upstream https://github.com/original/repository.git
+
+# Create feature branch
+git checkout -b feature/contribution
+git push -u origin feature/contribution
+
+# Make changes and commit
+git add .
+git commit -m "Add contribution"
+git push origin feature/contribution
+
+# Create pull request on GitHub
+```
+
+#### For Maintainers:
+
+```bash
+# Review and merge pull requests
+# Delete feature branches after merge
+git branch -d feature/contribution
+git push origin --delete feature/contribution
+```
+
+### Team Collaboration
+
+#### Daily Workflow:
+
+```bash
+# Start of day
+git checkout main
+git pull origin main
+
+# Create feature branch
+git checkout -b feature/daily-work
+
+# Work and commit frequently
+git add .
+git commit -m "WIP: Working on feature"
+git push origin feature/daily-work
+
+# End of day
+git add .
+git commit -m "End of day progress"
+git push origin feature/daily-work
+```
+
+#### Code Review Process:
+
+```bash
+# Before creating PR
+git checkout main
+git pull origin main
+git checkout feature/my-feature
+git rebase main
+
+# Resolve conflicts if any
+git add .
+git rebase --continue
+
+# Force push (safe on feature branches)
+git push --force-with-lease origin feature/my-feature
+```
+
+## Advanced Git Techniques
+
+### Interactive Rebase
+
+```bash
+# Rebase last 3 commits
+git rebase -i HEAD~3
+
+# Interactive options:
+# pick    - Use commit as-is
+# reword  - Change commit message
+# edit    - Stop to amend commit
+# squash  - Combine with previous commit
+# drop    - Remove commit
+```
+
+### Cherry-picking
+
+```bash
+# Apply specific commit to current branch
+git cherry-pick <commit-hash>
+
+# Cherry-pick range
+git cherry-pick <start-commit>..<end-commit>
+```
+
+### Stashing
+
+```bash
+# Save work in progress
+git stash
+git stash push -m "WIP: working on feature"
+
+# List stashes
+git stash list
+
+# Apply stash
+git stash apply
+git stash pop  # Apply and remove
+
+# Drop stash
+git stash drop stash@{0}
+```
+
+### Submodules
+
+```bash
+# Add submodule
+git submodule add https://github.com/user/repo.git path/to/submodule
+
+# Clone repository with submodules
+git clone --recursive https://github.com/user/repo.git
+
+# Update submodules
+git submodule update --remote
+```
+
+## Best Practices
+
+### Commit Messages
+
+#### Format:
+```
+type(scope): description
+
+body
+
+footer
+```
+
+#### Examples:
+```bash
+# Good commit messages
+git commit -m "feat(auth): add user login functionality"
+git commit -m "fix(api): resolve CORS issue in user endpoint"
+git commit -m "docs(readme): update installation instructions"
+git commit -m "refactor(utils): simplify date formatting logic"
+```
+
+#### Types:
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes
+- `refactor`: Code refactoring
+- `test`: Adding tests
+- `chore`: Maintenance tasks
+
+### .gitignore Best Practices
+
+```gitignore
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+dist/
+build/
+out/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output/
+
+# Temporary folders
+tmp/
+temp/
+```
+
+### Branch Naming Conventions
+
+```bash
+# Feature branches
+feature/user-authentication
+feature/payment-integration
+feature/dashboard-redesign
+
+# Bug fixes
+bugfix/login-error
+bugfix/memory-leak
+bugfix/cors-issue
+
+# Hotfixes
+hotfix/security-patch
+hotfix/critical-bug
+
+# Releases
+release/v1.2.0
+release/v2.0.0-beta
+```
+
+### Pull Request Best Practices
+
+#### PR Template:
+```markdown
+## Description
+Brief description of changes
+
+## Type of Change
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Breaking change
+- [ ] Documentation update
+
+## Testing
+- [ ] Tests pass locally
+- [ ] New tests added
+- [ ] Manual testing completed
+
+## Checklist
+- [ ] Code follows style guidelines
+- [ ] Self-review completed
+- [ ] Documentation updated
+- [ ] No breaking changes
+```
+
+## Troubleshooting
+
+### Common Issues
+
+#### 1. Merge Conflicts
+
+```bash
+# Identify conflicted files
+git status
+
+# Resolve conflicts manually
+# Edit files to resolve conflicts
+git add resolved-file.txt
+
+# Complete merge
+git commit
+```
+
+#### 2. Detached HEAD
+
+```bash
+# Create branch from detached HEAD
+git checkout -b new-branch
+
+# Or return to main branch
+git checkout main
+```
+
+#### 3. Accidentally Committed to Wrong Branch
+
+```bash
+# Move commit to correct branch
+git log --oneline
+git checkout correct-branch
+git cherry-pick <commit-hash>
+git checkout wrong-branch
+git reset --hard HEAD~1
+```
+
+#### 4. Undo Last Commit
+
+```bash
+# Undo commit, keep changes
+git reset --soft HEAD~1
+
+# Undo commit, discard changes
+git reset --hard HEAD~1
+
+# Undo commit, keep changes staged
+git reset --mixed HEAD~1
+```
+
+### Useful Git Aliases
+
+```bash
+# Add to ~/.gitconfig
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    ci = commit
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    visual = !gitk
+    lg = log --oneline --graph --decorate --all
+    undo = reset --soft HEAD~1
+    amend = commit --amend --no-edit
+```
+
+## GitHub Features
+
+### Issues and Project Management
+
+```markdown
+# Issue templates
+## Bug Report
+- **Description**: What happened?
+- **Steps to Reproduce**: How to reproduce?
+- **Expected Behavior**: What should happen?
+- **Environment**: OS, browser, version
+
+## Feature Request
+- **Description**: What feature?
+- **Use Case**: Why is this needed?
+- **Proposed Solution**: How should it work?
+```
+
+### GitHub Actions (CI/CD)
+
+```yaml
+# .github/workflows/ci.yml
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run tests
+      run: npm test
+      
+    - name: Build
+      run: npm run build
+```
+
+## Conclusion
+
+Mastering Git and GitHub is essential for modern software development. These workflows and best practices will help you collaborate effectively, maintain clean project history, and contribute to open source projects successfully.
+
+Remember:
+- **Commit often** with meaningful messages
+- **Use branches** for feature development
+- **Review code** before merging
+- **Keep main branch** always deployable
+- **Document** your processes
+
+Happy coding! 🚀
