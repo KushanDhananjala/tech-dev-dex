@@ -318,9 +318,9 @@ import (
 )
 
 type User struct {
-    ID    int    `json:"id"`
-    Name  string `json:"name"`
-    Email string `json:"email"`
+    ID    int    &#96;json:"id"&#96;
+    Name  string &#96;json:"name"&#96;
+    Email string &#96;json:"email"&#96;
 }
 
 var users = []User{
@@ -387,20 +387,20 @@ import (
 )
 
 type User struct {
-    ID        uint      `gorm:"primaryKey"`
-    Name      string    `gorm:"size:100;not null"`
-    Email     string    `gorm:"uniqueIndex;size:255;not null"`
+    ID        uint      &#96;gorm:"primaryKey"&#96;
+    Name      string    &#96;gorm:"size:100;not null"&#96;
+    Email     string    &#96;gorm:"uniqueIndex;size:255;not null"&#96;
     CreatedAt time.Time
     UpdatedAt time.Time
 }
 
 type Product struct {
-    ID          uint   `gorm:"primaryKey"`
-    Name        string `gorm:"size:100;not null"`
+    ID          uint   &#96;gorm:"primaryKey"&#96;
+    Name        string &#96;gorm:"size:100;not null"&#96;
     Description string
     Price       float64
     UserID      uint
-    User        User   `gorm:"foreignKey:UserID"`
+    User        User   &#96;gorm:"foreignKey:UserID"&#96;
 }
 
 func main() {
