@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 60,
+    unoptimized: true, // Disable optimization for SVG files
+  },
+  
+  // Turbopack configuration
+  turbopack: {
+    root: __dirname,
   },
   
   // Performance optimizations

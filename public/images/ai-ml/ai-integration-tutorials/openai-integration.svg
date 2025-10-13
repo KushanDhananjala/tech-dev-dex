@@ -1,0 +1,43 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#1E293B"/>
+  
+  <!-- OpenAI Logo -->
+  <circle cx="100" cy="100" r="40" fill="#10B981" stroke="#059669" stroke-width="3"/>
+  <text x="100" y="110" text-anchor="middle" fill="#FFFFFF" font-family="Arial" font-size="20" font-weight="bold">AI</text>
+  
+  <!-- API Integration Flow -->
+  <rect x="200" y="50" width="500" height="300" rx="8" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  
+  <!-- Code Examples -->
+  <g transform="translate(220, 80)">
+    <text x="0" y="0" fill="#CE9178" font-family="monospace" font-size="12">import openai</text>
+    <text x="0" y="20" fill="#9CA3AF" font-family="monospace" font-size="10"># Initialize OpenAI client</text>
+    <text x="0" y="40" fill="#569CD6" font-family="monospace" font-size="12">openai.api_key = "your-api-key"</text>
+    <text x="0" y="60" fill="#9CA3AF" font-family="monospace" font-size="10"># Generate text with GPT-4</text>
+    <text x="0" y="80" fill="#4EC9B0" font-family="monospace" font-size="12">response = openai.ChatCompletion.create(</text>
+    <text x="20" y="100" fill="#DCDCAA" font-family="monospace" font-size="12">model="gpt-4",</text>
+    <text x="20" y="120" fill="#DCDCAA" font-family="monospace" font-size="12">messages=[{"role": "user", "content": "Hello!"}]</text>
+    <text x="0" y="140" fill="#4EC9B0" font-family="monospace" font-size="12">)</text>
+    <text x="0" y="160" fill="#9CA3AF" font-family="monospace" font-size="10"># Generate images with DALL-E</text>
+    <text x="0" y="180" fill="#4EC9B0" font-family="monospace" font-size="12">image = openai.Image.create(</text>
+    <text x="20" y="200" fill="#DCDCAA" font-family="monospace" font-size="12">prompt="A futuristic city",</text>
+    <text x="20" y="220" fill="#DCDCAA" font-family="monospace" font-size="12">n=1, size="1024x1024"</text>
+    <text x="0" y="240" fill="#4EC9B0" font-family="monospace" font-size="12">)</text>
+  </g>
+  
+  <!-- API Features -->
+  <rect x="50" y="320" width="700" height="60" rx="4" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  
+  <circle cx="100" cy="350" r="12" fill="#10B981"/>
+  <text x="125" y="355" fill="#FFFFFF" font-family="Arial" font-size="12">GPT-4 Text Generation</text>
+  
+  <circle cx="300" cy="350" r="12" fill="#3B82F6"/>
+  <text x="325" y="355" fill="#FFFFFF" font-family="Arial" font-size="12">DALL-E Image Creation</text>
+  
+  <circle cx="500" cy="350" r="12" fill="#8B5CF6"/>
+  <text x="525" y="355" fill="#FFFFFF" font-family="Arial" font-size="12">Whisper Speech-to-Text</text>
+  
+  <!-- Title -->
+  <text x="50" y="30" fill="#FFFFFF" font-family="Arial" font-size="16" font-weight="bold">OpenAI API Integration</text>
+  <text x="50" y="45" fill="#9CA3AF" font-family="Arial" font-size="12">Master OpenAI API integration for AI applications</text>
+</svg>

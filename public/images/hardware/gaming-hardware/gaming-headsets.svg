@@ -1,0 +1,56 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="headsetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Gaming Headset -->
+  <ellipse cx="200" cy="120" rx="80" ry="50" fill="url(#headsetGradient)" stroke="#8b5cf6" stroke-width="2"/>
+  
+  <!-- Headband -->
+  <rect x="120" y="80" width="160" height="20" rx="10" fill="url(#headsetGradient)" stroke="#8b5cf6" stroke-width="2"/>
+  
+  <!-- Microphone -->
+  <rect x="280" y="110" width="40" height="8" rx="4" fill="#6b7280" />
+  
+  <!-- Gaming Features -->
+  <rect x="50" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">7.1 Surround</text>
+  
+  <rect x="120" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Noise Cancel</text>
+  
+  <rect x="190" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">RGB</text>
+  
+  <rect x="260" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Wireless</text>
+  
+  <rect x="330" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Comfort</text>
+  
+  <!-- Gaming Benefits -->
+  <rect x="50" y="240" width="80" height="25" rx="4" fill="#8b5cf6" />
+  <text x="90" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Immersive</text>
+  
+  <rect x="140" y="240" width="80" height="25" rx="4" fill="#8b5cf6" />
+  <text x="180" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Clear Audio</text>
+  
+  <rect x="230" y="240" width="80" height="25" rx="4" fill="#8b5cf6" />
+  <text x="270" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Long Sessions</text>
+  
+  <rect x="320" y="240" width="80" height="25" rx="4" fill="#8b5cf6" />
+  <text x="360" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Remote Work</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="290" r="4" fill="#8b5cf6" />
+  <text x="110" y="295" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Immersive</text>
+  
+  <circle cx="200" cy="290" r="4" fill="#7c3aed" />
+  <text x="210" y="295" fill="#7c3aed" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Comfortable</text>
+  
+  <circle cx="300" cy="290" r="4" fill="#8b5cf6" />
+  <text x="310" y="295" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Quality</text>
+</svg>

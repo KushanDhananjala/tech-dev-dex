@@ -1,0 +1,545 @@
+---
+title: "Docker CI/CD Pipeline: Automated Deployment"
+description: "Build automated CI/CD pipelines with Docker. GitHub Actions, Jenkins, and deployment strategies."
+author: "TechDevDex Team"
+date: "2024-12-10"
+category: "Tutorial"
+tags: ["Docker", "CI/CD", "DevOps", "Automation"]
+readTime: "22 min"
+featured: false
+rating: 5
+featuredImage: "/images/tutorials/docker-setup-guides/docker-ci-cd-pipeline.svg"
+---
+
+# Docker CI/CD Pipeline: Automated Deployment
+
+Learn how to build robust CI/CD pipelines with Docker for automated testing, building, and deployment of containerized applications.
+
+## CI/CD Pipeline Overview
+
+### Pipeline Stages
+
+1. **Source**: Code repository (Git)
+2. **Build**: Compile and package application
+3. **Test**: Run automated tests
+4. **Package**: Create Docker images
+5. **Deploy**: Deploy to target environments
+6. **Monitor**: Monitor application health
+
+### Benefits
+
+- **Automation**: Reduce manual errors
+- **Consistency**: Same process across environments
+- **Speed**: Faster deployment cycles
+- **Quality**: Automated testing and validation
+- **Reliability**: Repeatable deployments
+
+## GitHub Actions with Docker
+
+### Basic Workflow
+
+```yaml
+# .github/workflows/docker.yml
+name: Docker CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+      
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        
+    - name: Build and push
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: true
+        tags: |
+          myapp:latest
+          myapp:${{ github.sha }}
+```
+
+### Multi-stage Build
+
+```dockerfile
+# Build stage
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Test stage
+FROM node:18-alpine AS tester
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm test
+
+# Production stage
+FROM node:18-alpine AS production
+WORKDIR /app
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/dist ./dist
+USER node
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+```
+
+### Advanced GitHub Actions
+
+```yaml
+name: Advanced Docker CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Run tests
+      run: |
+        npm ci
+        npm test
+        npm run lint
+        
+  security:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'myapp:latest'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+        
+  build:
+    needs: [test, security]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+      
+    - name: Login to Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v4
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=sha,prefix={{branch}}-
+          
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+```
+
+## Jenkins with Docker
+
+### Jenkinsfile
+
+```groovy
+pipeline {
+    agent any
+    
+    environment {
+        DOCKER_REGISTRY = 'your-registry.com'
+        IMAGE_NAME = 'myapp'
+        IMAGE_TAG = "${BUILD_NUMBER}"
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                sh 'npm ci'
+                sh 'npm test'
+                sh 'npm run lint'
+            }
+        }
+        
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    def image = docker.build("${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}")
+                }
+            }
+        }
+        
+        stage('Security Scan') {
+            steps {
+                sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}'
+            }
+        }
+        
+        stage('Push to Registry') {
+            steps {
+                script {
+                    docker.withRegistry("https://${DOCKER_REGISTRY}", 'docker-registry-credentials') {
+                        docker.image("${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}").push()
+                        docker.image("${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}").push('latest')
+                    }
+                }
+            }
+        }
+        
+        stage('Deploy to Staging') {
+            steps {
+                sh 'kubectl set image deployment/myapp myapp=${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} -n staging'
+            }
+        }
+        
+        stage('Deploy to Production') {
+            when {
+                branch 'main'
+            }
+            steps {
+                sh 'kubectl set image deployment/myapp myapp=${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} -n production'
+            }
+        }
+    }
+    
+    post {
+        always {
+            cleanWs()
+        }
+        success {
+            slackSend channel: '#deployments', message: "✅ Deployment successful: ${IMAGE_NAME}:${IMAGE_TAG}"
+        }
+        failure {
+            slackSend channel: '#deployments', message: "❌ Deployment failed: ${IMAGE_NAME}:${IMAGE_TAG}"
+        }
+    }
+}
+```
+
+## Docker Compose in CI/CD
+
+### Development Environment
+
+```yaml
+# docker-compose.dev.yml
+version: '3.8'
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+      
+  database:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: myapp_dev
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+    ports:
+      - "5432:5432"
+```
+
+### Testing Environment
+
+```yaml
+# docker-compose.test.yml
+version: '3.8'
+services:
+  app:
+    build: .
+    environment:
+      - NODE_ENV=test
+      - DATABASE_URL=postgresql://test:test@database:5432/myapp_test
+    depends_on:
+      - database
+    command: npm test
+    
+  database:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: myapp_test
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+```
+
+### Production Environment
+
+```yaml
+# docker-compose.prod.yml
+version: '3.8'
+services:
+  app:
+    image: myapp:latest
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=${DATABASE_URL}
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    restart: unless-stopped
+    
+  database:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    
+volumes:
+  postgres_data:
+```
+
+## Deployment Strategies
+
+### Blue-Green Deployment
+
+```bash
+#!/bin/bash
+# blue-green-deploy.sh
+
+# Build new image
+docker build -t myapp:green .
+
+# Start green environment
+docker-compose -f docker-compose.green.yml up -d
+
+# Health check
+sleep 30
+curl -f http://localhost:3001/health || exit 1
+
+# Switch traffic (update load balancer)
+# Update nginx config to point to green
+nginx -s reload
+
+# Stop blue environment
+docker-compose -f docker-compose.blue.yml down
+```
+
+### Rolling Updates
+
+```yaml
+# rolling-update.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    spec:
+      containers:
+      - name: myapp
+        image: myapp:latest
+        ports:
+        - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+```
+
+## Monitoring and Alerting
+
+### Health Checks
+
+```yaml
+# docker-compose.monitoring.yml
+version: '3.8'
+services:
+  app:
+    image: myapp:latest
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+      
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+```
+
+### Logging
+
+```yaml
+# docker-compose.logging.yml
+version: '3.8'
+services:
+  app:
+    image: myapp:latest
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        
+  fluentd:
+    image: fluent/fluentd
+    volumes:
+      - ./fluent.conf:/fluentd/etc/fluent.conf
+    ports:
+      - "24224:24224"
+```
+
+## Best Practices
+
+### 1. Use .dockerignore
+
+```
+node_modules
+npm-debug.log
+.git
+.gitignore
+README.md
+.env
+.nyc_output
+coverage
+```
+
+### 2. Optimize Build Context
+
+```dockerfile
+# Copy package files first
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copy source code
+COPY . .
+```
+
+### 3. Use Multi-stage Builds
+
+```dockerfile
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+
+FROM node:18-alpine AS production
+WORKDIR /app
+COPY --from=builder /app/node_modules ./node_modules
+COPY . .
+USER node
+CMD ["node", "server.js"]
+```
+
+### 4. Implement Proper Testing
+
+```yaml
+# .github/workflows/test.yml
+name: Test Suite
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run tests
+      run: |
+        npm ci
+        npm test
+        npm run test:integration
+```
+
+## Conclusion
+
+Docker CI/CD pipelines enable automated, reliable, and scalable deployment of containerized applications. By following these best practices and implementing proper testing, monitoring, and deployment strategies, you can achieve efficient DevOps workflows.
+
+Remember to:
+- Automate everything possible
+- Implement proper testing
+- Use security scanning
+- Monitor deployments
+- Plan for rollbacks
+- Document processes
+
+Happy deploying! 🚀

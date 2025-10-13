@@ -1,0 +1,28 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="angularGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dd0031;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c3002f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1e293b"/>
+  
+  <!-- Angular -->
+  <g transform="translate(400, 200)">
+    <!-- Angular logo -->
+    <path d="M-30,-30 L30,-30 L30,30 L-30,30 Z" fill="url(#angularGrad)" rx="5"/>
+    <text x="0" y="8" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="20" style="font-weight:bold;">A</text>
+    
+    <!-- Angular features -->
+    <rect x="-50" y="40" width="15" height="12" fill="url(#angularGrad)" rx="2"/>
+    <rect x="-25" y="40" width="15" height="12" fill="url(#angularGrad)" rx="2"/>
+    <rect x="0" y="40" width="15" height="12" fill="url(#angularGrad)" rx="2"/>
+    <rect x="25" y="40" width="15" height="12" fill="url(#angularGrad)" rx="2"/>
+    
+    <!-- Text -->
+    <text x="0" y="75" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="24" style="font-weight:bold;">Angular Comprehensive</text>
+    <text x="0" y="100" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">TypeScript Web Framework</text>
+  </g>
+</svg>

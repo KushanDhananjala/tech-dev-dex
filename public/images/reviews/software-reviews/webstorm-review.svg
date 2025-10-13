@@ -1,0 +1,29 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="webstormGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1e293b"/>
+  
+  <!-- WebStorm -->
+  <g transform="translate(400, 200)">
+    <!-- WebStorm logo -->
+    <circle cx="0" cy="0" r="30" fill="url(#webstormGrad)"/>
+    <text x="0" y="8" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="16" style="font-weight:bold;">WS</text>
+    
+    <!-- Web development features -->
+    <rect x="-50" y="35" width="12" height="8" fill="url(#webstormGrad)" rx="1"/>
+    <rect x="-30" y="35" width="12" height="8" fill="url(#webstormGrad)" rx="1"/>
+    <rect x="-10" y="35" width="12" height="8" fill="url(#webstormGrad)" rx="1"/>
+    <rect x="10" y="35" width="12" height="8" fill="url(#webstormGrad)" rx="1"/>
+    <rect x="30" y="35" width="12" height="8" fill="url(#webstormGrad)" rx="1"/>
+    
+    <!-- Text -->
+    <text x="0" y="70" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="24" style="font-weight:bold;">WebStorm Review</text>
+    <text x="0" y="95" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">Web Development IDE</text>
+  </g>
+</svg>

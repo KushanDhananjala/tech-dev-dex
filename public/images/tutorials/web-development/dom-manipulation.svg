@@ -1,0 +1,66 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="domGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f7df1e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0db4f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- DOM Tree Structure -->
+  <rect x="50" y="50" width="80" height="40" rx="4" fill="url(#domGradient)" stroke="#f7df1e" stroke-width="2"/>
+  <text x="90" y="75" text-anchor="middle" fill="#000000" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">HTML</text>
+  
+  <rect x="30" y="110" width="60" height="30" rx="4" fill="#6c757d" />
+  <text x="60" y="130" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">head</text>
+  
+  <rect x="100" y="110" width="60" height="30" rx="4" fill="#6c757d" />
+  <text x="130" y="130" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">body</text>
+  
+  <rect x="20" y="160" width="40" height="25" rx="4" fill="#28a745" />
+  <text x="40" y="175" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">title</text>
+  
+  <rect x="70" y="160" width="40" height="25" rx="4" fill="#28a745" />
+  <text x="90" y="175" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">meta</text>
+  
+  <rect x="80" y="160" width="40" height="25" rx="4" fill="#28a745" />
+  <text x="100" y="175" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">div</text>
+  
+  <rect x="120" y="160" width="40" height="25" rx="4" fill="#28a745" />
+  <text x="140" y="175" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">p</text>
+  
+  <!-- JavaScript DOM Methods -->
+  <rect x="200" y="50" width="150" height="120" rx="8" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2"/>
+  <text x="275" y="70" text-anchor="middle" fill="#495057" font-family="Arial, sans-serif" font-size="14" style="font-weight:bold;">JavaScript DOM</text>
+  
+  <rect x="210" y="85" width="130" height="15" fill="#e9ecef" />
+  <text x="275" y="95" text-anchor="middle" fill="#495057" font-family="monospace" font-size="10">getElementById()</text>
+  
+  <rect x="210" y="105" width="130" height="15" fill="#e9ecef" />
+  <text x="275" y="115" text-anchor="middle" fill="#495057" font-family="monospace" font-size="10">querySelector()</text>
+  
+  <rect x="210" y="125" width="130" height="15" fill="#e9ecef" />
+  <text x="275" y="135" text-anchor="middle" fill="#495057" font-family="monospace" font-size="10">addEventListener()</text>
+  
+  <rect x="210" y="145" width="130" height="15" fill="#e9ecef" />
+  <text x="275" y="155" text-anchor="middle" fill="#495057" font-family="monospace" font-size="10">createElement()</text>
+  
+  <!-- Event Handling -->
+  <rect x="50" y="220" width="80" height="30" rx="4" fill="#dc3545" />
+  <text x="90" y="240" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Click Events</text>
+  
+  <rect x="150" y="220" width="80" height="30" rx="4" fill="#007bff" />
+  <text x="190" y="240" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Form Events</text>
+  
+  <rect x="250" y="220" width="80" height="30" rx="4" fill="#28a745" />
+  <text x="290" y="240" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Keyboard Events</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#f7df1e" />
+  <text x="110" y="275" fill="#f7df1e" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Interactive</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#dc3545" />
+  <text x="210" y="275" fill="#dc3545" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Dynamic</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#007bff" />
+  <text x="310" y="275" fill="#007bff" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Responsive</text>
+</svg>

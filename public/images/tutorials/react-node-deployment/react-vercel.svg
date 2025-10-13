@@ -1,0 +1,38 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="vercelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1e293b"/>
+  
+  <!-- Vercel deployment -->
+  <g transform="translate(400, 200)">
+    <!-- Vercel triangle -->
+    <path d="M-40,-30 L40,-30 L0,30 Z" fill="url(#vercelGrad)"/>
+    
+    <!-- Deployment arrows -->
+    <path d="M-60,0 L-40,0" stroke="#fff" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M40,0 L60,0" stroke="#fff" stroke-width="3" marker-end="url(#arrow)"/>
+    
+    <!-- Arrow marker -->
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#fff"/>
+      </marker>
+    </defs>
+    
+    <!-- React logo -->
+    <circle cx="0" cy="60" r="25" fill="#61dafb"/>
+    <text x="0" y="67" text-anchor="middle" fill="#000" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">R</text>
+    
+    <!-- Text -->
+    <text x="0" y="110" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="24" style="font-weight:bold;">React Vercel Deployment</text>
+    <text x="0" y="135" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">Frontend Deployment Platform</text>
+  </g>
+</svg>
+
+

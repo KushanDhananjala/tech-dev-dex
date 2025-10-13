@@ -1,0 +1,47 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="standingDeskGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Standing Desk -->
+  <rect x="100" y="180" width="200" height="8" fill="url(#standingDeskGradient)" stroke="#7c3aed" stroke-width="2"/>
+  
+  <!-- Desk Legs -->
+  <rect x="120" y="188" width="8" height="60" fill="#6b7280" />
+  <rect x="272" y="188" width="8" height="60" fill="#6b7280" />
+  
+  <!-- Monitor on Desk -->
+  <rect x="150" y="160" width="80" height="20" fill="#374151" />
+  
+  <!-- Keyboard on Desk -->
+  <rect x="160" y="170" width="60" height="8" fill="#1f2937" />
+  
+  <!-- Height Adjustment -->
+  <rect x="50" y="250" width="60" height="20" rx="4" fill="#6b7280" />
+  <text x="80" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Height Adj</text>
+  
+  <rect x="120" y="250" width="60" height="20" rx="4" fill="#6b7280" />
+  <text x="150" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Memory</text>
+  
+  <rect x="190" y="250" width="60" height="20" rx="4" fill="#6b7280" />
+  <text x="220" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Stability</text>
+  
+  <rect x="260" y="250" width="60" height="20" rx="4" fill="#6b7280" />
+  <text x="290" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Ergonomic</text>
+  
+  <rect x="330" y="250" width="60" height="20" rx="4" fill="#6b7280" />
+  <text x="360" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Health</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="290" r="4" fill="#7c3aed" />
+  <text x="110" y="295" fill="#7c3aed" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Healthy</text>
+  
+  <circle cx="200" cy="290" r="4" fill="#8b5cf6" />
+  <text x="210" y="295" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Flexible</text>
+  
+  <circle cx="300" cy="290" r="4" fill="#7c3aed" />
+  <text x="310" y="295" fill="#7c3aed" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Comfortable</text>
+</svg>

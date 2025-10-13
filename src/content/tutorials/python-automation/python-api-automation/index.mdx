@@ -1,0 +1,701 @@
+---
+title: "Python API Automation: Complete Guide"
+description: "Automate API interactions with Python. REST APIs, authentication, rate limiting, and error handling for production systems."
+author: "TechDevDex Team"
+date: "2024-12-15"
+category: "Tutorial"
+tags: ["Python", "API", "Automation", "REST", "HTTP"]
+readTime: "30 min"
+featured: true
+rating: 5
+featuredImage: "/images/tutorials/python-automation/python-api-automation.svg"
+---
+
+# Python API Automation: Complete Guide
+
+Learn how to automate API interactions with Python. From basic HTTP requests to advanced patterns like rate limiting, authentication, and error handling.
+
+## Getting Started with API Automation
+
+### Prerequisites
+
+- Python 3.8+ installed
+- Basic understanding of HTTP protocols
+- Familiarity with JSON data format
+
+### Essential Libraries
+
+```bash
+# Install required packages
+pip install requests
+pip install httpx
+pip install aiohttp
+pip install python-dotenv
+pip install pydantic
+```
+
+## Basic API Requests
+
+### Simple GET Request
+
+```python
+import requests
+
+# Basic GET request
+response = requests.get('https://api.github.com/users/octocat')
+print(response.status_code)
+print(response.json())
+
+# With error handling
+try:
+    response = requests.get('https://api.github.com/users/octocat')
+    response.raise_for_status()  # Raises an HTTPError for bad responses
+    data = response.json()
+    print(f"User: {data['login']}")
+except requests.exceptions.RequestException as e:
+    print(f"Error: {e}")
+```
+
+### POST Request with Data
+
+```python
+import requests
+import json
+
+# POST request with JSON data
+url = 'https://jsonplaceholder.typicode.com/posts'
+data = {
+    'title': 'My Post',
+    'body': 'This is the content of my post',
+    'userId': 1
+}
+
+response = requests.post(url, json=data)
+print(response.status_code)
+print(response.json())
+```
+
+### PUT and DELETE Requests
+
+```python
+# PUT request to update resource
+update_data = {
+    'title': 'Updated Post',
+    'body': 'Updated content'
+}
+response = requests.put('https://jsonplaceholder.typicode.com/posts/1', json=update_data)
+
+# DELETE request
+response = requests.delete('https://jsonplaceholder.typicode.com/posts/1')
+print(response.status_code)
+```
+
+## Authentication Methods
+
+### API Key Authentication
+
+```python
+import requests
+
+# API Key in header
+headers = {
+    'X-API-Key': 'your-api-key-here'
+}
+response = requests.get('https://api.example.com/data', headers=headers)
+
+# API Key as query parameter
+params = {'api_key': 'your-api-key-here'}
+response = requests.get('https://api.example.com/data', params=params)
+```
+
+### Bearer Token Authentication
+
+```python
+import requests
+
+# Bearer token authentication
+headers = {
+    'Authorization': 'Bearer your-token-here'
+}
+response = requests.get('https://api.example.com/protected', headers=headers)
+```
+
+### OAuth 2.0 Authentication
+
+```python
+import requests
+from requests_oauthlib import OAuth2Session
+
+# OAuth 2.0 setup
+client_id = 'your-client-id'
+client_secret = 'your-client-secret'
+redirect_uri = 'http://localhost:8080/callback'
+
+# Create OAuth session
+oauth = OAuth2Session(client_id, redirect_uri=redirect_uri)
+
+# Get authorization URL
+authorization_url, state = oauth.authorization_url('https://api.example.com/oauth/authorize')
+
+# After user authorization, get token
+token = oauth.fetch_token(
+    'https://api.example.com/oauth/token',
+    client_secret=client_secret,
+    authorization_response=authorization_url
+)
+
+# Use token for authenticated requests
+response = oauth.get('https://api.example.com/user')
+```
+
+## Advanced Request Patterns
+
+### Session Management
+
+```python
+import requests
+
+# Create session for connection pooling
+session = requests.Session()
+
+# Set default headers
+session.headers.update({
+    'User-Agent': 'MyApp/1.0',
+    'Accept': 'application/json'
+})
+
+# Use session for multiple requests
+response1 = session.get('https://api.example.com/users')
+response2 = session.get('https://api.example.com/posts')
+
+# Session automatically handles cookies and connection reuse
+```
+
+### Request Timeouts and Retries
+
+```python
+import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
+# Configure retry strategy
+retry_strategy = Retry(
+    total=3,
+    backoff_factor=1,
+    status_forcelist=[429, 500, 502, 503, 504],
+)
+
+# Create session with retry strategy
+session = requests.Session()
+adapter = HTTPAdapter(max_retries=retry_strategy)
+session.mount("http://", adapter)
+session.mount("https://", adapter)
+
+# Make request with timeout
+response = session.get('https://api.example.com/data', timeout=30)
+```
+
+### Rate Limiting
+
+```python
+import time
+import requests
+from functools import wraps
+
+def rate_limit(calls_per_second):
+    """Decorator to rate limit function calls"""
+    min_interval = 1.0 / calls_per_second
+    last_called = [0.0]
+    
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            elapsed = time.time() - last_called[0]
+            left_to_wait = min_interval - elapsed
+            if left_to_wait > 0:
+                time.sleep(left_to_wait)
+            ret = func(*args, **kwargs)
+            last_called[0] = time.time()
+            return ret
+        return wrapper
+    return decorator
+
+# Usage
+@rate_limit(2)  # 2 calls per second
+def make_api_call(url):
+    return requests.get(url)
+```
+
+## Async API Requests
+
+### Using aiohttp
+
+```python
+import asyncio
+import aiohttp
+
+async def fetch_data(session, url):
+    async with session.get(url) as response:
+        return await response.json()
+
+async def main():
+    urls = [
+        'https://api.example.com/users/1',
+        'https://api.example.com/users/2',
+        'https://api.example.com/users/3'
+    ]
+    
+    async with aiohttp.ClientSession() as session:
+        tasks = [fetch_data(session, url) for url in urls]
+        results = await asyncio.gather(*tasks)
+        return results
+
+# Run async function
+results = asyncio.run(main())
+```
+
+### Using httpx
+
+```python
+import httpx
+import asyncio
+
+async def fetch_multiple_apis():
+    async with httpx.AsyncClient() as client:
+        # Concurrent requests
+        response1 = client.get('https://api1.example.com/data')
+        response2 = client.get('https://api2.example.com/data')
+        response3 = client.get('https://api3.example.com/data')
+        
+        results = await asyncio.gather(response1, response2, response3)
+        return [r.json() for r in results]
+
+# Run async function
+results = asyncio.run(fetch_multiple_apis())
+```
+
+## Data Validation and Processing
+
+### Using Pydantic for Data Validation
+
+```python
+from pydantic import BaseModel, validator
+from typing import List, Optional
+from datetime import datetime
+
+class User(BaseModel):
+    id: int
+    name: str
+    email: str
+    created_at: datetime
+    is_active: bool = True
+    
+    @validator('email')
+    def validate_email(cls, v):
+        if '@' not in v:
+            raise ValueError('Invalid email format')
+        return v
+
+class APIResponse(BaseModel):
+    users: List[User]
+    total: int
+    page: int
+
+# Usage
+def process_api_response(response_data):
+    try:
+        api_response = APIResponse(**response_data)
+        return api_response
+    except ValidationError as e:
+        print(f"Validation error: {e}")
+        return None
+```
+
+### Data Transformation
+
+```python
+import pandas as pd
+from typing import Dict, List
+
+def transform_api_data(raw_data: List[Dict]) -> pd.DataFrame:
+    """Transform API data into pandas DataFrame"""
+    df = pd.DataFrame(raw_data)
+    
+    # Data cleaning and transformation
+    df['created_at'] = pd.to_datetime(df['created_at'])
+    df['name'] = df['name'].str.title()
+    df['email_domain'] = df['email'].str.split('@').str[1]
+    
+    return df
+
+# Usage
+raw_data = [
+    {'id': 1, 'name': 'john doe', 'email': 'john@example.com', 'created_at': '2023-01-01'},
+    {'id': 2, 'name': 'jane smith', 'email': 'jane@company.com', 'created_at': '2023-01-02'}
+]
+
+df = transform_api_data(raw_data)
+print(df)
+```
+
+## Error Handling and Logging
+
+### Comprehensive Error Handling
+
+```python
+import requests
+import logging
+from typing import Optional, Dict, Any
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+class APIError(Exception):
+    """Custom exception for API errors"""
+    def __init__(self, message: str, status_code: Optional[int] = None):
+        self.message = message
+        self.status_code = status_code
+        super().__init__(self.message)
+
+def make_api_request(url: str, **kwargs) -> Optional[Dict[Any, Any]]:
+    """Make API request with comprehensive error handling"""
+    try:
+        logger.info(f"Making request to: {url}")
+        response = requests.get(url, **kwargs)
+        
+        # Check for HTTP errors
+        if response.status_code >= 400:
+            raise APIError(
+                f"HTTP {response.status_code}: {response.text}",
+                response.status_code
+            )
+        
+        # Check for JSON parsing errors
+        try:
+            data = response.json()
+        except ValueError as e:
+            raise APIError(f"Invalid JSON response: {e}")
+        
+        logger.info(f"Successfully fetched data from: {url}")
+        return data
+        
+    except requests.exceptions.Timeout:
+        logger.error(f"Timeout error for: {url}")
+        raise APIError("Request timeout")
+        
+    except requests.exceptions.ConnectionError:
+        logger.error(f"Connection error for: {url}")
+        raise APIError("Connection failed")
+        
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Request error for {url}: {e}")
+        raise APIError(f"Request failed: {e}")
+        
+    except APIError:
+        raise  # Re-raise our custom exceptions
+        
+    except Exception as e:
+        logger.error(f"Unexpected error for {url}: {e}")
+        raise APIError(f"Unexpected error: {e}")
+```
+
+### Retry with Exponential Backoff
+
+```python
+import time
+import random
+from functools import wraps
+
+def retry_with_backoff(max_retries: int = 3, base_delay: float = 1.0):
+    """Decorator for retry with exponential backoff"""
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            for attempt in range(max_retries):
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    if attempt == max_retries - 1:
+                        raise e
+                    
+                    # Exponential backoff with jitter
+                    delay = base_delay * (2 ** attempt) + random.uniform(0, 1)
+                    logger.warning(f"Attempt {attempt + 1} failed: {e}. Retrying in {delay:.2f}s")
+                    time.sleep(delay)
+            
+        return wrapper
+    return decorator
+
+# Usage
+@retry_with_backoff(max_retries=5, base_delay=1.0)
+def fetch_user_data(user_id: int):
+    url = f'https://api.example.com/users/{user_id}'
+    return make_api_request(url)
+```
+
+## API Testing and Mocking
+
+### Unit Testing with Mocking
+
+```python
+import unittest
+from unittest.mock import patch, Mock
+import requests
+
+class TestAPIClient(unittest.TestCase):
+    
+    @patch('requests.get')
+    def test_successful_request(self, mock_get):
+        # Mock successful response
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.json.return_value = {'id': 1, 'name': 'Test User'}
+        mock_get.return_value = mock_response
+        
+        # Test the function
+        result = make_api_request('https://api.example.com/users/1')
+        
+        # Assertions
+        self.assertEqual(result['id'], 1)
+        self.assertEqual(result['name'], 'Test User')
+        mock_get.assert_called_once_with('https://api.example.com/users/1')
+    
+    @patch('requests.get')
+    def test_api_error(self, mock_get):
+        # Mock error response
+        mock_response = Mock()
+        mock_response.status_code = 404
+        mock_response.text = 'Not Found'
+        mock_get.return_value = mock_response
+        
+        # Test error handling
+        with self.assertRaises(APIError) as context:
+            make_api_request('https://api.example.com/users/999')
+        
+        self.assertEqual(context.exception.status_code, 404)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+### Integration Testing
+
+```python
+import pytest
+import requests
+
+@pytest.fixture
+def api_client():
+    """Fixture for API client"""
+    return APIClient(base_url='https://jsonplaceholder.typicode.com')
+
+def test_get_user(api_client):
+    """Test getting a user"""
+    user = api_client.get_user(1)
+    assert user['id'] == 1
+    assert 'name' in user
+
+def test_create_post(api_client):
+    """Test creating a post"""
+    post_data = {
+        'title': 'Test Post',
+        'body': 'Test content',
+        'userId': 1
+    }
+    post = api_client.create_post(post_data)
+    assert post['title'] == 'Test Post'
+    assert 'id' in post
+```
+
+## Production-Ready API Client
+
+### Complete API Client Class
+
+```python
+import requests
+import time
+import logging
+from typing import Dict, List, Optional, Any
+from dataclasses import dataclass
+from datetime import datetime, timedelta
+
+@dataclass
+class APIConfig:
+    base_url: str
+    api_key: Optional[str] = None
+    timeout: int = 30
+    max_retries: int = 3
+    rate_limit: float = 1.0  # requests per second
+
+class APIClient:
+    def __init__(self, config: APIConfig):
+        self.config = config
+        self.session = requests.Session()
+        self.last_request_time = 0
+        
+        # Set up session
+        if config.api_key:
+            self.session.headers.update({'Authorization': f'Bearer {config.api_key}'})
+        
+        self.session.headers.update({
+            'User-Agent': 'PythonAPIClient/1.0',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        })
+    
+    def _rate_limit(self):
+        """Implement rate limiting"""
+        current_time = time.time()
+        time_since_last = current_time - self.last_request_time
+        min_interval = 1.0 / self.config.rate_limit
+        
+        if time_since_last < min_interval:
+            sleep_time = min_interval - time_since_last
+            time.sleep(sleep_time)
+        
+        self.last_request_time = time.time()
+    
+    def _make_request(self, method: str, endpoint: str, **kwargs) -> Dict[str, Any]:
+        """Make HTTP request with error handling and retries"""
+        url = f"{self.config.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
+        
+        for attempt in range(self.config.max_retries):
+            try:
+                self._rate_limit()
+                
+                response = self.session.request(
+                    method, url, 
+                    timeout=self.config.timeout,
+                    **kwargs
+                )
+                
+                response.raise_for_status()
+                return response.json()
+                
+            except requests.exceptions.RequestException as e:
+                if attempt == self.config.max_retries - 1:
+                    raise APIError(f"Request failed after {self.config.max_retries} attempts: {e}")
+                
+                # Exponential backoff
+                time.sleep(2 ** attempt)
+    
+    def get(self, endpoint: str, params: Optional[Dict] = None) -> Dict[str, Any]:
+        """GET request"""
+        return self._make_request('GET', endpoint, params=params)
+    
+    def post(self, endpoint: str, data: Optional[Dict] = None) -> Dict[str, Any]:
+        """POST request"""
+        return self._make_request('POST', endpoint, json=data)
+    
+    def put(self, endpoint: str, data: Optional[Dict] = None) -> Dict[str, Any]:
+        """PUT request"""
+        return self._make_request('PUT', endpoint, json=data)
+    
+    def delete(self, endpoint: str) -> Dict[str, Any]:
+        """DELETE request"""
+        return self._make_request('DELETE', endpoint)
+
+# Usage example
+config = APIConfig(
+    base_url='https://api.example.com',
+    api_key='your-api-key',
+    rate_limit=2.0
+)
+
+client = APIClient(config)
+
+# Use the client
+users = client.get('/users')
+new_user = client.post('/users', {'name': 'John Doe', 'email': 'john@example.com'})
+```
+
+## Best Practices
+
+### 1. Environment Configuration
+
+```python
+# config.py
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+class Config:
+    API_BASE_URL = os.getenv('API_BASE_URL', 'https://api.example.com')
+    API_KEY = os.getenv('API_KEY')
+    TIMEOUT = int(os.getenv('API_TIMEOUT', '30'))
+    RATE_LIMIT = float(os.getenv('API_RATE_LIMIT', '1.0'))
+```
+
+### 2. Caching
+
+```python
+import functools
+import time
+from typing import Any, Callable
+
+def cache_with_ttl(ttl_seconds: int):
+    """Cache decorator with TTL"""
+    def decorator(func: Callable) -> Callable:
+        cache = {}
+        
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            key = str(args) + str(kwargs)
+            current_time = time.time()
+            
+            if key in cache:
+                result, timestamp = cache[key]
+                if current_time - timestamp < ttl_seconds:
+                    return result
+            
+            result = func(*args, **kwargs)
+            cache[key] = (result, current_time)
+            return result
+        
+        return wrapper
+    return decorator
+
+# Usage
+@cache_with_ttl(300)  # Cache for 5 minutes
+def get_user_data(user_id: int):
+    return client.get(f'/users/{user_id}')
+```
+
+### 3. Monitoring and Metrics
+
+```python
+import time
+from functools import wraps
+
+def monitor_api_calls(func):
+    """Decorator to monitor API call performance"""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        try:
+            result = func(*args, **kwargs)
+            duration = time.time() - start_time
+            logger.info(f"API call {func.__name__} completed in {duration:.2f}s")
+            return result
+        except Exception as e:
+            duration = time.time() - start_time
+            logger.error(f"API call {func.__name__} failed after {duration:.2f}s: {e}")
+            raise
+    return wrapper
+```
+
+## Conclusion
+
+Python API automation is a powerful skill that can save significant time and effort. By following these patterns and best practices, you can create robust, maintainable API automation solutions.
+
+Remember to:
+- Always handle errors gracefully
+- Implement proper rate limiting
+- Use appropriate authentication methods
+- Monitor and log API calls
+- Test your automation thoroughly
+- Follow security best practices
+
+Happy automating! 🚀

@@ -1,0 +1,497 @@
+---
+title: "Git Troubleshooting: Common Issues and Solutions"
+description: "Solve Git problems like a pro. Merge conflicts, detached HEAD, rebase issues, and recovery techniques."
+author: "TechDevDex Team"
+date: "2024-12-13"
+category: "Tutorial"
+tags: ["Git", "Troubleshooting", "Debugging", "Recovery"]
+readTime: "18 min"
+featured: false
+rating: 5
+featuredImage: "/images/tutorials/git-github-tutorials/git-troubleshooting.svg"
+---
+
+# Git Troubleshooting: Common Issues and Solutions
+
+Git can be tricky, but most problems have solutions. This guide covers common Git issues and how to fix them.
+
+## Understanding Git States
+
+### Working Directory States
+
+- **Clean**: No uncommitted changes
+- **Modified**: Files changed but not staged
+- **Staged**: Changes ready to commit
+- **Untracked**: New files not in Git
+
+### Repository States
+
+- **Normal**: Standard working state
+- **Merging**: In the middle of a merge
+- **Rebasing**: In the middle of a rebase
+- **Cherry-picking**: Applying specific commits
+
+## Common Git Issues and Solutions
+
+### 1. "Your branch is ahead of origin/main"
+
+**Problem**: Local branch has commits that haven't been pushed.
+
+```bash
+# Check status
+git status
+
+# Push to remote
+git push origin main
+
+# If push is rejected, pull first
+git pull origin main
+git push origin main
+```
+
+### 2. "Your branch and origin/main have diverged"
+
+**Problem**: Both local and remote have different commits.
+
+```bash
+# Option 1: Merge (creates merge commit)
+git pull origin main
+
+# Option 2: Rebase (cleaner history)
+git pull --rebase origin main
+
+# Option 3: Reset to remote (loses local changes)
+git reset --hard origin/main
+```
+
+### 3. Merge Conflicts
+
+**Problem**: Git can't automatically merge changes.
+
+```bash
+# When merge conflict occurs
+git status
+# Shows conflicted files
+
+# Edit conflicted files manually
+# Look for conflict markers:
+# <<<<<<< HEAD
+# Your changes
+# =======
+# Their changes
+# >>>>>>> branch-name
+
+# After resolving conflicts
+git add resolved-file.txt
+git commit
+```
+
+**Conflict Resolution Example:**
+
+```javascript
+// Before (conflicted file)
+<<<<<<< HEAD
+function calculateTotal(items) {
+  return items.reduce((sum, item) => sum + item.price, 0);
+}
+=======
+function calculateTotal(items) {
+  let total = 0;
+  for (let item of items) {
+    total += item.price;
+  }
+  return total;
+}
+>>>>>>> feature-branch
+```
+
+```javascript
+// After (resolved)
+function calculateTotal(items) {
+  return items.reduce((sum, item) => sum + item.price, 0);
+}
+```
+
+### 4. Detached HEAD State
+
+**Problem**: You're not on a branch, but on a specific commit.
+
+```bash
+# Check current state
+git log --oneline -5
+
+# Create new branch from current commit
+git checkout -b new-branch-name
+
+# Or switch back to main branch
+git checkout main
+```
+
+### 5. "Please tell me who you are"
+
+**Problem**: Git doesn't know your identity.
+
+```bash
+# Set your identity
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+# Check configuration
+git config --list
+```
+
+### 6. Accidentally Committed to Wrong Branch
+
+**Problem**: Made commits on the wrong branch.
+
+```bash
+# Method 1: Cherry-pick to correct branch
+git log --oneline -3  # Find commit hash
+git checkout correct-branch
+git cherry-pick commit-hash
+git checkout wrong-branch
+git reset --hard HEAD~1  # Remove from wrong branch
+
+# Method 2: Move branch pointer
+git branch -f correct-branch wrong-branch
+git checkout correct-branch
+git reset --hard HEAD~1  # Remove from wrong branch
+```
+
+### 7. "Repository not found" or Authentication Issues
+
+**Problem**: Can't access remote repository.
+
+```bash
+# Check remote URL
+git remote -v
+
+# Update remote URL
+git remote set-url origin https://github.com/username/repository.git
+
+# Use SSH instead of HTTPS
+git remote set-url origin git@github.com:username/repository.git
+
+# Set up SSH key
+ssh-keygen -t ed25519 -C "your.email@example.com"
+# Add public key to GitHub
+```
+
+### 8. Lost Commits
+
+**Problem**: Commits seem to be lost after reset or rebase.
+
+```bash
+# Find lost commits
+git reflog
+
+# Recover specific commit
+git checkout commit-hash
+git checkout -b recovered-branch
+
+# Or reset to specific commit
+git reset --hard commit-hash
+```
+
+### 9. "Cannot push to remote repository"
+
+**Problem**: Push is rejected due to various reasons.
+
+```bash
+# Check if you have permission
+git remote -v
+
+# Force push (dangerous - use with caution)
+git push --force origin branch-name
+
+# Force push with lease (safer)
+git push --force-with-lease origin branch-name
+
+# Check if branch is protected
+# Go to repository settings on GitHub/GitLab
+```
+
+### 10. Large File Issues
+
+**Problem**: Trying to commit large files.
+
+```bash
+# Remove large file from Git
+git rm --cached large-file.zip
+echo "large-file.zip" >> .gitignore
+git add .gitignore
+git commit -m "Remove large file and update gitignore"
+
+# Use Git LFS for large files
+git lfs install
+git lfs track "*.zip"
+git add .gitattributes
+git add large-file.zip
+git commit -m "Add large file with LFS"
+```
+
+## Advanced Troubleshooting
+
+### Reflog: Your Safety Net
+
+```bash
+# View reflog (recent Git operations)
+git reflog
+
+# Recover from specific reflog entry
+git checkout HEAD@{2}
+
+# Reset to specific reflog entry
+git reset --hard HEAD@{2}
+```
+
+### Bisect: Find the Problematic Commit
+
+```bash
+# Start bisect
+git bisect start
+
+# Mark current commit as bad
+git bisect bad
+
+# Mark known good commit as good
+git bisect good commit-hash
+
+# Git will checkout middle commit
+# Test the code, then mark as good or bad
+git bisect good  # or git bisect bad
+
+# Continue until Git finds the problematic commit
+git bisect reset  # Exit bisect mode
+```
+
+### Stash Issues
+
+```bash
+# List all stashes
+git stash list
+
+# Apply specific stash
+git stash apply stash@{2}
+
+# Create stash with message
+git stash push -m "Work in progress on feature X"
+
+# Drop specific stash
+git stash drop stash@{2}
+
+# Clear all stashes
+git stash clear
+```
+
+### Submodule Issues
+
+```bash
+# Update submodules
+git submodule update --init --recursive
+
+# Update submodule to latest
+git submodule update --remote
+
+# Remove submodule
+git submodule deinit path/to/submodule
+git rm path/to/submodule
+```
+
+## Recovery Techniques
+
+### Recover Deleted Branch
+
+```bash
+# Find the branch in reflog
+git reflog --all
+
+# Recover the branch
+git checkout -b recovered-branch commit-hash
+```
+
+### Recover Deleted Files
+
+```bash
+# Find when file was deleted
+git log --oneline -- path/to/file
+
+# Recover from specific commit
+git checkout commit-hash -- path/to/file
+```
+
+### Recover from Hard Reset
+
+```bash
+# Find the commit before reset
+git reflog
+
+# Reset to that commit
+git reset --hard HEAD@{1}
+```
+
+## Prevention Strategies
+
+### Use Aliases for Safety
+
+```bash
+# Safe force push
+git config --global alias.pushf 'push --force-with-lease'
+
+# Safe reset
+git config --global alias.unstage 'reset HEAD --'
+
+# Quick status
+git config --global alias.st 'status'
+
+# Quick log
+git config --global alias.lg 'log --oneline --graph --all'
+```
+
+### Regular Backups
+
+```bash
+# Create backup branch
+git branch backup-$(date +%Y%m%d)
+
+# Push to remote backup
+git push origin backup-$(date +%Y%m%d)
+```
+
+### Use Hooks for Safety
+
+```bash
+#!/bin/sh
+# pre-commit hook
+# Prevent committing to main branch
+branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+if [ "$branch" = "main" ]; then
+  echo "Don't commit directly to main branch!"
+  exit 1
+fi
+```
+
+## Debugging Git Issues
+
+### Check Git Configuration
+
+```bash
+# View all configuration
+git config --list --show-origin
+
+# Check specific setting
+git config --get user.name
+git config --get user.email
+```
+
+### Check Repository Status
+
+```bash
+# Detailed status
+git status --porcelain
+
+# Check if repository is corrupted
+git fsck
+
+# Check repository integrity
+git fsck --full
+```
+
+### Check Remote Information
+
+```bash
+# List all remotes
+git remote -v
+
+# Check remote branches
+git branch -r
+
+# Check remote tracking
+git branch -vv
+```
+
+## Common Error Messages
+
+### "fatal: not a git repository"
+
+```bash
+# Initialize repository
+git init
+
+# Or navigate to correct directory
+cd /path/to/git/repository
+```
+
+### "fatal: bad object"
+
+```bash
+# Check repository integrity
+git fsck
+
+# If corrupted, try to recover
+git gc --prune=now
+```
+
+### "fatal: ambiguous argument"
+
+```bash
+# Be more specific with branch names
+git checkout feature/user-auth  # instead of just 'feature'
+```
+
+## Best Practices to Avoid Issues
+
+### 1. Always Pull Before Push
+
+```bash
+git pull origin main
+git push origin main
+```
+
+### 2. Use Meaningful Commit Messages
+
+```bash
+git commit -m "Add user authentication feature"
+# Not: git commit -m "fix"
+```
+
+### 3. Keep Branches Short-Lived
+
+```bash
+# Create feature branch
+git checkout -b feature/new-feature
+# Work on feature
+# Merge quickly
+# Delete branch
+```
+
+### 4. Use .gitignore
+
+```bash
+# Create .gitignore file
+echo "node_modules/" >> .gitignore
+echo "*.log" >> .gitignore
+echo ".env" >> .gitignore
+```
+
+### 5. Regular Backups
+
+```bash
+# Push to multiple remotes
+git remote add backup https://backup-server.com/repo.git
+git push backup main
+```
+
+## Conclusion
+
+Most Git issues can be resolved with the right knowledge and tools. Remember:
+
+- **Don't panic** - Git rarely loses data permanently
+- **Use reflog** - It's your safety net
+- **Test solutions** on a copy first
+- **Learn from mistakes** - Each issue teaches you something
+- **Prevention is better** than cure
+
+With these troubleshooting techniques, you'll be able to handle any Git situation with confidence!
+
+Happy Git-ing! 🐙

@@ -1,0 +1,51 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="k8sGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#326ce5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Kubernetes Logo -->
+  <rect x="150" y="80" width="100" height="80" rx="8" fill="url(#k8sGradient)" stroke="#326ce5" stroke-width="2"/>
+  <text x="200" y="130" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" style="font-weight:bold;">K8s</text>
+  
+  <!-- Kubernetes Features -->
+  <rect x="50" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Pods</text>
+  
+  <rect x="120" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Services</text>
+  
+  <rect x="190" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Deployments</text>
+  
+  <rect x="260" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Scaling</text>
+  
+  <rect x="330" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Orchestration</text>
+  
+  <!-- Container Orchestration -->
+  <rect x="50" y="220" width="80" height="25" rx="4" fill="#326ce5" />
+  <text x="90" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Auto Scaling</text>
+  
+  <rect x="140" y="220" width="80" height="25" rx="4" fill="#326ce5" />
+  <text x="180" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Load Balancing</text>
+  
+  <rect x="230" y="220" width="80" height="25" rx="4" fill="#326ce5" />
+  <text x="270" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Service Mesh</text>
+  
+  <rect x="320" y="220" width="80" height="25" rx="4" fill="#326ce5" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Monitoring</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#326ce5" />
+  <text x="110" y="275" fill="#326ce5" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Scalable</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#1e40af" />
+  <text x="210" y="275" fill="#1e40af" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Robust</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#326ce5" />
+  <text x="310" y="275" fill="#326ce5" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Production</text>
+</svg>

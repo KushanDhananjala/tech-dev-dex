@@ -1,0 +1,57 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mentorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ea580c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Mentor and Mentee -->
+  <circle cx="150" cy="100" r="25" fill="url(#mentorGradient)" stroke="#f97316" stroke-width="2"/>
+  <text x="150" y="110" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">M</text>
+  
+  <circle cx="250" cy="100" r="20" fill="#6c757d" stroke="#6c757d" stroke-width="2"/>
+  <text x="250" y="108" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">m</text>
+  
+  <!-- Connection Line -->
+  <line x1="175" y1="100" x2="230" y2="100" stroke="#f97316" stroke-width="3"/>
+  
+  <!-- Mentorship Features -->
+  <rect x="50" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="80" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Guidance</text>
+  
+  <rect x="120" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="150" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Support</text>
+  
+  <rect x="190" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="220" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Network</text>
+  
+  <rect x="260" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="290" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Career</text>
+  
+  <rect x="330" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="360" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Growth</text>
+  
+  <!-- Mentorship Platforms -->
+  <rect x="50" y="220" width="80" height="25" rx="4" fill="#f97316" />
+  <text x="90" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">LinkedIn</text>
+  
+  <rect x="140" y="220" width="80" height="25" rx="4" fill="#f97316" />
+  <text x="180" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">GitHub</text>
+  
+  <rect x="230" y="220" width="80" height="25" rx="4" fill="#f97316" />
+  <text x="270" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Meetup</text>
+  
+  <rect x="320" y="220" width="80" height="25" rx="4" fill="#f97316" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Community</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#f97316" />
+  <text x="110" y="275" fill="#f97316" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Supportive</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#ea580c" />
+  <text x="210" y="275" fill="#ea580c" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Growth</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#f97316" />
+  <text x="310" y="275" fill="#f97316" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Network</text>
+</svg>

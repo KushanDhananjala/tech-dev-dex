@@ -1,0 +1,57 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gadgetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Gadgets -->
+  <rect x="100" y="120" width="60" height="40" rx="4" fill="url(#gadgetGradient)" stroke="#6366f1" stroke-width="2"/>
+  <text x="130" y="145" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Laptop</text>
+  
+  <rect x="180" y="120" width="60" height="40" rx="4" fill="url(#gadgetGradient)" stroke="#6366f1" stroke-width="2"/>
+  <text x="210" y="145" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Keyboard</text>
+  
+  <rect x="260" y="120" width="60" height="40" rx="4" fill="url(#gadgetGradient)" stroke="#6366f1" stroke-width="2"/>
+  <text x="290" y="145" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Mouse</text>
+  
+  <!-- Gadget Types -->
+  <rect x="50" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Keyboards</text>
+  
+  <rect x="120" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Mice</text>
+  
+  <rect x="190" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Monitors</text>
+  
+  <rect x="260" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Chairs</text>
+  
+  <rect x="330" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Accessories</text>
+  
+  <!-- Review Features -->
+  <rect x="50" y="250" width="80" height="25" rx="4" fill="#6366f1" />
+  <text x="90" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Performance</text>
+  
+  <rect x="140" y="250" width="80" height="25" rx="4" fill="#6366f1" />
+  <text x="180" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Build Quality</text>
+  
+  <rect x="230" y="250" width="80" height="25" rx="4" fill="#6366f1" />
+  <text x="270" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Value</text>
+  
+  <rect x="320" y="250" width="80" height="25" rx="4" fill="#6366f1" />
+  <text x="360" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Recommendation</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="290" r="4" fill="#6366f1" />
+  <text x="110" y="295" fill="#6366f1" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Tested</text>
+  
+  <circle cx="200" cy="290" r="4" fill="#8b5cf6" />
+  <text x="210" y="295" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Reviewed</text>
+  
+  <circle cx="300" cy="290" r="4" fill="#6366f1" />
+  <text x="310" y="295" fill="#6366f1" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Verified</text>
+</svg>

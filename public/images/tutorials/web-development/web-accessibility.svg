@@ -1,0 +1,52 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="accessibilityGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#28a745;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#20c997;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Accessibility Symbol -->
+  <circle cx="200" cy="100" r="40" fill="url(#accessibilityGradient)" stroke="#28a745" stroke-width="3"/>
+  <path d="M180 80 L220 80 M200 60 L200 100 M180 100 L220 100" stroke="white" stroke-width="3" fill="none"/>
+  <circle cx="200" cy="100" r="8" fill="white"/>
+  
+  <!-- Accessibility Features -->
+  <rect x="50" y="160" width="80" height="30" rx="4" fill="#6c757d" />
+  <text x="90" y="180" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Alt Text</text>
+  
+  <rect x="150" y="160" width="80" height="30" rx="4" fill="#6c757d" />
+  <text x="190" y="180" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">ARIA Labels</text>
+  
+  <rect x="250" y="160" width="80" height="30" rx="4" fill="#6c757d" />
+  <text x="290" y="180" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Keyboard Nav</text>
+  
+  <!-- WCAG Guidelines -->
+  <rect x="50" y="220" width="60" height="25" rx="4" fill="#28a745" />
+  <text x="80" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">AA Level</text>
+  
+  <rect x="120" y="220" width="60" height="25" rx="4" fill="#007bff" />
+  <text x="150" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Screen Reader</text>
+  
+  <rect x="190" y="220" width="60" height="25" rx="4" fill="#dc3545" />
+  <text x="220" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Color Contrast</text>
+  
+  <rect x="260" y="220" width="60" height="25" rx="4" fill="#ffc107" />
+  <text x="290" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Focus States</text>
+  
+  <rect x="330" y="220" width="60" height="25" rx="4" fill="#6f42c1" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Semantic HTML</text>
+  
+  <!-- Inclusive Design -->
+  <text x="200" y="50" text-anchor="middle" fill="#28a745" font-family="Arial, sans-serif" font-size="16" style="font-weight:bold;">Web Accessibility</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#28a745" />
+  <text x="110" y="275" fill="#28a745" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Inclusive</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#20c997" />
+  <text x="210" y="275" fill="#20c997" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Compliant</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#28a745" />
+  <text x="310" y="275" fill="#28a745" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Universal</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="quantumGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9f7aea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#805ad5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Quantum Logo -->
+  <circle cx="200" cy="100" r="40" fill="url(#quantumGradient)" stroke="#9f7aea" stroke-width="3"/>
+  <text x="200" y="110" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" style="font-weight:bold;">Q</text>
+  
+  <!-- Quantum Features -->
+  <rect x="50" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Qubits</text>
+  
+  <rect x="120" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Entanglement</text>
+  
+  <rect x="190" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Superposition</text>
+  
+  <rect x="260" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Algorithms</text>
+  
+  <rect x="330" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Simulation</text>
+  
+  <!-- Quantum Languages -->
+  <rect x="50" y="220" width="80" height="25" rx="4" fill="#9f7aea" />
+  <text x="90" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Q#</text>
+  
+  <rect x="140" y="220" width="80" height="25" rx="4" fill="#9f7aea" />
+  <text x="180" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Cirq</text>
+  
+  <rect x="230" y="220" width="80" height="25" rx="4" fill="#9f7aea" />
+  <text x="270" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Qiskit</text>
+  
+  <rect x="320" y="220" width="80" height="25" rx="4" fill="#9f7aea" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">PennyLane</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#9f7aea" />
+  <text x="110" y="275" fill="#9f7aea" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Revolutionary</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#805ad5" />
+  <text x="210" y="275" fill="#805ad5" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Advanced</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#9f7aea" />
+  <text x="310" y="275" fill="#9f7aea" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Future</text>
+</svg>

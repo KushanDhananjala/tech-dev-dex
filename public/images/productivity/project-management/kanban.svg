@@ -1,0 +1,53 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="kanbanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Kanban Board -->
+  <rect x="50" y="100" width="80" height="120" rx="4" fill="url(#kanbanGradient)" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="90" y="120" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">To Do</text>
+  
+  <rect x="150" y="100" width="80" height="120" rx="4" fill="url(#kanbanGradient)" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="190" y="120" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">In Progress</text>
+  
+  <rect x="250" y="100" width="80" height="120" rx="4" fill="url(#kanbanGradient)" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="290" y="120" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Done</text>
+  
+  <!-- Kanban Cards -->
+  <rect x="60" y="140" width="60" height="20" rx="2" fill="#1f2937" />
+  <rect x="60" y="170" width="60" height="20" rx="2" fill="#1f2937" />
+  <rect x="60" y="200" width="60" height="20" rx="2" fill="#1f2937" />
+  
+  <rect x="160" y="140" width="60" height="20" rx="2" fill="#1f2937" />
+  <rect x="160" y="170" width="60" height="20" rx="2" fill="#1f2937" />
+  
+  <rect x="260" y="140" width="60" height="20" rx="2" fill="#1f2937" />
+  <rect x="260" y="170" width="60" height="20" rx="2" fill="#1f2937" />
+  <rect x="260" y="200" width="60" height="20" rx="2" fill="#1f2937" />
+  
+  <!-- Kanban Principles -->
+  <rect x="50" y="240" width="80" height="25" rx="4" fill="#6b7280" />
+  <text x="90" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Visualize</text>
+  
+  <rect x="140" y="240" width="80" height="25" rx="4" fill="#6b7280" />
+  <text x="180" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Limit WIP</text>
+  
+  <rect x="230" y="240" width="80" height="25" rx="4" fill="#6b7280" />
+  <text x="270" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Flow</text>
+  
+  <rect x="320" y="240" width="80" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Continuous</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="290" r="4" fill="#8b5cf6" />
+  <text x="110" y="295" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Visual</text>
+  
+  <circle cx="200" cy="290" r="4" fill="#7c3aed" />
+  <text x="210" y="295" fill="#7c3aed" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Flexible</text>
+  
+  <circle cx="300" cy="290" r="4" fill="#8b5cf6" />
+  <text x="310" y="295" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Efficient</text>
+</svg>

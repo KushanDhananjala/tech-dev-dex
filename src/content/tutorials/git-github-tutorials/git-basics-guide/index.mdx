@@ -1,0 +1,513 @@
+---
+title: "Git Basics: Complete Beginner's Guide"
+description: "Learn Git fundamentals from scratch. Commits, branches, merging, and essential Git commands for version control."
+author: "TechDevDex Team"
+date: "2024-12-15"
+category: "Tutorial"
+tags: ["Git", "Version Control", "Beginner", "Fundamentals"]
+readTime: "20 min"
+featured: true
+rating: 5
+featuredImage: "/images/tutorials/git-github-tutorials/git-basics.svg"
+---
+
+# Git Basics: Complete Beginner's Guide
+
+Git is the most widely used version control system in the world. This comprehensive guide will teach you Git fundamentals from the ground up.
+
+## What is Git?
+
+Git is a distributed version control system that tracks changes in files and coordinates work among multiple people. It allows you to:
+
+- **Track changes** in your code over time
+- **Collaborate** with other developers
+- **Revert** to previous versions
+- **Branch** and merge code safely
+- **Backup** your work automatically
+
+## Installing Git
+
+### Windows
+
+```bash
+# Download from https://git-scm.com/download/win
+# Or use Chocolatey
+choco install git
+
+# Or use winget
+winget install Git.Git
+```
+
+### macOS
+
+```bash
+# Using Homebrew
+brew install git
+
+# Or download from https://git-scm.com/download/mac
+```
+
+### Linux (Ubuntu/Debian)
+
+```bash
+sudo apt update
+sudo apt install git
+```
+
+### Linux (CentOS/RHEL)
+
+```bash
+sudo yum install git
+# or
+sudo dnf install git
+```
+
+## First-Time Git Setup
+
+### Configure Your Identity
+
+```bash
+# Set your name
+git config --global user.name "Your Name"
+
+# Set your email
+git config --global user.email "your.email@example.com"
+
+# Check your configuration
+git config --list
+```
+
+### Configure Default Editor
+
+```bash
+# Set VS Code as default editor
+git config --global core.editor "code --wait"
+
+# Set Vim as default editor
+git config --global core.editor "vim"
+
+# Set Nano as default editor
+git config --global core.editor "nano"
+```
+
+## Creating Your First Repository
+
+### Initialize a New Repository
+
+```bash
+# Create a new directory
+mkdir my-project
+cd my-project
+
+# Initialize Git repository
+git init
+
+# Check status
+git status
+```
+
+### Clone an Existing Repository
+
+```bash
+# Clone from GitHub
+git clone https://github.com/username/repository.git
+
+# Clone to specific directory
+git clone https://github.com/username/repository.git my-folder
+
+# Clone with specific branch
+git clone -b branch-name https://github.com/username/repository.git
+```
+
+## Basic Git Workflow
+
+### 1. Check Status
+
+```bash
+# See current status
+git status
+
+# Short status
+git status -s
+```
+
+### 2. Add Files to Staging
+
+```bash
+# Add specific file
+git add filename.txt
+
+# Add all files
+git add .
+
+# Add files by pattern
+git add *.js
+
+# Interactive add
+git add -i
+```
+
+### 3. Commit Changes
+
+```bash
+# Commit with message
+git commit -m "Add initial project files"
+
+# Commit with detailed message
+git commit -m "Add user authentication
+
+- Implement login functionality
+- Add password validation
+- Create user session management"
+
+# Amend last commit
+git commit --amend -m "Updated commit message"
+```
+
+### 4. View History
+
+```bash
+# View commit history
+git log
+
+# One-line format
+git log --oneline
+
+# Graph format
+git log --graph --oneline --all
+
+# Show changes
+git log -p
+```
+
+## Working with Branches
+
+### Create and Switch Branches
+
+```bash
+# Create new branch
+git branch feature-branch
+
+# Switch to branch
+git checkout feature-branch
+
+# Create and switch in one command
+git checkout -b feature-branch
+
+# Modern way (Git 2.23+)
+git switch -c feature-branch
+```
+
+### List and Delete Branches
+
+```bash
+# List local branches
+git branch
+
+# List all branches (including remote)
+git branch -a
+
+# Delete local branch
+git branch -d feature-branch
+
+# Force delete branch
+git branch -D feature-branch
+
+# Delete remote branch
+git push origin --delete feature-branch
+```
+
+### Merge Branches
+
+```bash
+# Switch to main branch
+git checkout main
+
+# Merge feature branch
+git merge feature-branch
+
+# Merge with no fast-forward
+git merge --no-ff feature-branch
+
+# Squash merge
+git merge --squash feature-branch
+```
+
+## Remote Repositories
+
+### Add Remote
+
+```bash
+# Add remote repository
+git remote add origin https://github.com/username/repository.git
+
+# List remotes
+git remote -v
+
+# Change remote URL
+git remote set-url origin https://github.com/username/new-repository.git
+```
+
+### Push and Pull
+
+```bash
+# Push to remote
+git push origin main
+
+# Push new branch
+git push -u origin feature-branch
+
+# Pull changes
+git pull origin main
+
+# Fetch without merging
+git fetch origin
+```
+
+## Essential Git Commands
+
+### Viewing Changes
+
+```bash
+# Show differences
+git diff
+
+# Show staged differences
+git diff --staged
+
+# Show commit differences
+git diff HEAD~1
+
+# Show file history
+git log --follow filename.txt
+```
+
+### Undoing Changes
+
+```bash
+# Unstage file
+git reset HEAD filename.txt
+
+# Discard changes
+git checkout -- filename.txt
+
+# Reset to last commit
+git reset --hard HEAD
+
+# Reset to specific commit
+git reset --hard commit-hash
+```
+
+### Stashing
+
+```bash
+# Stash current changes
+git stash
+
+# Stash with message
+git stash push -m "Work in progress"
+
+# List stashes
+git stash list
+
+# Apply stash
+git stash apply
+
+# Apply and remove stash
+git stash pop
+
+# Drop stash
+git stash drop
+```
+
+## Best Practices
+
+### Commit Messages
+
+```bash
+# Good commit messages
+git commit -m "Add user authentication feature"
+git commit -m "Fix bug in login validation"
+git commit -m "Update documentation for API endpoints"
+
+# Bad commit messages
+git commit -m "fix"
+git commit -m "update"
+git commit -m "changes"
+```
+
+### .gitignore File
+
+Create a `.gitignore` file to exclude files:
+
+```
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+build/
+*.exe
+
+# Environment files
+.env
+.env.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+```
+
+### Branch Naming
+
+```bash
+# Good branch names
+feature/user-authentication
+bugfix/login-validation
+hotfix/security-patch
+release/v1.2.0
+
+# Bad branch names
+new-feature
+fix
+test
+```
+
+## Common Git Scenarios
+
+### Scenario 1: Undo Last Commit
+
+```bash
+# Keep changes, unstage
+git reset --soft HEAD~1
+
+# Discard changes completely
+git reset --hard HEAD~1
+```
+
+### Scenario 2: Change Last Commit
+
+```bash
+# Add more changes
+git add .
+git commit --amend -m "Updated commit message"
+```
+
+### Scenario 3: Merge Conflicts
+
+```bash
+# When merge conflict occurs
+git status
+# Edit conflicted files
+git add resolved-file.txt
+git commit
+```
+
+### Scenario 4: Rebase Instead of Merge
+
+```bash
+# Rebase feature branch onto main
+git checkout feature-branch
+git rebase main
+
+# Interactive rebase
+git rebase -i HEAD~3
+```
+
+## Advanced Git Features
+
+### Aliases
+
+```bash
+# Create useful aliases
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+git config --global alias.visual '!gitk'
+```
+
+### Hooks
+
+```bash
+# Pre-commit hook example
+#!/bin/sh
+# Run tests before commit
+npm test
+```
+
+### Submodules
+
+```bash
+# Add submodule
+git submodule add https://github.com/user/repo.git path/to/submodule
+
+# Update submodules
+git submodule update --init --recursive
+```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **"Your branch is ahead of origin/main"**
+   ```bash
+   git push origin main
+   ```
+
+2. **"Your branch and origin/main have diverged"**
+   ```bash
+   git pull --rebase origin main
+   ```
+
+3. **"Please tell me who you are"**
+   ```bash
+   git config --global user.name "Your Name"
+   git config --global user.email "your.email@example.com"
+   ```
+
+4. **Accidentally committed to wrong branch**
+   ```bash
+   git checkout correct-branch
+   git cherry-pick commit-hash
+   git checkout wrong-branch
+   git reset --hard HEAD~1
+   ```
+
+## Git GUI Tools
+
+### Command Line Tools
+- **Git Bash** (Windows)
+- **Terminal** (macOS/Linux)
+
+### GUI Applications
+- **GitHub Desktop**
+- **Sourcetree**
+- **GitKraken**
+- **VS Code Git Integration**
+
+## Conclusion
+
+Git is an essential tool for any developer. By mastering these fundamentals, you'll be able to:
+
+- Track your code changes effectively
+- Collaborate with other developers
+- Maintain clean project history
+- Handle complex development workflows
+
+Remember to:
+- Commit often with meaningful messages
+- Use branches for feature development
+- Keep your repository clean
+- Learn advanced features gradually
+- Practice regularly
+
+Happy coding! 🚀

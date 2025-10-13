@@ -1,0 +1,51 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bootcampGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Bootcamp Logo -->
+  <rect x="150" y="80" width="100" height="80" rx="8" fill="url(#bootcampGradient)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="200" y="130" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" style="font-weight:bold;">Bootcamp</text>
+  
+  <!-- Bootcamp Features -->
+  <rect x="50" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="80" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Intensive</text>
+  
+  <rect x="120" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="150" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Hands-on</text>
+  
+  <rect x="190" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="220" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Mentorship</text>
+  
+  <rect x="260" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="290" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Job Ready</text>
+  
+  <rect x="330" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="360" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Career</text>
+  
+  <!-- Popular Bootcamps -->
+  <rect x="50" y="220" width="80" height="25" rx="4" fill="#f59e0b" />
+  <text x="90" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">General Assembly</text>
+  
+  <rect x="140" y="220" width="80" height="25" rx="4" fill="#f59e0b" />
+  <text x="180" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Flatiron</text>
+  
+  <rect x="230" y="220" width="80" height="25" rx="4" fill="#f59e0b" />
+  <text x="270" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Lambda</text>
+  
+  <rect x="320" y="220" width="80" height="25" rx="4" fill="#f59e0b" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Hack Reactor</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#f59e0b" />
+  <text x="110" y="275" fill="#f59e0b" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Fast Track</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#d97706" />
+  <text x="210" y="275" fill="#d97706" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Intensive</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#f59e0b" />
+  <text x="310" y="275" fill="#f59e0b" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Career Focus</text>
+</svg>

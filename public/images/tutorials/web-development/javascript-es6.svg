@@ -1,0 +1,42 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="jsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f7df1e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0db4f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- JavaScript Logo -->
+  <rect x="150" y="80" width="100" height="100" rx="8" fill="url(#jsGradient)" stroke="#f7df1e" stroke-width="2"/>
+  <text x="200" y="140" text-anchor="middle" fill="#000000" font-family="Arial, sans-serif" font-size="24" style="font-weight:bold;">JS</text>
+  
+  <!-- ES6+ Features -->
+  <rect x="50" y="200" width="60" height="30" rx="4" fill="#28a745" />
+  <text x="80" y="220" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Arrow</text>
+  
+  <rect x="120" y="200" width="60" height="30" rx="4" fill="#007bff" />
+  <text x="150" y="220" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Async</text>
+  
+  <rect x="190" y="200" width="60" height="30" rx="4" fill="#6f42c1" />
+  <text x="220" y="220" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Modules</text>
+  
+  <rect x="260" y="200" width="60" height="30" rx="4" fill="#dc3545" />
+  <text x="290" y="220" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Classes</text>
+  
+  <rect x="330" y="200" width="60" height="30" rx="4" fill="#fd7e14" />
+  <text x="360" y="220" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Destruct</text>
+  
+  <!-- Code Example -->
+  <rect x="50" y="50" width="300" height="20" rx="4" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="200" y="65" text-anchor="middle" fill="#495057" font-family="monospace" font-size="12">const arrow = () => console.log('ES6+');</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="250" r="4" fill="#28a745" />
+  <text x="110" y="255" fill="#28a745" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Modern</text>
+  
+  <circle cx="200" cy="250" r="4" fill="#007bff" />
+  <text x="210" y="255" fill="#007bff" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Fast</text>
+  
+  <circle cx="300" cy="250" r="4" fill="#6f42c1" />
+  <text x="310" y="255" fill="#6f42c1" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Powerful</text>
+</svg>

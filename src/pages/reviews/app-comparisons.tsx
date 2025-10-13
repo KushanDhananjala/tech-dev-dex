@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, GitCompareArrows, Star, Clock, User } from 'lucide-react';
 
 const AppComparisons = () => {
@@ -15,7 +16,7 @@ const AppComparisons = () => {
       readTime: '12 min',
       rating: 5,
       category: 'Code Editors',
-      image: '/images/posts/vs-code-vs-sublime.jpg',
+      image: '/images/reviews/app-comparisons/vs-code-vs-sublime.svg',
       featured: true
     },
     {
@@ -27,7 +28,7 @@ const AppComparisons = () => {
       readTime: '15 min',
       rating: 5,
       category: 'Frontend Frameworks',
-      image: '/images/posts/react-vs-vue-vs-angular.jpg',
+      image: '/images/reviews/app-comparisons/react-vs-vue-vs-angular.svg',
       featured: true
     },
     {
@@ -39,7 +40,7 @@ const AppComparisons = () => {
       readTime: '10 min',
       rating: 4,
       category: 'Backend Technologies',
-      image: '/images/posts/node-vs-python.jpg',
+      image: '/images/reviews/app-comparisons/node-vs-python.svg',
       featured: false
     },
     {
@@ -51,7 +52,7 @@ const AppComparisons = () => {
       readTime: '14 min',
       rating: 4,
       category: 'Databases',
-      image: '/images/posts/mongodb-vs-postgresql.jpg',
+      image: '/images/reviews/app-comparisons/mongodb-vs-postgresql.svg',
       featured: false
     },
     {
@@ -63,7 +64,7 @@ const AppComparisons = () => {
       readTime: '18 min',
       rating: 5,
       category: 'Cloud Platforms',
-      image: '/images/posts/aws-vs-azure-vs-gcp.jpg',
+      image: '/images/reviews/app-comparisons/aws-vs-azure-vs-gcp.svg',
       featured: false
     },
     {
@@ -75,7 +76,7 @@ const AppComparisons = () => {
       readTime: '8 min',
       rating: 4,
       category: 'DevOps',
-      image: '/images/posts/docker-vs-kubernetes.jpg',
+      image: '/images/reviews/app-comparisons/docker-vs-kubernetes.svg',
       featured: false
     }
   ];
@@ -132,7 +133,13 @@ const AppComparisons = () => {
               {comparisons.filter(comparison => comparison.featured).map((comparison) => (
                 <Link key={comparison.id} href={`/reviews/app-comparisons/${comparison.id}`}>
                   <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-slate-200 dark:border-slate-700">
-                    <div className="aspect-video bg-gradient-to-br from-green-500 to-teal-600 relative">
+                    <div className="aspect-video relative">
+                      <Image
+                        src={comparison.image}
+                        alt={comparison.title}
+                        fill
+                        className="object-cover"
+                      />
                       <div className="absolute inset-0 bg-black/20"></div>
                       <div className="absolute top-4 left-4">
                         <span className="px-3 py-1 bg-white/90 text-slate-900 rounded-full text-sm font-medium">
@@ -177,7 +184,13 @@ const AppComparisons = () => {
               {comparisons.map((comparison) => (
                 <Link key={comparison.id} href={`/reviews/app-comparisons/${comparison.id}`}>
                   <div className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-slate-200 dark:border-slate-700">
-                    <div className="aspect-video bg-gradient-to-br from-slate-400 to-slate-600 relative">
+                    <div className="aspect-video relative">
+                      <Image
+                        src={comparison.image}
+                        alt={comparison.title}
+                        fill
+                        className="object-cover"
+                      />
                       <div className="absolute inset-0 bg-black/20"></div>
                       <div className="absolute top-3 left-3">
                         <span className="px-2 py-1 bg-white/90 text-slate-900 rounded text-xs font-medium">

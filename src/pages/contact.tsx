@@ -7,7 +7,7 @@ export default function ContactPage() {
     <>
       <Head>
         <title>Contact | TechDevDex</title>
-        <meta name="description" content="Get in touch with TechDevDex - we'd love to hear from you!" />
+        <meta name="description" content="Get in touch with TechDevDex - we&apos;d love to hear from you!" />
       </Head>
       
       {/* Hero Section */}
@@ -75,7 +75,7 @@ export default function ContactPage() {
                   type="text"
                   id="subject"
                   className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                  placeholder="What's this about?"
+                  placeholder="What&apos;s this about?"
                 />
               </div>
               <div>
@@ -86,7 +86,7 @@ export default function ContactPage() {
                   id="message"
                   rows={6}
                   className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
-                  placeholder="Tell us what's on your mind..."
+                  placeholder="Tell us what&apos;s on your mind..."
                 />
               </div>
               <button

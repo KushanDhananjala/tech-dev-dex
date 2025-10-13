@@ -1,0 +1,51 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="energyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Energy Level -->
+  <rect x="100" y="80" width="200" height="40" rx="20" fill="url(#energyGradient)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="200" y="105" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" style="font-weight:bold;">Energy Level</text>
+  
+  <!-- Energy Factors -->
+  <rect x="50" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Sleep</text>
+  
+  <rect x="120" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Nutrition</text>
+  
+  <rect x="190" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Exercise</text>
+  
+  <rect x="260" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Stress</text>
+  
+  <rect x="330" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Environment</text>
+  
+  <!-- Energy Management -->
+  <rect x="50" y="220" width="80" height="25" rx="4" fill="#f59e0b" />
+  <text x="90" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Peak Hours</text>
+  
+  <rect x="140" y="220" width="80" height="25" rx="4" fill="#f59e0b" />
+  <text x="180" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Rest Periods</text>
+  
+  <rect x="230" y="220" width="80" height="25" rx="4" fill="#f59e0b" />
+  <text x="270" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Task Matching</text>
+  
+  <rect x="320" y="220" width="80" height="25" rx="4" fill="#f59e0b" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Recovery</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#f59e0b" />
+  <text x="110" y="275" fill="#f59e0b" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Optimized</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#d97706" />
+  <text x="210" y="275" fill="#d97706" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Sustained</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#f59e0b" />
+  <text x="310" y="275" fill="#f59e0b" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Peak Performance</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="vscode" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#007ACC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#005A9E;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="sublime" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6600;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CC5200;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- VS Code Icon -->
+  <g transform="translate(200, 150)">
+    <rect x="0" y="0" width="80" height="60" rx="8" fill="url(#vscode)"/>
+    <rect x="10" y="10" width="60" height="40" rx="4" fill="#fff" opacity="0.9"/>
+    <rect x="15" y="15" width="50" height="3" fill="#007ACC"/>
+    <rect x="15" y="22" width="40" height="2" fill="#666"/>
+    <rect x="15" y="28" width="35" height="2" fill="#666"/>
+    <rect x="15" y="34" width="45" height="2" fill="#666"/>
+    <text x="40" y="55" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">VS Code</text>
+  </g>
+  
+  <!-- VS Symbol -->
+  <text x="400" y="180" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="24" style="font-weight:bold;">VS</text>
+  
+  <!-- Sublime Icon -->
+  <g transform="translate(520, 150)">
+    <rect x="0" y="0" width="80" height="60" rx="8" fill="url(#sublime)"/>
+    <rect x="10" y="10" width="60" height="40" rx="4" fill="#fff" opacity="0.9"/>
+    <rect x="15" y="15" width="50" height="3" fill="#FF6600"/>
+    <rect x="15" y="22" width="40" height="2" fill="#666"/>
+    <rect x="15" y="28" width="35" height="2" fill="#666"/>
+    <rect x="15" y="34" width="45" height="2" fill="#666"/>
+    <text x="40" y="55" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Sublime</text>
+  </g>
+  
+  <!-- Comparison lines -->
+  <line x1="300" y1="200" x2="500" y2="200" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="300" y1="220" x2="500" y2="220" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="300" y1="240" x2="500" y2="240" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <text x="400" y="280" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">Code Editor Comparison</text>
+</svg>

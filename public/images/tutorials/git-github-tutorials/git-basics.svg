@@ -1,0 +1,30 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f05032;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ee5131;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1e293b"/>
+  
+  <!-- Git logo -->
+  <g transform="translate(400, 200)">
+    <!-- Git branch structure -->
+    <path d="M-80,-40 Q-40,-40 -40,0 Q-40,40 -80,40" stroke="url(#gitGrad)" stroke-width="8" fill="none"/>
+    <path d="M-40,0 Q0,0 0,40 Q0,80 40,80" stroke="url(#gitGrad)" stroke-width="8" fill="none"/>
+    <path d="M0,40 Q40,40 40,0 Q40,-40 80,-40" stroke="url(#gitGrad)" stroke-width="8" fill="none"/>
+    
+    <!-- Commit nodes -->
+    <circle cx="-80" cy="-40" r="8" fill="url(#gitGrad)"/>
+    <circle cx="-40" cy="0" r="8" fill="url(#gitGrad)"/>
+    <circle cx="0" cy="40" r="8" fill="url(#gitGrad)"/>
+    <circle cx="40" cy="0" r="8" fill="url(#gitGrad)"/>
+    <circle cx="80" cy="-40" r="8" fill="url(#gitGrad)"/>
+    
+    <!-- Text -->
+    <text x="0" y="120" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="24" style="font-weight:bold;">Git Basics</text>
+    <text x="0" y="145" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">Version Control Fundamentals</text>
+  </g>
+</svg>

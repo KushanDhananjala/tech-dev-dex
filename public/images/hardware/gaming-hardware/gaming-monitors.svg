@@ -1,0 +1,54 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gamingMonitorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Gaming Monitor -->
+  <rect x="100" y="80" width="200" height="120" rx="8" fill="url(#gamingMonitorGradient)" stroke="#059669" stroke-width="2"/>
+  <rect x="110" y="90" width="180" height="100" fill="#1f2937" />
+  
+  <!-- Monitor Stand -->
+  <rect x="180" y="200" width="40" height="20" fill="#6b7280" />
+  
+  <!-- Gaming Features -->
+  <rect x="50" y="240" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">144Hz</text>
+  
+  <rect x="120" y="240" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">4K</text>
+  
+  <rect x="190" y="240" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">HDR</text>
+  
+  <rect x="260" y="240" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">G-Sync</text>
+  
+  <rect x="330" y="240" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Low Latency</text>
+  
+  <!-- Gaming Benefits -->
+  <rect x="50" y="280" width="80" height="20" rx="4" fill="#059669" />
+  <text x="90" y="295" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Smooth</text>
+  
+  <rect x="140" y="280" width="80" height="20" rx="4" fill="#059669" />
+  <text x="180" y="295" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Responsive</text>
+  
+  <rect x="230" y="280" width="80" height="20" rx="4" fill="#059669" />
+  <text x="270" y="295" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Immersive</text>
+  
+  <rect x="320" y="280" width="80" height="20" rx="4" fill="#059669" />
+  <text x="360" y="295" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Development</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="290" r="4" fill="#059669" />
+  <text x="110" y="295" fill="#059669" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Fast</text>
+  
+  <circle cx="200" cy="290" r="4" fill="#047857" />
+  <text x="210" y="295" fill="#047857" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Smooth</text>
+  
+  <circle cx="300" cy="290" r="4" fill="#059669" />
+  <text x="310" y="295" fill="#059669" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Gaming</text>
+</svg>

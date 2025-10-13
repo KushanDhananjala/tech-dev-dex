@@ -1,0 +1,57 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="animationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1572b6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#33a9dc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Animated Elements -->
+  <circle cx="100" cy="100" r="20" fill="url(#animationGradient)" stroke="#1572b6" stroke-width="2">
+    <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <rect x="200" y="80" width="40" height="40" rx="4" fill="url(#animationGradient)" stroke="#1572b6" stroke-width="2">
+    <animateTransform attributeName="transform" type="rotate" values="0;360;0" dur="3s" repeatCount="indefinite"/>
+  </rect>
+  
+  <polygon points="300,100 320,80 340,100 320,120" fill="url(#animationGradient)" stroke="#1572b6" stroke-width="2">
+    <animateTransform attributeName="transform" type="translate" values="0,0;0,-10;0,0" dur="1.5s" repeatCount="indefinite"/>
+  </polygon>
+  
+  <!-- CSS Animation Properties -->
+  <rect x="50" y="160" width="80" height="30" rx="4" fill="#6c757d" />
+  <text x="90" y="180" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">@keyframes</text>
+  
+  <rect x="150" y="160" width="80" height="30" rx="4" fill="#6c757d" />
+  <text x="190" y="180" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">transition</text>
+  
+  <rect x="250" y="160" width="80" height="30" rx="4" fill="#6c757d" />
+  <text x="290" y="180" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">transform</text>
+  
+  <!-- Animation Types -->
+  <rect x="50" y="220" width="60" height="25" rx="4" fill="#28a745" />
+  <text x="80" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Fade In</text>
+  
+  <rect x="120" y="220" width="60" height="25" rx="4" fill="#007bff" />
+  <text x="150" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Slide</text>
+  
+  <rect x="190" y="220" width="60" height="25" rx="4" fill="#dc3545" />
+  <text x="220" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Rotate</text>
+  
+  <rect x="260" y="220" width="60" height="25" rx="4" fill="#ffc107" />
+  <text x="290" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Scale</text>
+  
+  <rect x="330" y="220" width="60" height="25" rx="4" fill="#6f42c1" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Bounce</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#1572b6" />
+  <text x="110" y="275" fill="#1572b6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Smooth</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#33a9dc" />
+  <text x="210" y="275" fill="#33a9dc" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Fluid</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#1572b6" />
+  <text x="310" y="275" fill="#1572b6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Engaging</text>
+</svg>

@@ -1,0 +1,692 @@
+---
+title: "Kubernetes: Container Orchestration"
+description: "Learn Kubernetes for managing containerized applications at scale with pods, services, and deployments. Master container orchestration for production environments."
+author: "TechDevDex Team"
+date: "2024-12-01"
+category: "DevOps & Deployment"
+tags: ["Kubernetes", "Container Orchestration", "DevOps", "Microservices", "Scalability", "Production"]
+readTime: "30 min"
+featured: false
+rating: 4
+featuredImage: "/images/web-dev/devops-deployment/kubernetes-guide.svg"
+---
+
+# Kubernetes: Container Orchestration
+
+Kubernetes is the leading container orchestration platform that automates the deployment, scaling, and management of containerized applications. This comprehensive guide covers everything from basic concepts to advanced production deployment strategies.
+
+## What is Kubernetes?
+
+### Core Concepts
+
+Kubernetes (K8s) is an open-source container orchestration platform that automates:
+- **Container Deployment:** Automated application deployment
+- **Scaling:** Dynamic scaling based on demand
+- **Load Balancing:** Traffic distribution across containers
+- **Service Discovery:** Automatic service registration and discovery
+- **Health Monitoring:** Container health checks and recovery
+- **Rolling Updates:** Zero-downtime application updates
+
+### Key Benefits
+
+- **Scalability:** Automatically scale applications based on demand
+- **High Availability:** Built-in redundancy and failover
+- **Resource Optimization:** Efficient resource utilization
+- **Portability:** Run anywhere Kubernetes is supported
+- **Ecosystem:** Rich ecosystem of tools and extensions
+- **Community:** Large, active community and support
+
+## Kubernetes Architecture
+
+### Cluster Components
+
+#### Master Node (Control Plane)
+- **API Server:** Central management interface
+- **etcd:** Distributed key-value store for cluster state
+- **Scheduler:** Assigns pods to nodes
+- **Controller Manager:** Manages cluster state and controllers
+
+#### Worker Nodes
+- **kubelet:** Node agent that manages pods
+- **kube-proxy:** Network proxy for service communication
+- **Container Runtime:** Docker, containerd, or CRI-O
+
+### Core Objects
+
+#### Pods
+- **Definition:** Smallest deployable unit in Kubernetes
+- **Purpose:** Run one or more containers together
+- **Lifecycle:** Managed by controllers
+- **Networking:** Shared network and storage
+
+#### Services
+- **ClusterIP:** Internal cluster communication
+- **NodePort:** External access via node ports
+- **LoadBalancer:** Cloud provider load balancer
+- **ExternalName:** External service mapping
+
+#### Deployments
+- **Purpose:** Manage replica sets and rolling updates
+- **Scaling:** Horizontal pod autoscaling
+- **Updates:** Rolling and rollback capabilities
+- **Configuration:** Declarative configuration management
+
+## Getting Started
+
+### Installation Options
+
+#### Minikube (Local Development)
+```bash
+# Install Minikube
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+chmod +x minikube
+sudo mv minikube /usr/local/bin/
+
+# Start Minikube
+minikube start
+
+# Verify installation
+kubectl get nodes
+```
+
+#### Docker Desktop (Local Development)
+```bash
+# Enable Kubernetes in Docker Desktop
+# Go to Settings > Kubernetes > Enable Kubernetes
+
+# Verify installation
+kubectl get nodes
+```
+
+#### Cloud Providers
+- **Google Kubernetes Engine (GKE)**
+- **Amazon Elastic Kubernetes Service (EKS)**
+- **Azure Kubernetes Service (AKS)**
+- **DigitalOcean Kubernetes**
+
+### Basic Commands
+
+#### Cluster Management
+```bash
+# Get cluster information
+kubectl cluster-info
+
+# Get nodes
+kubectl get nodes
+
+# Get all resources
+kubectl get all
+
+# Describe resources
+kubectl describe node <node-name>
+```
+
+#### Pod Management
+```bash
+# Create pod from YAML
+kubectl apply -f pod.yaml
+
+# Get pods
+kubectl get pods
+
+# Describe pod
+kubectl describe pod <pod-name>
+
+# Delete pod
+kubectl delete pod <pod-name>
+
+# Execute command in pod
+kubectl exec -it <pod-name> -- /bin/bash
+```
+
+## Pod Configuration
+
+### Basic Pod YAML
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+  labels:
+    app: my-app
+spec:
+  containers:
+  - name: my-container
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+```
+
+### Multi-Container Pods
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-container-pod
+spec:
+  containers:
+  - name: web-server
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+  - name: sidecar
+    image: busybox:latest
+    command: ['sh', '-c', 'while true; do echo "Sidecar running"; sleep 30; done']
+```
+
+### Resource Management
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resource-pod
+spec:
+  containers:
+  - name: app
+    image: my-app:latest
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+        ephemeral-storage: "1Gi"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
+        ephemeral-storage: "2Gi"
+```
+
+## Services and Networking
+
+### Service Types
+
+#### ClusterIP Service
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: my-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: ClusterIP
+```
+
+#### NodePort Service
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-service
+spec:
+  selector:
+    app: my-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+    nodePort: 30080
+  type: NodePort
+```
+
+#### LoadBalancer Service
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadbalancer-service
+spec:
+  selector:
+    app: my-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
+```
+
+### Ingress Configuration
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: myapp.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: my-service
+            port:
+              number: 80
+```
+
+## Deployments and Scaling
+
+### Basic Deployment
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: my-app:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+```
+
+### Rolling Updates
+```bash
+# Update deployment
+kubectl set image deployment/my-deployment my-app=my-app:v2.0
+
+# Check rollout status
+kubectl rollout status deployment/my-deployment
+
+# Rollback deployment
+kubectl rollout undo deployment/my-deployment
+
+# Check rollout history
+kubectl rollout history deployment/my-deployment
+```
+
+### Horizontal Pod Autoscaler
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-deployment
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+```
+
+## Configuration Management
+
+### ConfigMaps
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+  database_url: "postgresql://localhost:5432/mydb"
+  api_key: "your-api-key"
+  debug: "true"
+```
+
+### Secrets
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-secret
+type: Opaque
+data:
+  username: YWRtaW4=  # base64 encoded
+  password: MWYyZDFlMmU2N2Rm  # base64 encoded
+```
+
+### Using ConfigMaps and Secrets
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: config-pod
+spec:
+  containers:
+  - name: app
+    image: my-app:latest
+    env:
+    - name: DATABASE_URL
+      valueFrom:
+        configMapKeyRef:
+          name: my-config
+          key: database_url
+    - name: PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: my-secret
+          key: password
+    volumeMounts:
+    - name: config-volume
+      mountPath: /etc/config
+  volumes:
+  - name: config-volume
+    configMap:
+      name: my-config
+```
+
+## Storage Management
+
+### Persistent Volumes
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: slow
+  hostPath:
+    path: /data
+```
+
+### Persistent Volume Claims
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: slow
+```
+
+### Using Storage in Pods
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: storage-pod
+spec:
+  containers:
+  - name: app
+    image: my-app:latest
+    volumeMounts:
+    - name: storage-volume
+      mountPath: /data
+  volumes:
+  - name: storage-volume
+    persistentVolumeClaim:
+      claimName: my-pvc
+```
+
+## Production Best Practices
+
+### Security
+
+#### Pod Security Context
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secure-pod
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    fsGroup: 2000
+  containers:
+  - name: app
+    image: my-app:latest
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop:
+        - ALL
+```
+
+#### Network Policies
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: my-network-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: my-app
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend
+    ports:
+    - protocol: TCP
+      port: 8080
+```
+
+### Monitoring and Logging
+
+#### Health Checks
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: health-pod
+spec:
+  containers:
+  - name: app
+    image: my-app:latest
+    livenessProbe:
+      httpGet:
+        path: /health
+        port: 8080
+      initialDelaySeconds: 30
+      periodSeconds: 10
+    readinessProbe:
+      httpGet:
+        path: /ready
+        port: 8080
+      initialDelaySeconds: 5
+      periodSeconds: 5
+```
+
+#### Resource Monitoring
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: monitoring-pod
+spec:
+  containers:
+  - name: app
+    image: my-app:latest
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
+```
+
+## Advanced Features
+
+### Namespaces
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: production
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging
+```
+
+### RBAC (Role-Based Access Control)
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-reader
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-pods
+subjects:
+- kind: User
+  name: jane
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: pod-reader
+  apiGroup: rbac.authorization.k8s.io
+```
+
+### Custom Resources
+```yaml
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: myresources.example.com
+spec:
+  group: example.com
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              size:
+                type: integer
+                minimum: 1
+                maximum: 10
+  scope: Namespaced
+  names:
+    plural: myresources
+    singular: myresource
+    kind: MyResource
+```
+
+## Troubleshooting
+
+### Common Issues
+
+#### Pod Not Starting
+```bash
+# Check pod status
+kubectl get pods
+
+# Describe pod for details
+kubectl describe pod <pod-name>
+
+# Check pod logs
+kubectl logs <pod-name>
+
+# Check events
+kubectl get events
+```
+
+#### Service Not Accessible
+```bash
+# Check service endpoints
+kubectl get endpoints
+
+# Test service connectivity
+kubectl port-forward service/my-service 8080:80
+
+# Check service configuration
+kubectl describe service my-service
+```
+
+#### Resource Issues
+```bash
+# Check node resources
+kubectl top nodes
+
+# Check pod resources
+kubectl top pods
+
+# Check resource quotas
+kubectl describe quota
+```
+
+### Debugging Tools
+
+#### kubectl debug
+```bash
+# Debug pod issues
+kubectl debug <pod-name> -it --image=busybox
+
+# Debug node issues
+kubectl debug node/<node-name> -it --image=busybox
+```
+
+#### Log Analysis
+```bash
+# Follow logs
+kubectl logs -f <pod-name>
+
+# Previous container logs
+kubectl logs <pod-name> --previous
+
+# Logs from all containers
+kubectl logs <pod-name> --all-containers=true
+```
+
+## Conclusion
+
+Kubernetes is a powerful platform for managing containerized applications at scale. By understanding its core concepts, implementing best practices, and following security guidelines, you can build robust, scalable, and maintainable containerized applications.
+
+The key to successful Kubernetes adoption is starting with simple deployments and gradually adding complexity as you become more comfortable with the platform. With proper planning and implementation, Kubernetes can significantly improve your application deployment and management capabilities.

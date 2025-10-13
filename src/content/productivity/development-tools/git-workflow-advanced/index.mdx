@@ -1,0 +1,417 @@
+---
+title: "Advanced Git Workflow Techniques"
+description: "Master advanced Git techniques including branching strategies, rebasing, and collaborative workflows. Learn professional Git practices for team development."
+author: "TechDevDex Team"
+date: "2024-12-01"
+category: "Development Tools"
+tags: ["Git", "Version Control", "Branching", "Rebasing", "Collaboration", "Workflow"]
+readTime: "18 min"
+featured: false
+rating: 4
+featuredImage: "/images/productivity/development-tools/git-advanced.svg"
+---
+
+# Advanced Git Workflow Techniques
+
+Master advanced Git techniques to improve your development workflow, collaboration, and code management. This comprehensive guide covers professional Git practices used in modern development teams.
+
+## Git Branching Strategies
+
+### Git Flow
+
+```bash
+# Initialize Git Flow
+git flow init
+
+# Feature development
+git flow feature start new-feature
+# ... make changes ...
+git flow feature finish new-feature
+
+# Release management
+git flow release start 1.0.0
+# ... finalize release ...
+git flow release finish 1.0.0
+
+# Hotfix creation
+git flow hotfix start critical-bug
+# ... fix bug ...
+git flow hotfix finish critical-bug
+```
+
+### GitHub Flow
+
+```bash
+# Create feature branch
+git checkout -b feature/user-authentication
+# ... develop feature ...
+git add .
+git commit -m "Add user authentication system"
+git push origin feature/user-authentication
+
+# Create pull request
+# After review and merge, delete branch
+git branch -d feature/user-authentication
+git push origin --delete feature/user-authentication
+```
+
+### GitLab Flow
+
+```bash
+# Environment branches
+git checkout -b staging
+git checkout -b production
+
+# Feature development
+git checkout -b feature/payment-integration
+# ... develop ...
+git push origin feature/payment-integration
+
+# Merge to staging for testing
+git checkout staging
+git merge feature/payment-integration
+git push origin staging
+```
+
+## Advanced Branching Techniques
+
+### Branch Management
+
+```bash
+# List all branches
+git branch -a
+
+# List remote branches
+git branch -r
+
+# Delete local branch
+git branch -d feature-branch
+
+# Delete remote branch
+git push origin --delete feature-branch
+
+# Prune remote references
+git remote prune origin
+
+# Clean up merged branches
+git branch --merged | grep -v "\*\|main\|develop" | xargs -n 1 git branch -d
+```
+
+### Branch Protection
+
+```bash
+# Set up branch protection rules
+git config branch.main.protect true
+git config branch.main.require-pull-request true
+git config branch.main.require-status-checks true
+
+# Push with force protection
+git push --force-with-lease origin main
+```
+
+## Rebasing Techniques
+
+### Interactive Rebase
+
+```bash
+# Interactive rebase for last 3 commits
+git rebase -i HEAD~3
+
+# Squash commits
+pick 1a2b3c4 First commit
+squash 2b3c4d5 Second commit
+squash 3c4d5e6 Third commit
+
+# Edit commit messages
+pick 1a2b3c4 First commit
+reword 2b3c4d5 Second commit
+reword 3c4d5e6 Third commit
+
+# Drop commits
+pick 1a2b3c4 First commit
+drop 2b3c4d5 Second commit
+pick 3c4d5e6 Third commit
+```
+
+### Rebase vs Merge
+
+```bash
+# Merge approach (preserves history)
+git checkout main
+git merge feature-branch
+
+# Rebase approach (linear history)
+git checkout feature-branch
+git rebase main
+git checkout main
+git merge feature-branch
+```
+
+### Rebase Conflicts
+
+```bash
+# Start rebase
+git rebase main
+
+# Resolve conflicts
+git add resolved-file.txt
+git rebase --continue
+
+# Skip problematic commit
+git rebase --skip
+
+# Abort rebase
+git rebase --abort
+```
+
+## Advanced Git Commands
+
+### Stashing
+
+```bash
+# Stash with message
+git stash push -m "WIP: working on feature"
+
+# Stash specific files
+git stash push -m "WIP" -- file1.txt file2.txt
+
+# List stashes
+git stash list
+
+# Apply stash
+git stash apply stash@{0}
+
+# Pop stash
+git stash pop
+
+# Drop stash
+git stash drop stash@{0}
+```
+
+### Cherry Picking
+
+```bash
+# Cherry pick specific commit
+git cherry-pick 1a2b3c4
+
+# Cherry pick range
+git cherry-pick 1a2b3c4..3c4d5e6
+
+# Cherry pick with no commit
+git cherry-pick --no-commit 1a2b3c4
+```
+
+### Submodules
+
+```bash
+# Add submodule
+git submodule add https://github.com/user/repo.git path/to/submodule
+
+# Initialize submodules
+git submodule init
+git submodule update
+
+# Update submodules
+git submodule update --remote
+
+# Remove submodule
+git submodule deinit path/to/submodule
+git rm path/to/submodule
+```
+
+## Collaborative Workflows
+
+### Pull Request Best Practices
+
+```bash
+# Create feature branch
+git checkout -b feature/description
+
+# Make commits with clear messages
+git commit -m "feat: add user authentication"
+git commit -m "test: add unit tests for auth"
+git commit -m "docs: update API documentation"
+
+# Push and create PR
+git push origin feature/description
+```
+
+### Code Review Workflow
+
+```bash
+# Address review comments
+git commit -m "fix: address code review feedback"
+
+# Squash commits before merge
+git rebase -i HEAD~3
+
+# Force push updated branch
+git push --force-with-lease origin feature/description
+```
+
+### Conflict Resolution
+
+```bash
+# Fetch latest changes
+git fetch origin
+
+# Rebase on latest main
+git rebase origin/main
+
+# Resolve conflicts
+git add resolved-files.txt
+git rebase --continue
+
+# Push updated branch
+git push --force-with-lease origin feature/description
+```
+
+## Git Hooks
+
+### Pre-commit Hook
+
+```bash
+#!/bin/sh
+# .git/hooks/pre-commit
+
+# Run linting
+npm run lint
+if [ $? -ne 0 ]; then
+    echo "Linting failed. Commit aborted."
+    exit 1
+fi
+
+# Run tests
+npm test
+if [ $? -ne 0 ]; then
+    echo "Tests failed. Commit aborted."
+    exit 1
+fi
+```
+
+### Commit Message Hook
+
+```bash
+#!/bin/sh
+# .git/hooks/commit-msg
+
+# Check commit message format
+commit_regex='^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .{1,50}'
+
+if ! grep -qE "$commit_regex" "$1"; then
+    echo "Invalid commit message format!"
+    echo "Format: type(scope): description"
+    echo "Types: feat, fix, docs, style, refactor, test, chore"
+    exit 1
+fi
+```
+
+## Git Aliases
+
+### Useful Aliases
+
+```bash
+# Add aliases
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+
+# Advanced aliases
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+git config --global alias.visual '!gitk'
+
+# Custom aliases
+git config --global alias.lg "log --oneline --graph --decorate --all"
+git config --global alias.undo 'reset HEAD~1'
+git config --global alias.amend 'commit --amend --no-edit'
+```
+
+## Git Bisect
+
+### Finding Bugs
+
+```bash
+# Start bisect
+git bisect start
+
+# Mark good commit
+git bisect good 1a2b3c4
+
+# Mark bad commit
+git bisect bad 3c4d5e6
+
+# Test current commit
+# If good: git bisect good
+# If bad: git bisect bad
+
+# Reset bisect
+git bisect reset
+```
+
+## Git Worktree
+
+### Multiple Working Directories
+
+```bash
+# Create worktree
+git worktree add ../feature-branch feature-branch
+
+# List worktrees
+git worktree list
+
+# Remove worktree
+git worktree remove ../feature-branch
+```
+
+## Best Practices
+
+### Commit Messages
+
+```bash
+# Good commit messages
+git commit -m "feat: add user authentication system"
+git commit -m "fix: resolve memory leak in data processing"
+git commit -m "docs: update API documentation"
+git commit -m "test: add unit tests for payment module"
+git commit -m "refactor: simplify user validation logic"
+```
+
+### Branch Naming
+
+```bash
+# Feature branches
+feature/user-authentication
+feature/payment-integration
+feature/dashboard-redesign
+
+# Bug fix branches
+bugfix/login-error
+bugfix/memory-leak
+bugfix/performance-issue
+
+# Hotfix branches
+hotfix/security-patch
+hotfix/critical-bug
+```
+
+### Repository Management
+
+```bash
+# Clean up repository
+git gc --prune=now
+
+# Verify repository integrity
+git fsck
+
+# Recover lost commits
+git reflog
+git checkout <commit-hash>
+```
+
+## Conclusion
+
+Advanced Git techniques are essential for professional development workflows. By mastering branching strategies, rebasing, collaborative workflows, and Git hooks, you can significantly improve your development efficiency and code quality.
+
+The key to successful Git usage is understanding when to use different techniques and following consistent practices within your team. With these advanced techniques, you'll be able to handle complex development scenarios and maintain clean, organized repositories.

@@ -1,0 +1,52 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="htmlGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e34c26;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f06529;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cssGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1572b6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#33a9dc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- HTML Structure -->
+  <rect x="50" y="80" width="120" height="140" rx="8" fill="url(#htmlGradient)" stroke="#e34c26" stroke-width="2"/>
+  <text x="110" y="100" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" style="font-weight:bold;">HTML</text>
+  
+  <!-- HTML Elements -->
+  <rect x="60" y="120" width="100" height="8" fill="white" opacity="0.8" />
+  <rect x="60" y="135" width="80" height="8" fill="white" opacity="0.6" />
+  <rect x="60" y="150" width="90" height="8" fill="white" opacity="0.6" />
+  <rect x="60" y="165" width="70" height="8" fill="white" opacity="0.6" />
+  <rect x="60" y="180" width="85" height="8" fill="white" opacity="0.6" />
+  
+  <!-- CSS Styling -->
+  <rect x="230" y="80" width="120" height="140" rx="8" fill="url(#cssGradient)" stroke="#1572b6" stroke-width="2"/>
+  <text x="290" y="100" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" style="font-weight:bold;">CSS</text>
+  
+  <!-- CSS Properties -->
+  <rect x="240" y="120" width="100" height="6" fill="white" opacity="0.8" />
+  <rect x="240" y="135" width="80" height="6" fill="white" opacity="0.6" />
+  <rect x="240" y="150" width="90" height="6" fill="white" opacity="0.6" />
+  <rect x="240" y="165" width="70" height="6" fill="white" opacity="0.6" />
+  <rect x="240" y="180" width="85" height="6" fill="white" opacity="0.6" />
+  
+  <!-- Web Page Result -->
+  <rect x="140" y="240" width="120" height="40" rx="4" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="200" y="255" text-anchor="middle" fill="#495057" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Web Page</text>
+  
+  <!-- Arrows -->
+  <path d="M110 160 Q150 180 200 200" stroke="#6c757d" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <path d="M290 160 Q250 180 200 200" stroke="#6c757d" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6c757d" />
+    </marker>
+  </defs>
+  
+  <!-- Labels -->
+  <text x="110" y="70" text-anchor="middle" fill="#e34c26" font-family="Arial, sans-serif" font-size="14" style="font-weight:bold;">HTML Structure</text>
+  <text x="290" y="70" text-anchor="middle" fill="#1572b6" font-family="Arial, sans-serif" font-size="14" style="font-weight:bold;">CSS Styling</text>
+</svg>

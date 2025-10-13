@@ -1,0 +1,855 @@
+---
+title: "Code Optimization: Performance Guide"
+description: "Optimize code for better performance. Profiling, bottlenecks, memory management, and advanced optimization techniques."
+author: "TechDevDex Team"
+date: "2024-12-14"
+category: "Tutorial"
+tags: ["Optimization", "Performance", "Profiling", "Memory", "Programming"]
+readTime: "28 min"
+featured: false
+rating: 5
+featuredImage: "/images/tutorials/programming-tips/code-optimization.jpg"
+---
+
+# Code Optimization: Performance Guide
+
+Learn how to optimize code for better performance. From profiling and bottleneck identification to advanced optimization techniques.
+
+## Performance Profiling
+
+### Python Profiling Tools
+
+```python
+import cProfile
+import pstats
+import time
+from functools import wraps
+
+def profile_function(func):
+    """Decorator to profile function execution"""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        profiler = cProfile.Profile()
+        profiler.enable()
+        
+        result = func(*args, **kwargs)
+        
+        profiler.disable()
+        stats = pstats.Stats(profiler)
+        stats.sort_stats('cumulative')
+        stats.print_stats(10)  # Print top 10 functions
+        
+        return result
+    return wrapper
+
+def time_function(func):
+    """Decorator to measure function execution time"""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        
+        print(f"{func.__name__} executed in {end_time - start_time:.4f} seconds")
+        return result
+    return wrapper
+
+# Usage
+@profile_function
+@time_function
+def slow_function():
+    """Example function to profile"""
+    total = 0
+    for i in range(1000000):
+        total += i ** 2
+    return total
+```
+
+### Memory Profiling
+
+```python
+import tracemalloc
+import psutil
+import os
+
+def memory_profiler(func):
+    """Decorator to profile memory usage"""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        # Start memory tracing
+        tracemalloc.start()
+        
+        # Get initial memory usage
+        process = psutil.Process(os.getpid())
+        initial_memory = process.memory_info().rss / 1024 / 1024  # MB
+        
+        result = func(*args, **kwargs)
+        
+        # Get final memory usage
+        final_memory = process.memory_info().rss / 1024 / 1024  # MB
+        memory_used = final_memory - initial_memory
+        
+        # Get peak memory
+        current, peak = tracemalloc.get_traced_memory()
+        peak_mb = peak / 1024 / 1024
+        
+        print(f"Memory used: {memory_used:.2f} MB")
+        print(f"Peak memory: {peak_mb:.2f} MB")
+        
+        tracemalloc.stop()
+        return result
+    return wrapper
+
+@memory_profiler
+def memory_intensive_function():
+    """Function that uses a lot of memory"""
+    data = []
+    for i in range(100000):
+        data.append([i] * 1000)
+    return len(data)
+```
+
+## Algorithm Optimization
+
+### Time Complexity Optimization
+
+```python
+# O(n²) - Inefficient
+def find_duplicates_slow(arr):
+    """Find duplicates using nested loops"""
+    duplicates = []
+    for i in range(len(arr)):
+        for j in range(i + 1, len(arr)):
+            if arr[i] == arr[j] and arr[i] not in duplicates:
+                duplicates.append(arr[i])
+    return duplicates
+
+# O(n) - Optimized
+def find_duplicates_fast(arr):
+    """Find duplicates using hash set"""
+    seen = set()
+    duplicates = set()
+    
+    for num in arr:
+        if num in seen:
+            duplicates.add(num)
+        else:
+            seen.add(num)
+    
+    return list(duplicates)
+
+# O(n log n) - Sorting approach
+def find_duplicates_sorted(arr):
+    """Find duplicates using sorting"""
+    arr.sort()
+    duplicates = []
+    
+    for i in range(1, len(arr)):
+        if arr[i] == arr[i - 1] and arr[i] not in duplicates:
+            duplicates.append(arr[i])
+    
+    return duplicates
+```
+
+### Space Complexity Optimization
+
+```python
+# O(n) space - Inefficient
+def fibonacci_recursive(n):
+    """Recursive Fibonacci with O(n) space"""
+    if n <= 1:
+        return n
+    return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+
+# O(1) space - Optimized
+def fibonacci_iterative(n):
+    """Iterative Fibonacci with O(1) space"""
+    if n <= 1:
+        return n
+    
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+    return b
+
+# O(n) space but optimized
+def fibonacci_memoized(n, memo={}):
+    """Memoized Fibonacci"""
+    if n in memo:
+        return memo[n]
+    if n <= 1:
+        return n
+    
+    memo[n] = fibonacci_memoized(n - 1, memo) + fibonacci_memoized(n - 2, memo)
+    return memo[n]
+```
+
+## Data Structure Optimization
+
+### Efficient Data Structures
+
+```python
+from collections import deque, defaultdict, Counter
+import heapq
+
+# Use deque for O(1) operations at both ends
+def efficient_queue_operations():
+    """Demonstrate efficient queue operations"""
+    queue = deque()
+    
+    # O(1) append and pop
+    queue.append(1)
+    queue.append(2)
+    queue.appendleft(0)
+    
+    first = queue.popleft()  # O(1)
+    last = queue.pop()       # O(1)
+    
+    return queue
+
+# Use defaultdict for cleaner code
+def efficient_dictionary_operations():
+    """Demonstrate efficient dictionary operations"""
+    # Instead of checking if key exists
+    regular_dict = {}
+    if 'key' not in regular_dict:
+        regular_dict['key'] = []
+    regular_dict['key'].append('value')
+    
+    # Use defaultdict
+    efficient_dict = defaultdict(list)
+    efficient_dict['key'].append('value')
+    
+    return efficient_dict
+
+# Use Counter for frequency counting
+def efficient_frequency_counting(arr):
+    """Count frequencies efficiently"""
+    # Instead of manual counting
+    manual_count = {}
+    for item in arr:
+        manual_count[item] = manual_count.get(item, 0) + 1
+    
+    # Use Counter
+    efficient_count = Counter(arr)
+    
+    return efficient_count
+
+# Use heapq for priority queues
+def efficient_priority_queue():
+    """Demonstrate efficient priority queue"""
+    heap = []
+    
+    # Add elements with priority
+    heapq.heappush(heap, (1, 'task1'))
+    heapq.heappush(heap, (3, 'task3'))
+    heapq.heappush(heap, (2, 'task2'))
+    
+    # Get highest priority item
+    priority, task = heapq.heappop(heap)
+    
+    return heap
+```
+
+### Memory-Efficient Data Structures
+
+```python
+import array
+from collections import namedtuple
+
+# Use arrays for numeric data
+def memory_efficient_arrays():
+    """Use arrays for memory efficiency"""
+    # Instead of list of integers
+    regular_list = [1, 2, 3, 4, 5]  # Each int is 28 bytes
+    
+    # Use array for integers
+    efficient_array = array.array('i', [1, 2, 3, 4, 5])  # 4 bytes per int
+    
+    return efficient_array
+
+# Use namedtuple for structured data
+def memory_efficient_structures():
+    """Use namedtuple for memory efficiency"""
+    # Instead of class
+    class Point:
+        def __init__(self, x, y):
+            self.x = x
+            self.y = y
+    
+    # Use namedtuple
+    Point = namedtuple('Point', ['x', 'y'])
+    point = Point(1, 2)
+    
+    return point
+
+# Use generators for large datasets
+def memory_efficient_generators():
+    """Use generators for memory efficiency"""
+    # Instead of creating large list
+    def create_large_list(n):
+        return [i ** 2 for i in range(n)]
+    
+    # Use generator
+    def create_large_generator(n):
+        for i in range(n):
+            yield i ** 2
+    
+    return create_large_generator(1000000)
+```
+
+## Loop Optimization
+
+### Loop Unrolling and Vectorization
+
+```python
+import numpy as np
+
+# Inefficient nested loops
+def inefficient_matrix_multiply(A, B):
+    """Inefficient matrix multiplication"""
+    n = len(A)
+    C = [[0] * n for _ in range(n)]
+    
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                C[i][j] += A[i][k] * B[k][j]
+    
+    return C
+
+# Optimized with NumPy
+def efficient_matrix_multiply(A, B):
+    """Efficient matrix multiplication with NumPy"""
+    A_np = np.array(A)
+    B_np = np.array(B)
+    return np.dot(A_np, B_np)
+
+# Loop unrolling
+def loop_unrolling_example(arr):
+    """Demonstrate loop unrolling"""
+    total = 0
+    n = len(arr)
+    
+    # Process 4 elements at a time
+    for i in range(0, n - 3, 4):
+        total += arr[i] + arr[i + 1] + arr[i + 2] + arr[i + 3]
+    
+    # Handle remaining elements
+    for i in range(n - (n % 4), n):
+        total += arr[i]
+    
+    return total
+
+# Vectorized operations
+def vectorized_operations(arr):
+    """Demonstrate vectorized operations"""
+    # Instead of loop
+    result = []
+    for x in arr:
+        result.append(x ** 2 + 2 * x + 1)
+    
+    # Use vectorized operations
+    arr_np = np.array(arr)
+    result_np = arr_np ** 2 + 2 * arr_np + 1
+    
+    return result_np.tolist()
+```
+
+### Loop Optimization Techniques
+
+```python
+# Avoid repeated calculations
+def inefficient_loop(arr, target):
+    """Inefficient loop with repeated calculations"""
+    result = []
+    for i in range(len(arr)):
+        if arr[i] * arr[i] > target:  # Repeated calculation
+            result.append(arr[i])
+    return result
+
+def optimized_loop(arr, target):
+    """Optimized loop with pre-calculated values"""
+    result = []
+    for i in range(len(arr)):
+        squared = arr[i] * arr[i]  # Calculate once
+        if squared > target:
+            result.append(arr[i])
+    return result
+
+# Use enumerate for index and value
+def inefficient_indexing(arr):
+    """Inefficient way to get index and value"""
+    result = []
+    for i in range(len(arr)):
+        if arr[i] > 0:
+            result.append((i, arr[i]))
+    return result
+
+def optimized_indexing(arr):
+    """Optimized way to get index and value"""
+    result = []
+    for i, value in enumerate(arr):
+        if value > 0:
+            result.append((i, value))
+    return result
+
+# Use list comprehensions
+def inefficient_list_creation(arr):
+    """Inefficient list creation"""
+    result = []
+    for x in arr:
+        if x > 0:
+            result.append(x * 2)
+    return result
+
+def optimized_list_creation(arr):
+    """Optimized list creation with comprehension"""
+    return [x * 2 for x in arr if x > 0]
+```
+
+## Function Optimization
+
+### Function Caching and Memoization
+
+```python
+from functools import lru_cache, cache
+import time
+
+# Without caching
+def fibonacci_no_cache(n):
+    """Fibonacci without caching"""
+    if n <= 1:
+        return n
+    return fibonacci_no_cache(n - 1) + fibonacci_no_cache(n - 2)
+
+# With LRU cache
+@lru_cache(maxsize=128)
+def fibonacci_lru_cache(n):
+    """Fibonacci with LRU cache"""
+    if n <= 1:
+        return n
+    return fibonacci_lru_cache(n - 1) + fibonacci_lru_cache(n - 2)
+
+# With unlimited cache
+@cache
+def fibonacci_cache(n):
+    """Fibonacci with unlimited cache"""
+    if n <= 1:
+        return n
+    return fibonacci_cache(n - 1) + fibonacci_cache(n - 2)
+
+# Custom memoization
+def memoize(func):
+    """Custom memoization decorator"""
+    cache = {}
+    
+    def wrapper(*args):
+        if args in cache:
+            return cache[args]
+        result = func(*args)
+        cache[args] = result
+        return result
+    
+    return wrapper
+
+@memoize
+def expensive_calculation(n):
+    """Expensive calculation with memoization"""
+    time.sleep(0.1)  # Simulate expensive operation
+    return n ** 2
+```
+
+### Function Call Optimization
+
+```python
+# Avoid unnecessary function calls
+def inefficient_function_calls(arr):
+    """Inefficient function with unnecessary calls"""
+    result = []
+    for i in range(len(arr)):
+        if is_positive(arr[i]):  # Function call in loop
+            result.append(arr[i])
+    return result
+
+def is_positive(x):
+    """Simple function that could be inlined"""
+    return x > 0
+
+def optimized_function_calls(arr):
+    """Optimized function with inlined condition"""
+    result = []
+    for i in range(len(arr)):
+        if arr[i] > 0:  # Inlined condition
+            result.append(arr[i])
+    return result
+
+# Use built-in functions
+def inefficient_builtins(arr):
+    """Inefficient use of built-in functions"""
+    total = 0
+    for x in arr:
+        total += x
+    return total
+
+def optimized_builtins(arr):
+    """Optimized use of built-in functions"""
+    return sum(arr)  # Use built-in sum function
+```
+
+## Memory Optimization
+
+### Memory Management
+
+```python
+import gc
+import weakref
+from contextlib import contextmanager
+
+# Garbage collection optimization
+def optimize_garbage_collection():
+    """Optimize garbage collection"""
+    # Disable automatic garbage collection
+    gc.disable()
+    
+    try:
+        # Your memory-intensive operations here
+        data = [i for i in range(1000000)]
+        result = process_data(data)
+        return result
+    finally:
+        # Re-enable garbage collection
+        gc.enable()
+        # Force garbage collection
+        gc.collect()
+
+# Use weak references
+def weak_reference_example():
+    """Demonstrate weak references"""
+    class Node:
+        def __init__(self, value):
+            self.value = value
+            self.parent = None
+            self.children = []
+    
+    # Regular reference (creates circular reference)
+    parent = Node("parent")
+    child = Node("child")
+    parent.children.append(child)
+    child.parent = parent
+    
+    # Weak reference (avoids circular reference)
+    parent_weak = Node("parent_weak")
+    child_weak = Node("child_weak")
+    parent_weak.children.append(child_weak)
+    child_weak.parent = weakref.ref(parent_weak)
+    
+    return parent_weak, child_weak
+
+# Context managers for resource management
+@contextmanager
+def memory_efficient_context():
+    """Context manager for memory efficiency"""
+    # Setup
+    data = []
+    try:
+        yield data
+    finally:
+        # Cleanup
+        data.clear()
+        gc.collect()
+```
+
+### Memory-Efficient Data Processing
+
+```python
+# Process data in chunks
+def process_large_dataset(data, chunk_size=1000):
+    """Process large dataset in chunks"""
+    results = []
+    
+    for i in range(0, len(data), chunk_size):
+        chunk = data[i:i + chunk_size]
+        processed_chunk = process_chunk(chunk)
+        results.extend(processed_chunk)
+        
+        # Optional: yield results to avoid storing all in memory
+        yield processed_chunk
+    
+    return results
+
+def process_chunk(chunk):
+    """Process a chunk of data"""
+    return [x * 2 for x in chunk if x > 0]
+
+# Use generators for memory efficiency
+def memory_efficient_generator(data):
+    """Memory-efficient data processing with generators"""
+    for item in data:
+        if item > 0:
+            yield process_item(item)
+
+def process_item(item):
+    """Process a single item"""
+    return item * 2
+
+# Streaming data processing
+def stream_data_processing(file_path):
+    """Process data from file stream"""
+    with open(file_path, 'r') as file:
+        for line in file:
+            processed_line = process_line(line)
+            yield processed_line
+
+def process_line(line):
+    """Process a single line"""
+    return line.strip().upper()
+```
+
+## I/O Optimization
+
+### File I/O Optimization
+
+```python
+import mmap
+import os
+from pathlib import Path
+
+# Efficient file reading
+def efficient_file_reading(file_path):
+    """Efficient file reading techniques"""
+    # Read entire file at once for small files
+    with open(file_path, 'r') as file:
+        content = file.read()
+    
+    # Read line by line for large files
+    with open(file_path, 'r') as file:
+        for line in file:
+            process_line(line)
+    
+    # Use memory mapping for very large files
+    with open(file_path, 'r') as file:
+        with mmap.mmap(file.fileno(), 0, access=mmap.ACCESS_READ) as mm:
+            # Process memory-mapped file
+            pass
+
+# Efficient file writing
+def efficient_file_writing(data, file_path):
+    """Efficient file writing techniques"""
+    # Write all data at once
+    with open(file_path, 'w') as file:
+        file.write('\n'.join(data))
+    
+    # Use buffered writing
+    with open(file_path, 'w', buffering=8192) as file:
+        for item in data:
+            file.write(f"{item}\n")
+    
+    # Use binary mode for better performance
+    with open(file_path, 'wb') as file:
+        file.write(b'\n'.join(str(item).encode() for item in data))
+
+# Use pathlib for better path handling
+def efficient_path_operations():
+    """Efficient path operations"""
+    # Instead of os.path
+    old_path = os.path.join('dir', 'subdir', 'file.txt')
+    
+    # Use pathlib
+    new_path = Path('dir') / 'subdir' / 'file.txt'
+    
+    # Efficient path operations
+    if new_path.exists():
+        size = new_path.stat().st_size
+        return size
+    
+    return 0
+```
+
+### Database Optimization
+
+```python
+import sqlite3
+from contextlib import contextmanager
+
+# Efficient database operations
+@contextmanager
+def database_connection(db_path):
+    """Context manager for database connections"""
+    conn = sqlite3.connect(db_path)
+    try:
+        yield conn
+    finally:
+        conn.close()
+
+def efficient_database_operations():
+    """Efficient database operations"""
+    with database_connection('example.db') as conn:
+        cursor = conn.cursor()
+        
+        # Use transactions for multiple operations
+        cursor.execute("BEGIN TRANSACTION")
+        try:
+            cursor.execute("INSERT INTO users (name) VALUES (?)", ("John",))
+            cursor.execute("INSERT INTO users (name) VALUES (?)", ("Jane",))
+            conn.commit()
+        except:
+            conn.rollback()
+            raise
+        
+        # Use prepared statements
+        cursor.execute("SELECT * FROM users WHERE id = ?", (1,))
+        result = cursor.fetchone()
+        
+        # Use batch operations
+        users = [("Alice",), ("Bob",), ("Charlie",)]
+        cursor.executemany("INSERT INTO users (name) VALUES (?)", users)
+        conn.commit()
+        
+        return result
+```
+
+## Best Practices
+
+### 1. Profiling and Measurement
+
+```python
+import time
+import memory_profiler
+from line_profiler import LineProfiler
+
+def comprehensive_profiling():
+    """Comprehensive profiling example"""
+    # Time profiling
+    start_time = time.time()
+    result = expensive_operation()
+    end_time = time.time()
+    print(f"Execution time: {end_time - start_time:.4f} seconds")
+    
+    # Memory profiling
+    @memory_profiler.profile
+    def memory_intensive_operation():
+        data = [i for i in range(100000)]
+        return sum(data)
+    
+    # Line-by-line profiling
+    profiler = LineProfiler()
+    profiler.add_function(expensive_operation)
+    profiler.run('expensive_operation()')
+    profiler.print_stats()
+
+def expensive_operation():
+    """Example expensive operation"""
+    total = 0
+    for i in range(1000000):
+        total += i ** 2
+    return total
+```
+
+### 2. Optimization Guidelines
+
+```python
+def optimization_guidelines():
+    """Guidelines for code optimization"""
+    
+    # 1. Measure before optimizing
+    # 2. Optimize the bottleneck, not everything
+    # 3. Use appropriate data structures
+    # 4. Avoid premature optimization
+    # 5. Consider readability vs performance
+    
+    # Example: Choose appropriate data structure
+    # For frequent lookups, use dict instead of list
+    # For frequent insertions/deletions, use deque instead of list
+    # For priority queues, use heapq instead of sorting
+    
+    # Example: Use built-in functions
+    # sum() instead of manual loop
+    # max()/min() instead of manual comparison
+    # any()/all() instead of manual boolean logic
+    
+    # Example: Avoid unnecessary operations
+    # Don't calculate the same value multiple times
+    # Use list comprehensions instead of loops when possible
+    # Use generators for large datasets
+    
+    pass
+```
+
+### 3. Testing Optimizations
+
+```python
+import unittest
+import time
+
+class TestOptimizations(unittest.TestCase):
+    def test_performance_improvement(self):
+        """Test that optimization improves performance"""
+        # Test data
+        data = list(range(10000))
+        
+        # Time original function
+        start_time = time.time()
+        result1 = inefficient_function(data)
+        time1 = time.time() - start_time
+        
+        # Time optimized function
+        start_time = time.time()
+        result2 = optimized_function(data)
+        time2 = time.time() - start_time
+        
+        # Assert results are the same
+        self.assertEqual(result1, result2)
+        
+        # Assert optimization improved performance
+        self.assertLess(time2, time1)
+    
+    def test_memory_usage(self):
+        """Test memory usage optimization"""
+        # Test memory usage
+        import tracemalloc
+        
+        tracemalloc.start()
+        result = memory_intensive_function()
+        current, peak = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        
+        # Assert memory usage is within limits
+        self.assertLess(peak, 100 * 1024 * 1024)  # Less than 100MB
+
+def inefficient_function(data):
+    """Inefficient function for testing"""
+    result = []
+    for i in range(len(data)):
+        if data[i] > 0:
+            result.append(data[i] * 2)
+    return result
+
+def optimized_function(data):
+    """Optimized function for testing"""
+    return [x * 2 for x in data if x > 0]
+
+def memory_intensive_function():
+    """Memory intensive function for testing"""
+    data = []
+    for i in range(100000):
+        data.append([i] * 100)
+    return len(data)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+## Conclusion
+
+Code optimization is crucial for building efficient applications. By following these techniques and best practices, you can significantly improve your code's performance.
+
+Remember to:
+- Always profile before optimizing
+- Focus on the bottlenecks
+- Use appropriate data structures
+- Consider memory usage
+- Test your optimizations
+- Balance performance with readability
+
+Happy optimizing! 🚀

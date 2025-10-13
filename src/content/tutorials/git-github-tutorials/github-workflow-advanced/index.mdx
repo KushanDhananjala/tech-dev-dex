@@ -1,0 +1,700 @@
+---
+title: "Advanced GitHub Workflows: Power User Techniques"
+description: "Master advanced GitHub workflow techniques. Custom actions, complex automation, and enterprise patterns."
+author: "TechDevDex Team"
+date: "2024-12-10"
+category: "Tutorial"
+tags: ["GitHub", "Workflows", "Automation", "Advanced"]
+readTime: "30 min"
+featured: false
+rating: 5
+featuredImage: "/images/tutorials/git-github-tutorials/github-workflows.svg"
+---
+
+# Advanced GitHub Workflows: Power User Techniques
+
+Take your GitHub Actions workflows to the next level with advanced techniques, custom actions, and enterprise patterns.
+
+## Custom Actions
+
+### JavaScript Actions
+
+```javascript
+// action.yml
+name: 'Custom Action'
+description: 'A custom GitHub Action'
+inputs:
+  name:
+    description: 'Name to greet'
+    required: true
+    default: 'World'
+outputs:
+  greeting:
+    description: 'The greeting message'
+runs:
+  using: 'node16'
+  main: 'index.js'
+```
+
+```javascript
+// index.js
+const core = require('@actions/core');
+const github = require('@actions/github');
+
+async function run() {
+  try {
+    const name = core.getInput('name');
+    const greeting = `Hello, ${name}!`;
+    
+    core.setOutput('greeting', greeting);
+    core.info(greeting);
+  } catch (error) {
+    core.setFailed(error.message);
+  }
+}
+
+run();
+```
+
+### Docker Actions
+
+```dockerfile
+# Dockerfile
+FROM alpine:3.18
+
+LABEL "com.github.actions.name"="Custom Docker Action"
+LABEL "com.github.actions.description"="A custom Docker action"
+LABEL "com.github.actions.icon"="package"
+LABEL "com.github.actions.color"="blue"
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+```
+
+```bash
+#!/bin/sh
+# entrypoint.sh
+echo "Hello from Docker action!"
+echo "Repository: $GITHUB_REPOSITORY"
+echo "Actor: $GITHUB_ACTOR"
+```
+
+### Composite Actions
+
+```yaml
+# action.yml
+name: 'Setup Development Environment'
+description: 'Setup development environment with multiple tools'
+inputs:
+  node-version:
+    description: 'Node.js version'
+    required: false
+    default: '18'
+  python-version:
+    description: 'Python version'
+    required: false
+    default: '3.11'
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+        
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ inputs.python-version }}
+        
+    - name: Install dependencies
+      shell: bash
+      run: |
+        npm install
+        pip install -r requirements.txt
+```
+
+## Advanced Workflow Patterns
+
+### Workflow Composition
+
+```yaml
+# .github/workflows/build.yml
+name: Build Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      image-tag: ${{ steps.meta.outputs.tags }}
+      image-digest: ${{ steps.build.outputs.digest }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v4
+      with:
+        images: myapp
+        tags: |
+          type=ref,event=branch
+          type=sha,prefix={{branch}}-
+          
+    - name: Build and push
+      id: build
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+```
+
+### Dynamic Workflow Generation
+
+```yaml
+# .github/workflows/matrix-generator.yml
+name: Generate Matrix Jobs
+
+on:
+  workflow_dispatch:
+    inputs:
+      environments:
+        description: 'Comma-separated list of environments'
+        required: true
+        default: 'dev,staging,prod'
+
+jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+    - name: Generate matrix
+      id: set-matrix
+      run: |
+        environments='${{ github.event.inputs.environments }}'
+        matrix=$(echo $environments | jq -R -s -c 'split(",") | map({environment: .})')
+        echo "matrix=$matrix" >> $GITHUB_OUTPUT
+        
+  deploy:
+    needs: generate-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+    steps:
+    - name: Deploy to ${{ matrix.environment }}
+      run: echo "Deploying to ${{ matrix.environment }}"
+```
+
+### Workflow Dependencies
+
+```yaml
+# .github/workflows/ci.yml
+name: Continuous Integration
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run tests
+      run: npm test
+      
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build application
+      run: npm run build
+      
+  security-scan:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+    - uses: actions/checkout@v3
+    - name: Security scan
+      run: npm audit
+      
+  deploy-staging:
+    runs-on: ubuntu-latest
+    needs: [build, security-scan]
+    if: github.ref == 'refs/heads/develop'
+    steps:
+    - name: Deploy to staging
+      run: echo "Deploying to staging"
+      
+  deploy-production:
+    runs-on: ubuntu-latest
+    needs: [build, security-scan]
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - name: Deploy to production
+      run: echo "Deploying to production"
+```
+
+## Enterprise Patterns
+
+### Multi-Repository Workflows
+
+```yaml
+# .github/workflows/cross-repo-sync.yml
+name: Cross-Repository Sync
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.CROSS_REPO_TOKEN }}
+        
+    - name: Sync to target repository
+      uses: actions/checkout@v3
+      with:
+        repository: target-org/target-repo
+        token: ${{ secrets.CROSS_REPO_TOKEN }}
+        path: target
+        
+    - name: Copy files
+      run: |
+        cp -r src/ target/
+        cp package.json target/
+        
+    - name: Commit and push
+      run: |
+        cd target
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Sync from source repository" || exit 0
+        git push
+```
+
+### Organization-Wide Workflows
+
+```yaml
+# .github/workflows/org-wide-security.yml
+name: Organization Security Scan
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly
+  workflow_dispatch:
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repository: ${{ fromJson(github.event.inputs.repositories) }}
+    steps:
+    - name: Checkout ${{ matrix.repository }}
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ matrix.repository }}
+        token: ${{ secrets.ORG_TOKEN }}
+        
+    - name: Security scan
+      run: |
+        npm audit --audit-level high
+        npm run security:scan
+```
+
+### Workflow Templates
+
+```yaml
+# .github/workflow-templates/standard-ci.yml
+name: Standard CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run tests
+      run: npm test
+      
+    - name: Run linting
+      run: npm run lint
+      
+    - name: Run security audit
+      run: npm audit --audit-level moderate
+```
+
+## Performance Optimization
+
+### Workflow Optimization
+
+```yaml
+# .github/workflows/optimized-build.yml
+name: Optimized Build
+
+on: [push, pull_request]
+
+# Use concurrency to prevent duplicate runs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch full history for better caching
+        
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+          
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci --prefer-offline
+      
+    - name: Build with cache
+      uses: actions/cache@v3
+      with:
+        path: dist/
+        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-
+      continue-on-error: true
+      
+    - name: Build application
+      run: npm run build
+```
+
+### Parallel Job Optimization
+
+```yaml
+# .github/workflows/parallel-jobs.yml
+name: Parallel Jobs
+
+on: [push, pull_request]
+
+jobs:
+  # Run all jobs in parallel
+  test-unit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Unit tests
+      run: npm run test:unit
+      
+  test-integration:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Integration tests
+      run: npm run test:integration
+      
+  test-e2e:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: E2E tests
+      run: npm run test:e2e
+      
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Lint code
+      run: npm run lint
+      
+  security:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Security scan
+      run: npm audit
+      
+  # Aggregate results
+  aggregate:
+    runs-on: ubuntu-latest
+    needs: [test-unit, test-integration, test-e2e, lint, security]
+    if: always()
+    steps:
+    - name: Aggregate results
+      run: echo "All jobs completed"
+```
+
+## Advanced Caching Strategies
+
+### Multi-Level Caching
+
+```yaml
+# .github/workflows/advanced-caching.yml
+name: Advanced Caching
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Cache Node modules
+      uses: actions/cache@v3
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+          
+    - name: Cache build artifacts
+      uses: actions/cache@v3
+      with:
+        path: |
+          dist/
+          build/
+          .next/
+        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-
+          
+    - name: Cache Docker layers
+      uses: actions/cache@v3
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
+        restore-keys: |
+          ${{ runner.os }}-docker-
+```
+
+### Custom Cache Actions
+
+```yaml
+# .github/workflows/custom-cache.yml
+name: Custom Cache
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Cache with custom key
+      uses: actions/cache@v3
+      with:
+        path: |
+          node_modules
+          dist/
+        key: ${{ runner.os }}-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-${{ github.ref }}-
+          ${{ runner.os }}-main-
+          ${{ runner.os }}-
+```
+
+## Monitoring and Observability
+
+### Workflow Monitoring
+
+```yaml
+# .github/workflows/monitoring.yml
+name: Workflow Monitoring
+
+on:
+  workflow_run:
+    workflows: ["CI", "CD"]
+    types: [completed]
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check workflow status
+      run: |
+        if [ "${{ github.event.workflow_run.conclusion }}" != "success" ]; then
+          echo "Workflow failed: ${{ github.event.workflow_run.html_url }}"
+          # Send notification
+        fi
+        
+    - name: Send metrics
+      run: |
+        # Send metrics to monitoring service
+        curl -X POST "${{ secrets.MONITORING_ENDPOINT }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "workflow": "${{ github.event.workflow_run.name }}",
+            "status": "${{ github.event.workflow_run.conclusion }}",
+            "duration": "${{ github.event.workflow_run.run_duration_ms }}"
+          }'
+```
+
+### Custom Metrics
+
+```yaml
+# .github/workflows/metrics.yml
+name: Custom Metrics
+
+on: [push, pull_request]
+
+jobs:
+  collect-metrics:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Collect build metrics
+      run: |
+        echo "Build started at: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+        echo "Repository: ${{ github.repository }}"
+        echo "Branch: ${{ github.ref_name }}"
+        echo "Commit: ${{ github.sha }}"
+        
+    - name: Measure build time
+      run: |
+        start_time=$(date +%s)
+        npm run build
+        end_time=$(date +%s)
+        duration=$((end_time - start_time))
+        echo "Build duration: ${duration}s"
+```
+
+## Error Handling and Recovery
+
+### Robust Error Handling
+
+```yaml
+# .github/workflows/robust-deploy.yml
+name: Robust Deployment
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Deploy with retry
+      run: |
+        for i in {1..3}; do
+          echo "Deployment attempt $i"
+          if npm run deploy; then
+            echo "Deployment successful"
+            break
+          else
+            echo "Deployment failed, retrying..."
+            sleep 10
+          fi
+        done
+        
+    - name: Health check
+      run: |
+        for i in {1..5}; do
+          if curl -f http://localhost:3000/health; then
+            echo "Health check passed"
+            break
+          else
+            echo "Health check failed, retrying..."
+            sleep 30
+          fi
+        done
+        
+    - name: Rollback on failure
+      if: failure()
+      run: |
+        echo "Deployment failed, rolling back..."
+        npm run rollback
+```
+
+### Workflow Recovery
+
+```yaml
+# .github/workflows/recovery.yml
+name: Workflow Recovery
+
+on:
+  workflow_run:
+    workflows: ["Deploy"]
+    types: [completed]
+
+jobs:
+  recovery:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'failure'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Trigger recovery workflow
+      run: |
+        gh workflow run recovery.yml \
+          --ref ${{ github.event.workflow_run.head_branch }} \
+          --field environment=production
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+## Conclusion
+
+Advanced GitHub workflows enable powerful automation and enterprise-grade CI/CD pipelines. By mastering these techniques, you can create sophisticated, maintainable, and efficient workflows that scale with your organization.
+
+Remember to:
+- Start with simple patterns
+- Optimize for performance
+- Implement proper error handling
+- Monitor and measure
+- Document your workflows
+- Test thoroughly
+
+Happy automating! 🚀

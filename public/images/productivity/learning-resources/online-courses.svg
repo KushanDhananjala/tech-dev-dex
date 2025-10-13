@@ -1,0 +1,51 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="coursesGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Online Course Platform -->
+  <rect x="150" y="80" width="100" height="80" rx="8" fill="url(#coursesGradient)" stroke="#3b82f6" stroke-width="2"/>
+  <text x="200" y="130" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" style="font-weight:bold;">Course</text>
+  
+  <!-- Course Features -->
+  <rect x="50" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="80" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Video</text>
+  
+  <rect x="120" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="150" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Quizzes</text>
+  
+  <rect x="190" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="220" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Projects</text>
+  
+  <rect x="260" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="290" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Cert</text>
+  
+  <rect x="330" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="360" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Forum</text>
+  
+  <!-- Learning Platforms -->
+  <rect x="50" y="220" width="80" height="25" rx="4" fill="#3b82f6" />
+  <text x="90" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Udemy</text>
+  
+  <rect x="140" y="220" width="80" height="25" rx="4" fill="#3b82f6" />
+  <text x="180" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Coursera</text>
+  
+  <rect x="230" y="220" width="80" height="25" rx="4" fill="#3b82f6" />
+  <text x="270" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">edX</text>
+  
+  <rect x="320" y="220" width="80" height="25" rx="4" fill="#3b82f6" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Pluralsight</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#3b82f6" />
+  <text x="110" y="275" fill="#3b82f6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Interactive</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#1d4ed8" />
+  <text x="210" y="275" fill="#1d4ed8" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Structured</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#3b82f6" />
+  <text x="310" y="275" fill="#3b82f6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Flexible</text>
+</svg>

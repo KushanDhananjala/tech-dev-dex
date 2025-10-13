@@ -34,7 +34,7 @@ export default function HardwarePage() {
               Reviews and recommendations for development laptops and desktop computers.
             </p>
             <Link 
-              href="/reviews/gadget-reviews" 
+              href="/hardware/laptops-pcs" 
               className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
             >
               View Reviews →

@@ -1,0 +1,51 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="agileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Agile Logo -->
+  <circle cx="200" cy="100" r="40" fill="url(#agileGradient)" stroke="#3b82f6" stroke-width="3"/>
+  <text x="200" y="110" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" style="font-weight:bold;">Agile</text>
+  
+  <!-- Agile Values -->
+  <rect x="50" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Individuals</text>
+  
+  <rect x="120" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Working Software</text>
+  
+  <rect x="190" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Collaboration</text>
+  
+  <rect x="260" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Responding</text>
+  
+  <rect x="330" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Change</text>
+  
+  <!-- Agile Practices -->
+  <rect x="50" y="220" width="80" height="25" rx="4" fill="#3b82f6" />
+  <text x="90" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Sprints</text>
+  
+  <rect x="140" y="220" width="80" height="25" rx="4" fill="#3b82f6" />
+  <text x="180" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Daily Standups</text>
+  
+  <rect x="230" y="220" width="80" height="25" rx="4" fill="#3b82f6" />
+  <text x="270" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Retrospectives</text>
+  
+  <rect x="320" y="220" width="80" height="25" rx="4" fill="#3b82f6" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">User Stories</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#3b82f6" />
+  <text x="110" y="275" fill="#3b82f6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Flexible</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#1d4ed8" />
+  <text x="210" y="275" fill="#1d4ed8" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Collaborative</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#3b82f6" />
+  <text x="310" y="275" fill="#3b82f6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Adaptive</text>
+</svg>

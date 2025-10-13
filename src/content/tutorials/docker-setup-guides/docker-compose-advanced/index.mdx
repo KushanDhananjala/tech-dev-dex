@@ -1,0 +1,524 @@
+---
+title: "Docker Compose Advanced: Multi-Container Applications"
+description: "Master Docker Compose for complex multi-container applications with advanced configuration, networking, and orchestration."
+author: "TechDevDex Team"
+date: "2024-12-14"
+category: "Tutorial"
+tags: ["Docker", "Docker Compose", "Multi-container", "Orchestration"]
+readTime: "25 min"
+featured: false
+rating: 5
+featuredImage: "/images/tutorials/docker-setup-guides/docker-compose-advanced.svg"
+---
+
+# Docker Compose Advanced: Multi-Container Applications
+
+Docker Compose is a powerful tool for defining and running multi-container Docker applications. This advanced guide covers complex scenarios, networking, and production-ready configurations.
+
+## Advanced Docker Compose Features
+
+### Environment Variables
+
+Use environment variables for configuration:
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+    env_file:
+      - .env
+      - .env.local
+```
+
+### Volume Management
+
+Advanced volume configurations:
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - static_files:/var/www/static
+      - logs:/var/log/nginx
+
+  database:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  postgres_data:
+    driver: local
+  static_files:
+    driver: local
+  logs:
+    driver: local
+```
+
+### Networking
+
+Custom network configurations:
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    networks:
+      - frontend
+      - backend
+
+  api:
+    build: ./api
+    networks:
+      - backend
+      - database
+
+  db:
+    image: postgres:13
+    networks:
+      - database
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+  database:
+    driver: bridge
+```
+
+## Production-Ready Configurations
+
+### Health Checks
+
+Implement health checks for reliability:
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  database:
+    image: postgres:13
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+```
+
+### Resource Limits
+
+Set resource constraints:
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+  database:
+    image: postgres:13
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+```
+
+### Restart Policies
+
+Configure restart behavior:
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    restart: unless-stopped
+
+  database:
+    image: postgres:13
+    restart: on-failure:3
+
+  cache:
+    image: redis:6
+    restart: always
+```
+
+## Complex Application Examples
+
+### Full-Stack Application
+
+```yaml
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://backend:5000
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@database:5432/myapp
+      - REDIS_URL=redis://cache:6379
+    depends_on:
+      - database
+      - cache
+
+  database:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: myapp
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  cache:
+    image: redis:6
+    volumes:
+      - redis_data:/data
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  postgres_data:
+  redis_data:
+```
+
+### Microservices Architecture
+
+```yaml
+version: '3.8'
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - USER_SERVICE_URL=http://user-service:3001
+      - ORDER_SERVICE_URL=http://order-service:3002
+      - PRODUCT_SERVICE_URL=http://product-service:3003
+
+  user-service:
+    build: ./user-service
+    environment:
+      - DATABASE_URL=postgresql://user:password@user-db:5432/users
+    depends_on:
+      - user-db
+
+  order-service:
+    build: ./order-service
+    environment:
+      - DATABASE_URL=postgresql://user:password@order-db:5432/orders
+    depends_on:
+      - order-db
+
+  product-service:
+    build: ./product-service
+    environment:
+      - DATABASE_URL=postgresql://user:password@product-db:5432/products
+    depends_on:
+      - product-db
+
+  user-db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: users
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - user_data:/var/lib/postgresql/data
+
+  order-db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: orders
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - order_data:/var/lib/postgresql/data
+
+  product-db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: products
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - product_data:/var/lib/postgresql/data
+
+volumes:
+  user_data:
+  order_data:
+  product_data:
+```
+
+## Development vs Production
+
+### Development Configuration
+
+```yaml
+# docker-compose.dev.yml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
+
+  database:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: myapp_dev
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+    ports:
+      - "5432:5432"
+```
+
+### Production Configuration
+
+```yaml
+# docker-compose.prod.yml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    environment:
+      - NODE_ENV=production
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    restart: unless-stopped
+
+  database:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: myapp_prod
+      POSTGRES_USER: prod
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+```
+
+## Best Practices
+
+### 1. Use Multiple Compose Files
+
+```bash
+# Development
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+# Production
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
+```
+
+### 2. Environment-Specific Configurations
+
+```yaml
+# docker-compose.override.yml (automatically loaded)
+version: '3.8'
+
+services:
+  web:
+    volumes:
+      - .:/app
+    environment:
+      - DEBUG=true
+```
+
+### 3. Secrets Management
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    secrets:
+      - db_password
+      - api_key
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  api_key:
+    external: true
+```
+
+## Monitoring and Logging
+
+### Log Configuration
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  database:
+    image: postgres:13
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://logs:514"
+```
+
+### Health Monitoring
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Port Conflicts**
+   ```bash
+   # Check what's using the port
+   lsof -i :3000
+   
+   # Use different port
+   docker-compose up -p 3001
+   ```
+
+2. **Volume Issues**
+   ```bash
+   # List volumes
+   docker volume ls
+   
+   # Remove unused volumes
+   docker volume prune
+   ```
+
+3. **Network Issues**
+   ```bash
+   # List networks
+   docker network ls
+   
+   # Inspect network
+   docker network inspect <network_name>
+   ```
+
+### Debugging Commands
+
+```bash
+# View logs
+docker-compose logs -f web
+
+# Execute commands in running container
+docker-compose exec web bash
+
+# Scale services
+docker-compose up --scale web=3
+
+# View service status
+docker-compose ps
+```
+
+## Conclusion
+
+Docker Compose is essential for managing complex multi-container applications. By following these advanced patterns and best practices, you can create robust, scalable, and maintainable containerized applications.
+
+Remember to:
+- Use environment-specific configurations
+- Implement proper health checks
+- Set resource limits
+- Configure logging and monitoring
+- Follow security best practices
+
+Happy composing! 🐳

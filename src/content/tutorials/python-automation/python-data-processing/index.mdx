@@ -1,0 +1,667 @@
+---
+title: "Python Data Processing: Automation Guide"
+description: "Automate data processing with Python. Pandas, NumPy, data cleaning, transformation, and analysis workflows."
+author: "TechDevDex Team"
+date: "2024-12-14"
+category: "Tutorial"
+tags: ["Python", "Data Processing", "Pandas", "NumPy", "Automation"]
+readTime: "28 min"
+featured: false
+rating: 5
+featuredImage: "/images/tutorials/python-automation/python-data-processing.svg"
+---
+
+# Python Data Processing: Automation Guide
+
+Learn how to automate data processing workflows with Python. From data cleaning and transformation to analysis and reporting.
+
+## Essential Libraries
+
+### Installation
+
+```bash
+# Core data processing libraries
+pip install pandas numpy scipy
+
+# Data visualization
+pip install matplotlib seaborn plotly
+
+# Machine learning
+pip install scikit-learn
+
+# Database connectivity
+pip install sqlalchemy psycopg2-binary
+
+# File handling
+pip install openpyxl xlrd
+```
+
+## Data Loading and Exploration
+
+### Loading Different Data Sources
+
+```python
+import pandas as pd
+import numpy as np
+
+# CSV files
+df = pd.read_csv('data.csv')
+
+# Excel files
+df = pd.read_excel('data.xlsx', sheet_name='Sheet1')
+
+# JSON files
+df = pd.read_json('data.json')
+
+# Database queries
+from sqlalchemy import create_engine
+engine = create_engine('postgresql://user:password@localhost/db')
+df = pd.read_sql('SELECT * FROM users', engine)
+
+# API data
+import requests
+response = requests.get('https://api.example.com/data')
+df = pd.DataFrame(response.json())
+```
+
+### Data Exploration
+
+```python
+# Basic information
+print(df.info())
+print(df.describe())
+print(df.head())
+print(df.shape)
+
+# Data types
+print(df.dtypes)
+
+# Missing values
+print(df.isnull().sum())
+
+# Unique values
+print(df['column_name'].nunique())
+print(df['column_name'].value_counts())
+```
+
+## Data Cleaning
+
+### Handling Missing Values
+
+```python
+# Check missing values
+missing_data = df.isnull().sum()
+print(missing_data)
+
+# Drop rows with missing values
+df_clean = df.dropna()
+
+# Fill missing values
+df['column'].fillna(df['column'].mean(), inplace=True)
+df['column'].fillna(df['column'].median(), inplace=True)
+df['column'].fillna('Unknown', inplace=True)
+
+# Forward fill
+df['column'].fillna(method='ffill', inplace=True)
+
+# Backward fill
+df['column'].fillna(method='bfill', inplace=True)
+```
+
+### Data Type Conversion
+
+```python
+# Convert data types
+df['date_column'] = pd.to_datetime(df['date_column'])
+df['numeric_column'] = pd.to_numeric(df['numeric_column'], errors='coerce')
+df['category_column'] = df['category_column'].astype('category')
+
+# Convert to string
+df['text_column'] = df['text_column'].astype(str)
+```
+
+### String Cleaning
+
+```python
+# Remove whitespace
+df['text_column'] = df['text_column'].str.strip()
+
+# Convert to lowercase
+df['text_column'] = df['text_column'].str.lower()
+
+# Remove special characters
+df['text_column'] = df['text_column'].str.replace('[^a-zA-Z0-9\s]', '', regex=True)
+
+# Split strings
+df[['first_name', 'last_name']] = df['full_name'].str.split(' ', 1, expand=True)
+```
+
+## Data Transformation
+
+### Filtering Data
+
+```python
+# Filter by condition
+filtered_df = df[df['age'] > 18]
+
+# Multiple conditions
+filtered_df = df[(df['age'] > 18) & (df['city'] == 'New York')]
+
+# Filter by list
+cities = ['New York', 'Los Angeles', 'Chicago']
+filtered_df = df[df['city'].isin(cities)]
+
+# Filter by string contains
+filtered_df = df[df['description'].str.contains('python', case=False)]
+```
+
+### Grouping and Aggregation
+
+```python
+# Group by single column
+grouped = df.groupby('category')
+
+# Multiple aggregations
+agg_df = df.groupby('category').agg({
+    'price': ['mean', 'sum', 'count'],
+    'quantity': 'sum'
+})
+
+# Custom aggregation
+def custom_agg(series):
+    return series.max() - series.min()
+
+result = df.groupby('category')['price'].apply(custom_agg)
+```
+
+### Pivot Tables
+
+```python
+# Create pivot table
+pivot = df.pivot_table(
+    values='sales',
+    index='region',
+    columns='month',
+    aggfunc='sum',
+    fill_value=0
+)
+
+# Multi-level pivot
+pivot = df.pivot_table(
+    values=['sales', 'profit'],
+    index=['region', 'category'],
+    columns='month',
+    aggfunc={'sales': 'sum', 'profit': 'mean'}
+)
+```
+
+## Data Analysis
+
+### Statistical Analysis
+
+```python
+import numpy as np
+from scipy import stats
+
+# Basic statistics
+print(df.describe())
+
+# Correlation analysis
+correlation_matrix = df.corr()
+print(correlation_matrix)
+
+# Statistical tests
+# T-test
+t_stat, p_value = stats.ttest_ind(df['group1'], df['group2'])
+print(f"T-statistic: {t_stat}, P-value: {p_value}")
+
+# Chi-square test
+from scipy.stats import chi2_contingency
+contingency_table = pd.crosstab(df['category'], df['outcome'])
+chi2, p_value, dof, expected = chi2_contingency(contingency_table)
+```
+
+### Time Series Analysis
+
+```python
+# Set datetime index
+df['date'] = pd.to_datetime(df['date'])
+df.set_index('date', inplace=True)
+
+# Resample data
+daily_data = df.resample('D').sum()
+monthly_data = df.resample('M').mean()
+
+# Rolling statistics
+df['rolling_mean'] = df['value'].rolling(window=7).mean()
+df['rolling_std'] = df['value'].rolling(window=7).std()
+
+# Time series decomposition
+from statsmodels.tsa.seasonal import seasonal_decompose
+decomposition = seasonal_decompose(df['value'], model='additive')
+```
+
+## Data Visualization
+
+### Basic Plots
+
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Set style
+plt.style.use('seaborn-v0_8')
+sns.set_palette("husl")
+
+# Line plot
+plt.figure(figsize=(10, 6))
+plt.plot(df['date'], df['value'])
+plt.title('Time Series Plot')
+plt.xlabel('Date')
+plt.ylabel('Value')
+plt.show()
+
+# Scatter plot
+plt.figure(figsize=(10, 6))
+plt.scatter(df['x'], df['y'], alpha=0.6)
+plt.title('Scatter Plot')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.show()
+```
+
+### Advanced Visualizations
+
+```python
+# Heatmap
+plt.figure(figsize=(12, 8))
+sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
+plt.title('Correlation Heatmap')
+plt.show()
+
+# Box plot
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=df, x='category', y='value')
+plt.title('Box Plot by Category')
+plt.show()
+
+# Distribution plot
+plt.figure(figsize=(10, 6))
+sns.histplot(df['value'], kde=True)
+plt.title('Distribution of Values')
+plt.show()
+```
+
+## Machine Learning Integration
+
+### Feature Engineering
+
+```python
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.feature_selection import SelectKBest, f_classif
+
+# Encode categorical variables
+le = LabelEncoder()
+df['category_encoded'] = le.fit_transform(df['category'])
+
+# Create dummy variables
+dummy_df = pd.get_dummies(df, columns=['category'])
+
+# Feature scaling
+scaler = StandardScaler()
+df[['feature1', 'feature2']] = scaler.fit_transform(df[['feature1', 'feature2']])
+
+# Feature selection
+X = df.drop('target', axis=1)
+y = df['target']
+selector = SelectKBest(score_func=f_classif, k=5)
+X_selected = selector.fit_transform(X, y)
+```
+
+### Model Training and Evaluation
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train model
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate model
+print(classification_report(y_test, y_pred))
+print(confusion_matrix(y_test, y_pred))
+```
+
+## Automation Workflows
+
+### Automated Data Pipeline
+
+```python
+import os
+import logging
+from datetime import datetime
+from pathlib import Path
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+class DataPipeline:
+    def __init__(self, input_path: str, output_path: str):
+        self.input_path = Path(input_path)
+        self.output_path = Path(output_path)
+        self.output_path.mkdir(parents=True, exist_ok=True)
+    
+    def load_data(self) -> pd.DataFrame:
+        """Load data from various sources"""
+        logger.info("Loading data...")
+        
+        if self.input_path.suffix == '.csv':
+            df = pd.read_csv(self.input_path)
+        elif self.input_path.suffix == '.xlsx':
+            df = pd.read_excel(self.input_path)
+        else:
+            raise ValueError(f"Unsupported file format: {self.input_path.suffix}")
+        
+        logger.info(f"Loaded {len(df)} rows")
+        return df
+    
+    def clean_data(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Clean the data"""
+        logger.info("Cleaning data...")
+        
+        # Remove duplicates
+        df = df.drop_duplicates()
+        
+        # Handle missing values
+        df = df.dropna(subset=['critical_column'])
+        df['optional_column'].fillna('Unknown', inplace=True)
+        
+        # Data type conversion
+        df['date_column'] = pd.to_datetime(df['date_column'], errors='coerce')
+        df['numeric_column'] = pd.to_numeric(df['numeric_column'], errors='coerce')
+        
+        logger.info(f"Cleaned data: {len(df)} rows remaining")
+        return df
+    
+    def transform_data(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Transform the data"""
+        logger.info("Transforming data...")
+        
+        # Create new features
+        df['year'] = df['date_column'].dt.year
+        df['month'] = df['date_column'].dt.month
+        df['day_of_week'] = df['date_column'].dt.dayofweek
+        
+        # Calculate derived metrics
+        df['total_value'] = df['quantity'] * df['price']
+        
+        logger.info("Data transformation completed")
+        return df
+    
+    def analyze_data(self, df: pd.DataFrame) -> dict:
+        """Analyze the data"""
+        logger.info("Analyzing data...")
+        
+        analysis = {
+            'total_records': len(df),
+            'date_range': {
+                'start': df['date_column'].min(),
+                'end': df['date_column'].max()
+            },
+            'summary_stats': df.describe().to_dict(),
+            'top_categories': df['category'].value_counts().head(10).to_dict()
+        }
+        
+        return analysis
+    
+    def save_results(self, df: pd.DataFrame, analysis: dict):
+        """Save processed data and analysis"""
+        logger.info("Saving results...")
+        
+        # Save processed data
+        output_file = self.output_path / f"processed_data_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+        df.to_csv(output_file, index=False)
+        
+        # Save analysis report
+        report_file = self.output_path / f"analysis_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        import json
+        with open(report_file, 'w') as f:
+            json.dump(analysis, f, indent=2, default=str)
+        
+        logger.info(f"Results saved to {self.output_path}")
+    
+    def run_pipeline(self):
+        """Run the complete data pipeline"""
+        try:
+            # Load data
+            df = self.load_data()
+            
+            # Clean data
+            df = self.clean_data(df)
+            
+            # Transform data
+            df = self.transform_data(df)
+            
+            # Analyze data
+            analysis = self.analyze_data(df)
+            
+            # Save results
+            self.save_results(df, analysis)
+            
+            logger.info("Pipeline completed successfully")
+            return df, analysis
+            
+        except Exception as e:
+            logger.error(f"Pipeline failed: {e}")
+            raise
+
+# Usage
+pipeline = DataPipeline('input/data.csv', 'output/')
+df, analysis = pipeline.run_pipeline()
+```
+
+### Scheduled Data Processing
+
+```python
+import schedule
+import time
+from datetime import datetime
+
+def daily_data_processing():
+    """Daily data processing job"""
+    logger.info(f"Starting daily processing at {datetime.now()}")
+    
+    try:
+        pipeline = DataPipeline('input/daily_data.csv', 'output/')
+        df, analysis = pipeline.run_pipeline()
+        
+        # Send notification
+        send_notification(f"Daily processing completed. Processed {len(df)} records.")
+        
+    except Exception as e:
+        logger.error(f"Daily processing failed: {e}")
+        send_notification(f"Daily processing failed: {e}")
+
+# Schedule jobs
+schedule.every().day.at("02:00").do(daily_data_processing)
+schedule.every().monday.at("09:00").do(weekly_report)
+
+# Run scheduler
+while True:
+    schedule.run_pending()
+    time.sleep(60)
+```
+
+## Performance Optimization
+
+### Memory Optimization
+
+```python
+# Optimize data types
+def optimize_dtypes(df):
+    """Optimize DataFrame memory usage"""
+    for col in df.columns:
+        if df[col].dtype == 'object':
+            # Try to convert to category
+            if df[col].nunique() / len(df) < 0.5:
+                df[col] = df[col].astype('category')
+        elif df[col].dtype == 'int64':
+            # Downcast integers
+            if df[col].min() >= 0:
+                if df[col].max() < 255:
+                    df[col] = df[col].astype('uint8')
+                elif df[col].max() < 65535:
+                    df[col] = df[col].astype('uint16')
+                else:
+                    df[col] = df[col].astype('uint32')
+            else:
+                if df[col].min() > -128 and df[col].max() < 127:
+                    df[col] = df[col].astype('int8')
+                elif df[col].min() > -32768 and df[col].max() < 32767:
+                    df[col] = df[col].astype('int16')
+                else:
+                    df[col] = df[col].astype('int32')
+    
+    return df
+
+# Chunked processing for large files
+def process_large_file(file_path, chunk_size=10000):
+    """Process large files in chunks"""
+    results = []
+    
+    for chunk in pd.read_csv(file_path, chunksize=chunk_size):
+        # Process chunk
+        processed_chunk = process_chunk(chunk)
+        results.append(processed_chunk)
+    
+    return pd.concat(results, ignore_index=True)
+```
+
+### Parallel Processing
+
+```python
+from multiprocessing import Pool
+import numpy as np
+
+def process_chunk(chunk_data):
+    """Process a chunk of data"""
+    # Your processing logic here
+    return chunk_data.groupby('category').sum()
+
+def parallel_processing(df, n_processes=4):
+    """Process DataFrame in parallel"""
+    # Split DataFrame into chunks
+    chunk_size = len(df) // n_processes
+    chunks = [df.iloc[i:i+chunk_size] for i in range(0, len(df), chunk_size)]
+    
+    # Process chunks in parallel
+    with Pool(n_processes) as pool:
+        results = pool.map(process_chunk, chunks)
+    
+    return pd.concat(results, ignore_index=True)
+```
+
+## Best Practices
+
+### 1. Data Validation
+
+```python
+def validate_data(df, schema):
+    """Validate DataFrame against schema"""
+    errors = []
+    
+    for column, rules in schema.items():
+        if column not in df.columns:
+            errors.append(f"Missing column: {column}")
+            continue
+        
+        # Check data type
+        if 'dtype' in rules and not df[column].dtype == rules['dtype']:
+            errors.append(f"Column {column} has wrong dtype")
+        
+        # Check for nulls
+        if 'not_null' in rules and rules['not_null'] and df[column].isnull().any():
+            errors.append(f"Column {column} contains null values")
+        
+        # Check range
+        if 'min' in rules and df[column].min() < rules['min']:
+            errors.append(f"Column {column} has values below minimum")
+        
+        if 'max' in rules and df[column].max() > rules['max']:
+            errors.append(f"Column {column} has values above maximum")
+    
+    if errors:
+        raise ValueError(f"Data validation failed: {errors}")
+    
+    return True
+```
+
+### 2. Error Handling
+
+```python
+def safe_data_processing(func):
+    """Decorator for safe data processing"""
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            logger.error(f"Error in {func.__name__}: {e}")
+            return None
+    return wrapper
+
+@safe_data_processing
+def process_sensitive_data(df):
+    """Process sensitive data with error handling"""
+    # Your processing logic here
+    return df
+```
+
+### 3. Documentation and Testing
+
+```python
+def test_data_pipeline():
+    """Test the data pipeline"""
+    # Create test data
+    test_data = pd.DataFrame({
+        'date': ['2023-01-01', '2023-01-02'],
+        'value': [100, 200],
+        'category': ['A', 'B']
+    })
+    
+    # Test pipeline
+    pipeline = DataPipeline('test_input.csv', 'test_output/')
+    df, analysis = pipeline.run_pipeline()
+    
+    # Assertions
+    assert len(df) > 0
+    assert 'total_value' in df.columns
+    assert analysis['total_records'] > 0
+    
+    print("Pipeline test passed!")
+
+if __name__ == '__main__':
+    test_data_pipeline()
+```
+
+## Conclusion
+
+Python data processing automation can significantly improve efficiency and accuracy. By following these patterns and best practices, you can create robust, scalable data processing solutions.
+
+Remember to:
+- Always validate your data
+- Handle errors gracefully
+- Optimize for performance
+- Document your processes
+- Test thoroughly
+- Monitor data quality
+
+Happy processing! 🚀

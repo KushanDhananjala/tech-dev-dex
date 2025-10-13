@@ -1,0 +1,67 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="terminal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d3748;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a202c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- Terminal Window -->
+  <g transform="translate(200, 80)">
+    <rect x="0" y="0" width="400" height="240" rx="8" fill="url(#terminal)"/>
+    
+    <!-- Title bar -->
+    <rect x="0" y="0" width="400" height="30" fill="#2d3748"/>
+    <circle cx="15" cy="15" r="5" fill="#ff5f56"/>
+    <circle cx="35" cy="15" r="5" fill="#ffbd2e"/>
+    <circle cx="55" cy="15" r="5" fill="#27ca3f"/>
+    <text x="200" y="20" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Terminal</text>
+    
+    <!-- Terminal content -->
+    <rect x="10" y="40" width="380" height="190" fill="#1a202c"/>
+    
+    <!-- Command line -->
+    <text x="20" y="60" fill="#4FC08D" font-family="monospace" font-size="12">$ git status</text>
+    <text x="20" y="80" fill="#61DAFB" font-family="monospace" font-size="12">$ npm install</text>
+    <text x="20" y="100" fill="#FFD43B" font-family="monospace" font-size="12">$ docker run -it node</text>
+    <text x="20" y="120" fill="#DD0031" font-family="monospace" font-size="12">$ kubectl get pods</text>
+    
+    <!-- Prompt -->
+    <text x="20" y="160" fill="#4FC08D" font-family="monospace" font-size="12">user@dev-machine:~$</text>
+    <rect x="200" y="150" width="2" height="15" fill="#4FC08D"/>
+  </g>
+  
+  <!-- Terminal tools -->
+  <g transform="translate(100, 350)">
+    <rect x="0" y="0" width="80" height="20" rx="10" fill="#4FC08D" opacity="0.8"/>
+    <text x="40" y="13" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Zsh</text>
+  </g>
+  
+  <g transform="translate(190, 350)">
+    <rect x="0" y="0" width="80" height="20" rx="10" fill="#61DAFB" opacity="0.8"/>
+    <text x="40" y="13" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Oh My Zsh</text>
+  </g>
+  
+  <g transform="translate(280, 350)">
+    <rect x="0" y="0" width="80" height="20" rx="10" fill="#FFD43B" opacity="0.8"/>
+    <text x="40" y="13" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Powerlevel10k</text>
+  </g>
+  
+  <g transform="translate(370, 350)">
+    <rect x="0" y="0" width="80" height="20" rx="10" fill="#DD0031" opacity="0.8"/>
+    <text x="40" y="13" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">tmux</text>
+  </g>
+  
+  <g transform="translate(460, 350)">
+    <rect x="0" y="0" width="80" height="20" rx="10" fill="#3776AB" opacity="0.8"/>
+    <text x="40" y="13" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">fzf</text>
+  </g>
+  
+  <text x="400" y="320" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">Complete Terminal Setup</text>
+</svg>

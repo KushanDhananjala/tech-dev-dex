@@ -1,0 +1,675 @@
+---
+title: "Next.js Production Deployment: Complete Guide"
+description: "Deploy Next.js applications to production. Vercel, AWS, Docker, and performance optimization strategies."
+author: "TechDevDex Team"
+date: "2024-12-12"
+category: "Tutorial"
+tags: ["Next.js", "Production", "Deployment", "Performance", "Optimization"]
+readTime: "28 min"
+featured: false
+rating: 5
+featuredImage: "/images/tutorials/react-node-deployment/nextjs-production.svg"
+---
+
+# Next.js Production Deployment: Complete Guide
+
+Learn how to deploy Next.js applications to production with optimal performance, security, and scalability.
+
+## Production Deployment Overview
+
+### Deployment Options
+
+1. **Vercel** (Recommended for Next.js)
+2. **AWS** (EC2, Lambda, S3 + CloudFront)
+3. **Docker** (Any container platform)
+4. **Netlify** (Static export)
+5. **Railway** (Full-stack platform)
+
+## Vercel Deployment
+
+### Automatic Deployment
+
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Login to Vercel
+vercel login
+
+# Deploy from project directory
+vercel
+
+# Production deployment
+vercel --prod
+```
+
+### Vercel Configuration
+
+```json
+// vercel.json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "functions": {
+    "pages/api/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/old-page",
+      "destination": "/new-page",
+      "permanent": true
+    }
+  ]
+}
+```
+
+### Environment Variables
+
+```bash
+# Set environment variables in Vercel dashboard
+# Or use vercel CLI
+vercel env add DATABASE_URL
+vercel env add NEXTAUTH_SECRET
+vercel env add NEXTAUTH_URL
+```
+
+## AWS Deployment
+
+### EC2 Deployment
+
+```dockerfile
+# Dockerfile
+FROM node:18-alpine AS base
+
+# Install dependencies only when needed
+FROM base AS deps
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+
+# Install dependencies based on the preferred package manager
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+RUN \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
+
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry during the build.
+# ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN npm run build
+
+# Production image, copy all the files and run next
+FROM base AS runner
+WORKDIR /app
+
+ENV NODE_ENV production
+# Uncomment the following line in case you want to disable telemetry during runtime.
+# ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+
+# Set the correct permission for prerender cache
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
+# Automatically leverage output traces to reduce image size
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
+
+CMD ["node", "server.js"]
+```
+
+### Next.js Configuration
+
+```javascript
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'standalone',
+  experimental: {
+    outputFileTracingRoot: path.join(__dirname, '../../'),
+  },
+  images: {
+    domains: ['example.com'],
+    formats: ['image/webp', 'image/avif'],
+  },
+  compress: true,
+  poweredByHeader: false,
+  generateEtags: false,
+  httpAgentOptions: {
+    keepAlive: true,
+  },
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
+  },
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Optimize bundle
+    if (!dev && !isServer) {
+      config.optimization.splitChunks.cacheGroups = {
+        ...config.optimization.splitChunks.cacheGroups,
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      };
+    }
+    return config;
+  },
+};
+
+module.exports = nextConfig;
+```
+
+## Docker Deployment
+
+### Multi-Stage Dockerfile
+
+```dockerfile
+# Dockerfile
+FROM node:18-alpine AS base
+
+# Install dependencies only when needed
+FROM base AS deps
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+RUN \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
+
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN npm run build
+
+# Production image, copy all the files and run next
+FROM base AS runner
+WORKDIR /app
+
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+
+# Set the correct permission for prerender cache
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
+# Automatically leverage output traces to reduce image size
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
+
+CMD ["node", "server.js"]
+```
+
+### Docker Compose
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  nextjs:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://user:password@db:5432/myapp
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: myapp
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - nextjs
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+```
+
+## Performance Optimization
+
+### Image Optimization
+
+```javascript
+// next.config.js
+const nextConfig = {
+  images: {
+    domains: ['example.com'],
+    formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+};
+```
+
+### Bundle Analysis
+
+```bash
+# Install bundle analyzer
+npm install --save-dev @next/bundle-analyzer
+
+# Add to package.json
+"scripts": {
+  "analyze": "ANALYZE=true next build"
+}
+```
+
+```javascript
+// next.config.js
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+module.exports = withBundleAnalyzer(nextConfig);
+```
+
+### Caching Strategies
+
+```javascript
+// pages/api/data.js
+export default async function handler(req, res) {
+  // Set cache headers
+  res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
+  
+  const data = await fetchData();
+  res.json(data);
+}
+```
+
+### ISR (Incremental Static Regeneration)
+
+```javascript
+// pages/posts/[id].js
+export async function getStaticProps({ params }) {
+  const post = await getPost(params.id);
+  
+  return {
+    props: { post },
+    revalidate: 60, // Revalidate every 60 seconds
+  };
+}
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  
+  return {
+    paths: posts.map((post) => ({
+      params: { id: post.id },
+    })),
+    fallback: 'blocking',
+  };
+}
+```
+
+## Security Configuration
+
+### Security Headers
+
+```javascript
+// next.config.js
+const nextConfig = {
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;",
+          },
+        ],
+      },
+    ];
+  },
+};
+```
+
+### Environment Variables
+
+```bash
+# .env.local
+NEXTAUTH_URL=https://yourdomain.com
+NEXTAUTH_SECRET=your-secret-key
+DATABASE_URL=postgresql://user:password@localhost:5432/myapp
+NEXT_PUBLIC_API_URL=https://api.yourdomain.com
+```
+
+## Monitoring and Analytics
+
+### Performance Monitoring
+
+```javascript
+// pages/_app.js
+import { useEffect } from 'react';
+
+export default function App({ Component, pageProps }) {
+  useEffect(() => {
+    // Web Vitals
+    if (typeof window !== 'undefined') {
+      import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+        getCLS(console.log);
+        getFID(console.log);
+        getFCP(console.log);
+        getLCP(console.log);
+        getTTFB(console.log);
+      });
+    }
+  }, []);
+
+  return <Component {...pageProps} />;
+}
+```
+
+### Error Monitoring
+
+```javascript
+// lib/error-monitoring.js
+export function reportError(error, context) {
+  if (process.env.NODE_ENV === 'production') {
+    // Send to error monitoring service
+    console.error('Error:', error, 'Context:', context);
+  }
+}
+```
+
+## Database Configuration
+
+### Prisma Setup
+
+```javascript
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+```
+
+### Database Connection
+
+```javascript
+// lib/db.js
+import { PrismaClient } from '@prisma/client';
+
+const globalForPrisma = globalThis;
+
+export const prisma = globalForPrisma.prisma || new PrismaClient();
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
+```
+
+## CI/CD Pipeline
+
+### GitHub Actions
+
+```yaml
+# .github/workflows/deploy.yml
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run tests
+      run: npm test
+      
+    - name: Build application
+      run: npm run build
+      
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.ORG_ID }}
+        vercel-project-id: ${{ secrets.PROJECT_ID }}
+        vercel-args: '--prod'
+```
+
+## Health Checks
+
+### API Health Check
+
+```javascript
+// pages/api/health.js
+export default function handler(req, res) {
+  const healthCheck = {
+    uptime: process.uptime(),
+    message: 'OK',
+    timestamp: Date.now(),
+    environment: process.env.NODE_ENV,
+  };
+
+  try {
+    res.status(200).json(healthCheck);
+  } catch (error) {
+    healthCheck.message = error;
+    res.status(503).json(healthCheck);
+  }
+}
+```
+
+### Docker Health Check
+
+```dockerfile
+# Dockerfile
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:3000/api/health || exit 1
+```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Build Failures**
+   ```bash
+   # Check build logs
+   npm run build
+   
+   # Clear Next.js cache
+   rm -rf .next
+   npm run build
+   ```
+
+2. **Memory Issues**
+   ```bash
+   # Increase Node.js memory
+   NODE_OPTIONS="--max-old-space-size=4096" npm run build
+   ```
+
+3. **Environment Variables**
+   ```bash
+   # Check environment variables
+   vercel env ls
+   vercel env pull .env.local
+   ```
+
+### Debugging
+
+```javascript
+// next.config.js
+const nextConfig = {
+  // Enable debug mode
+  experimental: {
+    debug: process.env.NODE_ENV === 'development',
+  },
+  
+  // Logging
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
+  },
+};
+```
+
+## Best Practices
+
+### 1. Performance
+
+- Use Next.js Image component
+- Implement proper caching
+- Optimize bundle size
+- Use ISR for dynamic content
+
+### 2. Security
+
+- Set security headers
+- Validate input data
+- Use HTTPS
+- Implement rate limiting
+
+### 3. Monitoring
+
+- Set up error tracking
+- Monitor performance metrics
+- Use health checks
+- Implement logging
+
+### 4. Scalability
+
+- Use CDN for static assets
+- Implement caching strategies
+- Optimize database queries
+- Use connection pooling
+
+## Conclusion
+
+Next.js production deployment requires careful consideration of performance, security, and scalability. By following these best practices and implementing proper monitoring, you can create robust, high-performance applications.
+
+Remember to:
+- Optimize for performance
+- Implement security measures
+- Monitor application health
+- Use proper caching strategies
+- Follow deployment best practices
+
+Happy deploying! 🚀

@@ -1,0 +1,44 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fileGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3776ab;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffd43b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1e293b"/>
+  
+  <!-- File automation -->
+  <g transform="translate(400, 200)">
+    <!-- Files -->
+    <rect x="-80" y="-40" width="40" height="50" fill="url(#fileGrad)" rx="3"/>
+    <rect x="-20" y="-40" width="40" height="50" fill="url(#fileGrad)" rx="3"/>
+    <rect x="40" y="-40" width="40" height="50" fill="url(#fileGrad)" rx="3"/>
+    
+    <!-- File icons -->
+    <text x="-60" y="-15" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="8">.txt</text>
+    <text x="0" y="-15" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="8">.csv</text>
+    <text x="60" y="-15" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="8">.json</text>
+    
+    <!-- Automation arrows -->
+    <path d="M-40,10 L-20,10" stroke="#fff" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M20,10 L40,10" stroke="#fff" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Arrow marker -->
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#fff"/>
+      </marker>
+    </defs>
+    
+    <!-- Python logo -->
+    <circle cx="0" cy="40" r="20" fill="url(#fileGrad)"/>
+    <text x="0" y="47" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="14" style="font-weight:bold;">Py</text>
+    
+    <!-- Text -->
+    <text x="0" y="90" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="24" style="font-weight:bold;">Python File Automation</text>
+    <text x="0" y="115" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">File Processing and Management</text>
+  </g>
+</svg>
+

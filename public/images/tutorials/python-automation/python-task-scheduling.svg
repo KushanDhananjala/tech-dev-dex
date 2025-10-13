@@ -1,0 +1,39 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="scheduleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3776ab;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffd43b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1e293b"/>
+  
+  <!-- Task scheduling -->
+  <g transform="translate(400, 200)">
+    <!-- Clock -->
+    <circle cx="0" cy="0" r="50" stroke="url(#scheduleGrad)" stroke-width="4" fill="none"/>
+    <line x1="0" y1="0" x2="0" y2="-30" stroke="url(#scheduleGrad)" stroke-width="3"/>
+    <line x1="0" y1="0" x2="20" y2="0" stroke="url(#scheduleGrad)" stroke-width="2"/>
+    <circle cx="0" cy="0" r="4" fill="url(#scheduleGrad)"/>
+    
+    <!-- Scheduled tasks -->
+    <rect x="-80" y="40" width="60" height="20" fill="url(#scheduleGrad)" rx="3"/>
+    <text x="-50" y="55" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="8">Daily</text>
+    
+    <rect x="-10" y="40" width="60" height="20" fill="url(#scheduleGrad)" rx="3"/>
+    <text x="20" y="55" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="8">Weekly</text>
+    
+    <rect x="60" y="40" width="60" height="20" fill="url(#scheduleGrad)" rx="3"/>
+    <text x="90" y="55" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="8">Monthly</text>
+    
+    <!-- Python logo -->
+    <circle cx="0" cy="90" r="20" fill="url(#scheduleGrad)"/>
+    <text x="0" y="97" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="14" style="font-weight:bold;">Py</text>
+    
+    <!-- Text -->
+    <text x="0" y="140" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="24" style="font-weight:bold;">Python Task Scheduling</text>
+    <text x="0" y="165" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">Automated Task Management</text>
+  </g>
+</svg>
+

@@ -1,0 +1,566 @@
+---
+title: "GitHub Actions CI/CD: Complete Setup Guide"
+description: "Master GitHub Actions for automated testing, building, and deployment. Workflows, secrets, and advanced techniques."
+author: "TechDevDex Team"
+date: "2024-12-12"
+category: "Tutorial"
+tags: ["GitHub Actions", "CI/CD", "Automation", "DevOps"]
+readTime: "28 min"
+featured: false
+rating: 5
+featuredImage: "/images/tutorials/git-github-tutorials/github-actions.svg"
+---
+
+# GitHub Actions CI/CD: Complete Setup Guide
+
+GitHub Actions is a powerful CI/CD platform that automates your software development workflows. Learn how to set up automated testing, building, and deployment.
+
+## What is GitHub Actions?
+
+GitHub Actions is a continuous integration and continuous deployment (CI/CD) platform that allows you to automate your software development workflows directly in your GitHub repository.
+
+### Key Features
+
+- **Event-driven**: Trigger workflows on push, pull request, release, etc.
+- **Matrix builds**: Test across multiple environments
+- **Secrets management**: Secure handling of sensitive data
+- **Marketplace**: Thousands of pre-built actions
+- **Self-hosted runners**: Run workflows on your own infrastructure
+
+## Getting Started
+
+### Basic Workflow Structure
+
+```yaml
+# .github/workflows/ci.yml
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run tests
+      run: npm test
+      
+    - name: Run linting
+      run: npm run lint
+```
+
+### Workflow Triggers
+
+```yaml
+# Multiple triggers
+on:
+  push:
+    branches: [ main, develop ]
+    paths: [ 'src/**', 'package.json' ]
+  pull_request:
+    branches: [ main ]
+    types: [ opened, synchronize, reopened ]
+  release:
+    types: [ published ]
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+  workflow_dispatch:  # Manual trigger
+```
+
+## Essential Actions
+
+### Checkout Code
+
+```yaml
+- name: Checkout code
+  uses: actions/checkout@v3
+  with:
+    fetch-depth: 0  # Fetch all history
+    token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### Setup Node.js
+
+```yaml
+- name: Setup Node.js
+  uses: actions/setup-node@v3
+  with:
+    node-version: '18'
+    cache: 'npm'
+    cache-dependency-path: 'package-lock.json'
+```
+
+### Setup Python
+
+```yaml
+- name: Setup Python
+  uses: actions/setup-python@v4
+  with:
+    python-version: '3.11'
+    cache: 'pip'
+```
+
+### Setup Docker
+
+```yaml
+- name: Set up Docker Buildx
+  uses: docker/setup-buildx-action@v2
+  
+- name: Login to Docker Hub
+  uses: docker/login-action@v2
+  with:
+    username: ${{ secrets.DOCKER_USERNAME }}
+    password: ${{ secrets.DOCKER_PASSWORD }}
+    
+- name: Build and push
+  uses: docker/build-push-action@v4
+  with:
+    context: .
+    push: true
+    tags: myapp:latest
+```
+
+## Advanced Workflows
+
+### Matrix Builds
+
+```yaml
+name: Test Matrix
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16, 18, 20]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run tests
+      run: npm test
+```
+
+### Conditional Steps
+
+```yaml
+- name: Run tests
+  if: github.event_name == 'pull_request'
+  run: npm test
+
+- name: Deploy to staging
+  if: github.ref == 'refs/heads/develop'
+  run: npm run deploy:staging
+
+- name: Deploy to production
+  if: github.ref == 'refs/heads/main'
+  run: npm run deploy:production
+```
+
+### Parallel Jobs
+
+```yaml
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run tests
+      run: npm test
+      
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build application
+      run: npm run build
+      
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [test, build]
+    steps:
+    - name: Deploy application
+      run: echo "Deploying..."
+```
+
+## Security and Secrets
+
+### Using Secrets
+
+```yaml
+- name: Deploy to production
+  env:
+    API_KEY: ${{ secrets.API_KEY }}
+    DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  run: |
+    echo "Deploying with API key: ${API_KEY}"
+    npm run deploy
+```
+
+### Environment Protection
+
+```yaml
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - name: Deploy to production
+      run: npm run deploy:production
+```
+
+### Security Scanning
+
+```yaml
+- name: Run Trivy vulnerability scanner
+  uses: aquasecurity/trivy-action@master
+  with:
+    image-ref: 'myapp:latest'
+    format: 'sarif'
+    output: 'trivy-results.sarif'
+    
+- name: Upload Trivy scan results
+  uses: github/codeql-action/upload-sarif@v2
+  with:
+    sarif_file: 'trivy-results.sarif'
+```
+
+## Deployment Strategies
+
+### Deploy to AWS
+
+```yaml
+- name: Configure AWS credentials
+  uses: aws-actions/configure-aws-credentials@v2
+  with:
+    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    aws-region: us-east-1
+    
+- name: Deploy to AWS
+  run: |
+    aws s3 sync dist/ s3://my-bucket
+    aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_ID }} --paths "/*"
+```
+
+### Deploy to Vercel
+
+```yaml
+- name: Deploy to Vercel
+  uses: amondnet/vercel-action@v25
+  with:
+    vercel-token: ${{ secrets.VERCEL_TOKEN }}
+    vercel-org-id: ${{ secrets.ORG_ID }}
+    vercel-project-id: ${{ secrets.PROJECT_ID }}
+    working-directory: ./
+```
+
+### Deploy to Kubernetes
+
+```yaml
+- name: Deploy to Kubernetes
+  uses: azure/k8s-deploy@v1
+  with:
+    manifests: |
+      k8s/deployment.yml
+      k8s/service.yml
+    images: |
+      myapp:${{ github.sha }}
+    namespace: production
+```
+
+## Caching Strategies
+
+### Node.js Caching
+
+```yaml
+- name: Cache node modules
+  uses: actions/cache@v3
+  with:
+    path: ~/.npm
+    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+    restore-keys: |
+      ${{ runner.os }}-node-
+```
+
+### Docker Layer Caching
+
+```yaml
+- name: Build with cache
+  uses: docker/build-push-action@v4
+  with:
+    context: .
+    push: true
+    tags: myapp:latest
+    cache-from: type=gha
+    cache-to: type=gha,mode=max
+```
+
+### Custom Caching
+
+```yaml
+- name: Cache build artifacts
+  uses: actions/cache@v3
+  with:
+    path: |
+      dist/
+      build/
+    key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+```
+
+## Notifications and Reporting
+
+### Slack Notifications
+
+```yaml
+- name: Notify Slack
+  uses: 8398a7/action-slack@v3
+  with:
+    status: ${{ job.status }}
+    channel: '#deployments'
+    webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+  if: always()
+```
+
+### Email Notifications
+
+```yaml
+- name: Send email notification
+  uses: dawidd6/action-send-mail@v3
+  with:
+    server_address: smtp.gmail.com
+    server_port: 587
+    username: ${{ secrets.EMAIL_USERNAME }}
+    password: ${{ secrets.EMAIL_PASSWORD }}
+    subject: 'Deployment Status: ${{ job.status }}'
+    to: ${{ secrets.NOTIFICATION_EMAIL }}
+    from: GitHub Actions
+    body: |
+      Deployment completed with status: ${{ job.status }}
+      Commit: ${{ github.sha }}
+      Author: ${{ github.actor }}
+```
+
+### GitHub Pages Deployment
+
+```yaml
+- name: Deploy to GitHub Pages
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    publish_dir: ./dist
+```
+
+## Advanced Techniques
+
+### Self-Hosted Runners
+
+```yaml
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build on self-hosted runner
+      run: npm run build
+```
+
+### Workflow Dependencies
+
+```yaml
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      image-tag: ${{ steps.meta.outputs.tags }}
+    steps:
+    - name: Build image
+      id: meta
+      run: echo "image-tag=myapp:${{ github.sha }}" >> $GITHUB_OUTPUT
+      
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Deploy image
+      run: echo "Deploying ${{ needs.build.outputs.image-tag }}"
+```
+
+### Reusable Workflows
+
+```yaml
+# .github/workflows/deploy.yml
+name: Deploy Application
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      image-tag:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to ${{ inputs.environment }}
+      run: echo "Deploying ${{ inputs.image-tag }} to ${{ inputs.environment }}"
+```
+
+```yaml
+# .github/workflows/ci.yml
+name: CI Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run tests
+      run: npm test
+      
+  deploy:
+    needs: test
+    uses: ./.github/workflows/deploy.yml
+    with:
+      environment: production
+      image-tag: myapp:${{ github.sha }}
+```
+
+## Best Practices
+
+### 1. Use Specific Action Versions
+
+```yaml
+# Good
+- uses: actions/checkout@v3
+
+# Bad
+- uses: actions/checkout@master
+```
+
+### 2. Optimize Workflow Performance
+
+```yaml
+# Use concurrency to prevent duplicate runs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+```
+
+### 3. Clean Up Resources
+
+```yaml
+- name: Cleanup
+  if: always()
+  run: |
+    docker system prune -f
+    rm -rf node_modules
+```
+
+### 4. Use Environment Variables
+
+```yaml
+env:
+  NODE_ENV: production
+  DEBUG: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CUSTOM_VAR: value
+    steps:
+    - name: Build
+      run: npm run build
+```
+
+### 5. Implement Proper Error Handling
+
+```yaml
+- name: Run tests
+  continue-on-error: true
+  run: npm test
+
+- name: Check test results
+  if: steps.test.outcome == 'failure'
+  run: echo "Tests failed but continuing..."
+```
+
+## Monitoring and Debugging
+
+### Workflow Debugging
+
+```yaml
+- name: Debug information
+  run: |
+    echo "Repository: ${{ github.repository }}"
+    echo "Ref: ${{ github.ref }}"
+    echo "SHA: ${{ github.sha }}"
+    echo "Actor: ${{ github.actor }}"
+    echo "Event: ${{ github.event_name }}"
+```
+
+### Artifact Management
+
+```yaml
+- name: Upload build artifacts
+  uses: actions/upload-artifact@v3
+  with:
+    name: build-files
+    path: dist/
+    retention-days: 30
+
+- name: Download artifacts
+  uses: actions/download-artifact@v3
+  with:
+    name: build-files
+    path: dist/
+```
+
+## Conclusion
+
+GitHub Actions provides powerful automation capabilities for your development workflow. By following these best practices and using the right patterns, you can create robust, efficient CI/CD pipelines.
+
+Remember to:
+- Start simple and iterate
+- Use specific action versions
+- Implement proper security
+- Monitor and debug workflows
+- Follow best practices
+- Keep workflows maintainable
+
+Happy automating! 🚀

@@ -1,0 +1,641 @@
+---
+title: "AWS Amplify Deployment: Complete React App Guide"
+description: "Deploy React applications to AWS Amplify. CI/CD, custom domains, environment variables, and production optimization."
+author: "TechDevDex Team"
+date: "2024-12-15"
+category: "Tutorial"
+tags: ["AWS Amplify", "React", "Deployment", "CI/CD", "AWS"]
+readTime: "25 min"
+featured: true
+rating: 5
+featuredImage: "/images/tutorials/react-node-deployment/aws-amplify.svg"
+---
+
+# AWS Amplify Deployment: Complete React App Guide
+
+AWS Amplify is a powerful platform for deploying full-stack applications. Learn how to deploy React apps with automatic CI/CD, custom domains, and production optimizations.
+
+## What is AWS Amplify?
+
+AWS Amplify is a development platform that provides a complete set of tools and services for building, deploying, and managing full-stack applications on AWS.
+
+### Key Features
+
+- **Hosting**: Static website hosting with global CDN
+- **CI/CD**: Automatic deployments from Git repositories
+- **Custom Domains**: Easy domain management
+- **Environment Variables**: Secure configuration management
+- **Backend Services**: Authentication, APIs, and databases
+- **Monitoring**: Built-in analytics and monitoring
+
+## Getting Started
+
+### Prerequisites
+
+- AWS Account
+- Node.js 18+ installed
+- Git repository with React app
+- AWS CLI configured (optional)
+
+### Install Amplify CLI
+
+```bash
+# Install Amplify CLI globally
+npm install -g @aws-amplify/cli
+
+# Configure Amplify CLI
+amplify configure
+
+# Verify installation
+amplify --version
+```
+
+## Setting Up Your React App
+
+### Initialize Amplify in Your Project
+
+```bash
+# Navigate to your React project
+cd my-react-app
+
+# Initialize Amplify
+amplify init
+
+# Follow the prompts:
+# ? Enter a name for the project: my-react-app
+# ? Initialize a new environment: Yes
+# ? Choose your default editor: Visual Studio Code
+# ? Choose the type of app that you're building: javascript
+# ? What javascript framework are you using: react
+# ? Source Directory Path: src
+# ? Distribution Directory Path: build
+# ? Build Command: npm run build
+# ? Start Command: npm start
+```
+
+### Configure Build Settings
+
+```yaml
+# amplify.yml
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: build
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+```
+
+## Deployment Methods
+
+### Method 1: Amplify Console (Recommended)
+
+1. **Connect Repository**
+   - Go to AWS Amplify Console
+   - Click "New app" → "Host web app"
+   - Connect your Git provider (GitHub, GitLab, Bitbucket)
+   - Select your repository and branch
+
+2. **Configure Build Settings**
+   ```yaml
+   version: 1
+   frontend:
+     phases:
+       preBuild:
+         commands:
+           - npm ci
+       build:
+         commands:
+           - npm run build
+     artifacts:
+       baseDirectory: build
+       files:
+         - '**/*'
+   ```
+
+3. **Deploy**
+   - Review settings and click "Save and deploy"
+   - Amplify will automatically build and deploy your app
+
+### Method 2: Amplify CLI
+
+```bash
+# Add hosting to your project
+amplify add hosting
+
+# Choose hosting options:
+# ? Select the plugin module to execute: Hosting with Amplify Console
+# ? Choose a type: Manual deployment
+
+# Deploy your app
+amplify publish
+```
+
+### Method 3: GitHub Actions Integration
+
+```yaml
+# .github/workflows/amplify-deploy.yml
+name: Deploy to AWS Amplify
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build application
+      run: npm run build
+      
+    - name: Deploy to Amplify
+      uses: aws-actions/amplify-cli-action@v1
+      with:
+        amplify-version: latest
+        amplify-command: publish
+        amplify-app-id: ${{ secrets.AMPLIFY_APP_ID }}
+        amplify-branch: main
+        amplify-env: production
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: us-east-1
+```
+
+## Environment Variables
+
+### Setting Environment Variables
+
+```bash
+# Using Amplify Console
+# Go to App settings > Environment variables
+
+# Add variables:
+REACT_APP_API_URL=https://api.example.com
+REACT_APP_ENVIRONMENT=production
+REACT_APP_VERSION=1.0.0
+```
+
+### Using Environment Variables in React
+
+```javascript
+// src/config/environment.js
+const config = {
+  apiUrl: process.env.REACT_APP_API_URL || 'http://localhost:3001',
+  environment: process.env.REACT_APP_ENVIRONMENT || 'development',
+  version: process.env.REACT_APP_VERSION || '1.0.0',
+  isProduction: process.env.NODE_ENV === 'production'
+};
+
+export default config;
+```
+
+### Secure Environment Variables
+
+```bash
+# For sensitive data, use AWS Systems Manager Parameter Store
+# In your build settings:
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+        - aws ssm get-parameter --name "/myapp/database-url" --with-decryption --query "Parameter.Value" --output text > .env.local
+    build:
+      commands:
+        - npm run build
+```
+
+## Custom Domains
+
+### Adding Custom Domain
+
+1. **In Amplify Console**
+   - Go to Domain management
+   - Click "Add domain"
+   - Enter your domain name
+   - Follow DNS configuration instructions
+
+2. **DNS Configuration**
+   ```dns
+   # Add CNAME record
+   www.yourdomain.com CNAME d1234567890.cloudfront.net
+   
+   # Add A record for root domain
+   yourdomain.com A 192.0.2.1
+   ```
+
+3. **SSL Certificate**
+   - Amplify automatically provisions SSL certificates
+   - Supports both www and non-www domains
+   - Automatic certificate renewal
+
+### Domain Verification
+
+```bash
+# Verify domain ownership
+# Add TXT record to your DNS:
+# _amazonses.yourdomain.com TXT "verification-token"
+```
+
+## Performance Optimization
+
+### Build Optimization
+
+```javascript
+// webpack.config.js
+const path = require('path');
+
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: 'static/js/[name].[contenthash:8].js',
+    chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
+    clean: true
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  }
+};
+```
+
+### CDN Configuration
+
+```yaml
+# amplify.yml
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: build
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+      - build/static/**/*
+```
+
+### Caching Headers
+
+```javascript
+// src/App.js
+import { useEffect } from 'react';
+
+function App() {
+  useEffect(() => {
+    // Set cache headers for static assets
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.href = '/static/js/main.js';
+    link.as = 'script';
+    document.head.appendChild(link);
+  }, []);
+
+  return (
+    <div className="App">
+      {/* Your app content */}
+    </div>
+  );
+}
+```
+
+## Authentication Integration
+
+### Adding Authentication
+
+```bash
+# Add authentication to your project
+amplify add auth
+
+# Choose configuration:
+# ? Do you want to use the default authentication and security configuration: Yes
+# ? How do you want users to be able to sign in: Username
+# ? Do you want to configure advanced settings: No
+```
+
+### Using Authentication in React
+
+```javascript
+// src/components/Auth.js
+import { Auth } from 'aws-amplify';
+import { useState, useEffect } from 'react';
+
+function AuthComponent() {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    checkAuthState();
+  }, []);
+
+  const checkAuthState = async () => {
+    try {
+      const currentUser = await Auth.currentAuthenticatedUser();
+      setUser(currentUser);
+    } catch (error) {
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const signIn = async (username, password) => {
+    try {
+      const user = await Auth.signIn(username, password);
+      setUser(user);
+    } catch (error) {
+      console.error('Sign in error:', error);
+    }
+  };
+
+  const signOut = async () => {
+    try {
+      await Auth.signOut();
+      setUser(null);
+    } catch (error) {
+      console.error('Sign out error:', error);
+    }
+  };
+
+  if (loading) return <div>Loading...</div>;
+
+  return (
+    <div>
+      {user ? (
+        <div>
+          <p>Welcome, {user.username}!</p>
+          <button onClick={signOut}>Sign Out</button>
+        </div>
+      ) : (
+        <div>
+          <button onClick={() => signIn('username', 'password')}>
+            Sign In
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default AuthComponent;
+```
+
+## API Integration
+
+### Adding API
+
+```bash
+# Add REST API
+amplify add api
+
+# Choose configuration:
+# ? Please select from one of the below mentioned services: REST
+# ? Provide a friendly name for your resource: myapi
+# ? Provide a path: /items
+# ? Choose a Lambda source: Create a new Lambda function
+# ? Provide a friendly name for your resource: myfunction
+# ? Provide the AWS Lambda function name: myfunction
+# ? Choose the function template: Serverless ExpressJS function
+# ? Do you want to access other resources in this project from your Lambda function: No
+# ? Do you want to invoke this function on a recurring schedule: No
+# ? Do you want to configure Lambda layers for this function: No
+# ? Do you want to edit the local lambda function now: No
+```
+
+### Using API in React
+
+```javascript
+// src/services/api.js
+import { API } from 'aws-amplify';
+
+const apiName = 'myapi';
+const path = '/items';
+
+export const apiService = {
+  async getItems() {
+    try {
+      const response = await API.get(apiName, path);
+      return response;
+    } catch (error) {
+      console.error('Error fetching items:', error);
+      throw error;
+    }
+  },
+
+  async createItem(item) {
+    try {
+      const response = await API.post(apiName, path, { body: item });
+      return response;
+    } catch (error) {
+      console.error('Error creating item:', error);
+      throw error;
+    }
+  },
+
+  async updateItem(id, item) {
+    try {
+      const response = await API.put(apiName, `${path}/${id}`, { body: item });
+      return response;
+    } catch (error) {
+      console.error('Error updating item:', error);
+      throw error;
+    }
+  },
+
+  async deleteItem(id) {
+    try {
+      const response = await API.del(apiName, `${path}/${id}`);
+      return response;
+    } catch (error) {
+      console.error('Error deleting item:', error);
+      throw error;
+    }
+  }
+};
+```
+
+## Monitoring and Analytics
+
+### Adding Analytics
+
+```bash
+# Add analytics to your project
+amplify add analytics
+
+# Choose configuration:
+# ? Provide your pinpoint resource name: myapp
+# ? Apps need authorization to send analytics events. Do you want to allow guests and unauthenticated users to send analytics events: Yes
+```
+
+### Using Analytics in React
+
+```javascript
+// src/App.js
+import { Analytics } from 'aws-amplify';
+import { useEffect } from 'react';
+
+function App() {
+  useEffect(() => {
+    // Record page view
+    Analytics.record({ name: 'pageView' });
+  }, []);
+
+  const handleButtonClick = () => {
+    // Record custom event
+    Analytics.record({
+      name: 'buttonClick',
+      attributes: {
+        buttonName: 'submit',
+        page: 'home'
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleButtonClick}>
+        Submit
+      </button>
+    </div>
+  );
+}
+```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Build Failures**
+   ```bash
+   # Check build logs in Amplify Console
+   # Common issues:
+   # - Missing environment variables
+   # - Build command errors
+   # - Dependency issues
+   ```
+
+2. **Environment Variables Not Working**
+   ```bash
+   # Ensure variables start with REACT_APP_
+   # Check build settings
+   # Verify variable names
+   ```
+
+3. **Custom Domain Issues**
+   ```bash
+   # Check DNS configuration
+   # Verify SSL certificate
+   # Check domain verification
+   ```
+
+### Debugging Tips
+
+```bash
+# Enable debug mode
+export AMPLIFY_DEBUG=true
+
+# Check Amplify status
+amplify status
+
+# View logs
+amplify logs
+
+# Check environment
+amplify env list
+```
+
+## Best Practices
+
+### 1. Environment Management
+
+```bash
+# Use different environments
+amplify env add production
+amplify env add staging
+amplify env add development
+
+# Switch environments
+amplify env checkout production
+```
+
+### 2. Security
+
+```bash
+# Use IAM roles for CI/CD
+# Enable MFA for AWS accounts
+# Use least privilege principle
+# Regular security audits
+```
+
+### 3. Performance
+
+```bash
+# Optimize bundle size
+# Use CDN effectively
+# Implement caching strategies
+# Monitor performance metrics
+```
+
+### 4. Cost Optimization
+
+```bash
+# Use appropriate instance sizes
+# Implement auto-scaling
+# Monitor usage patterns
+# Regular cost reviews
+```
+
+## Conclusion
+
+AWS Amplify provides a powerful platform for deploying React applications with minimal configuration. By following these best practices and implementing proper monitoring, you can create robust, scalable applications.
+
+Remember to:
+- Use environment variables for configuration
+- Implement proper authentication
+- Monitor performance and costs
+- Follow security best practices
+- Regular testing and updates
+
+Happy deploying! 🚀

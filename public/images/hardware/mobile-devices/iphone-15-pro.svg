@@ -1,0 +1,42 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="iphoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1d1d1f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c2c2e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- iPhone Body -->
+  <rect x="150" y="50" width="100" height="200" rx="20" fill="url(#iphoneGradient)" stroke="#3a3a3c" stroke-width="2"/>
+  
+  <!-- Screen -->
+  <rect x="160" y="70" width="80" height="160" rx="15" fill="url(#screenGradient)" />
+  
+  <!-- Screen Content -->
+  <rect x="170" y="80" width="60" height="15" fill="#007AFF" opacity="0.8" />
+  <rect x="170" y="105" width="45" height="6" fill="#34C759" opacity="0.7" />
+  <rect x="170" y="115" width="50" height="6" fill="#FF9500" opacity="0.7" />
+  <rect x="170" y="125" width="40" height="6" fill="#FF3B30" opacity="0.7" />
+  
+  <!-- Home Indicator -->
+  <rect x="190" y="220" width="20" height="3" rx="2" fill="#ffffff" opacity="0.6" />
+  
+  <!-- iPhone 15 Pro Badge -->
+  <rect x="320" y="120" width="30" height="15" rx="3" fill="#FF9500" />
+  <text x="335" y="130" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">15 Pro</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="250" r="4" fill="#34C759" />
+  <text x="110" y="255" fill="#34C759" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">A17 Pro</text>
+  
+  <circle cx="200" cy="250" r="4" fill="#007AFF" />
+  <text x="210" y="255" fill="#007AFF" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Titanium</text>
+  
+  <circle cx="300" cy="250" r="4" fill="#FF9500" />
+  <text x="310" y="255" fill="#FF9500" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Pro Camera</text>
+</svg>

@@ -1,0 +1,864 @@
+---
+title: "Algorithm Design: Complete Guide"
+description: "Master algorithm design principles. Time complexity, space complexity, common patterns, and optimization techniques for efficient code."
+author: "TechDevDex Team"
+date: "2024-12-15"
+category: "Tutorial"
+tags: ["Algorithms", "Design Patterns", "Complexity", "Optimization", "Programming"]
+readTime: "32 min"
+featured: true
+rating: 5
+featuredImage: "/images/tutorials/programming-tips/algorithm-design.jpg"
+---
+
+# Algorithm Design: Complete Guide
+
+Learn how to design efficient algorithms. From basic principles to advanced optimization techniques and common design patterns.
+
+## Algorithm Design Principles
+
+### Understanding Complexity
+
+```python
+# Time Complexity Examples
+def linear_search(arr, target):
+    """O(n) - Linear time complexity"""
+    for i, element in enumerate(arr):
+        if element == target:
+            return i
+    return -1
+
+def binary_search(arr, target):
+    """O(log n) - Logarithmic time complexity"""
+    left, right = 0, len(arr) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+def bubble_sort(arr):
+    """O(n²) - Quadratic time complexity"""
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+def merge_sort(arr):
+    """O(n log n) - Linearithmic time complexity"""
+    if len(arr) <= 1:
+        return arr
+    
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    
+    return merge(left, right)
+
+def merge(left, right):
+    """Merge two sorted arrays"""
+    result = []
+    i = j = 0
+    
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+```
+
+### Space Complexity Analysis
+
+```python
+def fibonacci_recursive(n):
+    """O(n) space complexity - Call stack"""
+    if n <= 1:
+        return n
+    return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+
+def fibonacci_iterative(n):
+    """O(1) space complexity - Constant space"""
+    if n <= 1:
+        return n
+    
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+    return b
+
+def fibonacci_memoized(n, memo={}):
+    """O(n) space complexity - Memoization table"""
+    if n in memo:
+        return memo[n]
+    if n <= 1:
+        return n
+    
+    memo[n] = fibonacci_memoized(n - 1, memo) + fibonacci_memoized(n - 2, memo)
+    return memo[n]
+```
+
+## Common Algorithm Patterns
+
+### Two Pointers Technique
+
+```python
+def two_sum_sorted(arr, target):
+    """Two pointers for sorted array"""
+    left, right = 0, len(arr) - 1
+    
+    while left < right:
+        current_sum = arr[left] + arr[right]
+        if current_sum == target:
+            return [left, right]
+        elif current_sum < target:
+            left += 1
+        else:
+            right -= 1
+    return []
+
+def remove_duplicates(arr):
+    """Remove duplicates using two pointers"""
+    if not arr:
+        return 0
+    
+    slow = 0
+    for fast in range(1, len(arr)):
+        if arr[fast] != arr[slow]:
+            slow += 1
+            arr[slow] = arr[fast]
+    
+    return slow + 1
+
+def is_palindrome(s):
+    """Check if string is palindrome"""
+    left, right = 0, len(s) - 1
+    
+    while left < right:
+        if s[left] != s[right]:
+            return False
+        left += 1
+        right -= 1
+    return True
+```
+
+### Sliding Window Technique
+
+```python
+def max_sum_subarray(arr, k):
+    """Maximum sum of subarray of size k"""
+    if len(arr) < k:
+        return -1
+    
+    # Calculate sum of first window
+    window_sum = sum(arr[:k])
+    max_sum = window_sum
+    
+    # Slide the window
+    for i in range(k, len(arr)):
+        window_sum = window_sum - arr[i - k] + arr[i]
+        max_sum = max(max_sum, window_sum)
+    
+    return max_sum
+
+def longest_substring_without_repeating(s):
+    """Longest substring without repeating characters"""
+    char_set = set()
+    left = 0
+    max_length = 0
+    
+    for right in range(len(s)):
+        while s[right] in char_set:
+            char_set.remove(s[left])
+            left += 1
+        
+        char_set.add(s[right])
+        max_length = max(max_length, right - left + 1)
+    
+    return max_length
+
+def min_window_substring(s, t):
+    """Minimum window substring containing all characters of t"""
+    if not s or not t:
+        return ""
+    
+    # Count characters in t
+    t_count = {}
+    for char in t:
+        t_count[char] = t_count.get(char, 0) + 1
+    
+    required = len(t_count)
+    formed = 0
+    
+    window_counts = {}
+    left = right = 0
+    min_len = float('inf')
+    min_left = 0
+    
+    while right < len(s):
+        char = s[right]
+        window_counts[char] = window_counts.get(char, 0) + 1
+        
+        if char in t_count and window_counts[char] == t_count[char]:
+            formed += 1
+        
+        while left <= right and formed == required:
+            char = s[left]
+            
+            if right - left + 1 < min_len:
+                min_len = right - left + 1
+                min_left = left
+            
+            window_counts[char] -= 1
+            if char in t_count and window_counts[char] < t_count[char]:
+                formed -= 1
+            
+            left += 1
+        
+        right += 1
+    
+    return s[min_left:min_left + min_len] if min_len != float('inf') else ""
+```
+
+### Dynamic Programming
+
+```python
+def fibonacci_dp(n):
+    """Fibonacci using dynamic programming"""
+    if n <= 1:
+        return n
+    
+    dp = [0] * (n + 1)
+    dp[1] = 1
+    
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]
+    
+    return dp[n]
+
+def longest_common_subsequence(text1, text2):
+    """Longest common subsequence using DP"""
+    m, n = len(text1), len(text2)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if text1[i - 1] == text2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1] + 1
+            else:
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+    
+    return dp[m][n]
+
+def knapsack_01(weights, values, capacity):
+    """0/1 Knapsack problem using DP"""
+    n = len(weights)
+    dp = [[0] * (capacity + 1) for _ in range(n + 1)]
+    
+    for i in range(1, n + 1):
+        for w in range(1, capacity + 1):
+            if weights[i - 1] <= w:
+                dp[i][w] = max(
+                    values[i - 1] + dp[i - 1][w - weights[i - 1]],
+                    dp[i - 1][w]
+                )
+            else:
+                dp[i][w] = dp[i - 1][w]
+    
+    return dp[n][capacity]
+
+def coin_change(coins, amount):
+    """Minimum coins to make amount"""
+    dp = [float('inf')] * (amount + 1)
+    dp[0] = 0
+    
+    for coin in coins:
+        for i in range(coin, amount + 1):
+            dp[i] = min(dp[i], dp[i - coin] + 1)
+    
+    return dp[amount] if dp[amount] != float('inf') else -1
+```
+
+### Greedy Algorithms
+
+```python
+def activity_selection(activities):
+    """Activity selection problem - greedy approach"""
+    # Sort by finish time
+    activities.sort(key=lambda x: x[1])
+    
+    selected = [activities[0]]
+    last_finish = activities[0][1]
+    
+    for start, finish in activities[1:]:
+        if start >= last_finish:
+            selected.append((start, finish))
+            last_finish = finish
+    
+    return selected
+
+def fractional_knapsack(items, capacity):
+    """Fractional knapsack - greedy approach"""
+    # Sort by value/weight ratio
+    items.sort(key=lambda x: x[1] / x[0], reverse=True)
+    
+    total_value = 0
+    knapsack = []
+    
+    for weight, value in items:
+        if capacity >= weight:
+            knapsack.append((weight, value))
+            total_value += value
+            capacity -= weight
+        else:
+            # Take fraction
+            fraction = capacity / weight
+            knapsack.append((capacity, value * fraction))
+            total_value += value * fraction
+            break
+    
+    return total_value, knapsack
+
+def huffman_coding(frequencies):
+    """Huffman coding - greedy approach"""
+    import heapq
+    
+    # Create priority queue
+    heap = [[freq, [char, ""]] for char, freq in frequencies.items()]
+    heapq.heapify(heap)
+    
+    while len(heap) > 1:
+        left = heapq.heappop(heap)
+        right = heapq.heappop(heap)
+        
+        # Add '0' to left codes, '1' to right codes
+        for pair in left[1:]:
+            pair[1] = '0' + pair[1]
+        for pair in right[1:]:
+            pair[1] = '1' + pair[1]
+        
+        heapq.heappush(heap, [left[0] + right[0]] + left[1:] + right[1:])
+    
+    return dict(heap[0][1:])
+```
+
+## Graph Algorithms
+
+### Breadth-First Search (BFS)
+
+```python
+from collections import deque
+
+def bfs(graph, start):
+    """Breadth-first search"""
+    visited = set()
+    queue = deque([start])
+    visited.add(start)
+    result = []
+    
+    while queue:
+        vertex = queue.popleft()
+        result.append(vertex)
+        
+        for neighbor in graph[vertex]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+    
+    return result
+
+def shortest_path_bfs(graph, start, end):
+    """Shortest path using BFS"""
+    if start == end:
+        return [start]
+    
+    visited = set()
+    queue = deque([(start, [start])])
+    visited.add(start)
+    
+    while queue:
+        vertex, path = queue.popleft()
+        
+        for neighbor in graph[vertex]:
+            if neighbor == end:
+                return path + [neighbor]
+            
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append((neighbor, path + [neighbor]))
+    
+    return None
+
+def level_order_traversal(root):
+    """Level order traversal of binary tree"""
+    if not root:
+        return []
+    
+    result = []
+    queue = deque([root])
+    
+    while queue:
+        level_size = len(queue)
+        level = []
+        
+        for _ in range(level_size):
+            node = queue.popleft()
+            level.append(node.val)
+            
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        
+        result.append(level)
+    
+    return result
+```
+
+### Depth-First Search (DFS)
+
+```python
+def dfs_recursive(graph, start, visited=None):
+    """DFS using recursion"""
+    if visited is None:
+        visited = set()
+    
+    visited.add(start)
+    result = [start]
+    
+    for neighbor in graph[start]:
+        if neighbor not in visited:
+            result.extend(dfs_recursive(graph, neighbor, visited))
+    
+    return result
+
+def dfs_iterative(graph, start):
+    """DFS using iteration"""
+    visited = set()
+    stack = [start]
+    result = []
+    
+    while stack:
+        vertex = stack.pop()
+        if vertex not in visited:
+            visited.add(vertex)
+            result.append(vertex)
+            
+            for neighbor in graph[vertex]:
+                if neighbor not in visited:
+                    stack.append(neighbor)
+    
+    return result
+
+def topological_sort(graph):
+    """Topological sort using DFS"""
+    visited = set()
+    stack = []
+    
+    def dfs(vertex):
+        visited.add(vertex)
+        for neighbor in graph[vertex]:
+            if neighbor not in visited:
+                dfs(neighbor)
+        stack.append(vertex)
+    
+    for vertex in graph:
+        if vertex not in visited:
+            dfs(vertex)
+    
+    return stack[::-1]
+```
+
+### Shortest Path Algorithms
+
+```python
+import heapq
+
+def dijkstra(graph, start):
+    """Dijkstra's algorithm for shortest path"""
+    distances = {vertex: float('inf') for vertex in graph}
+    distances[start] = 0
+    pq = [(0, start)]
+    
+    while pq:
+        current_dist, current_vertex = heapq.heappop(pq)
+        
+        if current_dist > distances[current_vertex]:
+            continue
+        
+        for neighbor, weight in graph[current_vertex].items():
+            distance = current_dist + weight
+            
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(pq, (distance, neighbor))
+    
+    return distances
+
+def floyd_warshall(graph):
+    """Floyd-Warshall algorithm for all-pairs shortest path"""
+    n = len(graph)
+    dist = [[float('inf')] * n for _ in range(n)]
+    
+    # Initialize distances
+    for i in range(n):
+        dist[i][i] = 0
+        for j, weight in graph[i].items():
+            dist[i][j] = weight
+    
+    # Floyd-Warshall algorithm
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+    
+    return dist
+
+def bellman_ford(graph, start):
+    """Bellman-Ford algorithm for shortest path with negative weights"""
+    n = len(graph)
+    distances = [float('inf')] * n
+    distances[start] = 0
+    
+    # Relax edges n-1 times
+    for _ in range(n - 1):
+        for u in range(n):
+            for v, weight in graph[u].items():
+                if distances[u] + weight < distances[v]:
+                    distances[v] = distances[u] + weight
+    
+    # Check for negative cycles
+    for u in range(n):
+        for v, weight in graph[u].items():
+            if distances[u] + weight < distances[v]:
+                return None  # Negative cycle detected
+    
+    return distances
+```
+
+## Tree Algorithms
+
+### Binary Tree Traversals
+
+```python
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def inorder_traversal(root):
+    """Inorder traversal: Left -> Root -> Right"""
+    if not root:
+        return []
+    
+    result = []
+    result.extend(inorder_traversal(root.left))
+    result.append(root.val)
+    result.extend(inorder_traversal(root.right))
+    return result
+
+def preorder_traversal(root):
+    """Preorder traversal: Root -> Left -> Right"""
+    if not root:
+        return []
+    
+    result = [root.val]
+    result.extend(preorder_traversal(root.left))
+    result.extend(preorder_traversal(root.right))
+    return result
+
+def postorder_traversal(root):
+    """Postorder traversal: Left -> Right -> Root"""
+    if not root:
+        return []
+    
+    result = []
+    result.extend(postorder_traversal(root.left))
+    result.extend(postorder_traversal(root.right))
+    result.append(root.val)
+    return result
+
+def max_depth(root):
+    """Maximum depth of binary tree"""
+    if not root:
+        return 0
+    
+    return 1 + max(max_depth(root.left), max_depth(root.right))
+
+def is_balanced(root):
+    """Check if binary tree is balanced"""
+    def check_height(node):
+        if not node:
+            return 0
+        
+        left_height = check_height(node.left)
+        if left_height == -1:
+            return -1
+        
+        right_height = check_height(node.right)
+        if right_height == -1:
+            return -1
+        
+        if abs(left_height - right_height) > 1:
+            return -1
+        
+        return 1 + max(left_height, right_height)
+    
+    return check_height(root) != -1
+```
+
+### Binary Search Tree Operations
+
+```python
+def search_bst(root, val):
+    """Search in binary search tree"""
+    if not root or root.val == val:
+        return root
+    
+    if val < root.val:
+        return search_bst(root.left, val)
+    else:
+        return search_bst(root.right, val)
+
+def insert_bst(root, val):
+    """Insert into binary search tree"""
+    if not root:
+        return TreeNode(val)
+    
+    if val < root.val:
+        root.left = insert_bst(root.left, val)
+    else:
+        root.right = insert_bst(root.right, val)
+    
+    return root
+
+def delete_bst(root, val):
+    """Delete from binary search tree"""
+    if not root:
+        return root
+    
+    if val < root.val:
+        root.left = delete_bst(root.left, val)
+    elif val > root.val:
+        root.right = delete_bst(root.right, val)
+    else:
+        # Node to be deleted found
+        if not root.left:
+            return root.right
+        elif not root.right:
+            return root.left
+        
+        # Node with two children
+        min_node = find_min(root.right)
+        root.val = min_node.val
+        root.right = delete_bst(root.right, min_node.val)
+    
+    return root
+
+def find_min(root):
+    """Find minimum value in BST"""
+    while root.left:
+        root = root.left
+    return root
+
+def validate_bst(root):
+    """Validate binary search tree"""
+    def is_valid(node, min_val, max_val):
+        if not node:
+            return True
+        
+        if node.val <= min_val or node.val >= max_val:
+            return False
+        
+        return (is_valid(node.left, min_val, node.val) and
+                is_valid(node.right, node.val, max_val))
+    
+    return is_valid(root, float('-inf'), float('inf'))
+```
+
+## Optimization Techniques
+
+### Memoization
+
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fibonacci_memo(n):
+    """Fibonacci with memoization"""
+    if n <= 1:
+        return n
+    return fibonacci_memo(n - 1) + fibonacci_memo(n - 2)
+
+def memoize(func):
+    """Custom memoization decorator"""
+    cache = {}
+    
+    def wrapper(*args):
+        if args in cache:
+            return cache[args]
+        result = func(*args)
+        cache[args] = result
+        return result
+    
+    return wrapper
+
+@memoize
+def longest_common_subsequence_memo(text1, text2, i=0, j=0):
+    """LCS with memoization"""
+    if i == len(text1) or j == len(text2):
+        return 0
+    
+    if text1[i] == text2[j]:
+        return 1 + longest_common_subsequence_memo(text1, text2, i + 1, j + 1)
+    else:
+        return max(
+            longest_common_subsequence_memo(text1, text2, i + 1, j),
+            longest_common_subsequence_memo(text1, text2, i, j + 1)
+        )
+```
+
+### Tabulation
+
+```python
+def fibonacci_tabulation(n):
+    """Fibonacci using tabulation"""
+    if n <= 1:
+        return n
+    
+    dp = [0] * (n + 1)
+    dp[1] = 1
+    
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]
+    
+    return dp[n]
+
+def longest_increasing_subsequence(nums):
+    """Longest increasing subsequence using tabulation"""
+    if not nums:
+        return 0
+    
+    n = len(nums)
+    dp = [1] * n
+    
+    for i in range(1, n):
+        for j in range(i):
+            if nums[j] < nums[i]:
+                dp[i] = max(dp[i], dp[j] + 1)
+    
+    return max(dp)
+```
+
+## Best Practices
+
+### 1. Algorithm Selection
+
+```python
+def select_algorithm(data_size, operation_type):
+    """Select appropriate algorithm based on requirements"""
+    if operation_type == "search":
+        if data_size < 1000:
+            return "linear_search"
+        else:
+            return "binary_search"
+    elif operation_type == "sort":
+        if data_size < 50:
+            return "insertion_sort"
+        elif data_size < 1000:
+            return "quick_sort"
+        else:
+            return "merge_sort"
+    elif operation_type == "graph":
+        if "negative_weights" in requirements:
+            return "bellman_ford"
+        else:
+            return "dijkstra"
+```
+
+### 2. Complexity Analysis
+
+```python
+import time
+import random
+
+def analyze_complexity(func, input_sizes):
+    """Analyze time complexity of function"""
+    results = []
+    
+    for size in input_sizes:
+        # Generate test data
+        test_data = generate_test_data(size)
+        
+        # Measure execution time
+        start_time = time.time()
+        func(test_data)
+        end_time = time.time()
+        
+        execution_time = end_time - start_time
+        results.append((size, execution_time))
+    
+    return results
+
+def generate_test_data(size):
+    """Generate test data of given size"""
+    return [random.randint(1, 1000) for _ in range(size)]
+```
+
+### 3. Testing Algorithms
+
+```python
+import unittest
+
+class TestAlgorithms(unittest.TestCase):
+    def test_binary_search(self):
+        arr = [1, 3, 5, 7, 9, 11, 13, 15]
+        self.assertEqual(binary_search(arr, 7), 3)
+        self.assertEqual(binary_search(arr, 4), -1)
+    
+    def test_merge_sort(self):
+        arr = [64, 34, 25, 12, 22, 11, 90]
+        sorted_arr = merge_sort(arr)
+        self.assertEqual(sorted_arr, [11, 12, 22, 25, 34, 64, 90])
+    
+    def test_dijkstra(self):
+        graph = {
+            0: {1: 4, 2: 1},
+            1: {3: 1},
+            2: {1: 2, 3: 5},
+            3: {}
+        }
+        distances = dijkstra(graph, 0)
+        expected = {0: 0, 1: 3, 2: 1, 3: 4}
+        self.assertEqual(distances, expected)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+## Conclusion
+
+Algorithm design is a fundamental skill for efficient programming. By understanding complexity analysis, common patterns, and optimization techniques, you can create robust and scalable solutions.
+
+Remember to:
+- Always analyze time and space complexity
+- Choose appropriate algorithms for your use case
+- Test your algorithms thoroughly
+- Consider edge cases and constraints
+- Optimize when necessary
+- Document your approach
+
+Happy coding! 🚀

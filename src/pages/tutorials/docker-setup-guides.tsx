@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, BookOpen, Clock, User } from 'lucide-react';
 
 const DockerSetupGuides = () => {
@@ -15,7 +16,7 @@ const DockerSetupGuides = () => {
       readTime: '15 min',
       difficulty: 'Beginner',
       category: 'Docker Basics',
-      image: '/images/posts/docker-beginners.jpg',
+      image: '/images/tutorials/docker-setup-guides/docker-beginners.svg',
       featured: true
     },
     {
@@ -27,7 +28,7 @@ const DockerSetupGuides = () => {
       readTime: '20 min',
       difficulty: 'Intermediate',
       category: 'Docker Compose',
-      image: '/images/posts/docker-compose.jpg',
+      image: '/images/tutorials/docker-setup-guides/docker-compose-advanced.svg',
       featured: true
     },
     {
@@ -39,7 +40,7 @@ const DockerSetupGuides = () => {
       readTime: '25 min',
       difficulty: 'Advanced',
       category: 'Production',
-      image: '/images/posts/docker-production.jpg',
+      image: '/images/tutorials/docker-setup-guides/docker-production-deployment.svg',
       featured: false
     },
     {
@@ -51,7 +52,7 @@ const DockerSetupGuides = () => {
       readTime: '30 min',
       difficulty: 'Advanced',
       category: 'Kubernetes',
-      image: '/images/posts/docker-k8s.jpg',
+      image: '/images/tutorials/docker-setup-guides/docker-kubernetes-setup.svg',
       featured: false
     },
     {
@@ -63,7 +64,7 @@ const DockerSetupGuides = () => {
       readTime: '18 min',
       difficulty: 'Intermediate',
       category: 'Security',
-      image: '/images/posts/docker-security.jpg',
+      image: '/images/tutorials/docker-setup-guides/docker-security-best-practices.svg',
       featured: false
     },
     {
@@ -75,7 +76,7 @@ const DockerSetupGuides = () => {
       readTime: '22 min',
       difficulty: 'Intermediate',
       category: 'CI/CD',
-      image: '/images/posts/docker-cicd.jpg',
+      image: '/images/tutorials/docker-setup-guides/docker-ci-cd-pipeline.svg',
       featured: false
     }
   ];
@@ -150,7 +151,13 @@ const DockerSetupGuides = () => {
               {tutorials.filter(tutorial => tutorial.featured).map((tutorial) => (
                 <Link key={tutorial.id} href={`/tutorials/docker-setup-guides/${tutorial.id}`}>
                   <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-slate-200 dark:border-slate-700">
-                    <div className="aspect-video bg-gradient-to-br from-blue-500 to-cyan-600 relative">
+                    <div className="aspect-video relative">
+                      <Image
+                        src={tutorial.image}
+                        alt={tutorial.title}
+                        fill
+                        className="object-cover"
+                      />
                       <div className="absolute inset-0 bg-black/20"></div>
                       <div className="absolute top-4 left-4">
                         <span className="px-3 py-1 bg-white/90 text-slate-900 rounded-full text-sm font-medium">
@@ -200,7 +207,13 @@ const DockerSetupGuides = () => {
               {tutorials.map((tutorial) => (
                 <Link key={tutorial.id} href={`/tutorials/docker-setup-guides/${tutorial.id}`}>
                   <div className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-slate-200 dark:border-slate-700">
-                    <div className="aspect-video bg-gradient-to-br from-slate-400 to-slate-600 relative">
+                    <div className="aspect-video relative">
+                      <Image
+                        src={tutorial.image}
+                        alt={tutorial.title}
+                        fill
+                        className="object-cover"
+                      />
                       <div className="absolute inset-0 bg-black/20"></div>
                       <div className="absolute top-3 left-3">
                         <span className="px-2 py-1 bg-white/90 text-slate-900 rounded text-xs font-medium">

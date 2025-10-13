@@ -1,0 +1,47 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="priorityGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Priority Matrix -->
+  <rect x="50" y="80" width="150" height="100" rx="8" fill="url(#priorityGradient)" stroke="#059669" stroke-width="2"/>
+  <text x="125" y="100" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Urgent & Important</text>
+  
+  <rect x="210" y="80" width="150" height="100" rx="8" fill="url(#priorityGradient)" stroke="#059669" stroke-width="2"/>
+  <text x="285" y="100" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Important, Not Urgent</text>
+  
+  <rect x="50" y="190" width="150" height="100" rx="8" fill="url(#priorityGradient)" stroke="#059669" stroke-width="2"/>
+  <text x="125" y="210" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Urgent, Not Important</text>
+  
+  <rect x="210" y="190" width="150" height="100" rx="8" fill="url(#priorityGradient)" stroke="#059669" stroke-width="2"/>
+  <text x="285" y="210" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Not Urgent, Not Important</text>
+  
+  <!-- Priority Features -->
+  <rect x="50" y="300" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="315" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Eisenhower</text>
+  
+  <rect x="120" y="300" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="315" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Matrix</text>
+  
+  <rect x="190" y="300" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="315" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Focus</text>
+  
+  <rect x="260" y="300" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="315" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Strategy</text>
+  
+  <rect x="330" y="300" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="315" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Decision</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="350" r="4" fill="#059669" />
+  <text x="110" y="355" fill="#059669" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Strategic</text>
+  
+  <circle cx="200" cy="350" r="4" fill="#047857" />
+  <text x="210" y="355" fill="#047857" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Focused</text>
+  
+  <circle cx="300" cy="350" r="4" fill="#059669" />
+  <text x="310" y="355" fill="#059669" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Efficient</text>
+</svg>

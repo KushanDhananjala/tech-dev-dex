@@ -1,0 +1,5 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#1e293b"/>
+  <text x="400" y="200" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="32" style="font-weight:bold;">Docker Security</text>
+  <text x="400" y="240" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="18">Best Practices and Hardening</text>
+</svg>

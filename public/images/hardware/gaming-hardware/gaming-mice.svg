@@ -1,0 +1,54 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gamingMouseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Gaming Mouse -->
+  <ellipse cx="200" cy="120" rx="60" ry="40" fill="url(#gamingMouseGradient)" stroke="#3b82f6" stroke-width="2"/>
+  
+  <!-- Mouse Buttons -->
+  <rect x="150" y="100" width="30" height="15" rx="2" fill="#1f2937" />
+  <rect x="220" y="100" width="30" height="15" rx="2" fill="#1f2937" />
+  
+  <!-- Gaming Features -->
+  <rect x="50" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">High DPI</text>
+  
+  <rect x="120" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">RGB</text>
+  
+  <rect x="190" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Programmable</text>
+  
+  <rect x="260" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Ergonomic</text>
+  
+  <rect x="330" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Wireless</text>
+  
+  <!-- Gaming Benefits -->
+  <rect x="50" y="240" width="80" height="25" rx="4" fill="#3b82f6" />
+  <text x="90" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Precision</text>
+  
+  <rect x="140" y="240" width="80" height="25" rx="4" fill="#3b82f6" />
+  <text x="180" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Speed</text>
+  
+  <rect x="230" y="240" width="80" height="25" rx="4" fill="#3b82f6" />
+  <text x="270" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Comfort</text>
+  
+  <rect x="320" y="240" width="80" height="25" rx="4" fill="#3b82f6" />
+  <text x="360" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Customizable</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="290" r="4" fill="#3b82f6" />
+  <text x="110" y="295" fill="#3b82f6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Precise</text>
+  
+  <circle cx="200" cy="290" r="4" fill="#1d4ed8" />
+  <text x="210" y="295" fill="#1d4ed8" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Fast</text>
+  
+  <circle cx="300" cy="290" r="4" fill="#3b82f6" />
+  <text x="310" y="295" fill="#3b82f6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Gaming</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="timeBlockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Time Blocking Calendar -->
+  <rect x="50" y="80" width="300" height="120" rx="8" fill="url(#timeBlockGradient)" stroke="#3b82f6" stroke-width="2"/>
+  
+  <!-- Time Blocks -->
+  <rect x="60" y="90" width="280" height="20" rx="2" fill="#1f2937" />
+  <text x="200" y="105" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">9:00 AM - 10:30 AM: Development</text>
+  
+  <rect x="60" y="120" width="280" height="20" rx="2" fill="#1f2937" />
+  <text x="200" y="135" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">10:30 AM - 11:00 AM: Break</text>
+  
+  <rect x="60" y="150" width="280" height="20" rx="2" fill="#1f2937" />
+  <text x="200" y="165" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">11:00 AM - 12:30 PM: Code Review</text>
+  
+  <rect x="60" y="180" width="280" height="20" rx="2" fill="#1f2937" />
+  <text x="200" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">12:30 PM - 1:30 PM: Lunch</text>
+  
+  <!-- Time Blocking Features -->
+  <rect x="50" y="220" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Scheduled</text>
+  
+  <rect x="120" y="220" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Focused</text>
+  
+  <rect x="190" y="220" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Organized</text>
+  
+  <rect x="260" y="220" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Efficient</text>
+  
+  <rect x="330" y="220" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Productive</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#3b82f6" />
+  <text x="110" y="275" fill="#3b82f6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Organized</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#1d4ed8" />
+  <text x="210" y="275" fill="#1d4ed8" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Focused</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#3b82f6" />
+  <text x="310" y="275" fill="#3b82f6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Efficient</text>
+</svg>

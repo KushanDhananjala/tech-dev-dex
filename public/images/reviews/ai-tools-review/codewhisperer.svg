@@ -1,0 +1,42 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="codewhispererGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9900;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e68900;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- CodeWhisperer Logo -->
+  <circle cx="200" cy="100" r="40" fill="url(#codewhispererGradient)" stroke="#ff9900" stroke-width="3"/>
+  <text x="200" y="110" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">AWS</text>
+  
+  <!-- AWS Features -->
+  <rect x="50" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="80" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Security</text>
+  
+  <rect x="120" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="150" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">AWS SDK</text>
+  
+  <rect x="190" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="220" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Multi-Lang</text>
+  
+  <rect x="260" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="290" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">IDE Support</text>
+  
+  <rect x="330" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="360" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Context</text>
+  
+  <!-- Code Example -->
+  <rect x="50" y="220" width="300" height="20" rx="4" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="200" y="235" text-anchor="middle" fill="#495057" font-family="monospace" font-size="12">// AWS SDK integration with security</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#ff9900" />
+  <text x="110" y="275" fill="#ff9900" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Secure</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#e68900" />
+  <text x="210" y="275" fill="#e68900" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">AWS Native</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#ff9900" />
+  <text x="310" y="275" fill="#ff9900" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Integrated</text>
+</svg>

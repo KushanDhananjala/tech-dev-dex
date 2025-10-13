@@ -1,0 +1,54 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="webcamGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Webcam -->
+  <rect x="150" y="100" width="60" height="40" rx="8" fill="url(#webcamGradient)" stroke="#8b5cf6" stroke-width="2"/>
+  <circle cx="180" cy="120" r="15" fill="#1f2937" />
+  
+  <!-- Microphone -->
+  <rect x="250" y="100" width="20" height="40" rx="10" fill="url(#webcamGradient)" stroke="#8b5cf6" stroke-width="2"/>
+  
+  <!-- Audio/Video Features -->
+  <rect x="50" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">4K</text>
+  
+  <rect x="120" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Auto Focus</text>
+  
+  <rect x="190" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Noise Cancel</text>
+  
+  <rect x="260" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">USB-C</text>
+  
+  <rect x="330" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Wireless</text>
+  
+  <!-- Remote Work -->
+  <rect x="50" y="220" width="80" height="25" rx="4" fill="#8b5cf6" />
+  <text x="90" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Video Calls</text>
+  
+  <rect x="140" y="220" width="80" height="25" rx="4" fill="#8b5cf6" />
+  <text x="180" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Streaming</text>
+  
+  <rect x="230" y="220" width="80" height="25" rx="4" fill="#8b5cf6" />
+  <text x="270" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Recording</text>
+  
+  <rect x="320" y="220" width="80" height="25" rx="4" fill="#8b5cf6" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Content</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#8b5cf6" />
+  <text x="110" y="275" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Clear</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#7c3aed" />
+  <text x="210" y="275" fill="#7c3aed" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Professional</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#8b5cf6" />
+  <text x="310" y="275" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Quality</text>
+</svg>

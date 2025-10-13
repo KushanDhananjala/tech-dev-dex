@@ -1,0 +1,46 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="budgetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34C759;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#28a745;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Budget Laptop Base -->
+  <rect x="50" y="200" width="300" height="20" rx="3" fill="url(#budgetGradient)" />
+  
+  <!-- Budget Laptop Screen -->
+  <rect x="60" y="80" width="280" height="180" rx="8" fill="url(#budgetGradient)" stroke="#28a745" stroke-width="2"/>
+  
+  <!-- Screen Display -->
+  <rect x="70" y="90" width="260" height="160" rx="4" fill="url(#screenGradient)" />
+  
+  <!-- Screen Content -->
+  <rect x="80" y="100" width="240" height="20" fill="#34C759" opacity="0.8" />
+  <rect x="80" y="130" width="180" height="8" fill="#34C759" opacity="0.7" />
+  <rect x="80" y="145" width="200" height="8" fill="#34C759" opacity="0.7" />
+  <rect x="80" y="160" width="160" height="8" fill="#34C759" opacity="0.7" />
+  
+  <!-- Budget Badge -->
+  <circle cx="200" cy="220" r="8" fill="#ffffff" opacity="0.9" />
+  <text x="200" y="225" text-anchor="middle" fill="#34C759" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">$</text>
+  
+  <!-- Value Badge -->
+  <rect x="320" y="210" width="25" height="12" rx="2" fill="#34C759" />
+  <text x="332" y="218" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">VALUE</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="250" r="4" fill="#34C759" />
+  <text x="110" y="255" fill="#34C759" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Affordable</text>
+  
+  <circle cx="200" cy="250" r="4" fill="#28a745" />
+  <text x="210" y="255" fill="#28a745" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Good Value</text>
+  
+  <circle cx="300" cy="250" r="4" fill="#34C759" />
+  <text x="310" y="255" fill="#34C759" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Dev Ready</text>
+</svg>

@@ -127,7 +127,7 @@ export default function TermsPage() {
               
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 mt-12">Disclaimer</h2>
               <p className="text-slate-600 dark:text-slate-400 mb-6">
-                The materials on TechDevDex are provided on an &apos;as is&apos; basis. TechDevDex makes no warranties, 
+                The materials on TechDevDex are provided on an 'as is' basis. TechDevDex makes no warranties, 
                 expressed or implied, and hereby disclaims and negates all other warranties including without 
                 limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, 
                 or non-infringement of intellectual property or other violation of rights.

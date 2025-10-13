@@ -1,0 +1,72 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#gradient1)"/>
+  
+  <!-- Code Structure -->
+  <rect x="50" y="80" width="200" height="120" rx="8" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <rect x="70" y="100" width="160" height="8" rx="4" fill="#4F46E5"/>
+  <rect x="70" y="120" width="120" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  <rect x="70" y="135" width="140" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  <rect x="70" y="150" width="100" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  <rect x="70" y="165" width="130" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  <rect x="70" y="180" width="90" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  
+  <!-- Function Block -->
+  <rect x="300" y="80" width="200" height="120" rx="8" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <rect x="320" y="100" width="160" height="8" rx="4" fill="#10B981"/>
+  <rect x="320" y="120" width="100" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  <rect x="320" y="135" width="120" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  <rect x="320" y="150" width="80" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  <rect x="320" y="165" width="110" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  <rect x="320" y="180" width="90" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  
+  <!-- Data Structure -->
+  <rect x="550" y="80" width="200" height="120" rx="8" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <rect x="570" y="100" width="160" height="8" rx="4" fill="#F59E0B"/>
+  <rect x="570" y="120" width="140" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  <rect x="570" y="135" width="100" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  <rect x="570" y="150" width="120" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  <rect x="570" y="165" width="90" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  <rect x="570" y="180" width="130" height="6" rx="3" fill="rgba(255,255,255,0.7)"/>
+  
+  <!-- Best Practices Icons -->
+  <!-- Clean Code -->
+  <circle cx="150" cy="250" r="25" fill="rgba(79, 70, 229, 0.2)" stroke="#4F46E5" stroke-width="2"/>
+  <path d="M140 250 L145 255 L160 240" stroke="#4F46E5" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Testing -->
+  <circle cx="300" cy="250" r="25" fill="rgba(16, 185, 129, 0.2)" stroke="#10B981" stroke-width="2"/>
+  <path d="M290 250 L295 255 L310 240" stroke="#10B981" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Documentation -->
+  <circle cx="450" cy="250" r="25" fill="rgba(245, 158, 11, 0.2)" stroke="#F59E0B" stroke-width="2"/>
+  <path d="M440 250 L445 255 L460 240" stroke="#F59E0B" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Version Control -->
+  <circle cx="600" cy="250" r="25" fill="rgba(239, 68, 68, 0.2)" stroke="#EF4444" stroke-width="2"/>
+  <path d="M590 250 L595 255 L610 240" stroke="#EF4444" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Connection Lines -->
+  <path d="M175 250 Q200 230 225 250" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+  <path d="M325 250 Q350 230 375 250" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+  <path d="M475 250 Q500 230 525 250" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+  
+  <!-- Title -->
+  <text x="400" y="320" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Programming Best Practices</text>
+  <text x="400" y="350" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif" font-size="16">Essential Tips for Better Code</text>
+  
+  <!-- Labels -->
+  <text x="150" y="290" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="Arial, sans-serif" font-size="12" font-weight="500">Clean Code</text>
+  <text x="300" y="290" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="Arial, sans-serif" font-size="12" font-weight="500">Testing</text>
+  <text x="450" y="290" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="Arial, sans-serif" font-size="12" font-weight="500">Documentation</text>
+  <text x="600" y="290" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="Arial, sans-serif" font-size="12" font-weight="500">Version Control</text>
+  
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#334155;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#475569;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

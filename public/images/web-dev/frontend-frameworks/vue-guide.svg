@@ -1,0 +1,26 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="vueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4fc08d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#42b883;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1e293b"/>
+  
+  <!-- Vue.js -->
+  <g transform="translate(400, 200)">
+    <!-- Vue logo -->
+    <path d="M-40,-20 L-20,20 L0,-20 L20,20 L40,-20 L0,30 Z" fill="url(#vueGrad)"/>
+    
+    <!-- Vue features -->
+    <rect x="-50" y="40" width="20" height="15" fill="url(#vueGrad)" rx="2"/>
+    <rect x="-20" y="40" width="20" height="15" fill="url(#vueGrad)" rx="2"/>
+    <rect x="10" y="40" width="20" height="15" fill="url(#vueGrad)" rx="2"/>
+    
+    <!-- Text -->
+    <text x="0" y="80" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="24" style="font-weight:bold;">Vue 3 Mastery</text>
+    <text x="0" y="105" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">Progressive JavaScript Framework</text>
+  </g>
+</svg>

@@ -1,0 +1,374 @@
+---
+title: "Docker with Kubernetes: Container Orchestration"
+description: "Learn to orchestrate Docker containers with Kubernetes. Pods, services, deployments, and scaling strategies."
+author: "TechDevDex Team"
+date: "2024-12-12"
+category: "Tutorial"
+tags: ["Docker", "Kubernetes", "Orchestration", "DevOps"]
+readTime: "30 min"
+featured: false
+rating: 5
+featuredImage: "/images/tutorials/docker-setup-guides/docker-kubernetes-setup.svg"
+---
+
+# Docker with Kubernetes: Container Orchestration
+
+Kubernetes is the leading container orchestration platform that works seamlessly with Docker. Learn how to deploy, manage, and scale containerized applications using Kubernetes.
+
+## What is Kubernetes?
+
+Kubernetes (K8s) is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications.
+
+### Key Benefits:
+
+- **Automated scaling**: Scale applications based on demand
+- **Service discovery**: Automatic service registration and discovery
+- **Load balancing**: Distribute traffic across multiple containers
+- **Self-healing**: Automatically restart failed containers
+- **Rolling updates**: Deploy updates without downtime
+
+## Kubernetes Architecture
+
+### Master Node Components
+
+- **API Server**: Central management point
+- **etcd**: Distributed key-value store
+- **Scheduler**: Assigns pods to nodes
+- **Controller Manager**: Manages cluster state
+
+### Worker Node Components
+
+- **kubelet**: Node agent
+- **kube-proxy**: Network proxy
+- **Container Runtime**: Docker, containerd, etc.
+
+## Basic Kubernetes Concepts
+
+### Pods
+
+Pods are the smallest deployable units in Kubernetes:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+```
+
+### Services
+
+Services provide stable network access to pods:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: my-app
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: LoadBalancer
+```
+
+### Deployments
+
+Deployments manage replica sets and provide declarative updates:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-container
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+```
+
+## Getting Started with Kubernetes
+
+### 1. Install kubectl
+
+```bash
+# Download kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+# Make executable
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+```
+
+### 2. Set up a Local Cluster
+
+#### Using Minikube
+
+```bash
+# Install Minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+# Start Minikube
+minikube start
+
+# Check status
+kubectl get nodes
+```
+
+#### Using Docker Desktop
+
+```bash
+# Enable Kubernetes in Docker Desktop
+# Go to Settings > Kubernetes > Enable Kubernetes
+
+# Verify installation
+kubectl get nodes
+```
+
+### 3. Deploy Your First Application
+
+```bash
+# Create deployment
+kubectl create deployment nginx --image=nginx
+
+# Scale deployment
+kubectl scale deployment nginx --replicas=3
+
+# Expose service
+kubectl expose deployment nginx --port=80 --type=LoadBalancer
+
+# Check status
+kubectl get pods
+kubectl get services
+```
+
+## Advanced Kubernetes Features
+
+### ConfigMaps and Secrets
+
+#### ConfigMap
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  database_url: "postgresql://localhost:5432/myapp"
+  debug: "true"
+```
+
+#### Secret
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: cGFzc3dvcmQ=
+```
+
+### Persistent Volumes
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data
+```
+
+### Ingress
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+spec:
+  rules:
+  - host: myapp.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: my-service
+            port:
+              number: 80
+```
+
+## Production Best Practices
+
+### Resource Management
+
+```yaml
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: my-container
+    image: nginx:latest
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+```
+
+### Health Checks
+
+```yaml
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: my-container
+    image: nginx:latest
+    livenessProbe:
+      httpGet:
+        path: /health
+        port: 8080
+      initialDelaySeconds: 30
+      periodSeconds: 10
+    readinessProbe:
+      httpGet:
+        path: /ready
+        port: 8080
+      initialDelaySeconds: 5
+      periodSeconds: 5
+```
+
+### Security
+
+```yaml
+apiVersion: v1
+kind: Pod
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    fsGroup: 2000
+  containers:
+  - name: my-container
+    image: nginx:latest
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+```
+
+## Monitoring and Logging
+
+### Prometheus Integration
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+  labels:
+    app: prometheus
+spec:
+  ports:
+  - port: 9090
+    targetPort: 9090
+  selector:
+    app: prometheus
+```
+
+### Log Aggregation
+
+```yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd
+spec:
+  selector:
+    matchLabels:
+      name: fluentd
+  template:
+    metadata:
+      labels:
+        name: fluentd
+    spec:
+      containers:
+      - name: fluentd
+        image: fluent/fluentd-kubernetes-daemonset
+        env:
+        - name: FLUENT_ELASTICSEARCH_HOST
+          value: "elasticsearch.logging.svc.cluster.local"
+```
+
+## Troubleshooting
+
+### Common Commands
+
+```bash
+# Get pod logs
+kubectl logs <pod-name>
+
+# Describe resources
+kubectl describe pod <pod-name>
+
+# Execute commands in pod
+kubectl exec -it <pod-name> -- /bin/bash
+
+# Port forward
+kubectl port-forward <pod-name> 8080:80
+
+# Check events
+kubectl get events --sort-by=.metadata.creationTimestamp
+```
+
+### Debugging Tips
+
+1. **Check pod status**: `kubectl get pods`
+2. **View pod logs**: `kubectl logs <pod-name>`
+3. **Describe resources**: `kubectl describe <resource> <name>`
+4. **Check events**: `kubectl get events`
+5. **Verify configuration**: `kubectl get <resource> -o yaml`
+
+## Conclusion
+
+Kubernetes provides powerful orchestration capabilities for Docker containers. By following these best practices and understanding the core concepts, you can effectively deploy and manage containerized applications at scale.
+
+Remember to:
+- Start with simple deployments
+- Use proper resource limits
+- Implement health checks
+- Monitor your applications
+- Follow security best practices
+
+Happy orchestrating! 🚀

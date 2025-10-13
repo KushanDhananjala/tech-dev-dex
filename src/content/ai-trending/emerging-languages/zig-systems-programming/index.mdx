@@ -1,0 +1,635 @@
+---
+title: "Zig: Modern Systems Programming"
+description: "Discover Zig, the systems programming language that focuses on memory safety, performance, and simplicity. Learn modern systems programming with Zig."
+author: "TechDevDex Team"
+date: "2024-12-01"
+category: "Emerging Languages"
+tags: ["Zig", "Systems Programming", "Memory Safety", "Performance", "Modern Languages", "Low-Level Programming"]
+readTime: "18 min"
+featured: false
+rating: 4
+featuredImage: "/images/ai-ml/emerging-languages/zig-language.svg"
+---
+
+# Zig: Modern Systems Programming
+
+Zig is a modern systems programming language that aims to be a better C. It focuses on simplicity, performance, and memory safety while maintaining the low-level control that systems programmers need.
+
+## What is Zig?
+
+### Core Philosophy
+
+Zig is designed with these principles:
+- **Simplicity:** No hidden control flow or memory allocations
+- **Performance:** Zero-cost abstractions and predictable performance
+- **Safety:** Compile-time error detection and memory safety
+- **Clarity:** Explicit error handling and clear semantics
+- **Compatibility:** Easy integration with existing C code
+
+### Key Features
+
+- **Compile-time Code Execution:** Run code at compile time
+- **Optional Types:** Built-in null safety
+- **Error Handling:** Explicit error handling with error unions
+- **Memory Management:** Manual memory management with safety checks
+- **Cross-compilation:** Built-in cross-compilation support
+- **C Interop:** Seamless C library integration
+
+## Getting Started
+
+### Installation
+
+#### Download Zig
+```bash
+# Download from official website
+wget https://ziglang.org/download/0.11.0/zig-linux-x86_64-0.11.0.tar.xz
+tar -xf zig-linux-x86_64-0.11.0.tar.xz
+sudo mv zig-linux-x86_64-0.11.0/zig /usr/local/bin/
+```
+
+#### Package Manager Installation
+```bash
+# Ubuntu/Debian
+sudo apt install zig
+
+# macOS
+brew install zig
+
+# Arch Linux
+sudo pacman -S zig
+```
+
+### Hello World
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    const stdout = std.io.getStdOut().writer();
+    try stdout.print("Hello, World!\n", .{});
+}
+```
+
+### Compilation
+```bash
+# Compile and run
+zig run hello.zig
+
+# Compile to executable
+zig build-exe hello.zig
+
+# Compile with optimizations
+zig build-exe -O ReleaseFast hello.zig
+```
+
+## Basic Syntax
+
+### Variables and Types
+
+```zig
+const std = @import("std");
+
+pub fn main() void {
+    // Immutable variables
+    const name = "Zig";
+    const version: u32 = 0x0B00; // 0.11.0 in hex
+    
+    // Mutable variables
+    var count: i32 = 0;
+    count += 1;
+    
+    // Type inference
+    const inferred = 42; // i32
+    const float_val = 3.14; // f64
+    
+    // Optional types
+    var maybe_number: ?i32 = null;
+    maybe_number = 42;
+    
+    // Error unions
+    var result: !i32 = 42;
+    result = error.SomethingWentWrong;
+}
+```
+
+### Functions
+
+```zig
+const std = @import("std");
+
+// Simple function
+fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+
+// Function with error handling
+fn divide(a: i32, b: i32) !i32 {
+    if (b == 0) {
+        return error.DivisionByZero;
+    }
+    return a / b;
+}
+
+// Generic function
+fn max(comptime T: type, a: T, b: T) T {
+    return if (a > b) a else b;
+}
+
+pub fn main() void {
+    const sum = add(5, 3);
+    const result = divide(10, 2) catch 0;
+    const maximum = max(i32, 10, 20);
+    
+    std.debug.print("Sum: {}, Result: {}, Max: {}\n", .{sum, result, maximum});
+}
+```
+
+### Control Flow
+
+```zig
+const std = @import("std");
+
+pub fn main() void {
+    const number = 42;
+    
+    // If-else
+    if (number > 0) {
+        std.debug.print("Positive\n", .{});
+    } else if (number < 0) {
+        std.debug.print("Negative\n", .{});
+    } else {
+        std.debug.print("Zero\n", .{});
+    }
+    
+    // Switch
+    switch (number) {
+        0 => std.debug.print("Zero\n", .{}),
+        1...10 => std.debug.print("Small\n", .{}),
+        11...100 => std.debug.print("Medium\n", .{}),
+        else => std.debug.print("Large\n", .{}),
+    }
+    
+    // While loop
+    var i: u32 = 0;
+    while (i < 5) : (i += 1) {
+        std.debug.print("i: {}\n", .{i});
+    }
+    
+    // For loop
+    const array = [_]i32{ 1, 2, 3, 4, 5 };
+    for (array, 0..) |value, index| {
+        std.debug.print("array[{}] = {}\n", .{index, value});
+    }
+}
+```
+
+## Memory Management
+
+### Allocators
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    // Get the default allocator
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    defer _ = gpa.deinit();
+    const allocator = gpa.allocator();
+    
+    // Allocate memory
+    const numbers = try allocator.alloc(i32, 5);
+    defer allocator.free(numbers);
+    
+    // Initialize array
+    for (numbers, 0..) |*num, i| {
+        num.* = @intCast(i * 2);
+    }
+    
+    // Print array
+    for (numbers) |num| {
+        std.debug.print("{}\n", .{num});
+    }
+}
+```
+
+### Strings
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    defer _ = gpa.deinit();
+    const allocator = gpa.allocator();
+    
+    // String literals
+    const hello = "Hello, World!";
+    
+    // Dynamic string
+    var dynamic_string = std.ArrayList(u8).init(allocator);
+    defer dynamic_string.deinit();
+    
+    try dynamic_string.appendSlice("Hello");
+    try dynamic_string.appendSlice(", ");
+    try dynamic_string.appendSlice("Zig!");
+    
+    std.debug.print("{s}\n", .{dynamic_string.items});
+}
+```
+
+## Error Handling
+
+### Error Types
+
+```zig
+const std = @import("std");
+
+// Define custom error
+const MyError = error{
+    InvalidInput,
+    OutOfMemory,
+    NetworkError,
+};
+
+// Function that can return errors
+fn risky_operation(input: i32) !i32 {
+    if (input < 0) {
+        return MyError.InvalidInput;
+    }
+    if (input > 1000) {
+        return MyError.OutOfMemory;
+    }
+    return input * 2;
+}
+
+pub fn main() void {
+    const result = risky_operation(42) catch |err| {
+        std.debug.print("Error: {}\n", .{err});
+        return;
+    };
+    
+    std.debug.print("Result: {}\n", .{result});
+}
+```
+
+### Error Propagation
+
+```zig
+const std = @import("std");
+
+fn process_data(data: []const u8) !void {
+    if (data.len == 0) {
+        return error.EmptyData;
+    }
+    
+    // Process data...
+    std.debug.print("Processing: {s}\n", .{data});
+}
+
+fn handle_request() !void {
+    const input = "Hello, Zig!";
+    try process_data(input);
+}
+
+pub fn main() void {
+    handle_request() catch |err| {
+        std.debug.print("Request failed: {}\n", .{err});
+    };
+}
+```
+
+## Advanced Features
+
+### Comptime
+
+```zig
+const std = @import("std");
+
+// Compile-time function
+fn fibonacci(comptime n: u32) u32 {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Compile-time data structures
+const Point = struct {
+    x: f32,
+    y: f32,
+    
+    fn distance(self: Point, other: Point) f32 {
+        const dx = self.x - other.x;
+        const dy = self.y - other.y;
+        return @sqrt(dx * dx + dy * dy);
+    }
+};
+
+pub fn main() void {
+    // Compile-time computation
+    const fib_10 = fibonacci(10);
+    std.debug.print("Fibonacci(10) = {}\n", .{fib_10});
+    
+    // Runtime usage
+    const p1 = Point{ .x = 0.0, .y = 0.0 };
+    const p2 = Point{ .x = 3.0, .y = 4.0 };
+    const dist = p1.distance(p2);
+    std.debug.print("Distance: {}\n", .{dist});
+}
+```
+
+### Generics
+
+```zig
+const std = @import("std");
+
+// Generic struct
+fn Stack(comptime T: type) type {
+    return struct {
+        items: []T,
+        count: usize,
+        allocator: std.mem.Allocator,
+        
+        const Self = @This();
+        
+        fn init(allocator: std.mem.Allocator) !Self {
+            return Self{
+                .items = try allocator.alloc(T, 10),
+                .count = 0,
+                .allocator = allocator,
+            };
+        }
+        
+        fn deinit(self: *Self) void {
+            self.allocator.free(self.items);
+        }
+        
+        fn push(self: *Self, item: T) !void {
+            if (self.count >= self.items.len) {
+                return error.StackOverflow;
+            }
+            self.items[self.count] = item;
+            self.count += 1;
+        }
+        
+        fn pop(self: *Self) ?T {
+            if (self.count == 0) return null;
+            self.count -= 1;
+            return self.items[self.count];
+        }
+    };
+}
+
+pub fn main() !void {
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    defer _ = gpa.deinit();
+    const allocator = gpa.allocator();
+    
+    var int_stack = try Stack(i32).init(allocator);
+    defer int_stack.deinit();
+    
+    try int_stack.push(42);
+    try int_stack.push(84);
+    
+    if (int_stack.pop()) |value| {
+        std.debug.print("Popped: {}\n", .{value});
+    }
+}
+```
+
+## C Interoperability
+
+### Calling C Functions
+
+```zig
+const std = @import("std");
+const c = @cImport({
+    @cInclude("stdio.h");
+    @cInclude("stdlib.h");
+});
+
+pub fn main() void {
+    // Call C function
+    c.printf("Hello from C!\n");
+    
+    // Use C library
+    const ptr = c.malloc(100);
+    defer c.free(ptr);
+    
+    if (ptr != null) {
+        std.debug.print("Allocated memory from C\n", .{});
+    }
+}
+```
+
+### Exposing Zig to C
+
+```zig
+// zig_to_c.zig
+export fn add_numbers(a: i32, b: i32) i32 {
+    return a + b;
+}
+
+export fn get_string_length(str: [*:0]const u8) usize {
+    var len: usize = 0;
+    while (str[len] != 0) : (len += 1) {}
+    return len;
+}
+```
+
+```c
+// main.c
+#include <stdio.h>
+
+// Declare Zig functions
+extern int add_numbers(int a, int b);
+extern size_t get_string_length(const char* str);
+
+int main() {
+    int result = add_numbers(5, 3);
+    printf("Result: %d\n", result);
+    
+    const char* str = "Hello, World!";
+    size_t len = get_string_length(str);
+    printf("String length: %zu\n", len);
+    
+    return 0;
+}
+```
+
+## Build System
+
+### build.zig
+
+```zig
+const std = @import("std");
+
+pub fn build(b: *std.Build) void {
+    const target = b.standardTargetOptions(.{});
+    const optimize = b.standardOptimizeOption(.{});
+    
+    const exe = b.addExecutable(.{
+        .name = "my_app",
+        .root_source_file = .{ .path = "src/main.zig" },
+        .target = target,
+        .optimize = optimize,
+    });
+    
+    b.installArtifact(exe);
+    
+    const run_cmd = b.addRunArtifact(exe);
+    run_cmd.step.dependOn(b.getInstallStep());
+    
+    if (b.args) |args| {
+        run_cmd.addArgs(args);
+    }
+    
+    const run_step = b.step("run", "Run the app");
+    run_step.dependOn(&run_cmd.step);
+}
+```
+
+### Package Management
+
+```zig
+// build.zig.zon
+.{
+    .name = "my_package",
+    .version = "0.1.0",
+    .dependencies = .{
+        .zig = .{
+            .url = "https://github.com/ziglang/zig/archive/0.11.0.tar.gz",
+            .hash = "1234567890abcdef...",
+        },
+    },
+}
+```
+
+## Performance Optimization
+
+### Benchmarking
+
+```zig
+const std = @import("std");
+const time = std.time;
+
+fn benchmark_function() void {
+    var sum: i64 = 0;
+    for (0..1000000) |i| {
+        sum += @intCast(i);
+    }
+    std.debug.print("Sum: {}\n", .{sum});
+}
+
+pub fn main() void {
+    const start = time.nanoTimestamp();
+    benchmark_function();
+    const end = time.nanoTimestamp();
+    
+    const duration = end - start;
+    std.debug.print("Duration: {} ns\n", .{duration});
+}
+```
+
+### Memory Optimization
+
+```zig
+const std = @import("std");
+
+// Use stack allocation when possible
+fn process_small_data() void {
+    var buffer: [1024]u8 = undefined;
+    // Use buffer...
+}
+
+// Use arena allocator for temporary allocations
+fn process_with_arena(allocator: std.mem.Allocator) !void {
+    var arena = std.heap.ArenaAllocator.init(allocator);
+    defer arena.deinit();
+    
+    const arena_allocator = arena.allocator();
+    
+    // Allocate many small objects
+    for (0..1000) |i| {
+        const data = try arena_allocator.alloc(u8, 100);
+        _ = data; // Use data...
+    }
+    // All memory is freed when arena is deinitialized
+}
+```
+
+## Best Practices
+
+### Code Organization
+
+```zig
+// main.zig
+const std = @import("std");
+const math = @import("math.zig");
+const utils = @import("utils.zig");
+
+pub fn main() !void {
+    const result = math.add(5, 3);
+    const formatted = utils.format_number(result);
+    std.debug.print("{s}\n", .{formatted});
+}
+```
+
+```zig
+// math.zig
+pub fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+
+pub fn multiply(a: i32, b: i32) i32 {
+    return a * b;
+}
+```
+
+```zig
+// utils.zig
+const std = @import("std");
+
+pub fn format_number(n: i32) []const u8 {
+    return std.fmt.allocPrint(std.heap.page_allocator, "Number: {}", .{n}) catch "Error";
+}
+```
+
+### Error Handling Best Practices
+
+```zig
+const std = @import("std");
+
+// Define application-specific errors
+const AppError = error{
+    InvalidInput,
+    NetworkError,
+    FileNotFound,
+};
+
+// Use error unions appropriately
+fn read_config(path: []const u8) !Config {
+    const file = std.fs.cwd().openFile(path, .{}) catch |err| switch (err) {
+        error.FileNotFound => return AppError.FileNotFound,
+        else => return err,
+    };
+    defer file.close();
+    
+    // Read and parse config...
+    return Config{};
+}
+
+// Handle errors at appropriate levels
+pub fn main() void {
+    const config = read_config("config.json") catch |err| {
+        std.debug.print("Failed to read config: {}\n", .{err});
+        return;
+    };
+    
+    // Use config...
+}
+```
+
+## Conclusion
+
+Zig represents a modern approach to systems programming, combining the performance and control of C with modern language features like memory safety, compile-time execution, and clear error handling. Its focus on simplicity and explicitness makes it an excellent choice for systems programming tasks where performance and safety are critical.
+
+The key to mastering Zig is understanding its philosophy of explicitness and embracing its compile-time capabilities. With practice, Zig can provide a powerful and safe alternative to traditional systems programming languages.

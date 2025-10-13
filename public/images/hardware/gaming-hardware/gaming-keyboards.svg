@@ -1,0 +1,62 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gamingKeyboardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b91c1c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Gaming Keyboard -->
+  <rect x="100" y="120" width="200" height="80" rx="8" fill="url(#gamingKeyboardGradient)" stroke="#dc2626" stroke-width="2"/>
+  
+  <!-- RGB Keys -->
+  <rect x="110" y="130" width="15" height="15" rx="2" fill="#1f2937" />
+  <rect x="130" y="130" width="15" height="15" rx="2" fill="#1f2937" />
+  <rect x="150" y="130" width="15" height="15" rx="2" fill="#1f2937" />
+  <rect x="170" y="130" width="15" height="15" rx="2" fill="#1f2937" />
+  <rect x="190" y="130" width="15" height="15" rx="2" fill="#1f2937" />
+  <rect x="210" y="130" width="15" height="15" rx="2" fill="#1f2937" />
+  <rect x="230" y="130" width="15" height="15" rx="2" fill="#1f2937" />
+  <rect x="250" y="130" width="15" height="15" rx="2" fill="#1f2937" />
+  <rect x="270" y="130" width="15" height="15" rx="2" fill="#1f2937" />
+  <rect x="290" y="130" width="15" height="15" rx="2" fill="#1f2937" />
+  
+  <!-- Gaming Features -->
+  <rect x="50" y="220" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">RGB</text>
+  
+  <rect x="120" y="220" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Mechanical</text>
+  
+  <rect x="190" y="220" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Macro Keys</text>
+  
+  <rect x="260" y="220" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Anti-Ghost</text>
+  
+  <rect x="330" y="220" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">N-Key Roll</text>
+  
+  <!-- Gaming Benefits -->
+  <rect x="50" y="260" width="80" height="25" rx="4" fill="#dc2626" />
+  <text x="90" y="275" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Responsive</text>
+  
+  <rect x="140" y="260" width="80" height="25" rx="4" fill="#dc2626" />
+  <text x="180" y="275" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Durable</text>
+  
+  <rect x="230" y="260" width="80" height="25" rx="4" fill="#dc2626" />
+  <text x="270" y="275" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Customizable</text>
+  
+  <rect x="320" y="260" width="80" height="25" rx="4" fill="#dc2626" />
+  <text x="360" y="275" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Precise</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="290" r="4" fill="#dc2626" />
+  <text x="110" y="295" fill="#dc2626" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Gaming</text>
+  
+  <circle cx="200" cy="290" r="4" fill="#b91c1c" />
+  <text x="210" y="295" fill="#b91c1c" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Development</text>
+  
+  <circle cx="300" cy="290" r="4" fill="#dc2626" />
+  <text x="310" y="295" fill="#dc2626" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Performance</text>
+</svg>

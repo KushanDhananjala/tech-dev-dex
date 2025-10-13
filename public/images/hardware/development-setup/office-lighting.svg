@@ -1,0 +1,50 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lightingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Desk Lamp -->
+  <rect x="180" y="80" width="40" height="8" fill="#6b7280" />
+  <rect x="190" y="88" width="20" height="60" fill="#6b7280" />
+  
+  <!-- Light Bulb -->
+  <circle cx="200" cy="70" r="15" fill="url(#lightingGradient)" stroke="#f59e0b" stroke-width="2"/>
+  
+  <!-- Light Rays -->
+  <path d="M200 55 L190 45 M200 55 L210 45 M200 55 L200 35" stroke="#fbbf24" stroke-width="2" fill="none"/>
+  
+  <!-- Desk -->
+  <rect x="100" y="180" width="200" height="8" fill="#8b5cf6" />
+  
+  <!-- Monitor -->
+  <rect x="150" y="160" width="80" height="20" fill="#374151" />
+  
+  <!-- Lighting Types -->
+  <rect x="50" y="250" width="60" height="20" rx="4" fill="#6b7280" />
+  <text x="80" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">LED</text>
+  
+  <rect x="120" y="250" width="60" height="20" rx="4" fill="#6b7280" />
+  <text x="150" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Warm</text>
+  
+  <rect x="190" y="250" width="60" height="20" rx="4" fill="#6b7280" />
+  <text x="220" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Cool</text>
+  
+  <rect x="260" y="250" width="60" height="20" rx="4" fill="#6b7280" />
+  <text x="290" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Natural</text>
+  
+  <rect x="330" y="250" width="60" height="20" rx="4" fill="#6b7280" />
+  <text x="360" y="265" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Adjustable</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="290" r="4" fill="#f59e0b" />
+  <text x="110" y="295" fill="#f59e0b" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Eye-friendly</text>
+  
+  <circle cx="200" cy="290" r="4" fill="#fbbf24" />
+  <text x="210" y="295" fill="#fbbf24" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Focused</text>
+  
+  <circle cx="300" cy="290" r="4" fill="#f59e0b" />
+  <text x="310" y="295" fill="#f59e0b" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Comfortable</text>
+</svg>

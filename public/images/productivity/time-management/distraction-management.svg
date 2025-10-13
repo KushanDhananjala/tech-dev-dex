@@ -1,0 +1,51 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="distractionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Focus Zone -->
+  <circle cx="200" cy="100" r="40" fill="url(#distractionGradient)" stroke="#8b5cf6" stroke-width="3"/>
+  <text x="200" y="110" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" style="font-weight:bold;">Focus</text>
+  
+  <!-- Distraction Sources -->
+  <rect x="50" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Social Media</text>
+  
+  <rect x="120" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Notifications</text>
+  
+  <rect x="190" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Email</text>
+  
+  <rect x="260" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Meetings</text>
+  
+  <rect x="330" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Noise</text>
+  
+  <!-- Focus Techniques -->
+  <rect x="50" y="220" width="80" height="25" rx="4" fill="#8b5cf6" />
+  <text x="90" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Do Not Disturb</text>
+  
+  <rect x="140" y="220" width="80" height="25" rx="4" fill="#8b5cf6" />
+  <text x="180" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Website Blockers</text>
+  
+  <rect x="230" y="220" width="80" height="25" rx="4" fill="#8b5cf6" />
+  <text x="270" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Deep Work</text>
+  
+  <rect x="320" y="220" width="80" height="25" rx="4" fill="#8b5cf6" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Environment</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#8b5cf6" />
+  <text x="110" y="275" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Focused</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#7c3aed" />
+  <text x="210" y="275" fill="#7c3aed" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Productive</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#8b5cf6" />
+  <text x="310" y="275" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Efficient</text>
+</svg>

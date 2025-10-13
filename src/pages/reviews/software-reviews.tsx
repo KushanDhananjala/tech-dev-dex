@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, Star, Clock, User } from 'lucide-react';
 
 const SoftwareReviews = () => {
@@ -15,7 +16,7 @@ const SoftwareReviews = () => {
       readTime: '8 min',
       rating: 5,
       category: 'Code Editors',
-      image: '/images/posts/vs-code-review.jpg',
+      image: '/images/reviews/software-reviews/vs-code-review.svg',
       featured: true
     },
     {
@@ -27,7 +28,7 @@ const SoftwareReviews = () => {
       readTime: '10 min',
       rating: 5,
       category: 'IDEs',
-      image: '/images/posts/intellij-review.jpg',
+      image: '/images/reviews/software-reviews/intellij-review.svg',
       featured: true
     },
     {
@@ -39,7 +40,7 @@ const SoftwareReviews = () => {
       readTime: '6 min',
       rating: 4,
       category: 'Code Editors',
-      image: '/images/posts/sublime-review.jpg',
+      image: '/images/reviews/software-reviews/sublime-review.svg',
       featured: false
     },
     {
@@ -51,7 +52,7 @@ const SoftwareReviews = () => {
       readTime: '9 min',
       rating: 5,
       category: 'IDEs',
-      image: '/images/posts/webstorm-review.jpg',
+      image: '/images/reviews/software-reviews/webstorm-review.svg',
       featured: false
     },
     {
@@ -63,7 +64,7 @@ const SoftwareReviews = () => {
       readTime: '12 min',
       rating: 4,
       category: 'Terminal Editors',
-      image: '/images/posts/vim-review.jpg',
+      image: '/images/reviews/software-reviews/vim-review.svg',
       featured: false
     },
     {
@@ -75,7 +76,7 @@ const SoftwareReviews = () => {
       readTime: '7 min',
       rating: 3,
       category: 'Code Editors',
-      image: '/images/posts/atom-review.jpg',
+      image: '/images/reviews/software-reviews/atom-review.svg',
       featured: false
     }
   ];
@@ -129,7 +130,13 @@ const SoftwareReviews = () => {
               {reviews.filter(review => review.featured).map((review) => (
                 <Link key={review.id} href={`/reviews/software-reviews/${review.id}`}>
                   <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-slate-200 dark:border-slate-700">
-                    <div className="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative">
+                    <div className="aspect-video relative">
+                      <Image
+                        src={review.image}
+                        alt={review.title}
+                        fill
+                        className="object-cover"
+                      />
                       <div className="absolute inset-0 bg-black/20"></div>
                       <div className="absolute top-4 left-4">
                         <span className="px-3 py-1 bg-white/90 text-slate-900 rounded-full text-sm font-medium">
@@ -174,7 +181,13 @@ const SoftwareReviews = () => {
               {reviews.map((review) => (
                 <Link key={review.id} href={`/reviews/software-reviews/${review.id}`}>
                   <div className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-slate-200 dark:border-slate-700">
-                    <div className="aspect-video bg-gradient-to-br from-slate-400 to-slate-600 relative">
+                    <div className="aspect-video relative">
+                      <Image
+                        src={review.image}
+                        alt={review.title}
+                        fill
+                        className="object-cover"
+                      />
                       <div className="absolute inset-0 bg-black/20"></div>
                       <div className="absolute top-3 left-3">
                         <span className="px-2 py-1 bg-white/90 text-slate-900 rounded text-xs font-medium">

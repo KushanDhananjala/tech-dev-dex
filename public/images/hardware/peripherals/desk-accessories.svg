@@ -1,0 +1,57 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="accessoriesGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Desk Accessories -->
+  <rect x="100" y="120" width="60" height="40" rx="4" fill="url(#accessoriesGradient)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="130" y="145" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Monitor Arm</text>
+  
+  <rect x="180" y="120" width="60" height="40" rx="4" fill="url(#accessoriesGradient)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="210" y="145" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Desk Pad</text>
+  
+  <rect x="260" y="120" width="60" height="40" rx="4" fill="url(#accessoriesGradient)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="290" y="145" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Cable Mgmt</text>
+  
+  <!-- Accessory Types -->
+  <rect x="50" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Monitor Arms</text>
+  
+  <rect x="120" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Desk Pads</text>
+  
+  <rect x="190" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Cable Trays</text>
+  
+  <rect x="260" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">USB Hubs</text>
+  
+  <rect x="330" y="200" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="215" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Lighting</text>
+  
+  <!-- Productivity Benefits -->
+  <rect x="50" y="240" width="80" height="25" rx="4" fill="#f59e0b" />
+  <text x="90" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Organization</text>
+  
+  <rect x="140" y="240" width="80" height="25" rx="4" fill="#f59e0b" />
+  <text x="180" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Ergonomics</text>
+  
+  <rect x="230" y="240" width="80" height="25" rx="4" fill="#f59e0b" />
+  <text x="270" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Cable Management</text>
+  
+  <rect x="320" y="240" width="80" height="25" rx="4" fill="#f59e0b" />
+  <text x="360" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Comfort</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="290" r="4" fill="#f59e0b" />
+  <text x="110" y="295" fill="#f59e0b" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Organized</text>
+  
+  <circle cx="200" cy="290" r="4" fill="#d97706" />
+  <text x="210" y="295" fill="#d97706" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Comfortable</text>
+  
+  <circle cx="300" cy="290" r="4" fill="#f59e0b" />
+  <text x="310" y="275" fill="#f59e0b" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Efficient</text>
+</svg>

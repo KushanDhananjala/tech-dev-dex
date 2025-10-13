@@ -1,0 +1,57 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#1E293B"/>
+  
+  <!-- Git Branch Diagram -->
+  <g transform="translate(100, 100)">
+    <!-- Main Branch -->
+    <line x1="0" y1="50" x2="200" y2="50" stroke="#F97316" stroke-width="4"/>
+    <circle cx="50" cy="50" r="8" fill="#F97316"/>
+    <circle cx="100" cy="50" r="8" fill="#F97316"/>
+    <circle cx="150" cy="50" r="8" fill="#F97316"/>
+    <circle cx="200" cy="50" r="8" fill="#F97316"/>
+    
+    <!-- Feature Branch -->
+    <line x1="100" y1="50" x2="100" y2="20" stroke="#10B981" stroke-width="3"/>
+    <line x1="100" y1="20" x2="180" y2="20" stroke="#10B981" stroke-width="3"/>
+    <line x1="180" y1="20" x2="180" y2="50" stroke="#10B981" stroke-width="3"/>
+    <circle cx="120" cy="20" r="6" fill="#10B981"/>
+    <circle cx="140" cy="20" r="6" fill="#10B981"/>
+    <circle cx="160" cy="20" r="6" fill="#10B981"/>
+    
+    <!-- Hotfix Branch -->
+    <line x1="150" y1="50" x2="150" y2="80" stroke="#EF4444" stroke-width="3"/>
+    <line x1="150" y1="80" x2="220" y2="80" stroke="#EF4444" stroke-width="3"/>
+    <line x1="220" y1="80" x2="220" y2="50" stroke="#EF4444" stroke-width="3"/>
+    <circle cx="170" cy="80" r="6" fill="#EF4444"/>
+    <circle cx="190" cy="80" r="6" fill="#EF4444"/>
+    <circle cx="210" cy="80" r="6" fill="#EF4444"/>
+  </g>
+  
+  <!-- Git Commands -->
+  <rect x="400" y="80" width="300" height="200" rx="8" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  
+  <text x="420" y="110" fill="#569CD6" font-family="monospace" font-size="12">git checkout -b feature/new-feature</text>
+  <text x="420" y="130" fill="#CE9178" font-family="monospace" font-size="12">git add .</text>
+  <text x="420" y="150" fill="#4EC9B0" font-family="monospace" font-size="12">git commit -m "Add new feature"</text>
+  <text x="420" y="170" fill="#DCDCAA" font-family="monospace" font-size="12">git push origin feature/new-feature</text>
+  <text x="420" y="190" fill="#C586C0" font-family="monospace" font-size="12">git merge feature/new-feature</text>
+  <text x="420" y="210" fill="#F44747" font-family="monospace" font-size="12">git rebase -i HEAD~3</text>
+  <text x="420" y="230" fill="#10B981" font-family="monospace" font-size="12">git cherry-pick &lt;commit-hash&gt;</text>
+  <text x="420" y="250" fill="#3B82F6" font-family="monospace" font-size="12">git log --oneline --graph</text>
+  
+  <!-- Workflow Benefits -->
+  <rect x="50" y="320" width="700" height="60" rx="4" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  
+  <circle cx="100" cy="350" r="12" fill="#10B981"/>
+  <text x="125" y="355" fill="#FFFFFF" font-family="Arial" font-size="12">75% Fewer Conflicts</text>
+  
+  <circle cx="300" cy="350" r="12" fill="#3B82F6"/>
+  <text x="325" y="355" fill="#FFFFFF" font-family="Arial" font-size="12">50% Faster Reviews</text>
+  
+  <circle cx="500" cy="350" r="12" fill="#8B5CF6"/>
+  <text x="525" y="355" fill="#FFFFFF" font-family="Arial" font-size="12">90% Better Quality</text>
+  
+  <!-- Git Flow Strategy -->
+  <text x="50" y="30" fill="#FFFFFF" font-family="Arial" font-size="16" font-weight="bold">Git Workflow Optimization</text>
+  <text x="50" y="50" fill="#9CA3AF" font-family="Arial" font-size="12">Master collaborative development with advanced Git techniques</text>
+</svg>

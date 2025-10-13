@@ -1,0 +1,653 @@
+---
+title: "PowerShell for Windows Automation"
+description: "Comprehensive guide to PowerShell scripting for Windows automation. Learn essential PowerShell commands, scripting techniques, and automation patterns to streamline your Windows development workflow."
+author: "TechDevDex Team"
+date: "2024-12-01"
+category: "Automation Scripts"
+tags: ["PowerShell", "Windows Automation", "System Administration", "Scripting", "Windows Development"]
+readTime: "20 min"
+featured: false
+rating: 4
+featuredImage: "/images/productivity/automation-scripts/powershell-automation.svg"
+---
+
+# PowerShell for Windows Automation
+
+PowerShell is Microsoft's powerful command-line shell and scripting language designed for system administration and automation. It provides extensive capabilities for managing Windows systems, automating tasks, and integrating with various Microsoft services and APIs.
+
+## Why PowerShell for Automation?
+
+### Key Benefits
+
+- **Native Windows Integration:** Deep integration with Windows systems and services
+- **Object-Oriented:** Works with .NET objects, not just text
+- **Extensive Cmdlets:** Thousands of built-in commands for system management
+- **Remote Management:** Execute commands on remote systems
+- **Cross-Platform:** Available on Windows, Linux, and macOS
+- **Powerful Pipeline:** Chain commands together for complex operations
+
+### Common Use Cases
+
+- **System Administration:** User management, service configuration, registry operations
+- **File Operations:** Bulk file processing, directory management, backup automation
+- **Network Management:** Network configuration, monitoring, and troubleshooting
+- **Application Deployment:** Automated software installation and configuration
+- **Monitoring and Reporting:** System health monitoring and report generation
+
+## PowerShell Fundamentals
+
+### Basic Commands
+
+#### Get Information
+```powershell
+# Get system information
+Get-ComputerInfo
+
+# Get running processes
+Get-Process
+
+# Get services
+Get-Service
+
+# Get installed software
+Get-WmiObject -Class Win32_Product
+
+# Get network adapters
+Get-NetAdapter
+```
+
+#### File Operations
+```powershell
+# List files and directories
+Get-ChildItem -Path "C:\Users" -Recurse
+
+# Copy files
+Copy-Item -Path "source.txt" -Destination "destination.txt"
+
+# Move files
+Move-Item -Path "old_location" -Destination "new_location"
+
+# Remove files
+Remove-Item -Path "file.txt" -Force
+
+# Create directories
+New-Item -ItemType Directory -Path "new_folder"
+```
+
+#### Text Processing
+```powershell
+# Read file content
+Get-Content -Path "file.txt"
+
+# Search for text
+Select-String -Pattern "error" -Path "log.txt"
+
+# Replace text
+(Get-Content "file.txt") -replace "old_text", "new_text" | Set-Content "file.txt"
+
+# Sort and filter
+Get-Process | Where-Object {$_.CPU -gt 10} | Sort-Object CPU -Descending
+```
+
+### Variables and Data Types
+
+#### Variable Usage
+```powershell
+# Define variables
+$name = "John Doe"
+$age = 30
+$files = @("file1.txt", "file2.txt", "file3.txt")
+
+# Use variables
+Write-Host "Hello, $name"
+Write-Host "You are $age years old"
+
+# Array operations
+Write-Host "First file: $($files[0])"
+Write-Host "All files: $($files -join ', ')"
+Write-Host "Number of files: $($files.Count)"
+```
+
+#### Hash Tables
+```powershell
+# Create hash table
+$config = @{
+    Server = "localhost"
+    Port = 8080
+    Database = "myapp"
+    Timeout = 30
+}
+
+# Access values
+Write-Host "Server: $($config.Server)"
+Write-Host "Port: $($config.Port)"
+
+# Add new values
+$config["Environment"] = "Production"
+```
+
+### Functions and Modules
+
+#### Function Definition
+```powershell
+# Function with parameters
+function Get-UserInfo {
+    param(
+        [string]$Username,
+        [int]$Age
+    )
+    
+    Write-Host "User: $Username, Age: $Age"
+}
+
+# Function with return value
+function Get-FileCount {
+    param([string]$Path)
+    
+    $count = (Get-ChildItem -Path $Path -File).Count
+    return $count
+}
+
+# Call functions
+Get-UserInfo -Username "Alice" -Age 25
+$count = Get-FileCount -Path "C:\Users"
+Write-Host "File count: $count"
+```
+
+#### Advanced Functions
+```powershell
+function Get-SystemInfo {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)]
+        [string]$ComputerName,
+        
+        [Parameter(Mandatory=$false)]
+        [switch]$IncludeServices
+    )
+    
+    Write-Verbose "Getting system information for $ComputerName"
+    
+    $info = @{
+        ComputerName = $ComputerName
+        OS = (Get-WmiObject -Class Win32_OperatingSystem).Caption
+        Memory = (Get-WmiObject -Class Win32_ComputerSystem).TotalPhysicalMemory
+        Processors = (Get-WmiObject -Class Win32_Processor).Count
+    }
+    
+    if ($IncludeServices) {
+        $info.Services = Get-Service | Where-Object {$_.Status -eq "Running"}
+    }
+    
+    return $info
+}
+```
+
+## Advanced PowerShell Techniques
+
+### Error Handling
+
+#### Try-Catch Blocks
+```powershell
+try {
+    # Risky operation
+    $result = Get-Content -Path "nonexistent.txt" -ErrorAction Stop
+    Write-Host "File content: $result"
+}
+catch {
+    Write-Error "Failed to read file: $($_.Exception.Message)"
+}
+finally {
+    Write-Host "Operation completed"
+}
+```
+
+#### Error Action Preferences
+```powershell
+# Set error action for specific command
+Get-Content -Path "file.txt" -ErrorAction SilentlyContinue
+
+# Set global error action
+$ErrorActionPreference = "Stop"
+
+# Custom error handling
+function Test-FileExists {
+    param([string]$Path)
+    
+    if (Test-Path $Path) {
+        return $true
+    } else {
+        Write-Warning "File not found: $Path"
+        return $false
+    }
+}
+```
+
+### Pipeline and Filtering
+
+#### Pipeline Operations
+```powershell
+# Chain commands together
+Get-Process | Where-Object {$_.CPU -gt 10} | Sort-Object CPU -Descending | Select-Object -First 5
+
+# Process files
+Get-ChildItem -Path "C:\Logs" -Filter "*.log" | ForEach-Object {
+    $content = Get-Content $_.FullName
+    $errorCount = ($content | Select-String -Pattern "ERROR").Count
+    [PSCustomObject]@{
+        File = $_.Name
+        ErrorCount = $errorCount
+    }
+}
+```
+
+#### Advanced Filtering
+```powershell
+# Complex filtering
+Get-ChildItem -Path "C:\Users" -Recurse | Where-Object {
+    $_.Extension -eq ".txt" -and 
+    $_.Length -gt 1MB -and 
+    $_.LastWriteTime -gt (Get-Date).AddDays(-30)
+} | Sort-Object Length -Descending
+```
+
+### Remote Management
+
+#### Remote Execution
+```powershell
+# Execute command on remote computer
+Invoke-Command -ComputerName "Server01" -ScriptBlock {
+    Get-Process | Where-Object {$_.CPU -gt 10}
+}
+
+# Run script on multiple computers
+$computers = @("Server01", "Server02", "Server03")
+Invoke-Command -ComputerName $computers -ScriptBlock {
+    Get-Service | Where-Object {$_.Status -eq "Stopped"}
+}
+```
+
+#### Remote Sessions
+```powershell
+# Create persistent session
+$session = New-PSSession -ComputerName "Server01"
+
+# Use session for multiple commands
+Invoke-Command -Session $session -ScriptBlock {
+    Get-ComputerInfo
+}
+
+# Remove session when done
+Remove-PSSession $session
+```
+
+## Practical Automation Scripts
+
+### System Administration
+
+#### User Management Script
+```powershell
+# user_management.ps1
+param(
+    [Parameter(Mandatory=$true)]
+    [string]$Action,
+    
+    [Parameter(Mandatory=$true)]
+    [string]$Username,
+    
+    [Parameter(Mandatory=$false)]
+    [string]$Password
+)
+
+function New-UserAccount {
+    param([string]$User, [string]$Pass)
+    
+    try {
+        $securePassword = ConvertTo-SecureString $Pass -AsPlainText -Force
+        New-LocalUser -Name $User -Password $securePassword -FullName $User
+        Add-LocalGroupMember -Group "Users" -Member $User
+        Write-Host "User $User created successfully"
+    }
+    catch {
+        Write-Error "Failed to create user: $($_.Exception.Message)"
+    }
+}
+
+function Remove-UserAccount {
+    param([string]$User)
+    
+    try {
+        Remove-LocalUser -Name $User -Confirm:$false
+        Write-Host "User $User removed successfully"
+    }
+    catch {
+        Write-Error "Failed to remove user: $($_.Exception.Message)"
+    }
+}
+
+# Main execution
+switch ($Action.ToLower()) {
+    "create" { New-UserAccount -User $Username -Pass $Password }
+    "remove" { Remove-UserAccount -User $Username }
+    default { Write-Error "Invalid action. Use 'create' or 'remove'" }
+}
+```
+
+#### Service Management Script
+```powershell
+# service_manager.ps1
+param(
+    [Parameter(Mandatory=$true)]
+    [string]$ServiceName,
+    
+    [Parameter(Mandatory=$true)]
+    [ValidateSet("Start", "Stop", "Restart", "Status")]
+    [string]$Action
+)
+
+function Manage-Service {
+    param([string]$Name, [string]$Operation)
+    
+    try {
+        $service = Get-Service -Name $Name -ErrorAction Stop
+        
+        switch ($Operation.ToLower()) {
+            "start" {
+                if ($service.Status -eq "Stopped") {
+                    Start-Service -Name $Name
+                    Write-Host "Service $Name started successfully"
+                } else {
+                    Write-Host "Service $Name is already running"
+                }
+            }
+            "stop" {
+                if ($service.Status -eq "Running") {
+                    Stop-Service -Name $Name -Force
+                    Write-Host "Service $Name stopped successfully"
+                } else {
+                    Write-Host "Service $Name is already stopped"
+                }
+            }
+            "restart" {
+                Restart-Service -Name $Name -Force
+                Write-Host "Service $Name restarted successfully"
+            }
+            "status" {
+                Write-Host "Service $Name status: $($service.Status)"
+            }
+        }
+    }
+    catch {
+        Write-Error "Failed to manage service: $($_.Exception.Message)"
+    }
+}
+
+Manage-Service -Name $ServiceName -Operation $Action
+```
+
+### File Management Automation
+
+#### File Organization Script
+```powershell
+# organize_files.ps1
+param(
+    [Parameter(Mandatory=$true)]
+    [string]$SourcePath,
+    
+    [Parameter(Mandatory=$false)]
+    [string]$DestinationPath = "C:\OrganizedFiles"
+)
+
+function Organize-Files {
+    param([string]$Source, [string]$Destination)
+    
+    # Create destination directories
+    $directories = @("Images", "Documents", "Archives", "Code", "Media")
+    foreach ($dir in $directories) {
+        $path = Join-Path $Destination $dir
+        if (!(Test-Path $path)) {
+            New-Item -ItemType Directory -Path $path -Force
+            Write-Host "Created directory: $path"
+        }
+    }
+    
+    # Get all files
+    $files = Get-ChildItem -Path $Source -File -Recurse
+    
+    foreach ($file in $files) {
+        $extension = $file.Extension.ToLower()
+        $destinationDir = $null
+        
+        # Determine destination based on file type
+        switch ($extension) {
+            {$_ -in @(".jpg", ".jpeg", ".png", ".gif", ".bmp")} {
+                $destinationDir = "Images"
+            }
+            {$_ -in @(".pdf", ".doc", ".docx", ".txt", ".rtf")} {
+                $destinationDir = "Documents"
+            }
+            {$_ -in @(".zip", ".rar", ".7z", ".tar", ".gz")} {
+                $destinationDir = "Archives"
+            }
+            {$_ -in @(".js", ".py", ".ps1", ".bat", ".json", ".xml")} {
+                $destinationDir = "Code"
+            }
+            {$_ -in @(".mp4", ".avi", ".mp3", ".wav", ".mov")} {
+                $destinationDir = "Media"
+            }
+            default {
+                $destinationDir = "Other"
+            }
+        }
+        
+        if ($destinationDir) {
+            $destPath = Join-Path $Destination $destinationDir
+            $destFile = Join-Path $destPath $file.Name
+            
+            try {
+                Copy-Item -Path $file.FullName -Destination $destFile -Force
+                Write-Host "Moved: $($file.Name) -> $destinationDir"
+            }
+            catch {
+                Write-Warning "Failed to move $($file.Name): $($_.Exception.Message)"
+            }
+        }
+    }
+}
+
+Organize-Files -Source $SourcePath -Destination $DestinationPath
+```
+
+#### Backup Script
+```powershell
+# backup_script.ps1
+param(
+    [Parameter(Mandatory=$true)]
+    [string]$SourcePath,
+    
+    [Parameter(Mandatory=$true)]
+    [string]$BackupPath,
+    
+    [Parameter(Mandatory=$false)]
+    [int]$RetentionDays = 30
+)
+
+function Backup-Files {
+    param([string]$Source, [string]$Backup, [int]$Retention)
+    
+    $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
+    $backupDir = Join-Path $Backup "backup_$timestamp"
+    
+    try {
+        # Create backup directory
+        New-Item -ItemType Directory -Path $backupDir -Force
+        
+        # Copy files
+        Copy-Item -Path $Source -Destination $backupDir -Recurse -Force
+        
+        # Create backup info file
+        $info = @{
+            Source = $Source
+            BackupDate = Get-Date
+            FileCount = (Get-ChildItem -Path $backupDir -Recurse -File).Count
+            TotalSize = (Get-ChildItem -Path $backupDir -Recurse -File | Measure-Object -Property Length -Sum).Sum
+        }
+        
+        $info | ConvertTo-Json | Out-File -FilePath (Join-Path $backupDir "backup_info.json")
+        
+        Write-Host "Backup completed: $backupDir"
+        
+        # Clean old backups
+        $cutoffDate = (Get-Date).AddDays(-$Retention)
+        Get-ChildItem -Path $Backup -Directory | Where-Object {
+            $_.CreationTime -lt $cutoffDate
+        } | Remove-Item -Recurse -Force
+        
+        Write-Host "Cleaned backups older than $Retention days"
+    }
+    catch {
+        Write-Error "Backup failed: $($_.Exception.Message)"
+    }
+}
+
+Backup-Files -Source $SourcePath -Backup $BackupPath -Retention $RetentionDays
+```
+
+### Network Management
+
+#### Network Monitoring Script
+```powershell
+# network_monitor.ps1
+param(
+    [Parameter(Mandatory=$true)]
+    [string[]]$TargetHosts,
+    
+    [Parameter(Mandatory=$false)]
+    [int]$IntervalSeconds = 60
+)
+
+function Test-NetworkConnectivity {
+    param([string[]]$Hosts, [int]$Interval)
+    
+    while ($true) {
+        $results = @()
+        
+        foreach ($host in $Hosts) {
+            $ping = Test-Connection -ComputerName $host -Count 1 -Quiet
+            $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+            
+            $result = [PSCustomObject]@{
+                Timestamp = $timestamp
+                Host = $host
+                Status = if ($ping) { "Online" } else { "Offline" }
+                ResponseTime = if ($ping) { (Test-Connection -ComputerName $host -Count 1).ResponseTime } else { $null }
+            }
+            
+            $results += $result
+            
+            if ($ping) {
+                Write-Host "$timestamp - $host : Online" -ForegroundColor Green
+            } else {
+                Write-Host "$timestamp - $host : Offline" -ForegroundColor Red
+            }
+        }
+        
+        # Save results to CSV
+        $results | Export-Csv -Path "network_monitor.csv" -Append -NoTypeInformation
+        
+        Start-Sleep -Seconds $Interval
+    }
+}
+
+Test-NetworkConnectivity -Hosts $TargetHosts -Interval $IntervalSeconds
+```
+
+## Best Practices
+
+### Script Organization
+
+#### Modular Scripts
+```powershell
+# config.ps1 - Configuration file
+$Config = @{
+    LogPath = "C:\Logs"
+    BackupPath = "C:\Backups"
+    MaxLogSize = 10MB
+    RetentionDays = 30
+}
+
+# utils.ps1 - Utility functions
+function Write-Log {
+    param([string]$Message, [string]$Level = "INFO")
+    
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $logEntry = "$timestamp [$Level] $Message"
+    
+    Add-Content -Path $Config.LogPath\script.log -Value $logEntry
+    Write-Host $logEntry
+}
+
+# main.ps1 - Main script
+. "$PSScriptRoot\config.ps1"
+. "$PSScriptRoot\utils.ps1"
+
+Write-Log "Script started"
+# Your main logic here
+Write-Log "Script completed"
+```
+
+### Security Considerations
+
+#### Execution Policy
+```powershell
+# Check current execution policy
+Get-ExecutionPolicy
+
+# Set execution policy (requires admin)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Run script with bypass
+PowerShell -ExecutionPolicy Bypass -File "script.ps1"
+```
+
+#### Credential Management
+```powershell
+# Secure credential handling
+$credential = Get-Credential -UserName "domain\username" -Message "Enter password"
+
+# Use credential for remote operations
+Invoke-Command -ComputerName "Server01" -Credential $credential -ScriptBlock {
+    Get-ComputerInfo
+}
+
+# Store encrypted credentials
+$credential | Export-Clixml -Path "credentials.xml"
+
+# Load encrypted credentials
+$credential = Import-Clixml -Path "credentials.xml"
+```
+
+### Performance Optimization
+
+#### Efficient File Operations
+```powershell
+# Use -Recurse parameter efficiently
+Get-ChildItem -Path "C:\Users" -Recurse -File | Where-Object {
+    $_.Extension -eq ".txt"
+} | ForEach-Object {
+    # Process each file
+}
+
+# Use parallel processing for large datasets
+$files = Get-ChildItem -Path "C:\LargeDirectory" -File
+$files | ForEach-Object -Parallel {
+    # Process file in parallel
+    Process-File $_.FullName
+} -ThrottleLimit 5
+```
+
+## Conclusion
+
+PowerShell provides powerful capabilities for Windows automation and system administration. By mastering PowerShell fundamentals, advanced techniques, and best practices, you can create robust automation solutions that streamline your Windows development and administration workflows.
+
+The key to effective PowerShell automation is understanding the object-oriented nature of PowerShell, leveraging the extensive cmdlet library, and following security best practices. With proper implementation, PowerShell scripts can significantly improve productivity and reduce manual errors in Windows environments.

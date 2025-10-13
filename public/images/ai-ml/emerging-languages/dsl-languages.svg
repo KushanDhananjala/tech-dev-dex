@@ -1,0 +1,51 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dslGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- DSL Logo -->
+  <rect x="150" y="80" width="100" height="80" rx="8" fill="url(#dslGradient)" stroke="#06b6d4" stroke-width="2"/>
+  <text x="200" y="130" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" style="font-weight:bold;">DSL</text>
+  
+  <!-- DSL Features -->
+  <rect x="50" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="80" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Specialized</text>
+  
+  <rect x="120" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="150" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Domain</text>
+  
+  <rect x="190" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="220" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Focused</text>
+  
+  <rect x="260" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="290" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Optimized</text>
+  
+  <rect x="330" y="180" width="60" height="25" rx="4" fill="#6b7280" />
+  <text x="360" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Efficient</text>
+  
+  <!-- DSL Examples -->
+  <rect x="50" y="220" width="80" height="25" rx="4" fill="#06b6d4" />
+  <text x="90" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">WebAssembly</text>
+  
+  <rect x="140" y="220" width="80" height="25" rx="4" fill="#06b6d4" />
+  <text x="180" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Solidity</text>
+  
+  <rect x="230" y="220" width="80" height="25" rx="4" fill="#06b6d4" />
+  <text x="270" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Julia</text>
+  
+  <rect x="320" y="220" width="80" height="25" rx="4" fill="#06b6d4" />
+  <text x="360" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">R</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#06b6d4" />
+  <text x="110" y="275" fill="#06b6d4" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Specialized</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#0891b2" />
+  <text x="210" y="275" fill="#0891b2" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Focused</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#06b6d4" />
+  <text x="310" y="275" fill="#06b6d4" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Efficient</text>
+</svg>
