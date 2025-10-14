@@ -31,10 +31,13 @@ export const ADSENSE_CONFIG = {
 
 // AdSense hook for managing ads
 export const useAdSense = () => {
-  const initializeAd = (adSlot: string, adFormat: string = 'auto') => {
-    if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
+  const initializeAd = (adSlot: string) => {
+    if (typeof window !== 'undefined' && (window as unknown as { adsbygoogle?: unknown[] }).adsbygoogle) {
       try {
-        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+        const adsbygoogle = (window as unknown as { adsbygoogle?: unknown[] }).adsbygoogle;
+        if (adsbygoogle) {
+          adsbygoogle.push({});
+        }
       } catch (error) {
         console.warn('AdSense initialization failed:', error);
       }

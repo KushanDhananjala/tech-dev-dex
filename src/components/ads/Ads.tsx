@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { ADSENSE_CONFIG, useAdSense, AdSenseProps } from '../../lib/adsense';
+import { ADSENSE_CONFIG, useAdSense } from '../../lib/adsense';
 
 type Props = {
   placement: "header" | "sidebar" | "content";
@@ -21,12 +21,12 @@ export default function Ads({ placement }: Props) {
     // Initialize AdSense after component mounts
     const timer = setTimeout(() => {
       if (adRef.current && !ADSENSE_CONFIG.IS_DEVELOPMENT) {
-        initializeAd(adConfig.slot, adConfig.format);
+        initializeAd(adConfig.slot);
       }
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [initializeAd, adConfig.slot, adConfig.format]);
+  }, [initializeAd, adConfig.slot]);
 
   // Development mode - show placeholder
   if (ADSENSE_CONFIG.IS_DEVELOPMENT) {
