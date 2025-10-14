@@ -1,0 +1,30 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Gradient -->
+  <rect width="1200" height="630" fill="url(#gradient)"/>
+  
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#8A5CFF"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Logo -->
+  <circle cx="200" cy="200" r="80" fill="#FFFFFF" fill-opacity="0.9"/>
+  <text x="200" y="210" text-anchor="middle" fill="#333333" font-size="48" font-family="Arial, sans-serif" font-weight="bold">TechDevDex</text>
+  
+  <!-- Main Title -->
+  <text x="600" y="200" text-anchor="middle" fill="#FFFFFF" font-size="48" font-family="Arial, sans-serif" font-weight="bold">Developer Resources &amp; Tutorials</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="250" text-anchor="middle" fill="#FFFFFF" font-size="24" font-family="Arial, sans-serif">Comprehensive developer resource platform with tutorials, reviews, and guides</text>
+  
+  <!-- Description -->
+  <text x="600" y="300" text-anchor="middle" fill="#FFFFFF" font-size="18" font-family="Arial, sans-serif">Learn programming, AI, DevOps, and productivity tools</text>
+  
+  <!-- Features -->
+  <text x="600" y="400" text-anchor="middle" fill="#FFFFFF" font-size="20" font-family="Arial, sans-serif" font-weight="bold">Programming • AI • DevOps • Productivity • Hardware</text>
+  
+  <!-- URL -->
+  <text x="600" y="500" text-anchor="middle" fill="#FFFFFF" font-size="16" font-family="Arial, sans-serif">techdevdex.com</text>
+</svg>

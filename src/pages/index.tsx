@@ -2,16 +2,36 @@ import Link from "next/link";
 import menu from "../menu";
 import { motion } from "framer-motion";
 import Head from "next/head";
+import SEO from "../components/SEO";
 import Ads from "../components/ads/Ads";
 import { BookOpen, Stars, Cpu, ArrowRight, Calendar, User, Zap, TrendingUp } from "lucide-react";
 
 export default function HomePage() {
   return (
     <>
-      <Head>
-        <title>Home | TechDevDex</title>
-        <meta name="description" content="TechDevDex – Tech tutorials, reviews, and AI insights" />
-      </Head>
+      <SEO
+        title="Developer Resources & Tutorials"
+        description="Comprehensive developer resource platform with tutorials, reviews, and guides for modern development technologies. Learn programming, AI, DevOps, and productivity tools."
+        keywords={[
+          "developer resources",
+          "programming tutorials",
+          "coding guides",
+          "software development",
+          "web development",
+          "mobile development",
+          "AI development",
+          "devops",
+          "productivity tools",
+          "hardware reviews",
+          "tech tutorials",
+          "programming courses",
+          "coding bootcamp",
+          "developer tools",
+          "software engineering"
+        ]}
+        type="website"
+        image="/images/og-image.svg"
+      />
       
       {/* Hero Section */}
       <section className="mb-16">

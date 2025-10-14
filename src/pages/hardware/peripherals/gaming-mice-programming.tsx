@@ -102,16 +102,28 @@ const GamingMiceProgramming = () => {
               <li>Customizable RGB lighting</li>
             </ul>
 
-            <h3>SteelSeries Aerox 3 Wireless</h3>
+            <h3>SteelSeries Rival 650 Wireless</h3>
             <p>
-              The Aerox 3 Wireless provides great value:
+              The Rival 650 Wireless provides great value:
             </p>
             <ul>
-              <li>TrueMove Air sensor</li>
-              <li>Lightweight honeycomb design</li>
-              <li>IP54 water resistance</li>
-              <li>Excellent battery life</li>
-              <li>Affordable pricing</li>
+              <li>TrueMove3+ dual sensor system</li>
+              <li>Wireless and wired connectivity</li>
+              <li>RGB Prism lighting</li>
+              <li>24-hour battery life</li>
+              <li>SteelSeries Engine software</li>
+            </ul>
+
+            <h3>Corsair Dark Core RGB Pro SE</h3>
+            <p>
+              The Dark Core RGB Pro SE offers excellent value:
+            </p>
+            <ul>
+              <li>18,000 DPI optical sensor</li>
+              <li>Wireless and wired connectivity</li>
+              <li>RGB backlighting</li>
+              <li>50-hour battery life</li>
+              <li>iCUE software integration</li>
             </ul>
 
             <h2>Key Features for Programming</h2>

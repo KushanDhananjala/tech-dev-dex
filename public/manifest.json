@@ -1,0 +1,33 @@
+{
+  "name": "TechDevDex - Developer Resources & Tutorials",
+  "short_name": "TechDevDex",
+  "description": "Comprehensive developer resource platform with tutorials, reviews, and guides for modern development technologies.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3B82F6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["developer", "programming", "tutorials", "education"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "id": "techdevdex"
+}

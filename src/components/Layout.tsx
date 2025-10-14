@@ -2,6 +2,7 @@ import Head from "next/head";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Ads from "./ads/Ads";
+import SEO from "./SEO";
 import { ReactNode } from "react";
 import { useRouter } from "next/router";
 
@@ -19,12 +20,22 @@ export default function Layout({ children, title, description }: Props) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Head>
-        <title>{siteTitle}</title>
-        <meta name="description" content={siteDescription} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-      </Head>
+      <SEO
+        title={title}
+        description={description}
+        keywords={[
+          "developer resources",
+          "programming tutorials",
+          "coding guides",
+          "software development",
+          "web development",
+          "mobile development",
+          "AI development",
+          "devops",
+          "productivity tools",
+          "hardware reviews"
+        ]}
+      />
       <div className="w-full">
         <div className="w-full">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-2">
