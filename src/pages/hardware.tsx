@@ -1,13 +1,32 @@
-import Head from "next/head";
+import SEO from "../components/SEO";
 import Link from "next/link";
 
 export default function HardwarePage() {
   return (
     <>
-      <Head>
-        <title>Hardware | TechDevDex</title>
-        <meta name="description" content="Reviews and guides for tech gadgets, hardware, and development setups" />
-      </Head>
+      <SEO
+        title="Hardware & Development Setup"
+        description="Comprehensive reviews and guides for tech gadgets, hardware, and development setups. Find the best laptops, peripherals, and development workstations for programmers."
+        keywords={[
+          "hardware reviews",
+          "development setup",
+          "programming laptops",
+          "developer hardware",
+          "tech gadgets",
+          "development workstations",
+          "programming peripherals",
+          "coding setup",
+          "developer tools",
+          "tech hardware",
+          "programming equipment",
+          "development environment",
+          "coding accessories",
+          "tech reviews"
+        ]}
+        type="website"
+        image="/images/hardware-og.jpg"
+        url="/hardware"
+      />
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">

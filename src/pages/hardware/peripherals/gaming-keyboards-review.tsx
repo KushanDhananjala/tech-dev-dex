@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,27 @@ export default function GamingKeyboardsReview({ content }: GamingKeyboardsReview
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Gaming Keyboards Review - TechDevDex</title>
-          <meta name="description" content="Gaming keyboards for developers" />
-        </Head>
+        <SEO
+          title="Best Mechanical Keyboards for Developers"
+          description="Discover the best mechanical keyboards for developers. In-depth reviews of top keyboards including Cherry MX switches, RGB lighting, and ergonomic designs."
+          keywords={[
+            'mechanical keyboards',
+            'developer keyboards',
+            'Cherry MX switches',
+            'RGB keyboards',
+            'ergonomic keyboards',
+            'programming keyboards',
+            'keyboard reviews',
+            'gaming keyboards',
+            'wireless keyboards',
+            'keyboard switches'
+          ]}
+          type="article"
+          image="/images/hardware/peripherals/gaming-keyboards-og.jpg"
+          url="/hardware/peripherals/gaming-keyboards-review"
+          section="Hardware"
+          tags={['Keyboards', 'Hardware', 'Reviews']}
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +49,17 @@ export default function GamingKeyboardsReview({ content }: GamingKeyboardsReview
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/hardware/peripherals/gaming-keyboards-og.jpg'}
+        url={`/hardware/peripherals/gaming-keyboards-review`}
+        publishedTime={content.date}
+        section="Hardware"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Filter, Search, Server, Star, User } from 'lucide-react';
@@ -67,11 +67,25 @@ const BackendDevelopment = () => {
 
   return (
     <>
-      <Head>
-        <title>Backend Development - TechDevDex</title>
-        <meta name="description" content="Comprehensive guides for backend development including Node.js, Python, Java, and more." />
-        <meta name="keywords" content="backend development, Node.js, Python, Java, Go, server-side programming, API development" />
-      </Head>
+      <SEO
+        title="Backend Development"
+        description="Comprehensive guides for backend development including Node.js, Python, Java, and more. Master server-side programming and API development."
+        keywords={[
+          "backend development",
+          "Node.js",
+          "Python backend",
+          "Java backend",
+          "Go backend",
+          "server-side programming",
+          "API development",
+          "backend frameworks",
+          "database integration",
+          "microservices"
+        ]}
+        type="website"
+        image="/images/web-dev/backend-development-og.jpg"
+        url="/web-dev/backend-development"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CheckCircle, Clock, Star, Users, Zap } from 'lucide-react';
@@ -7,42 +7,28 @@ import { CheckCircle, Clock, Star, Users, Zap } from 'lucide-react';
 const VSCodeMastery = () => {
   return (
     <>
-      <Head>
-        <title>VS Code Mastery 2024: Complete Developer&apos;s Guide | TechDevDex</title>
-        <meta name="description" content="Master Visual Studio Code with our comprehensive guide. Advanced shortcuts, essential extensions, productivity tips, and workflows to boost your coding efficiency by 300%. Complete VS Code mastery for developers." />
-        <meta name="keywords" content="VS Code mastery, Visual Studio Code tips, VS Code shortcuts, VS Code extensions, VS Code productivity, VS Code setup, VS Code configuration, VS Code debugging, VS Code Git integration, VS Code terminal, VS Code workspace, VS Code performance" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="VS Code Mastery 2024: Complete Developer&apos;s Guide" />
-        <meta property="og:description" content="Master Visual Studio Code with our comprehensive guide. Advanced shortcuts, essential extensions, productivity tips, and workflows to boost your coding efficiency by 300%." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/productivity/development-tools/vs-code-mastery" />
-        <meta property="og:image" content="https://techdevdex.com/images/productivity/development-tools/vs-code-mastery.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="VS Code Mastery 2024: Complete Developer&apos;s Guide" />
-        <meta name="twitter:description" content="Master Visual Studio Code with our comprehensive guide. Advanced shortcuts, essential extensions, productivity tips, and workflows to boost your coding efficiency by 300%." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/productivity/development-tools/vs-code-mastery.svg" />
-        <link rel="canonical" href="https://techdevdex.com/productivity/development-tools/vs-code-mastery" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "VS Code Mastery 2024: Complete Developer&apos;s Guide",
-            "description": "Master Visual Studio Code with our comprehensive guide. Advanced shortcuts, essential extensions, productivity tips, and workflows to boost your coding efficiency by 300%.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "datePublished": "2024-12-12",
-            "dateModified": "2024-12-12",
-            "image": "https://techdevdex.com/images/productivity/development-tools/vs-code-mastery.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="VS Code Mastery 2024: Complete Developer's Guide"
+        description="Master Visual Studio Code with our comprehensive guide. Advanced shortcuts, essential extensions, productivity tips, and workflows to boost your coding efficiency by 300%. Complete VS Code mastery for developers."
+        keywords={[
+          'VS Code mastery',
+          'Visual Studio Code tips',
+          'VS Code shortcuts',
+          'VS Code extensions',
+          'VS Code productivity',
+          'VS Code setup',
+          'VS Code configuration',
+          'VS Code debugging',
+          'VS Code Git integration',
+          'VS Code terminal',
+          'VS Code workspace',
+          'VS Code performance'
+        ]}
+        type="article"
+        image="/images/productivity/development-tools/vs-code-mastery.svg"
+        url="/productivity/development-tools/vs-code-mastery"
+        section="Development Tools"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

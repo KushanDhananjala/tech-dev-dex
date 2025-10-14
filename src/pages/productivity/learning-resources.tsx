@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Filter, GraduationCap, Search, User } from 'lucide-react';
@@ -62,11 +62,29 @@ const LearningResources = () => {
 
   return (
     <>
-      <Head>
-        <title>Learning Resources - TechDevDex</title>
-        <meta name="description" content="Comprehensive guides to programming learning resources including courses, bootcamps, certifications, and mentorship programs." />
-        <meta name="keywords" content="programming courses, coding bootcamps, programming certifications, learning resources, programming education" />
-      </Head>
+      <SEO
+        title="Programming Learning Resources"
+        description="Comprehensive guides to programming learning resources including courses, bootcamps, certifications, and mentorship programs. Find the best online courses and coding bootcamps."
+        keywords={[
+          "programming courses",
+          "coding bootcamps",
+          "programming certifications",
+          "learning resources",
+          "programming education",
+          "online courses",
+          "coding education",
+          "programming tutorials",
+          "tech education",
+          "coding skills",
+          "programming career",
+          "tech learning",
+          "developer education",
+          "programming mentorship"
+        ]}
+        type="website"
+        image="/images/productivity/learning-resources-og.jpg"
+        url="/productivity/learning-resources"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

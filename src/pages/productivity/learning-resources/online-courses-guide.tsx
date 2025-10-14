@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const OnlineCoursesGuide = () => {
   return (
     <>
-      <Head>
-        <title>Online Courses Guide for Developers | TechDevDex</title>
-        <meta name="description" content="Discover the best online courses for developers. Learn about platforms, course selection, and strategies for effective online learning." />
-        <meta name="keywords" content="online courses, developer education, learning resources, programming courses, skill development" />
-      </Head>
+      <SEO
+        title="Online Courses Guide for Developers"
+        description="Discover the best online courses for developers. Learn about platforms, course selection, and strategies for effective online learning."
+        keywords={[
+          'online courses',
+          'developer education',
+          'learning resources',
+          'programming courses',
+          'skill development',
+          'online learning',
+          'developer courses',
+          'programming education',
+          'skill enhancement',
+          'learning platforms'
+        ]}
+        type="article"
+        image="/images/productivity/learning-resources/online-courses.svg"
+        url="/productivity/learning-resources/online-courses-guide"
+        section="Learning Resources"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

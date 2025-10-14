@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,27 @@ import { motion } from 'framer-motion';
 const SvelteModernFramework = () => {
   return (
     <>
-      <Head>
-        <title>Svelte: The Modern Framework - TechDevDex</title>
-        <meta name="description" content="Explore Svelte&apos;s unique approach to frontend development with compile-time optimizations and minimal bundle sizes." />
-        <meta name="keywords" content="Svelte, JavaScript, frontend development, compile-time optimization, modern framework" />
-      </Head>
+      <SEO
+        title="Svelte: The Modern Framework"
+        description="Explore Svelte's unique approach to frontend development with compile-time optimizations and minimal bundle sizes. Learn the modern framework that compiles away."
+        keywords={[
+          'Svelte',
+          'JavaScript',
+          'frontend development',
+          'compile-time optimization',
+          'modern framework',
+          'SvelteKit',
+          'reactive programming',
+          'bundle optimization',
+          'component framework',
+          'web development'
+        ]}
+        type="article"
+        image="/images/web-dev/frontend-frameworks/svelte-guide.svg"
+        url="/web-dev/frontend-frameworks/svelte-modern-framework"
+        section="Frontend Frameworks"
+        tags={['Svelte', 'JavaScript', 'Modern Framework']}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

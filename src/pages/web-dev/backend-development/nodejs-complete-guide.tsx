@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, CheckCircle, Clock, Server, Star, User, Zap } from 'lucide-react';
@@ -8,47 +8,28 @@ import { motion } from 'framer-motion';
 const NodeJSCompleteGuide = () => {
   return (
     <>
-      <Head>
-        <title>Node.js: Complete Backend Guide | TechDevDex</title>
-        <meta name="description" content="Master Node.js for backend development with Express, authentication, database integration, and production deployment. Complete guide with practical examples." />
-        <meta name="keywords" content="Node.js, Express.js, backend development, JavaScript server, API development, authentication, database integration, production deployment" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Node.js: Complete Backend Guide" />
-        <meta property="og:description" content="Master Node.js for backend development with Express, authentication, database integration, and production deployment. Complete guide with practical examples." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/web-dev/backend-development/nodejs-complete-guide" />
-        <meta property="og:image" content="https://techdevdex.com/images/web-dev/backend-development/nodejs-guide.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Node.js: Complete Backend Guide" />
-        <meta name="twitter:description" content="Master Node.js for backend development with Express, authentication, database integration, and production deployment. Complete guide with practical examples." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/web-dev/backend-development/nodejs-guide.svg" />
-        <link rel="canonical" href="https://techdevdex.com/web-dev/backend-development/nodejs-complete-guide" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Node.js: Complete Backend Guide",
-            "description": "Master Node.js for backend development with Express, authentication, database integration, and production deployment. Complete guide with practical examples.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://techdevdex.com/logo.png"
-              }
-            },
-            "datePublished": "2024-12-01",
-            "dateModified": "2024-12-01",
-            "image": "https://techdevdex.com/images/web-dev/backend-development/nodejs-guide.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="Node.js: Complete Backend Guide"
+        description="Master Node.js for backend development with Express, authentication, database integration, and production deployment. Complete guide with practical examples."
+        keywords={[
+          'Node.js',
+          'Express.js',
+          'backend development',
+          'JavaScript server',
+          'API development',
+          'authentication',
+          'database integration',
+          'production deployment',
+          'server-side JavaScript',
+          'web development'
+        ]}
+        type="article"
+        image="/images/web-dev/backend-development/nodejs-guide.svg"
+        url="/web-dev/backend-development/nodejs-complete-guide"
+        publishedTime="2024-12-01"
+        section="Backend Development"
+        tags={['Node.js', 'Express', 'Backend Development']}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, Clock, Code, Star, User, Zap } from 'lucide-react';
@@ -7,23 +7,27 @@ import { CheckCircle, Clock, Code, Star, User, Zap } from 'lucide-react';
 const JavaScriptES6Guide = () => {
   return (
     <>
-      <Head>
-        <title>Modern JavaScript: ES6+ Features and Best Practices | TechDevDex</title>
-        <meta name="description" content="Master modern JavaScript with ES6+ features, async/await, modules, and advanced concepts. Complete guide with examples and best practices." />
-        <meta name="keywords" content="JavaScript ES6, modern JavaScript, async await, JavaScript modules, JavaScript best practices, JavaScript tutorial" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Modern JavaScript: ES6+ Features and Best Practices" />
-        <meta property="og:description" content="Master modern JavaScript with ES6+ features, async/await, modules, and advanced concepts." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/tutorials/web-development/javascript-es6-guide" />
-        <meta property="og:image" content="https://techdevdex.com/images/tutorials/web-development/javascript-es6.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Modern JavaScript: ES6+ Features and Best Practices" />
-        <meta name="twitter:description" content="Master modern JavaScript with ES6+ features, async/await, modules, and advanced concepts." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/tutorials/web-development/javascript-es6.svg" />
-        <link rel="canonical" href="https://techdevdex.com/tutorials/web-development/javascript-es6-guide" />
-      </Head>
+      <SEO
+        title="Modern JavaScript: ES6+ Features and Best Practices"
+        description="Master modern JavaScript with ES6+ features, async/await, modules, and advanced concepts. Complete guide with examples and best practices."
+        keywords={[
+          'JavaScript ES6',
+          'modern JavaScript',
+          'async await',
+          'JavaScript modules',
+          'JavaScript best practices',
+          'JavaScript tutorial',
+          'ES6 features',
+          'JavaScript promises',
+          'arrow functions',
+          'destructuring'
+        ]}
+        type="article"
+        image="/images/tutorials/web-development/javascript-es6.svg"
+        url="/tutorials/web-development/javascript-es6-guide"
+        section="Web Development"
+        tags={['JavaScript', 'ES6', 'Web Development']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

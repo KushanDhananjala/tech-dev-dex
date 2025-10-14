@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Clock, Database, Star, Users, Zap } from 'lucide-react';
@@ -7,42 +7,26 @@ import { ArrowRight, CheckCircle, Clock, Database, Star, Users, Zap } from 'luci
 const VectorDatabasesGuide = () => {
   return (
     <>
-      <Head>
-        <title>Vector Databases Guide: Master AI Data Storage | TechDevDex</title>
-        <meta name="description" content="Master vector databases for AI applications. Learn to use Pinecone, Weaviate, Chroma, and other vector databases for semantic search, RAG, and AI applications." />
-        <meta name="keywords" content="vector databases, semantic search, RAG, Pinecone, Weaviate, Chroma, AI data storage, embeddings, vector search" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Vector Databases Guide: Master AI Data Storage" />
-        <meta property="og:description" content="Master vector databases for AI applications. Learn to use Pinecone, Weaviate, Chroma, and other vector databases for semantic search, RAG, and AI applications." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/ai-trending/ai-integration-tutorials/vector-databases-guide" />
-        <meta property="og:image" content="https://techdevdex.com/images/ai-ml/ai-integration-tutorials/vector-databases.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Vector Databases Guide: Master AI Data Storage" />
-        <meta name="twitter:description" content="Master vector databases for AI applications. Learn to use Pinecone, Weaviate, Chroma, and other vector databases for semantic search, RAG, and AI applications." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/ai-ml/ai-integration-tutorials/vector-databases.svg" />
-        <link rel="canonical" href="https://techdevdex.com/ai-trending/ai-integration-tutorials/vector-databases-guide" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Vector Databases Guide: Master AI Data Storage",
-            "description": "Master vector databases for AI applications. Learn to use Pinecone, Weaviate, Chroma, and other vector databases for semantic search, RAG, and AI applications.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "datePublished": "2024-12-12",
-            "dateModified": "2024-12-12",
-            "image": "https://techdevdex.com/images/ai-ml/ai-integration-tutorials/vector-databases.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="Vector Databases Guide: Master AI Data Storage"
+        description="Master vector databases for AI applications. Learn to use Pinecone, Weaviate, Chroma, and other vector databases for semantic search, RAG, and AI applications."
+        keywords={[
+          'vector databases',
+          'semantic search',
+          'RAG',
+          'Pinecone',
+          'Weaviate',
+          'Chroma',
+          'AI data storage',
+          'embeddings',
+          'vector search',
+          'AI database'
+        ]}
+        type="article"
+        image="/images/ai-ml/ai-integration-tutorials/vector-databases.svg"
+        url="/ai-trending/ai-integration-tutorials/vector-databases-guide"
+        section="AI Integration Tutorials"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

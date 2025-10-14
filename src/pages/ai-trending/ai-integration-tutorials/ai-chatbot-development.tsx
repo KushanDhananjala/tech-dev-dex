@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Clock, MessageCircle, Star, Users, Zap } from 'lucide-react';
@@ -7,42 +7,26 @@ import { ArrowRight, CheckCircle, Clock, MessageCircle, Star, Users, Zap } from 
 const AIChatbotDevelopment = () => {
   return (
     <>
-      <Head>
-        <title>AI Chatbot Development: Build Intelligent Conversational AI | TechDevDex</title>
-        <meta name="description" content="Master AI chatbot development with our comprehensive guide. Learn to build intelligent conversational AI using OpenAI, LangChain, and modern frameworks." />
-        <meta name="keywords" content="AI chatbot, conversational AI, chatbot development, OpenAI chatbot, LangChain chatbot, AI conversation, chatbot framework" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="AI Chatbot Development: Build Intelligent Conversational AI" />
-        <meta property="og:description" content="Master AI chatbot development with our comprehensive guide. Learn to build intelligent conversational AI using OpenAI, LangChain, and modern frameworks." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/ai-trending/ai-integration-tutorials/ai-chatbot-development" />
-        <meta property="og:image" content="https://techdevdex.com/images/ai-ml/ai-integration-tutorials/ai-chatbot.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Chatbot Development: Build Intelligent Conversational AI" />
-        <meta name="twitter:description" content="Master AI chatbot development with our comprehensive guide. Learn to build intelligent conversational AI using OpenAI, LangChain, and modern frameworks." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/ai-ml/ai-integration-tutorials/ai-chatbot.svg" />
-        <link rel="canonical" href="https://techdevdex.com/ai-trending/ai-integration-tutorials/ai-chatbot-development" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "AI Chatbot Development: Build Intelligent Conversational AI",
-            "description": "Master AI chatbot development with our comprehensive guide. Learn to build intelligent conversational AI using OpenAI, LangChain, and modern frameworks.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "datePublished": "2024-12-12",
-            "dateModified": "2024-12-12",
-            "image": "https://techdevdex.com/images/ai-ml/ai-integration-tutorials/ai-chatbot.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="AI Chatbot Development: Build Intelligent Conversational AI"
+        description="Master AI chatbot development with our comprehensive guide. Learn to build intelligent conversational AI using OpenAI, LangChain, and modern frameworks."
+        keywords={[
+          'AI chatbot',
+          'conversational AI',
+          'chatbot development',
+          'OpenAI chatbot',
+          'LangChain chatbot',
+          'AI conversation',
+          'chatbot framework',
+          'AI development',
+          'conversational AI development',
+          'AI chatbot tutorial'
+        ]}
+        type="article"
+        image="/images/ai-ml/ai-integration-tutorials/ai-chatbot.svg"
+        url="/ai-trending/ai-integration-tutorials/ai-chatbot-development"
+        section="AI Integration Tutorials"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

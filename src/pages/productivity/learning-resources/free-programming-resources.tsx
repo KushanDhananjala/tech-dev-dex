@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const FreeResources = () => {
   return (
     <>
-      <Head>
-        <title>Free Learning Resources: Programming and Development | TechDevDex</title>
-        <meta name="description" content="Discover free resources for learning programming and development. Explore free courses, tutorials, documentation, and tools for skill development." />
-        <meta name="keywords" content="free learning resources, programming tutorials, free courses, development tools, open source learning" />
-      </Head>
+      <SEO
+        title="Free Learning Resources: Programming and Development"
+        description="Discover free resources for learning programming and development. Explore free courses, tutorials, documentation, and tools for skill development."
+        keywords={[
+          'free learning resources',
+          'programming tutorials',
+          'free courses',
+          'development tools',
+          'open source learning',
+          'free programming resources',
+          'learning materials',
+          'programming education',
+          'free tutorials',
+          'development resources'
+        ]}
+        type="article"
+        image="/images/productivity/learning-resources/free-resources.svg"
+        url="/productivity/learning-resources/free-programming-resources"
+        section="Learning Resources"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

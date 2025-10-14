@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Filter, Search, Star, User } from 'lucide-react';
@@ -67,11 +67,29 @@ const TimeManagement = () => {
 
   return (
     <>
-      <Head>
-        <title>Time Management - TechDevDex</title>
-        <meta name="description" content="Learn effective time management techniques for developers including Pomodoro, time blocking, and productivity strategies." />
-        <meta name="keywords" content="time management, productivity, Pomodoro technique, time blocking, task prioritization, focus" />
-      </Head>
+      <SEO
+        title="Time Management for Developers"
+        description="Learn effective time management techniques for developers including Pomodoro, time blocking, and productivity strategies. Master task prioritization and focus techniques."
+        keywords={[
+          "time management",
+          "productivity techniques",
+          "pomodoro technique",
+          "time blocking",
+          "task prioritization",
+          "focus techniques",
+          "developer productivity",
+          "work life balance",
+          "productivity strategies",
+          "time optimization",
+          "distraction management",
+          "energy management",
+          "productivity tools",
+          "efficiency techniques"
+        ]}
+        type="website"
+        image="/images/productivity/time-management-og.jpg"
+        url="/productivity/time-management"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

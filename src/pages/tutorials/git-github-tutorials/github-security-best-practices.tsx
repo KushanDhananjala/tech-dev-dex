@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function GitHubSecurityBestPractices({ content }: GitHubSecurityB
   if (!content) {
     return (
       <>
-        <Head>
-          <title>GitHub Security Best Practices - TechDevDex</title>
-          <meta name="description" content="Secure your GitHub repositories and workflows" />
-        </Head>
+        <SEO
+          title="GitHub Security Best Practices"
+          description="Secure your GitHub repositories and workflows with comprehensive security best practices. Learn to protect your code and manage access effectively."
+          keywords={[
+            'GitHub security',
+            'repository security',
+            'GitHub best practices',
+            'secure development',
+            'GitHub access control',
+            'GitHub authentication',
+            'GitHub permissions',
+            'GitHub security settings',
+            'secure coding',
+            'GitHub security tips'
+          ]}
+          type="article"
+          image="/images/tutorials/git-github-tutorials/git-security.svg"
+          url="/tutorials/git-github-tutorials/github-security-best-practices"
+          section="Git & GitHub Tutorials"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +48,17 @@ export default function GitHubSecurityBestPractices({ content }: GitHubSecurityB
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/tutorials/git-github-tutorials/git-security.svg'}
+        url={`/tutorials/git-github-tutorials/github-security-best-practices`}
+        publishedTime={content.date}
+        section="Git & GitHub Tutorials"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

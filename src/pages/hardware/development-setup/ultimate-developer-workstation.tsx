@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const UltimateDeveloperWorkstation = () => {
   return (
     <>
-      <Head>
-        <title>Ultimate Developer Workstation: Complete Setup Guide | TechDevDex</title>
-        <meta name="description" content="Build the perfect developer workstation with our comprehensive guide covering hardware, software, ergonomics, and productivity optimization." />
-        <meta name="keywords" content="developer workstation, programming setup, development environment, productivity, ergonomics" />
-      </Head>
+      <SEO
+        title="Ultimate Developer Workstation: Complete Setup Guide"
+        description="Build the perfect developer workstation with our comprehensive guide covering hardware, software, ergonomics, and productivity optimization."
+        keywords={[
+          'developer workstation',
+          'programming setup',
+          'development environment',
+          'productivity',
+          'ergonomics',
+          'workstation setup',
+          'development hardware',
+          'programming environment',
+          'developer productivity',
+          'workstation optimization'
+        ]}
+        type="article"
+        image="/images/hardware/development-setup/developer-workstation.svg"
+        url="/hardware/development-setup/ultimate-developer-workstation"
+        section="Development Setup"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

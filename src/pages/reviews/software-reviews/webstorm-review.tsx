@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const WebStormReview = () => {
   return (
     <>
-      <Head>
-        <title>WebStorm: The JavaScript IDE - TechDevDex</title>
-        <meta name="description" content="Complete review of WebStorm for frontend development, including React, Vue, and Angular support." />
-        <meta name="keywords" content="WebStorm review, JavaScript IDE, frontend development, React IDE, Vue IDE, Angular IDE" />
-      </Head>
+      <SEO
+        title="WebStorm: The JavaScript IDE"
+        description="Complete review of WebStorm for frontend development, including React, Vue, and Angular support."
+        keywords={[
+          'WebStorm review',
+          'JavaScript IDE',
+          'frontend development',
+          'React IDE',
+          'Vue IDE',
+          'Angular IDE',
+          'WebStorm features',
+          'IDE capabilities',
+          'development environment',
+          'WebStorm performance'
+        ]}
+        type="article"
+        image="/images/reviews/software-reviews/webstorm.svg"
+        url="/reviews/software-reviews/webstorm-review"
+        section="Software Reviews"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

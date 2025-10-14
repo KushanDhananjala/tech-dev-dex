@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Brain, Clock, Filter, Search, Star, User } from 'lucide-react';
@@ -67,11 +67,25 @@ const AICodingTools = () => {
 
   return (
     <>
-      <Head>
-        <title>AI Coding Tools - TechDevDex</title>
-        <meta name="description" content="Comprehensive guides and tutorials for AI-powered coding tools including GitHub Copilot, ChatGPT, and more." />
-        <meta name="keywords" content="AI coding tools, GitHub Copilot, ChatGPT, AI development, programming assistants, code completion" />
-      </Head>
+      <SEO
+        title="AI Coding Tools"
+        description="Comprehensive guides and tutorials for AI-powered coding tools including GitHub Copilot, ChatGPT, and more. Master AI-assisted development."
+        keywords={[
+          "AI coding tools",
+          "GitHub Copilot",
+          "ChatGPT coding",
+          "AI development",
+          "programming assistants",
+          "code completion",
+          "AI code generation",
+          "developer productivity",
+          "AI programming",
+          "coding automation"
+        ]}
+        type="website"
+        image="/images/ai-trending/ai-coding-tools-og.jpg"
+        url="/ai-trending/ai-coding-tools"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const OfficeLighting = () => {
   return (
     <>
-      <Head>
-        <title>Office Lighting Setup for Developers | TechDevDex</title>
-        <meta name="description" content="Optimize your workspace lighting for better productivity and eye health. Complete guide to lighting setup for developers." />
-        <meta name="keywords" content="office lighting, developer workspace, eye health, productivity, lighting setup" />
-      </Head>
+      <SEO
+        title="Office Lighting Setup for Developers"
+        description="Optimize your workspace lighting for better productivity and eye health. Complete guide to lighting setup for developers."
+        keywords={[
+          'office lighting',
+          'developer workspace',
+          'eye health',
+          'productivity',
+          'lighting setup',
+          'workspace lighting',
+          'lighting optimization',
+          'eye comfort',
+          'lighting guide',
+          'workspace setup'
+        ]}
+        type="article"
+        image="/images/hardware/development-setup/office-lighting.svg"
+        url="/hardware/development-setup/office-lighting"
+        section="Development Setup"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

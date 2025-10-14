@@ -1,28 +1,32 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import { CheckCircle, Clock, Home, Star, User } from 'lucide-react';
 
 const GamingChairsReview = () => {
   return (
     <>
-      <Head>
-        <title>Gaming Chairs for Long Coding Sessions 2024 | TechDevDex</title>
-        <meta name="description" content="Ergonomic gaming chairs that provide comfort and support for developers during extended coding sessions with lumbar support, adjustable features, and premium materials." />
-        <meta name="keywords" content="gaming chairs, ergonomic chairs, developer chairs, office chairs, lumbar support, adjustable chairs, coding chairs" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Gaming Chairs for Long Coding Sessions 2024" />
-        <meta property="og:description" content="Ergonomic gaming chairs that provide comfort and support for developers during extended coding sessions." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/hardware/gaming-hardware/gaming-chairs-review" />
-        <meta property="og:image" content="https://techdevdex.com/images/hardware/gaming-hardware/gaming-chairs.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Gaming Chairs for Long Coding Sessions 2024" />
-        <meta name="twitter:description" content="Ergonomic gaming chairs that provide comfort and support for developers during extended coding sessions." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/hardware/gaming-hardware/gaming-chairs.svg" />
-        <link rel="canonical" href="https://techdevdex.com/hardware/gaming-hardware/gaming-chairs-review" />
-      </Head>
+      <SEO
+        title="Gaming Chairs for Long Coding Sessions 2024"
+        description="Ergonomic gaming chairs that provide comfort and support for developers during extended coding sessions with lumbar support, adjustable features, and premium materials."
+        keywords={[
+          'gaming chairs',
+          'ergonomic chairs',
+          'developer chairs',
+          'office chairs',
+          'lumbar support',
+          'adjustable chairs',
+          'coding chairs',
+          'ergonomic seating',
+          'comfort chairs',
+          'premium chairs'
+        ]}
+        type="article"
+        image="/images/hardware/gaming-hardware/gaming-chairs.svg"
+        url="/hardware/gaming-hardware/gaming-chairs-review"
+        section="Gaming Hardware"
+        tags={['Gaming Chairs', 'Ergonomics', 'Hardware']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import MDXContent from '../../components/MDXContent';
 import { ArrowLeft, Zap } from 'lucide-react';
@@ -7,11 +7,26 @@ import { ArrowLeft, Zap } from 'lucide-react';
 const APIDevelopment = () => {
   return (
     <>
-      <Head>
-        <title>API Development - TechDevDex</title>
-        <meta name="description" content="Master API development with REST and GraphQL. Learn authentication, rate limiting, documentation, and best practices for building scalable APIs." />
-        <meta name="keywords" content="API development, REST, GraphQL, authentication, documentation, web development" />
-      </Head>
+      <SEO
+        title="API Development"
+        description="Master API development with REST and GraphQL. Learn authentication, rate limiting, documentation, and best practices for building scalable APIs."
+        keywords={[
+          'API development',
+          'REST',
+          'GraphQL',
+          'API authentication',
+          'API documentation',
+          'OpenAPI Swagger',
+          'rate limiting',
+          'security headers',
+          'API testing',
+          'performance optimization'
+        ]}
+        type="article"
+        image="/images/web-dev/api-development-og.jpg"
+        url="/web-dev/api-development"
+        section="Web Development"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

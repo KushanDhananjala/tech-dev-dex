@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function AWSDeploymentStrategies({ content }: AWSDeploymentStrate
   if (!content) {
     return (
       <>
-        <Head>
-          <title>AWS Deployment Strategies - TechDevDex</title>
-          <meta name="description" content="AWS deployment strategies guide" />
-        </Head>
+        <SEO
+          title="AWS Deployment Strategies"
+          description="Master AWS deployment strategies for scalable applications. Learn EC2, ECS, Lambda, and cloud infrastructure best practices for production deployments."
+          keywords={[
+            'AWS deployment',
+            'cloud deployment',
+            'AWS EC2',
+            'AWS ECS',
+            'AWS Lambda',
+            'cloud infrastructure',
+            'production deployment',
+            'AWS best practices',
+            'scalable deployment',
+            'cloud architecture'
+          ]}
+          type="article"
+          image="/images/web-dev/devops-deployment/aws-deployment.svg"
+          url="/web-dev/devops-deployment/aws-deployment-strategies"
+          section="DevOps & Deployment"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +48,17 @@ export default function AWSDeploymentStrategies({ content }: AWSDeploymentStrate
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/web-dev/devops-deployment/aws-deployment.svg'}
+        url={`/web-dev/devops-deployment/aws-deployment-strategies`}
+        publishedTime={content.date}
+        section="DevOps & Deployment"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

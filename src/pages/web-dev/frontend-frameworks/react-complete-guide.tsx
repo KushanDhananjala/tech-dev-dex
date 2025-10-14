@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,27 @@ import { motion } from 'framer-motion';
 const ReactCompleteGuide = () => {
   return (
     <>
-      <Head>
-        <title>React: Complete Developer Guide - TechDevDex</title>
-        <meta name="description" content="Master React from basics to advanced concepts including hooks, context, and performance optimization." />
-        <meta name="keywords" content="React, JavaScript, frontend development, hooks, context, performance optimization" />
-      </Head>
+      <SEO
+        title="React: Complete Developer Guide"
+        description="Master React from basics to advanced concepts including hooks, context, and performance optimization."
+        keywords={[
+          'React',
+          'JavaScript',
+          'frontend development',
+          'React hooks',
+          'React context',
+          'performance optimization',
+          'React best practices',
+          'React components',
+          'TypeScript React'
+        ]}
+        type="article"
+        image="/images/web-dev/frontend-frameworks/react-guide.svg"
+        url="/web-dev/frontend-frameworks/react-complete-guide"
+        publishedTime="2024-12-01"
+        section="Frontend Frameworks"
+        tags={["React", "Frontend", "Web Development", "JavaScript"]}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

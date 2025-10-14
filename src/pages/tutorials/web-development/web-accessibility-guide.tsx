@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, Clock, Code, Star, User, Zap } from 'lucide-react';
@@ -7,23 +7,27 @@ import { CheckCircle, Clock, Code, Star, User, Zap } from 'lucide-react';
 const WebAccessibilityGuide = () => {
   return (
     <>
-      <Head>
-        <title>Web Accessibility: Building Inclusive Websites | TechDevDex</title>
-        <meta name="description" content="Learn WCAG guidelines and best practices to make your websites accessible to everyone. Complete guide with examples and testing techniques." />
-        <meta name="keywords" content="web accessibility, WCAG guidelines, accessible web design, screen readers, inclusive design, web development" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Web Accessibility: Building Inclusive Websites" />
-        <meta property="og:description" content="Learn WCAG guidelines and best practices to make your websites accessible to everyone." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/tutorials/web-development/web-accessibility-guide" />
-        <meta property="og:image" content="https://techdevdex.com/images/tutorials/web-development/web-accessibility.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Web Accessibility: Building Inclusive Websites" />
-        <meta name="twitter:description" content="Learn WCAG guidelines and best practices to make your websites accessible to everyone." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/tutorials/web-development/web-accessibility.svg" />
-        <link rel="canonical" href="https://techdevdex.com/tutorials/web-development/web-accessibility-guide" />
-      </Head>
+      <SEO
+        title="Web Accessibility: Building Inclusive Websites"
+        description="Learn WCAG guidelines and best practices to make your websites accessible to everyone. Complete guide with examples and testing techniques."
+        keywords={[
+          'web accessibility',
+          'WCAG guidelines',
+          'accessible web design',
+          'screen readers',
+          'inclusive design',
+          'web development',
+          'accessibility testing',
+          'ARIA attributes',
+          'semantic HTML',
+          'universal design'
+        ]}
+        type="article"
+        image="/images/tutorials/web-development/web-accessibility.svg"
+        url="/tutorials/web-development/web-accessibility-guide"
+        section="Web Development"
+        tags={['Accessibility', 'Web Development', 'WCAG']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

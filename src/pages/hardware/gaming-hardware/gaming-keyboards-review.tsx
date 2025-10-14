@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, Clock, Star, User, Zap } from 'lucide-react';
@@ -7,23 +7,26 @@ import { CheckCircle, Clock, Star, User, Zap } from 'lucide-react';
 const GamingKeyboardsReview = () => {
   return (
     <>
-      <Head>
-        <title>Best Gaming Keyboards for Developers 2024 | TechDevDex</title>
-        <meta name="description" content="Comprehensive review of gaming keyboards that double as excellent development tools with mechanical switches, RGB lighting, and ergonomic design for long coding sessions." />
-        <meta name="keywords" content="gaming keyboards, mechanical keyboards, development keyboards, RGB keyboards, gaming hardware, programming keyboards, keyboard reviews" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Best Gaming Keyboards for Developers 2024" />
-        <meta property="og:description" content="Comprehensive review of gaming keyboards that double as excellent development tools with mechanical switches and RGB lighting." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/hardware/gaming-hardware/gaming-keyboards-review" />
-        <meta property="og:image" content="https://techdevdex.com/images/hardware/gaming-hardware/real/gaming-keyboards.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Best Gaming Keyboards for Developers 2024" />
-        <meta name="twitter:description" content="Comprehensive review of gaming keyboards that double as excellent development tools with mechanical switches and RGB lighting." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/hardware/gaming-hardware/real/gaming-keyboards.jpg" />
-        <link rel="canonical" href="https://techdevdex.com/hardware/gaming-hardware/gaming-keyboards-review" />
-      </Head>
+      <SEO
+        title="Best Gaming Keyboards for Developers 2024"
+        description="Comprehensive review of gaming keyboards that double as excellent development tools with mechanical switches, RGB lighting, and ergonomic design for long coding sessions."
+        keywords={[
+          'gaming keyboards',
+          'mechanical keyboards',
+          'development keyboards',
+          'RGB keyboards',
+          'gaming hardware',
+          'programming keyboards',
+          'keyboard reviews',
+          'gaming peripherals',
+          'keyboard technology',
+          'development hardware'
+        ]}
+        type="article"
+        image="/images/hardware/gaming-hardware/real/gaming-keyboards.jpg"
+        url="/hardware/gaming-hardware/gaming-keyboards-review"
+        section="Gaming Hardware"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, Clock, Monitor, Star, User } from 'lucide-react';
@@ -7,23 +7,26 @@ import { CheckCircle, Clock, Monitor, Star, User } from 'lucide-react';
 const GamingMonitorsReview = () => {
   return (
     <>
-      <Head>
-        <title>Gaming Monitors for Development 2024 | TechDevDex</title>
-        <meta name="description" content="High-refresh rate gaming monitors that also excel for coding with excellent color accuracy, resolution, and ergonomic features for long development sessions." />
-        <meta name="keywords" content="gaming monitors, development monitors, high refresh rate, color accuracy, coding monitors, productivity monitors" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Gaming Monitors for Development 2024" />
-        <meta property="og:description" content="High-refresh rate gaming monitors that also excel for coding with excellent color accuracy and resolution." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/hardware/gaming-hardware/gaming-monitors-review" />
-        <meta property="og:image" content="https://techdevdex.com/images/hardware/gaming-hardware/gaming-monitors.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Gaming Monitors for Development 2024" />
-        <meta name="twitter:description" content="High-refresh rate gaming monitors that also excel for coding with excellent color accuracy and resolution." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/hardware/gaming-hardware/gaming-monitors.svg" />
-        <link rel="canonical" href="https://techdevdex.com/hardware/gaming-hardware/gaming-monitors-review" />
-      </Head>
+      <SEO
+        title="Gaming Monitors for Development 2024"
+        description="High-refresh rate gaming monitors that also excel for coding with excellent color accuracy, resolution, and ergonomic features for long development sessions."
+        keywords={[
+          'gaming monitors',
+          'development monitors',
+          'high refresh rate',
+          'color accuracy',
+          'coding monitors',
+          'productivity monitors',
+          'gaming displays',
+          'development displays',
+          'monitor technology',
+          'display reviews'
+        ]}
+        type="article"
+        image="/images/hardware/gaming-hardware/gaming-monitors.svg"
+        url="/hardware/gaming-hardware/gaming-monitors-review"
+        section="Gaming Hardware"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

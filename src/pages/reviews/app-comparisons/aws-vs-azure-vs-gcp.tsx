@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Star, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const AwsVsAzureVsGcp = () => {
   return (
     <>
-      <Head>
-        <title>AWS vs Azure vs Google Cloud: Cloud Platform Battle - TechDevDex</title>
-        <meta name="description" content="Comprehensive comparison of AWS, Azure, and Google Cloud. Pricing, features, and which cloud provider to choose for your project." />
-        <meta name="keywords" content="AWS, Azure, Google Cloud, cloud comparison, cloud platforms, cloud providers" />
-      </Head>
+      <SEO
+        title="AWS vs Azure vs Google Cloud: Cloud Platform Battle"
+        description="Comprehensive comparison of AWS, Azure, and Google Cloud. Pricing, features, and which cloud provider to choose for your project."
+        keywords={[
+          'AWS',
+          'Azure',
+          'Google Cloud',
+          'cloud comparison',
+          'cloud platforms',
+          'cloud providers',
+          'AWS vs Azure',
+          'AWS vs GCP',
+          'Azure vs GCP',
+          'cloud services'
+        ]}
+        type="article"
+        image="/images/reviews/app-comparisons/aws-azure-gcp.svg"
+        url="/reviews/app-comparisons/aws-vs-azure-vs-gcp"
+        section="App Comparisons"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,7 +1,7 @@
 import MDXContentComponent from "../../components/MDXContent";
 import { getMDXContent, MDXContent } from "../../lib/mdx";
 import { GetStaticProps } from "next";
-import Head from "next/head";
+import SEO from "../../components/SEO";
 
 interface GitGithubTutorialsPageProps {
   content: MDXContent | null;
@@ -11,10 +11,29 @@ export default function GitGithubTutorialsPage({ content }: GitGithubTutorialsPa
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Git & GitHub Tutorials | TechDevDex</title>
-          <meta name="description" content="Version control workflows and GitHub guides" />
-        </Head>
+        <SEO
+          title="Git & GitHub Tutorials"
+          description="Master version control with Git and GitHub workflows. Learn branching strategies, collaboration, CI/CD, and advanced Git techniques for developers."
+          keywords={[
+            "git tutorials",
+            "github tutorials",
+            "version control",
+            "git workflows",
+            "github workflows",
+            "git branching",
+            "collaboration",
+            "git best practices",
+            "github actions",
+            "git commands",
+            "version control system",
+            "git collaboration",
+            "github collaboration",
+            "git advanced"
+          ]}
+          type="article"
+          image="/images/tutorials/git-github-og.jpg"
+          url="/tutorials/git-github-tutorials"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -29,10 +48,17 @@ export default function GitGithubTutorialsPage({ content }: GitGithubTutorialsPa
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage}
+        url={`/tutorials/git-github-tutorials`}
+        publishedTime={content.date}
+        section="Git & GitHub"
+        tags={content.tags || []}
+      />
       <MDXContentComponent content={content} />
     </>
   );

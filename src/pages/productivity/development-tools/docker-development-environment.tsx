@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function DockerDevelopmentEnvironment({ content }: DockerDevelopm
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Docker Development Environment - TechDevDex</title>
-          <meta name="description" content="Docker development environment guide" />
-        </Head>
+        <SEO
+          title="Docker Development Environment Setup"
+          description="Master Docker development environment setup for efficient development. Learn Docker configuration, containerization, and development workflow optimization."
+          keywords={[
+            'Docker development environment',
+            'Docker setup',
+            'containerization',
+            'development workflow',
+            'Docker configuration',
+            'development environment',
+            'Docker development',
+            'container development',
+            'Docker productivity',
+            'development tools'
+          ]}
+          type="article"
+          image="/images/productivity/development-tools/docker-development.svg"
+          url="/productivity/development-tools/docker-development-environment"
+          section="Development Tools"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +48,17 @@ export default function DockerDevelopmentEnvironment({ content }: DockerDevelopm
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/productivity/development-tools/docker-development.svg'}
+        url={`/productivity/development-tools/docker-development-environment`}
+        publishedTime={content.date}
+        section="Development Tools"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

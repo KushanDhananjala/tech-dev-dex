@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Star, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const DockerVsKubernetes = () => {
   return (
     <>
-      <Head>
-        <title>Docker vs Kubernetes: Container Technologies - TechDevDex</title>
-        <meta name="description" content="Understanding the difference between Docker and Kubernetes. When to use each technology for containerization and orchestration." />
-        <meta name="keywords" content="Docker, Kubernetes, containers, orchestration, DevOps, containerization" />
-      </Head>
+      <SEO
+        title="Docker vs Kubernetes: Container Technologies"
+        description="Understanding the difference between Docker and Kubernetes. When to use each technology for containerization and orchestration."
+        keywords={[
+          'Docker',
+          'Kubernetes',
+          'containers',
+          'orchestration',
+          'DevOps',
+          'containerization',
+          'Docker vs Kubernetes',
+          'container management',
+          'container orchestration',
+          'DevOps tools'
+        ]}
+        type="article"
+        image="/images/reviews/app-comparisons/docker-vs-kubernetes.svg"
+        url="/reviews/app-comparisons/docker-vs-kubernetes"
+        section="App Comparisons"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

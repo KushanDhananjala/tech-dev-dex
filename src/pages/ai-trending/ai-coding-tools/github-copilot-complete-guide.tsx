@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const GitHubCopilotCompleteGuide = () => {
   return (
     <>
-      <Head>
-        <title>GitHub Copilot: Complete Developer Guide - TechDevDex</title>
-        <meta name="description" content="Master GitHub Copilot with advanced techniques, best practices, and real-world examples for maximum productivity." />
-        <meta name="keywords" content="GitHub Copilot, AI coding, development tools, productivity, code completion" />
-      </Head>
+      <SEO
+        title="GitHub Copilot: Complete Developer Guide"
+        description="Master GitHub Copilot with advanced techniques, best practices, and real-world examples for maximum productivity."
+        keywords={[
+          'GitHub Copilot',
+          'AI coding',
+          'development tools',
+          'productivity',
+          'code completion',
+          'Copilot guide',
+          'AI development',
+          'coding productivity',
+          'AI coding tools',
+          'Copilot features'
+        ]}
+        type="article"
+        image="/images/ai-ml/ai-coding-tools/github-copilot.svg"
+        url="/ai-trending/ai-coding-tools/github-copilot-complete-guide"
+        section="AI Coding Tools"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

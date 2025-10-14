@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const TabletDevelopment = () => {
   return (
     <>
-      <Head>
-        <title>Tablet Development Setup Guide | TechDevDex</title>
-        <meta name="description" content="Set up tablets for mobile development and testing. Learn about tablet development workflows, testing strategies, and device management." />
-        <meta name="keywords" content="tablet development, mobile testing, iPad development, Android tablet, device testing" />
-      </Head>
+      <SEO
+        title="Tablet Development Setup Guide"
+        description="Set up tablets for mobile development and testing. Learn about tablet development workflows, testing strategies, and device management."
+        keywords={[
+          'tablet development',
+          'mobile testing',
+          'iPad development',
+          'Android tablet',
+          'device testing',
+          'tablet setup',
+          'mobile development',
+          'tablet testing',
+          'development workflow',
+          'device management'
+        ]}
+        type="article"
+        image="/images/hardware/mobile-devices/tablet-development.svg"
+        url="/hardware/mobile-devices/tablet-development"
+        section="Mobile Devices"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

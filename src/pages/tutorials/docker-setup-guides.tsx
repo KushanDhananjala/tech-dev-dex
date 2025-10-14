@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, BookOpen, Clock, User } from 'lucide-react';
@@ -86,11 +86,26 @@ const DockerSetupGuides = () => {
 
   return (
     <>
-      <Head>
-        <title>Docker Setup Guides - TechDevDex</title>
-        <meta name="description" content="Comprehensive Docker tutorials and setup guides. Learn Docker from basics to advanced production deployment with step-by-step tutorials." />
-        <meta name="keywords" content="Docker tutorials, container setup, Docker guides, containerization, DevOps" />
-      </Head>
+      <SEO
+        title="Docker Setup Guides"
+        description="Comprehensive Docker tutorials and setup guides. Learn Docker from basics to advanced production deployment with step-by-step tutorials."
+        keywords={[
+          'Docker tutorials',
+          'container setup',
+          'Docker guides',
+          'containerization',
+          'DevOps',
+          'Docker installation',
+          'Docker configuration',
+          'Docker development',
+          'Docker best practices',
+          'Docker setup tutorial'
+        ]}
+        type="article"
+        image="/images/tutorials/docker-setup-guides/docker-setup.svg"
+        url="/tutorials/docker-setup-guides"
+        section="Docker Setup Guides"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

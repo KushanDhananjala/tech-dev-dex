@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, CheckCircle, Clock, Server, Star, User, Zap } from 'lucide-react';
@@ -8,47 +8,28 @@ import { motion } from 'framer-motion';
 const SpringBootJava = () => {
   return (
     <>
-      <Head>
-        <title>Spring Boot: Java Backend Development | TechDevDex</title>
-        <meta name="description" content="Enterprise-grade Java applications with Spring Boot framework and microservices. Complete guide to building robust Java backend applications with Spring Boot." />
-        <meta name="keywords" content="Spring Boot, Java backend, enterprise development, microservices, Spring framework, Java web development, REST APIs, Spring Security" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Spring Boot: Java Backend Development" />
-        <meta property="og:description" content="Enterprise-grade Java applications with Spring Boot framework and microservices. Complete guide to building robust Java backend applications with Spring Boot." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/web-dev/backend-development/spring-boot-java" />
-        <meta property="og:image" content="https://techdevdex.com/images/web-dev/backend-development/spring-boot-guide.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Spring Boot: Java Backend Development" />
-        <meta name="twitter:description" content="Enterprise-grade Java applications with Spring Boot framework and microservices. Complete guide to building robust Java backend applications with Spring Boot." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/web-dev/backend-development/spring-boot-guide.svg" />
-        <link rel="canonical" href="https://techdevdex.com/web-dev/backend-development/spring-boot-java" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Spring Boot: Java Backend Development",
-            "description": "Enterprise-grade Java applications with Spring Boot framework and microservices. Complete guide to building robust Java backend applications with Spring Boot.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://techdevdex.com/logo.png"
-              }
-            },
-            "datePublished": "2024-11-15",
-            "dateModified": "2024-11-15",
-            "image": "https://techdevdex.com/images/web-dev/backend-development/spring-boot-guide.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="Spring Boot: Java Backend Development"
+        description="Enterprise-grade Java applications with Spring Boot framework and microservices. Complete guide to building robust Java backend applications with Spring Boot."
+        keywords={[
+          'Spring Boot',
+          'Java backend',
+          'enterprise development',
+          'microservices',
+          'Spring framework',
+          'Java web development',
+          'REST APIs',
+          'Spring Security',
+          'Java development',
+          'backend framework'
+        ]}
+        type="article"
+        image="/images/web-dev/backend-development/spring-boot-guide.svg"
+        url="/web-dev/backend-development/spring-boot-java"
+        publishedTime="2024-11-15"
+        section="Backend Development"
+        tags={['Spring Boot', 'Java', 'Enterprise Development']}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

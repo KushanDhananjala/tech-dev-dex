@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const PythonAutomation = () => {
   return (
     <>
-      <Head>
-        <title>Python Automation: Scripting for Productivity | TechDevDex</title>
-        <meta name="description" content="Master Python automation for development productivity. Learn essential libraries, scripting techniques, and automation patterns for common development tasks." />
-        <meta name="keywords" content="Python automation, scripting, productivity, development tools, automation libraries, Python scripting" />
-      </Head>
+      <SEO
+        title="Python Automation: Scripting for Productivity"
+        description="Master Python automation for development productivity. Learn essential libraries, scripting techniques, and automation patterns for common development tasks."
+        keywords={[
+          'Python automation',
+          'scripting',
+          'productivity',
+          'development tools',
+          'automation libraries',
+          'Python scripting',
+          'Python development',
+          'automation patterns',
+          'Python productivity',
+          'development automation'
+        ]}
+        type="article"
+        image="/images/productivity/automation-scripts/python-automation.svg"
+        url="/productivity/automation-scripts/python-automation"
+        section="Automation Scripts"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

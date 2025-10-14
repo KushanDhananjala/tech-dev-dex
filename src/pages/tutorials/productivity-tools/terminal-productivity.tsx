@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Clock, Star, Terminal, Users, Zap } from 'lucide-react';
@@ -7,42 +7,28 @@ import { ArrowRight, CheckCircle, Clock, Star, Terminal, Users, Zap } from 'luci
 const TerminalProductivity = () => {
   return (
     <>
-      <Head>
-        <title>Terminal Productivity: Master Command Line Efficiency | TechDevDex</title>
-        <meta name="description" content="Master terminal productivity with advanced command line techniques, shell customization, and automation scripts. Boost your development workflow by 300% with terminal mastery." />
-        <meta name="keywords" content="terminal productivity, command line, shell scripting, terminal customization, bash, zsh, terminal automation, developer productivity" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Terminal Productivity: Master Command Line Efficiency" />
-        <meta property="og:description" content="Master terminal productivity with advanced command line techniques, shell customization, and automation scripts. Boost your development workflow by 300% with terminal mastery." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/tutorials/productivity-tools/terminal-productivity" />
-        <meta property="og:image" content="https://techdevdex.com/images/tutorials/productivity-tools/terminal-productivity.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Terminal Productivity: Master Command Line Efficiency" />
-        <meta name="twitter:description" content="Master terminal productivity with advanced command line techniques, shell customization, and automation scripts. Boost your development workflow by 300% with terminal mastery." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/tutorials/productivity-tools/terminal-productivity.svg" />
-        <link rel="canonical" href="https://techdevdex.com/tutorials/productivity-tools/terminal-productivity" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Terminal Productivity: Master Command Line Efficiency",
-            "description": "Master terminal productivity with advanced command line techniques, shell customization, and automation scripts. Boost your development workflow by 300% with terminal mastery.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "datePublished": "2024-12-12",
-            "dateModified": "2024-12-12",
-            "image": "https://techdevdex.com/images/tutorials/productivity-tools/terminal-productivity.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="Terminal Productivity: Master Command Line Efficiency"
+        description="Master terminal productivity with advanced command line techniques, shell customization, and automation scripts. Boost your development workflow by 300% with terminal mastery."
+        keywords={[
+          'terminal productivity',
+          'command line',
+          'shell scripting',
+          'terminal customization',
+          'bash',
+          'zsh',
+          'terminal automation',
+          'developer productivity',
+          'command line tools',
+          'shell optimization'
+        ]}
+        type="article"
+        image="/images/tutorials/productivity-tools/terminal-productivity.svg"
+        url="/tutorials/productivity-tools/terminal-productivity"
+        publishedTime="2024-12-12"
+        section="Productivity Tools"
+        tags={['Terminal Productivity', 'Command Line', 'Developer Productivity']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

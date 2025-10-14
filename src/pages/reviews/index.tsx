@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../components/SEO";
 import Link from "next/link";
 import Tabs from "../../components/ui/Tabs";
 import { ArrowRight, Clock, Cpu, GitCompareArrows, Monitor, Star, User } from 'lucide-react';
@@ -31,10 +31,29 @@ const subcategories = [
 export default function ReviewsPage() {
   return (
     <>
-      <Head>
-        <title>Reviews | TechDevDex</title>
-        <meta name="description" content="Honest reviews and comparisons of software, apps, and gadgets to help you make informed decisions" />
-      </Head>
+      <SEO
+        title="Tech Reviews & Comparisons"
+        description="Honest, unbiased reviews and comparisons of software, apps, and gadgets to help you make informed decisions. Expert reviews of development tools and tech products."
+        keywords={[
+          "tech reviews",
+          "software reviews",
+          "app comparisons",
+          "gadget reviews",
+          "product reviews",
+          "tech comparisons",
+          "development tools review",
+          "software comparison",
+          "tech recommendations",
+          "productivity tools review",
+          "hardware reviews",
+          "tech buying guide",
+          "software testing",
+          "tech analysis"
+        ]}
+        type="website"
+        image="/images/reviews-og.jpg"
+        url="/reviews"
+      />
       
       {/* Hero Section */}
       <section className="mb-12">

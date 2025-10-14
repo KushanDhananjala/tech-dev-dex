@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const PomodoroTechniqueGuide = () => {
   return (
     <>
-      <Head>
-        <title>Pomodoro Technique Guide for Developers | TechDevDex</title>
-        <meta name="description" content="Master the Pomodoro Technique for better focus and productivity. Learn how to implement this time management method in your development workflow." />
-        <meta name="keywords" content="Pomodoro technique, time management, productivity, focus, development workflow, time blocking" />
-      </Head>
+      <SEO
+        title="Pomodoro Technique Guide for Developers"
+        description="Master the Pomodoro Technique for better focus and productivity. Learn how to implement this time management method in your development workflow."
+        keywords={[
+          'Pomodoro technique',
+          'time management',
+          'productivity',
+          'focus',
+          'development workflow',
+          'time blocking',
+          'Pomodoro method',
+          'focus techniques',
+          'productivity methods',
+          'time management techniques'
+        ]}
+        type="article"
+        image="/images/productivity/time-management/pomodoro-technique.svg"
+        url="/productivity/time-management/pomodoro-technique-guide"
+        section="Time Management"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

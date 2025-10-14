@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const BudgetLaptopsDevelopment = () => {
   return (
     <>
-      <Head>
-        <title>Budget Laptops for Development - TechDevDex</title>
-        <meta name="description" content="Best budget-friendly laptops for developers, balancing performance and affordability for coding and development work." />
-        <meta name="keywords" content="budget laptops, development laptops, affordable programming laptops, coding laptops, budget-friendly development" />
-      </Head>
+      <SEO
+        title="Budget Laptops for Development"
+        description="Best budget-friendly laptops for developers, balancing performance and affordability for coding and development work."
+        keywords={[
+          'budget laptops',
+          'development laptops',
+          'affordable programming laptops',
+          'coding laptops',
+          'budget-friendly development',
+          'cheap development laptops',
+          'budget programming laptops',
+          'affordable development',
+          'budget coding laptops',
+          'development on a budget'
+        ]}
+        type="article"
+        image="/images/hardware/laptops-pcs/budget-laptops.svg"
+        url="/hardware/laptops-pcs/budget-laptops-development"
+        section="Laptops & PCs"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

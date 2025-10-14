@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const CodingBootcamps = () => {
   return (
     <>
-      <Head>
-        <title>Coding Bootcamps: Complete Guide for Career Changers | TechDevDex</title>
-        <meta name="description" content="Explore intensive coding bootcamps for career changers. Learn about bootcamp types, curriculum, costs, and how to choose the right bootcamp for your goals." />
-        <meta name="keywords" content="coding bootcamps, career change, programming education, intensive learning, software development" />
-      </Head>
+      <SEO
+        title="Coding Bootcamps: Complete Guide for Career Changers"
+        description="Explore intensive coding bootcamps for career changers. Learn about bootcamp types, curriculum, costs, and how to choose the right bootcamp for your goals."
+        keywords={[
+          'coding bootcamps',
+          'career change',
+          'programming education',
+          'intensive learning',
+          'software development',
+          'bootcamp comparison',
+          'programming bootcamps',
+          'coding education',
+          'career transition',
+          'programming career'
+        ]}
+        type="article"
+        image="/images/productivity/learning-resources/coding-bootcamps.svg"
+        url="/productivity/learning-resources/coding-bootcamps-comparison"
+        section="Learning Resources"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

@@ -1,7 +1,7 @@
 import MDXContentComponent from "../../../components/MDXContent";
 import { getMDXContent, MDXContent } from "../../../lib/mdx";
 import { GetStaticProps } from "next";
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 
 interface TrelloAsanaReviewPageProps {
   content: MDXContent | null;
@@ -11,10 +11,25 @@ export default function TrelloAsanaReviewPage({ content }: TrelloAsanaReviewPage
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Trello vs Asana: Project Management Showdown | TechDevDex</title>
-          <meta name="description" content="Comprehensive comparison of Trello and Asana - two popular project management tools." />
-        </Head>
+        <SEO
+          title="Trello vs Asana: Project Management Showdown"
+          description="Comprehensive comparison of Trello and Asana - two popular project management tools. Find out which one is better for your team."
+          keywords={[
+            "trello vs asana",
+            "project management comparison",
+            "trello review",
+            "asana review",
+            "project management tools",
+            "team collaboration",
+            "trello features",
+            "asana features",
+            "project management software",
+            "team productivity"
+          ]}
+          type="article"
+          image="/images/reviews/productivity-tools-review/trello-asana-og.jpg"
+          url="/reviews/productivity-tools-review/trello-asana-review"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -29,57 +44,17 @@ export default function TrelloAsanaReviewPage({ content }: TrelloAsanaReviewPage
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(", ")} />
-        <meta name="author" content={content.author} />
-        <meta name="robots" content="index, follow" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content={content.title} />
-        <meta property="og:description" content={content.description} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://techdevdex.com/reviews/productivity-tools-review/trello-asana-review`} />
-        <meta property="og:image" content={content.featuredImage} />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={content.title} />
-        <meta name="twitter:description" content={content.description} />
-        <meta name="twitter:image" content={content.featuredImage} />
-        
-        {/* Canonical */}
-        <link rel="canonical" href={`https://techdevdex.com/reviews/productivity-tools-review/trello-asana-review`} />
-        
-        {/* JSON-LD */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Review",
-              "headline": content.title,
-              "description": content.description,
-              "author": {
-                "@type": "Organization",
-                "name": content.author
-              },
-              "datePublished": content.date,
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": content.rating,
-                "bestRating": 5
-              },
-              "itemReviewed": {
-                "@type": "SoftwareApplication",
-                "name": "Trello vs Asana",
-                "applicationCategory": "Project Management Software"
-              }
-            })
-          }}
-        />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage}
+        url={`/reviews/productivity-tools-review/trello-asana-review`}
+        publishedTime={content.date}
+        section="Productivity Tools Review"
+        tags={content.tags || []}
+      />
       <MDXContentComponent content={content} />
     </>
   );

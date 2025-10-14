@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Star, User } from 'lucide-react';
@@ -85,11 +85,26 @@ const SoftwareReviews = () => {
 
   return (
     <>
-      <Head>
-        <title>Software Reviews - TechDevDex</title>
-        <meta name="description" content="Comprehensive reviews of development software, IDEs, code editors, and productivity tools. Find the best tools for your development workflow." />
-        <meta name="keywords" content="software reviews, code editors, IDEs, development tools, productivity software" />
-      </Head>
+      <SEO
+        title="Software Reviews"
+        description="Comprehensive reviews of development software, IDEs, code editors, and productivity tools. Find the best tools for your development workflow."
+        keywords={[
+          'software reviews',
+          'code editors',
+          'IDEs',
+          'development tools',
+          'productivity software',
+          'programming tools',
+          'development software',
+          'software comparison',
+          'coding tools',
+          'development environment'
+        ]}
+        type="article"
+        image="/images/reviews/software-reviews.svg"
+        url="/reviews/software-reviews"
+        section="Software Reviews"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

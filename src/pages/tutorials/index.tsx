@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../components/SEO";
 import Link from "next/link";
 import Tabs from "../../components/ui/Tabs";
 import { ArrowRight, BookOpen, Box, Clock, Dock, Github, User } from 'lucide-react';
@@ -45,10 +45,29 @@ const subcategories = [
 export default function TutorialsPage() {
   return (
     <>
-      <Head>
-        <title>Tutorials | TechDevDex</title>
-        <meta name="description" content="Comprehensive tutorials: Docker, Git/GitHub, React/Node deployment, Python automation, and programming tips" />
-      </Head>
+      <SEO
+        title="Programming Tutorials & Guides"
+        description="Comprehensive programming tutorials covering Docker, Git/GitHub, React/Node deployment, Python automation, and programming best practices. Step-by-step guides for developers."
+        keywords={[
+          "programming tutorials",
+          "coding guides",
+          "docker tutorials",
+          "git github tutorials",
+          "react deployment",
+          "node.js deployment",
+          "python automation",
+          "programming tips",
+          "developer guides",
+          "coding tutorials",
+          "software development",
+          "web development tutorials",
+          "devops tutorials",
+          "programming best practices"
+        ]}
+        type="website"
+        image="/images/tutorials-og.jpg"
+        url="/tutorials"
+      />
       
       {/* Hero Section */}
       <section className="mb-12">

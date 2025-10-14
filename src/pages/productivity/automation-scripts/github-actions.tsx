@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const GitHubActions = () => {
   return (
     <>
-      <Head>
-        <title>GitHub Actions: CI/CD and Workflow Automation | TechDevDex</title>
-        <meta name="description" content="Master GitHub Actions for CI/CD and workflow automation. Learn about workflows, actions, and best practices for automated development processes." />
-        <meta name="keywords" content="GitHub Actions, CI/CD, workflow automation, DevOps, continuous integration, continuous deployment" />
-      </Head>
+      <SEO
+        title="GitHub Actions: CI/CD and Workflow Automation"
+        description="Master GitHub Actions for CI/CD and workflow automation. Learn about workflows, actions, and best practices for automated development processes."
+        keywords={[
+          'GitHub Actions',
+          'CI/CD',
+          'workflow automation',
+          'DevOps',
+          'continuous integration',
+          'continuous deployment',
+          'GitHub workflows',
+          'automation tools',
+          'development automation',
+          'CI/CD pipelines'
+        ]}
+        type="article"
+        image="/images/productivity/automation-scripts/github-actions.svg"
+        url="/productivity/automation-scripts/github-actions"
+        section="Automation Scripts"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

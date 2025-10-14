@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function DockerReactDeployment({ content }: DockerReactDeployment
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Docker React Deployment - TechDevDex</title>
-          <meta name="description" content="Deploy React applications using Docker" />
-        </Head>
+        <SEO
+          title="Docker React Deployment"
+          description="Deploy React applications using Docker. Learn to containerize React applications and deploy them using Docker for production environments."
+          keywords={[
+            'Docker React deployment',
+            'React Docker',
+            'containerized React',
+            'Docker containerization',
+            'React production',
+            'Docker hosting',
+            'container deployment',
+            'Docker optimization',
+            'React deployment guide',
+            'Docker platform'
+          ]}
+          type="article"
+          image="/images/tutorials/react-node-deployment/docker-react.svg"
+          url="/tutorials/react-node-deployment/docker-react-deployment"
+          section="React & Node.js Deployment"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +48,17 @@ export default function DockerReactDeployment({ content }: DockerReactDeployment
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/tutorials/react-node-deployment/docker-react.svg'}
+        url={`/tutorials/react-node-deployment/docker-react-deployment`}
+        publishedTime={content.date}
+        section="React & Node.js Deployment"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

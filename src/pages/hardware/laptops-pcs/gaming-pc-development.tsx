@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const GamingPCDevelopment = () => {
   return (
     <>
-      <Head>
-        <title>Gaming PCs for Development: Best Builds - TechDevDex</title>
-        <meta name="description" content="Guide to building or buying gaming PCs that excel at both gaming and development tasks." />
-        <meta name="keywords" content="gaming PC, development workstation, PC build, gaming hardware, development setup" />
-      </Head>
+      <SEO
+        title="Gaming PCs for Development: Best Builds"
+        description="Guide to building or buying gaming PCs that excel at both gaming and development tasks."
+        keywords={[
+          'gaming PC',
+          'development workstation',
+          'PC build',
+          'gaming hardware',
+          'development setup',
+          'gaming development',
+          'PC development',
+          'gaming workstation',
+          'development PC',
+          'gaming development setup'
+        ]}
+        type="article"
+        image="/images/hardware/laptops-pcs/gaming-pc-dev.svg"
+        url="/hardware/laptops-pcs/gaming-pc-development"
+        section="Laptops & PCs"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

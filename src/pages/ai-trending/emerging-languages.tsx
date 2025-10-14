@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Brain, Clock, Filter, Search, Star, User } from 'lucide-react';
@@ -67,11 +67,26 @@ const EmergingLanguages = () => {
 
   return (
     <>
-      <Head>
-        <title>Emerging Programming Languages - TechDevDex</title>
-        <meta name="description" content="Explore the latest programming languages designed for AI, machine learning, and modern development paradigms." />
-        <meta name="keywords" content="programming languages, AI, machine learning, emerging tech, Mojo, Zig, Rust, development" />
-      </Head>
+      <SEO
+        title="Emerging Programming Languages"
+        description="Explore the latest programming languages designed for AI, machine learning, and modern development paradigms."
+        keywords={[
+          'programming languages',
+          'AI',
+          'machine learning',
+          'emerging tech',
+          'Mojo',
+          'Zig',
+          'Rust',
+          'development',
+          'new programming languages',
+          'AI programming languages'
+        ]}
+        type="article"
+        image="/images/ai-ml/emerging-languages.svg"
+        url="/ai-trending/emerging-languages"
+        section="Emerging Languages"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

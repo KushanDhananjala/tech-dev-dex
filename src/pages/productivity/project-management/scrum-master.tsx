@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const ScrumMaster = () => {
   return (
     <>
-      <Head>
-        <title>Scrum Master Guide: Essential Skills and Practices | TechDevDex</title>
-        <meta name="description" content="Learn how to be an effective Scrum Master for your development team. Master Scrum ceremonies, facilitation, and team leadership skills." />
-        <meta name="keywords" content="Scrum Master, Agile leadership, team facilitation, Scrum ceremonies, project management" />
-      </Head>
+      <SEO
+        title="Scrum Master Guide: Essential Skills and Practices"
+        description="Learn how to be an effective Scrum Master for your development team. Master Scrum ceremonies, facilitation, and team leadership skills."
+        keywords={[
+          'Scrum Master',
+          'Agile leadership',
+          'team facilitation',
+          'Scrum ceremonies',
+          'project management',
+          'Scrum Master guide',
+          'Agile methodology',
+          'team leadership',
+          'Scrum framework',
+          'Agile coaching'
+        ]}
+        type="article"
+        image="/images/productivity/project-management/scrum-master.svg"
+        url="/productivity/project-management/scrum-master"
+        section="Project Management"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

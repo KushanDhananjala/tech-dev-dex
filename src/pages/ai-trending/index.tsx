@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../components/SEO";
 import Link from "next/link";
 import Tabs from "../../components/ui/Tabs";
 import { ArrowRight, Bot, Clock, Cpu, Languages, PlugZap, User } from 'lucide-react';
@@ -31,10 +31,29 @@ const subcategories = [
 export default function AITrendingPage() {
   return (
     <>
-      <Head>
-        <title>AI & Trending Tech | TechDevDex</title>
-        <meta name="description" content="Stay current with AI coding tools, emerging programming languages, and AI integration tutorials" />
-      </Head>
+      <SEO
+        title="AI & Trending Technology"
+        description="Stay current with AI coding tools, emerging programming languages, and AI integration tutorials. Explore the latest in artificial intelligence and cutting-edge technology."
+        keywords={[
+          "AI coding tools",
+          "artificial intelligence",
+          "machine learning",
+          "AI development",
+          "emerging programming languages",
+          "AI integration",
+          "trending technology",
+          "AI tutorials",
+          "machine learning tools",
+          "AI programming",
+          "cutting-edge tech",
+          "AI trends",
+          "tech innovation",
+          "AI development tools"
+        ]}
+        type="website"
+        image="/images/ai-trending-og.jpg"
+        url="/ai-trending"
+      />
       
       {/* Hero Section */}
       <section className="mb-12">

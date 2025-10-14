@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const TerminalProductivity = () => {
   return (
     <>
-      <Head>
-        <title>Terminal Productivity: Master the Command Line | TechDevDex</title>
-        <meta name="description" content="Master the terminal for maximum development efficiency. Learn essential commands, shell customization, and productivity techniques for the command line." />
-        <meta name="keywords" content="terminal productivity, command line, shell scripting, development efficiency, CLI tools" />
-      </Head>
+      <SEO
+        title="Terminal Productivity: Master the Command Line"
+        description="Master the terminal for maximum development efficiency. Learn essential commands, shell customization, and productivity techniques for the command line."
+        keywords={[
+          'terminal productivity',
+          'command line',
+          'shell scripting',
+          'development efficiency',
+          'CLI tools',
+          'terminal mastery',
+          'command line productivity',
+          'shell customization',
+          'terminal efficiency',
+          'CLI development'
+        ]}
+        type="article"
+        image="/images/productivity/development-tools/terminal-productivity.svg"
+        url="/productivity/development-tools/terminal-productivity"
+        section="Development Tools"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Filter, Monitor, Search, Star, User } from 'lucide-react';
@@ -67,11 +67,26 @@ const LaptopsPCs = () => {
 
   return (
     <>
-      <Head>
-        <title>Laptops & PCs - TechDevDex</title>
-        <meta name="description" content="Reviews and guides for laptops and PCs optimized for development work and programming." />
-        <meta name="keywords" content="laptops, PCs, development hardware, MacBook, Dell XPS, ThinkPad, gaming PCs, workstations" />
-      </Head>
+      <SEO
+        title="Laptops & PCs for Development Work"
+        description="Reviews and guides for laptops and PCs optimized for development work and programming."
+        keywords={[
+          'laptops',
+          'PCs',
+          'development hardware',
+          'MacBook',
+          'Dell XPS',
+          'ThinkPad',
+          'gaming PCs',
+          'workstations',
+          'development laptops',
+          'programming hardware'
+        ]}
+        type="article"
+        image="/images/hardware/laptops-pcs.svg"
+        url="/hardware/laptops-pcs"
+        section="Hardware"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

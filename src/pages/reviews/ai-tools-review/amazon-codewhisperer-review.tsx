@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Brain, CheckCircle, Clock, Star, User, Zap } from 'lucide-react';
@@ -7,23 +7,26 @@ import { Brain, CheckCircle, Clock, Star, User, Zap } from 'lucide-react';
 const AmazonCodeWhispererReview = () => {
   return (
     <>
-      <Head>
-        <title>Amazon CodeWhisperer: AWS Integration Review | TechDevDex</title>
-        <meta name="description" content="Review of Amazon&apos;s AI coding companion with focus on AWS integration and security features. Comprehensive analysis and developer experience." />
-        <meta name="keywords" content="Amazon CodeWhisperer review, AWS AI coding, code completion, AWS integration, developer tools" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Amazon CodeWhisperer: AWS Integration Review" />
-        <meta property="og:description" content="Review of Amazon&apos;s AI coding companion with focus on AWS integration and security features." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/reviews/ai-tools-review/amazon-codewhisperer-review" />
-        <meta property="og:image" content="https://techdevdex.com/images/reviews/ai-tools-review/codewhisperer.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Amazon CodeWhisperer: AWS Integration Review" />
-        <meta name="twitter:description" content="Review of Amazon&apos;s AI coding companion with focus on AWS integration and security features." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/reviews/ai-tools-review/codewhisperer.svg" />
-        <link rel="canonical" href="https://techdevdex.com/reviews/ai-tools-review/amazon-codewhisperer-review" />
-      </Head>
+      <SEO
+        title="Amazon CodeWhisperer: AWS Integration Review"
+        description="Review of Amazon's AI coding companion with focus on AWS integration and security features. Comprehensive analysis and developer experience."
+        keywords={[
+          'Amazon CodeWhisperer review',
+          'AWS AI coding',
+          'code completion',
+          'AWS integration',
+          'developer tools',
+          'CodeWhisperer features',
+          'Amazon AI coding',
+          'AWS development tools',
+          'CodeWhisperer performance',
+          'AI code generation'
+        ]}
+        type="article"
+        image="/images/reviews/ai-tools-review/codewhisperer.svg"
+        url="/reviews/ai-tools-review/amazon-codewhisperer-review"
+        section="AI Tools Review"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

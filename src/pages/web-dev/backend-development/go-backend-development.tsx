@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, CheckCircle, Clock, Server, Star, User, Zap } from 'lucide-react';
@@ -8,47 +8,28 @@ import { motion } from 'framer-motion';
 const GoBackendDevelopment = () => {
   return (
     <>
-      <Head>
-        <title>Go: High-Performance Backend | TechDevDex</title>
-        <meta name="description" content="Build fast and efficient backend services with Go programming language. Complete guide to high-performance backend development with Go, goroutines, and modern web frameworks." />
-        <meta name="keywords" content="Go programming, Golang backend, high performance, concurrent programming, goroutines, web services, REST APIs, microservices" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Go: High-Performance Backend" />
-        <meta property="og:description" content="Build fast and efficient backend services with Go programming language. Complete guide to high-performance backend development with Go, goroutines, and modern web frameworks." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/web-dev/backend-development/go-backend-development" />
-        <meta property="og:image" content="https://techdevdex.com/images/web-dev/backend-development/go-guide.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Go: High-Performance Backend" />
-        <meta name="twitter:description" content="Build fast and efficient backend services with Go programming language. Complete guide to high-performance backend development with Go, goroutines, and modern web frameworks." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/web-dev/backend-development/go-guide.svg" />
-        <link rel="canonical" href="https://techdevdex.com/web-dev/backend-development/go-backend-development" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Go: High-Performance Backend",
-            "description": "Build fast and efficient backend services with Go programming language. Complete guide to high-performance backend development with Go, goroutines, and modern web frameworks.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://techdevdex.com/logo.png"
-              }
-            },
-            "datePublished": "2024-11-10",
-            "dateModified": "2024-11-10",
-            "image": "https://techdevdex.com/images/web-dev/backend-development/go-guide.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="Go: High-Performance Backend"
+        description="Build fast and efficient backend services with Go programming language. Complete guide to high-performance backend development with Go, goroutines, and modern web frameworks."
+        keywords={[
+          "Go programming",
+          "Golang backend",
+          "high performance",
+          "concurrent programming",
+          "goroutines",
+          "web services",
+          "REST APIs",
+          "microservices",
+          "Go frameworks",
+          "backend development"
+        ]}
+        type="article"
+        image="/images/web-dev/backend-development/go-guide.svg"
+        url="/web-dev/backend-development/go-backend-development"
+        publishedTime="2024-11-10"
+        section="Backend Development"
+        tags={["Go", "Backend", "Programming", "Web Development", "APIs"]}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-cyan-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

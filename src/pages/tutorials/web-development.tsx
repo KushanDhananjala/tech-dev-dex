@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, BookOpen, CheckCircle, Clock, Code, Star, Target, TrendingUp, User, Zap } from 'lucide-react';
@@ -86,38 +86,26 @@ const WebDevelopment = () => {
 
   return (
     <>
-      <Head>
-        <title>Web Development Tutorials 2024: Complete Learning Path | TechDevDex</title>
-        <meta name="description" content="Master web development with our comprehensive tutorial collection. From HTML/CSS basics to advanced JavaScript, React, and modern frameworks. Complete learning path for aspiring developers." />
-        <meta name="keywords" content="web development tutorials, HTML CSS JavaScript, React tutorials, web development course, frontend development, responsive web design, JavaScript ES6, web development learning path, coding tutorials, web development for beginners" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Web Development Tutorials 2024: Complete Learning Path" />
-        <meta property="og:description" content="Master web development with our comprehensive tutorial collection. From HTML/CSS basics to advanced JavaScript, React, and modern frameworks." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/tutorials/web-development" />
-        <meta property="og:image" content="https://techdevdex.com/images/tutorials/web-development/web-development-tutorials.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Web Development Tutorials 2024: Complete Learning Path" />
-        <meta name="twitter:description" content="Master web development with our comprehensive tutorial collection. From HTML/CSS basics to advanced JavaScript, React, and modern frameworks." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/tutorials/web-development/web-development-tutorials.svg" />
-        <link rel="canonical" href="https://techdevdex.com/tutorials/web-development" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Course",
-            "name": "Web Development Tutorials 2024",
-            "description": "Master web development with our comprehensive tutorial collection. From HTML/CSS basics to advanced JavaScript, React, and modern frameworks.",
-            "provider": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "courseMode": "online",
-            "educationalLevel": "beginner to advanced",
-            "inLanguage": "en"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="Web Development Tutorials 2024: Complete Learning Path"
+        description="Master web development with our comprehensive tutorial collection. From HTML/CSS basics to advanced JavaScript, React, and modern frameworks. Complete learning path for aspiring developers."
+        keywords={[
+          'web development tutorials',
+          'HTML CSS JavaScript',
+          'React tutorials',
+          'web development course',
+          'frontend development',
+          'responsive web design',
+          'JavaScript ES6',
+          'web development learning path',
+          'coding tutorials',
+          'web development for beginners'
+        ]}
+        type="article"
+        image="/images/tutorials/web-development/web-development-tutorials.svg"
+        url="/tutorials/web-development"
+        section="Web Development Tutorials"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

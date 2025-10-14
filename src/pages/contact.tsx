@@ -1,14 +1,32 @@
-import Head from "next/head";
+import SEO from "../components/SEO";
 import { motion } from "framer-motion";
 import { Clock, Mail, MessageCircle, Send } from 'lucide-react';
 
 export default function ContactPage() {
   return (
     <>
-      <Head>
-        <title>Contact | TechDevDex</title>
-        <meta name="description" content="Get in touch with TechDevDex - we&apos;d love to hear from you!" />
-      </Head>
+      <SEO
+        title="Contact TechDevDex"
+        description="Get in touch with TechDevDex - we'd love to hear from you! Contact us for questions, suggestions, or just to say hello."
+        keywords={[
+          "contact techdevdex",
+          "get in touch",
+          "developer support",
+          "tech questions",
+          "feedback",
+          "suggestions",
+          "partnership",
+          "technical support",
+          "developer community",
+          "tech help",
+          "contact form",
+          "support team",
+          "developer resources"
+        ]}
+        type="website"
+        image="/images/contact-og.jpg"
+        url="/contact"
+      />
       
       {/* Hero Section */}
       <section className="mb-16">

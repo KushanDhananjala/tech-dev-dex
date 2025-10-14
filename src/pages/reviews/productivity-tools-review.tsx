@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Filter, Search, Star, User, Zap } from 'lucide-react';
@@ -67,11 +67,29 @@ const ProductivityToolsReview = () => {
 
   return (
     <>
-      <Head>
-        <title>Productivity Tools Review - TechDevDex</title>
-        <meta name="description" content="Honest reviews of productivity tools for developers including project management, note-taking, and workflow optimization tools." />
-        <meta name="keywords" content="productivity tools review, Notion, Obsidian, Trello, Asana, time tracking, developer productivity" />
-      </Head>
+      <SEO
+        title="Productivity Tools Review"
+        description="Honest reviews of productivity tools for developers including project management, note-taking, and workflow optimization tools. Expert analysis of Notion, Obsidian, Trello, Asana, and more."
+        keywords={[
+          "productivity tools review",
+          "notion review",
+          "obsidian review",
+          "trello review",
+          "asana review",
+          "time tracking tools",
+          "developer productivity",
+          "project management tools",
+          "note taking apps",
+          "workflow optimization",
+          "productivity software",
+          "team collaboration tools",
+          "task management",
+          "productivity comparison"
+        ]}
+        type="website"
+        image="/images/reviews/productivity-tools-review-og.jpg"
+        url="/reviews/productivity-tools-review"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, GitCompareArrows, Star, User } from 'lucide-react';
@@ -85,11 +85,29 @@ const AppComparisons = () => {
 
   return (
     <>
-      <Head>
-        <title>App Comparisons - TechDevDex</title>
-        <meta name="description" content="Side-by-side comparisons of popular applications, frameworks, and technologies. Make informed decisions with our detailed comparisons." />
-        <meta name="keywords" content="app comparisons, technology comparison, software comparison, framework comparison" />
-      </Head>
+      <SEO
+        title="App Comparisons & Technology Analysis"
+        description="Side-by-side comparisons of popular applications, frameworks, and technologies. Make informed decisions with our detailed comparisons of VS Code vs Sublime, React vs Vue vs Angular, and more."
+        keywords={[
+          "app comparisons",
+          "technology comparison",
+          "software comparison",
+          "framework comparison",
+          "vs code vs sublime",
+          "react vs vue vs angular",
+          "node.js vs python",
+          "mongodb vs postgresql",
+          "aws vs azure vs gcp",
+          "docker vs kubernetes",
+          "tech comparison",
+          "software analysis",
+          "technology review",
+          "framework analysis"
+        ]}
+        type="website"
+        image="/images/reviews/app-comparisons-og.jpg"
+        url="/reviews/app-comparisons"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

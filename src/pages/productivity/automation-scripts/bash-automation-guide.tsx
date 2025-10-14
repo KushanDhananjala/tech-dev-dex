@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Clock, Code, Star, Terminal, Users, Zap } from 'lucide-react';
@@ -7,46 +7,26 @@ import { ArrowRight, CheckCircle, Clock, Code, Star, Terminal, Users, Zap } from
 const BashAutomationGuide = () => {
   return (
     <>
-      <Head>
-        <title>Complete Bash Automation Guide for Developers 2024 | TechDevDex</title>
-        <meta name="description" content="Master bash scripting for automation with our comprehensive guide. Learn essential commands, advanced techniques, and real-world automation patterns to boost your development productivity by 300%." />
-        <meta name="keywords" content="bash scripting, shell automation, developer productivity, command line tools, bash tutorial, automation scripts, linux commands, unix scripting, devops automation, bash best practices" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Complete Bash Automation Guide for Developers 2024" />
-        <meta property="og:description" content="Master bash scripting for automation with our comprehensive guide. Learn essential commands, advanced techniques, and real-world automation patterns." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/productivity/automation-scripts/bash-automation-guide" />
-        <meta property="og:image" content="https://techdevdex.com/images/productivity/automation-scripts/bash-automation.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Complete Bash Automation Guide for Developers 2024" />
-        <meta name="twitter:description" content="Master bash scripting for automation with our comprehensive guide. Learn essential commands, advanced techniques, and real-world automation patterns." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/productivity/automation-scripts/bash-automation.svg" />
-        <link rel="canonical" href="https://techdevdex.com/productivity/automation-scripts/bash-automation-guide" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Complete Bash Automation Guide for Developers 2024",
-            "description": "Master bash scripting for automation with our comprehensive guide. Learn essential commands, advanced techniques, and real-world automation patterns.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://techdevdex.com/logo.png"
-              }
-            },
-            "datePublished": "2024-12-12",
-            "dateModified": "2024-12-12",
-            "image": "https://techdevdex.com/images/productivity/automation-scripts/bash-automation.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="Complete Bash Automation Guide for Developers 2024 | TechDevDex"
+        description="Master bash scripting for automation with our comprehensive guide. Learn essential commands, advanced techniques, and real-world automation patterns to boost your development productivity by 300%."
+        keywords={[
+          'bash scripting',
+          'shell automation',
+          'developer productivity',
+          'command line tools',
+          'bash tutorial',
+          'automation scripts',
+          'linux commands',
+          'unix scripting',
+          'devops automation',
+          'bash best practices'
+        ]}
+        type="article"
+        image="/images/productivity/automation-scripts/bash-automation.svg"
+        url="/productivity/automation-scripts/bash-automation-guide"
+        section="Automation Scripts"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function EnergyManagement({ content }: EnergyManagementProps) {
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Energy Management - TechDevDex</title>
-          <meta name="description" content="Energy management for developers" />
-        </Head>
+        <SEO
+          title="Energy Management for Developers"
+          description="Master energy management techniques for sustained developer productivity. Learn energy optimization strategies, work-life balance, and sustainable development practices."
+          keywords={[
+            'energy management',
+            'developer productivity',
+            'energy optimization',
+            'work-life balance',
+            'sustainable development',
+            'energy techniques',
+            'productivity sustainability',
+            'energy optimization',
+            'work-life integration',
+            'sustainable productivity'
+          ]}
+          type="article"
+          image="/images/productivity/time-management/energy-management.svg"
+          url="/productivity/time-management/energy-management"
+          section="Time Management"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +48,17 @@ export default function EnergyManagement({ content }: EnergyManagementProps) {
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/productivity/time-management/energy-management.svg'}
+        url={`/productivity/time-management/energy-management`}
+        publishedTime={content.date}
+        section="Time Management"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, CheckCircle, Clock, Server, Star, User, Zap } from 'lucide-react';
@@ -8,47 +8,28 @@ import { motion } from 'framer-motion';
 const FastAPIModernPython = () => {
   return (
     <>
-      <Head>
-        <title>FastAPI: Modern Python APIs | TechDevDex</title>
-        <meta name="description" content="Create high-performance APIs with FastAPI, automatic documentation, and type hints. Complete guide to building modern Python web APIs with FastAPI framework." />
-        <meta name="keywords" content="FastAPI, Python APIs, modern web development, automatic documentation, type hints, async programming, high performance APIs" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="FastAPI: Modern Python APIs" />
-        <meta property="og:description" content="Create high-performance APIs with FastAPI, automatic documentation, and type hints. Complete guide to building modern Python web APIs with FastAPI framework." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/web-dev/backend-development/fastapi-modern-python" />
-        <meta property="og:image" content="https://techdevdex.com/images/web-dev/backend-development/fastapi-guide.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="FastAPI: Modern Python APIs" />
-        <meta name="twitter:description" content="Create high-performance APIs with FastAPI, automatic documentation, and type hints. Complete guide to building modern Python web APIs with FastAPI framework." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/web-dev/backend-development/fastapi-guide.svg" />
-        <link rel="canonical" href="https://techdevdex.com/web-dev/backend-development/fastapi-modern-python" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "FastAPI: Modern Python APIs",
-            "description": "Create high-performance APIs with FastAPI, automatic documentation, and type hints. Complete guide to building modern Python web APIs with FastAPI framework.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://techdevdex.com/logo.png"
-              }
-            },
-            "datePublished": "2024-11-20",
-            "dateModified": "2024-11-20",
-            "image": "https://techdevdex.com/images/web-dev/backend-development/fastapi-guide.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="FastAPI: Modern Python APIs"
+        description="Create high-performance APIs with FastAPI, automatic documentation, and type hints. Complete guide to building modern Python web APIs with FastAPI framework."
+        keywords={[
+          'FastAPI',
+          'Python APIs',
+          'modern web development',
+          'automatic documentation',
+          'type hints',
+          'async programming',
+          'high performance APIs',
+          'Python web framework',
+          'API development',
+          'backend development'
+        ]}
+        type="article"
+        image="/images/web-dev/backend-development/fastapi-guide.svg"
+        url="/web-dev/backend-development/fastapi-modern-python"
+        publishedTime="2024-11-20"
+        section="Backend Development"
+        tags={['FastAPI', 'Python', 'Backend Development']}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

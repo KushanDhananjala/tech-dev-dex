@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const IntelliJIDEAReview = () => {
   return (
     <>
-      <Head>
-        <title>IntelliJ IDEA: The Professional IDE - TechDevDex</title>
-        <meta name="description" content="Deep dive into IntelliJ IDEA features, performance, and why it&apos;s the choice for enterprise development." />
-        <meta name="keywords" content="IntelliJ IDEA review, Java IDE, enterprise development, IDE features, productivity tools" />
-      </Head>
+      <SEO
+        title="IntelliJ IDEA: The Professional IDE"
+        description="Deep dive into IntelliJ IDEA features, performance, and why it's the choice for enterprise development."
+        keywords={[
+          'IntelliJ IDEA review',
+          'Java IDE',
+          'enterprise development',
+          'IDE features',
+          'productivity tools',
+          'IntelliJ IDEA capabilities',
+          'JetBrains IDE',
+          'IDE performance',
+          'development environment',
+          'IntelliJ IDEA tools'
+        ]}
+        type="article"
+        image="/images/reviews/software-reviews/intellij-idea.svg"
+        url="/reviews/software-reviews/intellij-idea-review"
+        section="Software Reviews"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

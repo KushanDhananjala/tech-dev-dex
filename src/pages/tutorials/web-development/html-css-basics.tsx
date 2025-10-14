@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Clock, Star, User } from 'lucide-react';
@@ -7,11 +7,27 @@ import { Clock, Star, User } from 'lucide-react';
 const HTMLCSSBasics = () => {
   return (
     <>
-      <Head>
-        <title>HTML & CSS Fundamentals: Building Your First Website | TechDevDex</title>
-        <meta name="description" content="Learn the basics of HTML and CSS to create beautiful, responsive websites from scratch. Complete beginner&apos;s guide to web development fundamentals." />
-        <meta name="keywords" content="HTML CSS tutorial, web development basics, HTML fundamentals, CSS basics, responsive web design, beginner web development" />
-      </Head>
+      <SEO
+        title="HTML & CSS Fundamentals: Building Your First Website"
+        description="Learn the basics of HTML and CSS to create beautiful, responsive websites from scratch. Complete beginner's guide to web development fundamentals."
+        keywords={[
+          'HTML CSS tutorial',
+          'web development basics',
+          'HTML fundamentals',
+          'CSS basics',
+          'responsive web design',
+          'beginner web development',
+          'HTML elements',
+          'CSS styling',
+          'web design basics',
+          'frontend development'
+        ]}
+        type="article"
+        image="/images/tutorials/web-development/html-css-basics.svg"
+        url="/tutorials/web-development/html-css-basics"
+        section="Web Development"
+        tags={['HTML', 'CSS', 'Web Development']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

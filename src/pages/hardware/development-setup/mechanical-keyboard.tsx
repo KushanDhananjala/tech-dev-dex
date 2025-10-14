@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const MechanicalKeyboard = () => {
   return (
     <>
-      <Head>
-        <title>Mechanical Keyboard Guide for Developers | TechDevDex</title>
-        <meta name="description" content="Choose the perfect mechanical keyboard for your coding needs. Complete guide to switches, layouts, and features for developers." />
-        <meta name="keywords" content="mechanical keyboard, developer keyboard, coding keyboard, keyboard switches, productivity" />
-      </Head>
+      <SEO
+        title="Mechanical Keyboard Guide for Developers"
+        description="Choose the perfect mechanical keyboard for your coding needs. Complete guide to switches, layouts, and features for developers."
+        keywords={[
+          'mechanical keyboard',
+          'developer keyboard',
+          'coding keyboard',
+          'keyboard switches',
+          'productivity',
+          'keyboard guide',
+          'mechanical switches',
+          'keyboard layouts',
+          'keyboard features',
+          'development hardware'
+        ]}
+        type="article"
+        image="/images/hardware/development-setup/mechanical-keyboard.svg"
+        url="/hardware/development-setup/mechanical-keyboard"
+        section="Development Setup"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

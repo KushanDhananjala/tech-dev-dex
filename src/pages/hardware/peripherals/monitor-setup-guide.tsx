@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
 import MDXContentComponent from '../../../components/MDXContent';
@@ -12,23 +12,27 @@ interface MonitorSetupGuideProps {
 const MonitorSetupGuide: React.FC<MonitorSetupGuideProps> = ({ content }) => {
   return (
     <>
-      <Head>
-        <title>Monitor Setup for Developers | TechDevDex</title>
-        <meta name="description" content="Guide to choosing and setting up monitors for optimal development productivity and eye comfort. Learn about resolution, color accuracy, and ergonomic considerations." />
-        <meta name="keywords" content="monitors, display setup, productivity, ergonomics, development, eye comfort" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Monitor Setup for Developers" />
-        <meta property="og:description" content="Guide to choosing and setting up monitors for optimal development productivity and eye comfort." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/hardware/peripherals/monitor-setup-guide" />
-        <meta property="og:image" content="https://techdevdex.com/images/hardware/peripherals/monitor-setup.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Monitor Setup for Developers" />
-        <meta name="twitter:description" content="Guide to choosing and setting up monitors for optimal development productivity and eye comfort." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/hardware/peripherals/monitor-setup.svg" />
-        <link rel="canonical" href="https://techdevdex.com/hardware/peripherals/monitor-setup-guide" />
-      </Head>
+      <SEO
+        title="Monitor Setup for Developers"
+        description="Guide to choosing and setting up monitors for optimal development productivity and eye comfort. Learn about resolution, color accuracy, and ergonomic considerations."
+        keywords={[
+          'monitors',
+          'display setup',
+          'productivity',
+          'ergonomics',
+          'development',
+          'eye comfort',
+          'monitor setup',
+          'dual monitor',
+          '4K monitors',
+          'ultrawide monitors'
+        ]}
+        type="article"
+        image="/images/hardware/peripherals/monitor-setup.svg"
+        url="/hardware/peripherals/monitor-setup-guide"
+        section="Hardware"
+        tags={['Monitors', 'Setup', 'Productivity']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

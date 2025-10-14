@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const VimReview = () => {
   return (
     <>
-      <Head>
-        <title>Vim: The Terminal Editor - TechDevDex</title>
-        <meta name="description" content="Exploring Vim&apos;s learning curve, productivity benefits, and why developers still choose it in 2024." />
-        <meta name="keywords" content="Vim review, terminal editor, modal editor, productivity, keyboard shortcuts" />
-      </Head>
+      <SEO
+        title="Vim: The Terminal Editor"
+        description="Exploring Vim's learning curve, productivity benefits, and why developers still choose it in 2024."
+        keywords={[
+          'Vim review',
+          'terminal editor',
+          'modal editor',
+          'productivity',
+          'keyboard shortcuts',
+          'Vim features',
+          'text editor review',
+          'Vim performance',
+          'development environment',
+          'Vim capabilities'
+        ]}
+        type="article"
+        image="/images/reviews/software-reviews/vim.svg"
+        url="/reviews/software-reviews/vim-review"
+        section="Software Reviews"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

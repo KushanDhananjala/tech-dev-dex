@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const TimeBlocking = () => {
   return (
     <>
-      <Head>
-        <title>Time Blocking: Master Your Schedule | TechDevDex</title>
-        <meta name="description" content="Master time blocking for better productivity and focus. Learn how to schedule your day, manage interruptions, and optimize your development workflow." />
-        <meta name="keywords" content="time blocking, productivity, schedule management, focus, time management, development workflow" />
-      </Head>
+      <SEO
+        title="Time Blocking: Master Your Schedule"
+        description="Master time blocking for better productivity and focus. Learn how to schedule your day, manage interruptions, and optimize your development workflow."
+        keywords={[
+          'time blocking',
+          'productivity',
+          'schedule management',
+          'focus',
+          'time management',
+          'development workflow',
+          'time optimization',
+          'productivity techniques',
+          'schedule optimization',
+          'focus management'
+        ]}
+        type="article"
+        image="/images/productivity/time-management/time-blocking.svg"
+        url="/productivity/time-management/time-blocking"
+        section="Time Management"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

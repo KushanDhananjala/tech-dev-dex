@@ -1,7 +1,7 @@
 import MDXContentComponent from "../../components/MDXContent";
 import { getMDXContent, MDXContent } from "../../lib/mdx";
 import { GetStaticProps } from "next";
-import Head from "next/head";
+import SEO from "../../components/SEO";
 
 interface PythonAutomationPageProps {
   content: MDXContent | null;
@@ -11,10 +11,29 @@ export default function PythonAutomationPage({ content }: PythonAutomationPagePr
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Python Automation | TechDevDex</title>
-          <meta name="description" content="Automate tasks and workflows with Python" />
-        </Head>
+        <SEO
+          title="Python Automation Scripts & Workflows"
+          description="Automate tasks and workflows with Python scripts. Learn web scraping, file processing, API automation, and workflow optimization with Python."
+          keywords={[
+            "python automation",
+            "automation scripts",
+            "python workflows",
+            "web scraping python",
+            "file automation",
+            "api automation",
+            "python scripting",
+            "task automation",
+            "workflow automation",
+            "python tools",
+            "automation techniques",
+            "python productivity",
+            "scripting automation",
+            "python efficiency"
+          ]}
+          type="article"
+          image="/images/tutorials/python-automation-og.jpg"
+          url="/tutorials/python-automation"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -29,10 +48,17 @@ export default function PythonAutomationPage({ content }: PythonAutomationPagePr
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage}
+        url={`/tutorials/python-automation`}
+        publishedTime={content.date}
+        section="Python Automation"
+        tags={content.tags || []}
+      />
       <MDXContentComponent content={content} />
     </>
   );

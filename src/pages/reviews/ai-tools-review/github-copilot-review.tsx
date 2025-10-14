@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Brain, CheckCircle, Clock, Star, User, Zap } from 'lucide-react';
@@ -7,23 +7,26 @@ import { Brain, CheckCircle, Clock, Star, User, Zap } from 'lucide-react';
 const GitHubCopilotReview = () => {
   return (
     <>
-      <Head>
-        <title>GitHub Copilot: AI-Powered Code Assistant Review | TechDevDex</title>
-        <meta name="description" content="Comprehensive review of GitHub Copilot&apos;s features, performance, and impact on developer productivity. Real-world testing and honest assessment." />
-        <meta name="keywords" content="GitHub Copilot review, AI coding assistant, code completion, developer productivity, AI tools" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="GitHub Copilot: AI-Powered Code Assistant Review" />
-        <meta property="og:description" content="Comprehensive review of GitHub Copilot&apos;s features, performance, and impact on developer productivity." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/reviews/ai-tools-review/github-copilot-review" />
-        <meta property="og:image" content="https://techdevdex.com/images/reviews/ai-tools-review/github-copilot-review.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="GitHub Copilot: AI-Powered Code Assistant Review" />
-        <meta name="twitter:description" content="Comprehensive review of GitHub Copilot&apos;s features, performance, and impact on developer productivity." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/reviews/ai-tools-review/github-copilot-review.svg" />
-        <link rel="canonical" href="https://techdevdex.com/reviews/ai-tools-review/github-copilot-review" />
-      </Head>
+      <SEO
+        title="GitHub Copilot: AI-Powered Code Assistant Review"
+        description="Comprehensive review of GitHub Copilot's features, performance, and impact on developer productivity. Real-world testing and honest assessment."
+        keywords={[
+          'GitHub Copilot review',
+          'AI coding assistant',
+          'code completion',
+          'developer productivity',
+          'AI tools',
+          'Copilot features',
+          'GitHub AI coding',
+          'AI code generation',
+          'Copilot performance',
+          'AI development tools'
+        ]}
+        type="article"
+        image="/images/reviews/ai-tools-review/github-copilot-review.svg"
+        url="/reviews/ai-tools-review/github-copilot-review"
+        section="AI Tools Review"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

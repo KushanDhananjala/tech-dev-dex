@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const Kanban = () => {
   return (
     <>
-      <Head>
-        <title>Kanban Methodology: Continuous Flow and Productivity | TechDevDex</title>
-        <meta name="description" content="Implement Kanban for continuous flow and improved productivity. Learn about Kanban principles, practices, and tools for development teams." />
-        <meta name="keywords" content="Kanban methodology, continuous flow, productivity, project management, Agile, workflow optimization" />
-      </Head>
+      <SEO
+        title="Kanban Methodology: Continuous Flow and Productivity"
+        description="Implement Kanban for continuous flow and improved productivity. Learn about Kanban principles, practices, and tools for development teams."
+        keywords={[
+          'Kanban methodology',
+          'continuous flow',
+          'productivity',
+          'project management',
+          'Agile',
+          'workflow optimization',
+          'Kanban principles',
+          'Kanban practices',
+          'development teams',
+          'Kanban tools'
+        ]}
+        type="article"
+        image="/images/productivity/project-management/kanban.svg"
+        url="/productivity/project-management/kanban"
+        section="Project Management"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

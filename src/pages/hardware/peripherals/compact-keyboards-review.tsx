@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function CompactKeyboardsReview({ content }: CompactKeyboardsRevi
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Compact Keyboards Review - TechDevDex</title>
-          <meta name="description" content="Compact keyboards for developers" />
-        </Head>
+        <SEO
+          title="Compact Keyboards Review for Developers"
+          description="Comprehensive review of compact keyboards designed for developers. Learn about space-saving designs, functionality, and productivity features for coding in limited spaces."
+          keywords={[
+            'compact keyboards',
+            'developer keyboards',
+            'space-saving designs',
+            'functionality',
+            'productivity features',
+            'coding keyboards',
+            'compact hardware',
+            'keyboard reviews',
+            'space-efficient keyboards',
+            'compact peripherals'
+          ]}
+          type="article"
+          image="/images/hardware/peripherals/compact-keyboards.svg"
+          url="/hardware/peripherals/compact-keyboards-review"
+          section="Peripherals"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +48,17 @@ export default function CompactKeyboardsReview({ content }: CompactKeyboardsRevi
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/hardware/peripherals/compact-keyboards.svg'}
+        url={`/hardware/peripherals/compact-keyboards-review`}
+        publishedTime={content.date}
+        section="Peripherals"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

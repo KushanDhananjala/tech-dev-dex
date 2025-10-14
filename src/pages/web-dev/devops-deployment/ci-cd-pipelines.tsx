@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function CICDPipelines({ content }: CICDPipelinesProps) {
   if (!content) {
     return (
       <>
-        <Head>
-          <title>CI/CD Pipelines - TechDevDex</title>
-          <meta name="description" content="CI/CD pipelines guide" />
-        </Head>
+        <SEO
+          title="CI/CD Pipelines"
+          description="Master CI/CD pipelines for automated deployment. Learn GitHub Actions, Jenkins, GitLab CI, and best practices for continuous integration and deployment."
+          keywords={[
+            'CI/CD pipelines',
+            'continuous integration',
+            'continuous deployment',
+            'GitHub Actions',
+            'Jenkins',
+            'GitLab CI',
+            'automated deployment',
+            'DevOps automation',
+            'pipeline optimization',
+            'deployment automation'
+          ]}
+          type="article"
+          image="/images/web-dev/devops-deployment/ci-cd-pipelines.svg"
+          url="/web-dev/devops-deployment/ci-cd-pipelines"
+          section="DevOps & Deployment"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +48,17 @@ export default function CICDPipelines({ content }: CICDPipelinesProps) {
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/web-dev/devops-deployment/ci-cd-pipelines.svg'}
+        url={`/web-dev/devops-deployment/ci-cd-pipelines`}
+        publishedTime={content.date}
+        section="DevOps & Deployment"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

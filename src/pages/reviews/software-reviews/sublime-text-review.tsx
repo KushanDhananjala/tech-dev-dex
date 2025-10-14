@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const SublimeTextReview = () => {
   return (
     <>
-      <Head>
-        <title>Sublime Text: Lightweight and Fast - TechDevDex</title>
-        <meta name="description" content="Review of Sublime Text&apos;s speed, customization options, and when to choose it over other editors." />
-        <meta name="keywords" content="Sublime Text review, code editor, lightweight editor, fast editor, customization" />
-      </Head>
+      <SEO
+        title="Sublime Text: Lightweight and Fast"
+        description="Review of Sublime Text's speed, customization options, and when to choose it over other editors."
+        keywords={[
+          'Sublime Text review',
+          'code editor',
+          'lightweight editor',
+          'fast editor',
+          'customization',
+          'Sublime Text features',
+          'text editor review',
+          'Sublime Text performance',
+          'development environment',
+          'Sublime Text capabilities'
+        ]}
+        type="article"
+        image="/images/reviews/software-reviews/sublime-text.svg"
+        url="/reviews/software-reviews/sublime-text-review"
+        section="Software Reviews"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

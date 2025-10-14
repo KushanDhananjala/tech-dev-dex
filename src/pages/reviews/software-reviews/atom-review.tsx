@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const AtomReview = () => {
   return (
     <>
-      <Head>
-        <title>Atom: The Hackable Editor - TechDevDex</title>
-        <meta name="description" content="Review of Atom&apos;s customization capabilities, community, and current state of development." />
-        <meta name="keywords" content="Atom review, hackable editor, customizable editor, GitHub editor, text editor" />
-      </Head>
+      <SEO
+        title="Atom: The Hackable Editor"
+        description="Review of Atom's customization capabilities, community, and current state of development."
+        keywords={[
+          'Atom review',
+          'hackable editor',
+          'customizable editor',
+          'GitHub editor',
+          'text editor',
+          'Atom features',
+          'code editor review',
+          'Atom performance',
+          'development environment',
+          'Atom capabilities'
+        ]}
+        type="article"
+        image="/images/reviews/software-reviews/atom.svg"
+        url="/reviews/software-reviews/atom-review"
+        section="Software Reviews"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

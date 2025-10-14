@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Brain, CheckCircle, Clock, Star, User, Zap } from 'lucide-react';
@@ -7,23 +7,26 @@ import { Brain, CheckCircle, Clock, Star, User, Zap } from 'lucide-react';
 const TabnineReview = () => {
   return (
     <>
-      <Head>
-        <title>Tabnine: AI Code Completion Review | TechDevDex</title>
-        <meta name="description" content="Comprehensive review of Tabnine&apos;s AI-powered code completion and its impact on development speed. Real developer testing and honest assessment." />
-        <meta name="keywords" content="Tabnine review, AI code completion, code assistant, developer productivity, AI tools" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Tabnine: AI Code Completion Review" />
-        <meta property="og:description" content="Comprehensive review of Tabnine&apos;s AI-powered code completion and its impact on development speed." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/reviews/ai-tools-review/tabnine-review" />
-        <meta property="og:image" content="https://techdevdex.com/images/reviews/ai-tools-review/tabnine.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tabnine: AI Code Completion Review" />
-        <meta name="twitter:description" content="Comprehensive review of Tabnine&apos;s AI-powered code completion and its impact on development speed." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/reviews/ai-tools-review/tabnine.svg" />
-        <link rel="canonical" href="https://techdevdex.com/reviews/ai-tools-review/tabnine-review" />
-      </Head>
+      <SEO
+        title="Tabnine: AI Code Completion Review"
+        description="Comprehensive review of Tabnine's AI-powered code completion and its impact on development speed. Real developer testing and honest assessment."
+        keywords={[
+          'Tabnine review',
+          'AI code completion',
+          'code assistant',
+          'developer productivity',
+          'AI tools',
+          'Tabnine features',
+          'AI development tools',
+          'Tabnine performance',
+          'AI coding tools',
+          'Tabnine capabilities'
+        ]}
+        type="article"
+        image="/images/reviews/ai-tools-review/tabnine.svg"
+        url="/reviews/ai-tools-review/tabnine-review"
+        section="AI Tools Review"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Star, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const MongoDBVsPostgreSQL = () => {
   return (
     <>
-      <Head>
-        <title>MongoDB vs PostgreSQL: Database Comparison - TechDevDex</title>
-        <meta name="description" content="NoSQL vs SQL database comparison. When to choose MongoDB over PostgreSQL and vice versa for your application." />
-        <meta name="keywords" content="MongoDB, PostgreSQL, database comparison, NoSQL, SQL, database choice" />
-      </Head>
+      <SEO
+        title="MongoDB vs PostgreSQL: Database Comparison"
+        description="NoSQL vs SQL database comparison. When to choose MongoDB over PostgreSQL and vice versa for your application."
+        keywords={[
+          'MongoDB',
+          'PostgreSQL',
+          'database comparison',
+          'NoSQL',
+          'SQL',
+          'database choice',
+          'MongoDB vs PostgreSQL',
+          'database selection',
+          'NoSQL vs SQL',
+          'database technologies'
+        ]}
+        type="article"
+        image="/images/reviews/app-comparisons/mongodb-vs-postgresql.svg"
+        url="/reviews/app-comparisons/mongodb-vs-postgresql"
+        section="App Comparisons"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

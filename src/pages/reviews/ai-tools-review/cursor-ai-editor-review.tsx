@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Brain, CheckCircle, Clock, Star, User, Zap } from 'lucide-react';
@@ -7,23 +7,26 @@ import { Brain, CheckCircle, Clock, Star, User, Zap } from 'lucide-react';
 const CursorAIEditorReview = () => {
   return (
     <>
-      <Head>
-        <title>Cursor: AI-First Code Editor Review | TechDevDex</title>
-        <meta name="description" content="Review of Cursor, the AI-first code editor that&apos;s changing how developers write code. Comprehensive analysis and developer experience." />
-        <meta name="keywords" content="Cursor AI editor review, AI-first code editor, code editor, developer tools, AI coding" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Cursor: AI-First Code Editor Review" />
-        <meta property="og:description" content="Review of Cursor, the AI-first code editor that&apos;s changing how developers write code." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/reviews/ai-tools-review/cursor-ai-editor-review" />
-        <meta property="og:image" content="https://techdevdex.com/images/reviews/ai-tools-review/cursor-editor.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Cursor: AI-First Code Editor Review" />
-        <meta name="twitter:description" content="Review of Cursor, the AI-first code editor that&apos;s changing how developers write code." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/reviews/ai-tools-review/cursor-editor.svg" />
-        <link rel="canonical" href="https://techdevdex.com/reviews/ai-tools-review/cursor-ai-editor-review" />
-      </Head>
+      <SEO
+        title="Cursor: AI-First Code Editor Review"
+        description="Review of Cursor, the AI-first code editor that's changing how developers write code. Comprehensive analysis and developer experience."
+        keywords={[
+          'Cursor AI editor review',
+          'AI-first code editor',
+          'code editor',
+          'developer tools',
+          'AI coding',
+          'Cursor features',
+          'AI development tools',
+          'Cursor performance',
+          'AI code editor',
+          'Cursor capabilities'
+        ]}
+        type="article"
+        image="/images/reviews/ai-tools-review/cursor-editor.svg"
+        url="/reviews/ai-tools-review/cursor-ai-editor-review"
+        section="AI Tools Review"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

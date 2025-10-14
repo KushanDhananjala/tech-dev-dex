@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Filter, Search, Star, User, Wrench } from 'lucide-react';
@@ -67,11 +67,26 @@ const DevelopmentTools = () => {
 
   return (
     <>
-      <Head>
-        <title>Development Tools - TechDevDex</title>
-        <meta name="description" content="Comprehensive guides for development tools including IDEs, version control, containers, and productivity utilities." />
-        <meta name="keywords" content="development tools, VS Code, Git, Docker, terminal, IDEs, productivity tools" />
-      </Head>
+      <SEO
+        title="Development Tools for Maximum Productivity"
+        description="Comprehensive guides for development tools including IDEs, version control, containers, and productivity utilities."
+        keywords={[
+          'development tools',
+          'VS Code',
+          'Git',
+          'Docker',
+          'terminal',
+          'IDEs',
+          'productivity tools',
+          'development productivity',
+          'coding tools',
+          'development efficiency'
+        ]}
+        type="article"
+        image="/images/productivity/development-tools.svg"
+        url="/productivity/development-tools"
+        section="Development Tools"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

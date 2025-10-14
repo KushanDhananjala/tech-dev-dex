@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Filter, Search, Star, User, Zap } from 'lucide-react';
@@ -67,11 +67,26 @@ const AutomationScripts = () => {
 
   return (
     <>
-      <Head>
-        <title>Automation Scripts - TechDevDex</title>
-        <meta name="description" content="Learn to create automation scripts for repetitive tasks using bash, Python, PowerShell, and other tools." />
-        <meta name="keywords" content="automation scripts, bash, Python, PowerShell, GitHub Actions, cron jobs, task automation" />
-      </Head>
+      <SEO
+        title="Automation Scripts for Development Productivity"
+        description="Learn to create automation scripts for repetitive tasks using bash, Python, PowerShell, and other tools."
+        keywords={[
+          'automation scripts',
+          'bash',
+          'Python',
+          'PowerShell',
+          'GitHub Actions',
+          'cron jobs',
+          'task automation',
+          'development automation',
+          'scripting',
+          'productivity tools'
+        ]}
+        type="article"
+        image="/images/productivity/automation-scripts.svg"
+        url="/productivity/automation-scripts"
+        section="Automation Scripts"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

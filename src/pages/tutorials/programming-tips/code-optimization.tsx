@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function CodeOptimizationPage({ content }: CodeOptimizationPagePr
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Content Not Found | TechDevDex</title>
-          <meta name="description" content="The requested content could not be found." />
-        </Head>
+        <SEO
+          title="Code Optimization"
+          description="Learn code optimization techniques and best practices. Master performance optimization, memory management, and efficient coding strategies."
+          keywords={[
+            'code optimization',
+            'performance optimization',
+            'code efficiency',
+            'optimization techniques',
+            'code performance',
+            'optimization best practices',
+            'code optimization strategies',
+            'performance tuning',
+            'code optimization tools',
+            'optimization patterns'
+          ]}
+          type="article"
+          image="/images/tutorials/programming-tips/optimization.svg"
+          url="/tutorials/programming-tips/code-optimization"
+          section="Programming Tips"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,10 +48,17 @@ export default function CodeOptimizationPage({ content }: CodeOptimizationPagePr
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/tutorials/programming-tips/optimization.svg'}
+        url={`/tutorials/programming-tips/code-optimization`}
+        publishedTime={content.date}
+        section="Programming Tips"
+        tags={content.tags || []}
+      />
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="mb-8">

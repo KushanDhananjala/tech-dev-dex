@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Clock, ImageIcon, Star, Users, Zap } from 'lucide-react';
@@ -7,42 +7,26 @@ import { ArrowRight, CheckCircle, Clock, ImageIcon, Star, Users, Zap } from 'luc
 const AIImageGeneration = () => {
   return (
     <>
-      <Head>
-        <title>AI Image Generation: Build Creative AI Applications | TechDevDex</title>
-        <meta name="description" content="Master AI image generation with DALL-E, Midjourney, and Stable Diffusion. Learn to build creative AI applications for image generation, editing, and manipulation." />
-        <meta name="keywords" content="AI image generation, DALL-E, Midjourney, Stable Diffusion, AI art, image AI, creative AI, AI applications" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="AI Image Generation: Build Creative AI Applications" />
-        <meta property="og:description" content="Master AI image generation with DALL-E, Midjourney, and Stable Diffusion. Learn to build creative AI applications for image generation, editing, and manipulation." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/ai-trending/ai-integration-tutorials/ai-image-generation" />
-        <meta property="og:image" content="https://techdevdex.com/images/ai-ml/ai-integration-tutorials/ai-image-gen.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Image Generation: Build Creative AI Applications" />
-        <meta name="twitter:description" content="Master AI image generation with DALL-E, Midjourney, and Stable Diffusion. Learn to build creative AI applications for image generation, editing, and manipulation." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/ai-ml/ai-integration-tutorials/ai-image-gen.svg" />
-        <link rel="canonical" href="https://techdevdex.com/ai-trending/ai-integration-tutorials/ai-image-generation" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "AI Image Generation: Build Creative AI Applications",
-            "description": "Master AI image generation with DALL-E, Midjourney, and Stable Diffusion. Learn to build creative AI applications for image generation, editing, and manipulation.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "datePublished": "2024-12-12",
-            "dateModified": "2024-12-12",
-            "image": "https://techdevdex.com/images/ai-ml/ai-integration-tutorials/ai-image-gen.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="AI Image Generation: Build Creative AI Applications"
+        description="Master AI image generation with DALL-E, Midjourney, and Stable Diffusion. Learn to build creative AI applications for image generation, editing, and manipulation."
+        keywords={[
+          'AI image generation',
+          'DALL-E',
+          'Midjourney',
+          'Stable Diffusion',
+          'AI art',
+          'image AI',
+          'creative AI',
+          'AI applications',
+          'AI image tools',
+          'AI creativity'
+        ]}
+        type="article"
+        image="/images/ai-ml/ai-integration-tutorials/ai-image-gen.svg"
+        url="/ai-trending/ai-integration-tutorials/ai-image-generation"
+        section="AI Integration Tutorials"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

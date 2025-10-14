@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Cloud, Filter, Search, Star, User } from 'lucide-react';
@@ -67,11 +67,25 @@ const DevOpsDeployment = () => {
 
   return (
     <>
-      <Head>
-        <title>DevOps & Deployment - TechDevDex</title>
-        <meta name="description" content="Comprehensive guides for DevOps practices, containerization, cloud deployment, and CI/CD pipelines." />
-        <meta name="keywords" content="DevOps, deployment, Docker, Kubernetes, AWS, CI/CD, infrastructure, cloud" />
-      </Head>
+      <SEO
+        title="DevOps & Deployment"
+        description="Comprehensive guides for DevOps practices, containerization, cloud deployment, and CI/CD pipelines. Master modern deployment strategies."
+        keywords={[
+          "DevOps",
+          "deployment",
+          "Docker",
+          "Kubernetes",
+          "AWS",
+          "CI/CD",
+          "infrastructure",
+          "cloud",
+          "containerization",
+          "automation"
+        ]}
+        type="website"
+        image="/images/web-dev/devops-deployment-og.jpg"
+        url="/web-dev/devops-deployment"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

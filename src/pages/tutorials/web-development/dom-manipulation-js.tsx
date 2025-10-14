@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, Clock, Code, Star, User, Zap } from 'lucide-react';
@@ -7,23 +7,27 @@ import { CheckCircle, Clock, Code, Star, User, Zap } from 'lucide-react';
 const DOMManipulationJS = () => {
   return (
     <>
-      <Head>
-        <title>DOM Manipulation with JavaScript | TechDevDex</title>
-        <meta name="description" content="Learn to interact with web pages using JavaScript DOM methods and event handling. Complete guide with examples and best practices." />
-        <meta name="keywords" content="DOM manipulation, JavaScript DOM, event handling, JavaScript tutorial, web development" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="DOM Manipulation with JavaScript" />
-        <meta property="og:description" content="Learn to interact with web pages using JavaScript DOM methods and event handling." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/tutorials/web-development/dom-manipulation-js" />
-        <meta property="og:image" content="https://techdevdex.com/images/tutorials/web-development/dom-manipulation.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="DOM Manipulation with JavaScript" />
-        <meta name="twitter:description" content="Learn to interact with web pages using JavaScript DOM methods and event handling." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/tutorials/web-development/dom-manipulation.svg" />
-        <link rel="canonical" href="https://techdevdex.com/tutorials/web-development/dom-manipulation-js" />
-      </Head>
+      <SEO
+        title="DOM Manipulation with JavaScript"
+        description="Learn to interact with web pages using JavaScript DOM methods and event handling. Complete guide with examples and best practices."
+        keywords={[
+          'DOM manipulation',
+          'JavaScript DOM',
+          'event handling',
+          'JavaScript tutorial',
+          'web development',
+          'DOM methods',
+          'JavaScript events',
+          'querySelector',
+          'addEventListener',
+          'frontend development'
+        ]}
+        type="article"
+        image="/images/tutorials/web-development/dom-manipulation.svg"
+        url="/tutorials/web-development/dom-manipulation-js"
+        section="Web Development"
+        tags={['JavaScript', 'DOM', 'Web Development']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

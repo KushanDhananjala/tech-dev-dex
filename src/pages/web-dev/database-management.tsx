@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import MDXContent from '../../components/MDXContent';
 import { ArrowLeft, Database } from 'lucide-react';
@@ -7,11 +7,26 @@ import { ArrowLeft, Database } from 'lucide-react';
 const DatabaseManagement = () => {
   return (
     <>
-      <Head>
-        <title>Database Management - TechDevDex</title>
-        <meta name="description" content="Master database management with SQL and NoSQL databases. Learn PostgreSQL, MongoDB, Redis, and database optimization techniques." />
-        <meta name="keywords" content="database management, SQL, NoSQL, PostgreSQL, MongoDB, Redis" />
-      </Head>
+      <SEO
+        title="Database Management"
+        description="Master database management with SQL and NoSQL databases. Learn PostgreSQL, MongoDB, Redis, and database optimization techniques for scalable applications."
+        keywords={[
+          'database management',
+          'SQL databases',
+          'NoSQL databases',
+          'PostgreSQL',
+          'MongoDB',
+          'Redis',
+          'database optimization',
+          'database design',
+          'data modeling',
+          'database performance'
+        ]}
+        type="article"
+        image="/images/web-dev/database-management.svg"
+        url="/web-dev/database-management"
+        section="Web Development"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

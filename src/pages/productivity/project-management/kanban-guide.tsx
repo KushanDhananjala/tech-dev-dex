@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function KanbanGuide({ content }: KanbanGuideProps) {
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Kanban Guide - TechDevDex</title>
-          <meta name="description" content="Kanban guide for development teams" />
-        </Head>
+        <SEO
+          title="Kanban Guide for Development Teams"
+          description="Complete Kanban guide for development teams. Learn Kanban principles, workflow optimization, and best practices for agile project management."
+          keywords={[
+            'Kanban guide',
+            'Kanban principles',
+            'workflow optimization',
+            'agile project management',
+            'development teams',
+            'Kanban methodology',
+            'project management',
+            'agile development',
+            'Kanban best practices',
+            'team productivity'
+          ]}
+          type="article"
+          image="/images/productivity/project-management/kanban.svg"
+          url="/productivity/project-management/kanban-guide"
+          section="Project Management"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +48,17 @@ export default function KanbanGuide({ content }: KanbanGuideProps) {
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/productivity/project-management/kanban.svg'}
+        url={`/productivity/project-management/kanban-guide`}
+        publishedTime={content.date}
+        section="Project Management"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

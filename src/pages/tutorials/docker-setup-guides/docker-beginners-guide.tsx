@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function DockerBeginnersGuide({ content }: DockerBeginnersGuidePr
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Docker Beginners Guide - TechDevDex</title>
-          <meta name="description" content="Complete beginner&apos;s guide to Docker containers" />
-        </Head>
+        <SEO
+          title="Docker Beginners Guide"
+          description="Complete beginner's guide to Docker containers. Learn Docker from scratch with installation, basic commands, and your first container."
+          keywords={[
+            'Docker beginners guide',
+            'Docker tutorial',
+            'Docker basics',
+            'Docker installation',
+            'Docker commands',
+            'Docker containers',
+            'Docker learning',
+            'Docker introduction',
+            'Docker fundamentals',
+            'Docker setup'
+          ]}
+          type="article"
+          image="/images/tutorials/docker-setup-guides/docker-beginners.svg"
+          url="/tutorials/docker-setup-guides/docker-beginners-guide"
+          section="Docker Setup Guides"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +48,17 @@ export default function DockerBeginnersGuide({ content }: DockerBeginnersGuidePr
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/tutorials/docker-setup-guides/docker-beginners.svg'}
+        url={`/tutorials/docker-setup-guides/docker-beginners-guide`}
+        publishedTime={content.date}
+        section="Docker Setup Guides"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,13 +1,33 @@
-import Head from "next/head";
+import SEO from "../components/SEO";
 import Link from "next/link";
 
 export default function AIMLPage() {
   return (
     <>
-      <Head>
-        <title>AI & ML | TechDevDex</title>
-        <meta name="description" content="Explore artificial intelligence and machine learning resources, tools, and tutorials" />
-      </Head>
+      <SEO
+        title="AI & Machine Learning Resources"
+        description="Explore artificial intelligence and machine learning resources, tools, and tutorials. Learn AI development, ML frameworks, and cutting-edge AI technologies."
+        keywords={[
+          "AI resources",
+          "machine learning",
+          "artificial intelligence",
+          "AI tutorials",
+          "ML frameworks",
+          "AI development",
+          "machine learning tools",
+          "AI programming",
+          "deep learning",
+          "neural networks",
+          "AI technologies",
+          "ML algorithms",
+          "AI frameworks",
+          "machine learning tutorials",
+          "AI development tools"
+        ]}
+        type="website"
+        image="/images/ai-ml-og.jpg"
+        url="/ai-ml"
+      />
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">

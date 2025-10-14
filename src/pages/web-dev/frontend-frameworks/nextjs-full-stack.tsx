@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,27 @@ import { motion } from 'framer-motion';
 const NextJSFullStack = () => {
   return (
     <>
-      <Head>
-        <title>Next.js: Full-Stack React Framework - TechDevDex</title>
-        <meta name="description" content="Master Next.js for full-stack development with SSR, SSG, API routes, and deployment strategies." />
-        <meta name="keywords" content="Next.js, React, full-stack development, SSR, SSG, API routes, deployment" />
-      </Head>
+      <SEO
+        title="Next.js: Full-Stack React Framework"
+        description="Master Next.js for full-stack development with SSR, SSG, API routes, and deployment strategies. Complete guide to building modern web applications."
+        keywords={[
+          'Next.js',
+          'React',
+          'full-stack development',
+          'SSR',
+          'SSG',
+          'API routes',
+          'deployment',
+          'server-side rendering',
+          'static generation',
+          'React framework'
+        ]}
+        type="article"
+        image="/images/web-dev/frontend-frameworks/nextjs-guide.svg"
+        url="/web-dev/frontend-frameworks/nextjs-full-stack"
+        section="Frontend Frameworks"
+        tags={['Next.js', 'React', 'Full-Stack']}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Star, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const NodeVsPythonBackend = () => {
   return (
     <>
-      <Head>
-        <title>Node.js vs Python: Backend Development Showdown - TechDevDex</title>
-        <meta name="description" content="Comparing Node.js and Python for backend development. Performance, scalability, use cases, and which one to choose for your project." />
-        <meta name="keywords" content="Node.js, Python, backend development, server-side programming, comparison" />
-      </Head>
+      <SEO
+        title="Node.js vs Python: Backend Development Showdown"
+        description="Comparing Node.js and Python for backend development. Performance, scalability, use cases, and which one to choose for your project."
+        keywords={[
+          'Node.js',
+          'Python',
+          'backend development',
+          'server-side programming',
+          'comparison',
+          'Node.js vs Python',
+          'backend frameworks',
+          'server development',
+          'programming languages',
+          'backend comparison'
+        ]}
+        type="article"
+        image="/images/reviews/app-comparisons/node-vs-python.svg"
+        url="/reviews/app-comparisons/node-vs-python-backend"
+        section="App Comparisons"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

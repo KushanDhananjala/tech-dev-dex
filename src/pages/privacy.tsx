@@ -1,14 +1,31 @@
-import Head from "next/head";
+import SEO from "../components/SEO";
 import { motion } from "framer-motion";
 import { Database, Eye, Lock, Shield } from 'lucide-react';
 
 export default function PrivacyPage() {
   return (
     <>
-      <Head>
-        <title>Privacy Policy | TechDevDex</title>
-        <meta name="description" content="TechDevDex Privacy Policy - Learn how we protect your data and privacy" />
-      </Head>
+      <SEO
+        title="Privacy Policy"
+        description="TechDevDex Privacy Policy - Learn how we protect your data and privacy. Transparent about data collection, security measures, and your rights."
+        keywords={[
+          "privacy policy",
+          "data protection",
+          "user privacy",
+          "data security",
+          "privacy rights",
+          "data collection",
+          "information security",
+          "user data",
+          "privacy protection",
+          "data transparency",
+          "user rights",
+          "privacy compliance"
+        ]}
+        type="website"
+        image="/images/privacy-og.jpg"
+        url="/privacy"
+      />
       
       {/* Hero Section */}
       <section className="mb-16">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const TabnineAdvancedUsage = () => {
   return (
     <>
-      <Head>
-        <title>Tabnine: Advanced AI Code Completion - TechDevDex</title>
-        <meta name="description" content="Unlock the full potential of Tabnine with custom models, team collaboration, and enterprise features." />
-        <meta name="keywords" content="Tabnine, AI code completion, code assistant, team collaboration, enterprise features" />
-      </Head>
+      <SEO
+        title="Tabnine: Advanced AI Code Completion"
+        description="Unlock the full potential of Tabnine with custom models, team collaboration, and enterprise features."
+        keywords={[
+          'Tabnine',
+          'AI code completion',
+          'code assistant',
+          'team collaboration',
+          'enterprise features',
+          'Tabnine guide',
+          'AI development',
+          'coding productivity',
+          'AI coding tools',
+          'Tabnine features'
+        ]}
+        type="article"
+        image="/images/ai-ml/ai-coding-tools/tabnine.svg"
+        url="/ai-trending/ai-coding-tools/tabnine-advanced-usage"
+        section="AI Coding Tools"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

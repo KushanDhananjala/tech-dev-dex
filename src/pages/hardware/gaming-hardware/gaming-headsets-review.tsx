@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, Clock, Headphones, Star, User } from 'lucide-react';
@@ -7,23 +7,26 @@ import { CheckCircle, Clock, Headphones, Star, User } from 'lucide-react';
 const GamingHeadsetsReview = () => {
   return (
     <>
-      <Head>
-        <title>Gaming Headsets for Remote Work 2024 | TechDevDex</title>
-        <meta name="description" content="Best gaming headsets for developers working remotely, focusing on audio quality, comfort for long coding sessions, and noise cancellation for professional calls." />
-        <meta name="keywords" content="gaming headsets, remote work headsets, developer headsets, noise cancellation, audio quality, professional headsets" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Gaming Headsets for Remote Work 2024" />
-        <meta property="og:description" content="Best gaming headsets for developers working remotely, focusing on audio quality and comfort for long coding sessions." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/hardware/gaming-hardware/gaming-headsets-review" />
-        <meta property="og:image" content="https://techdevdex.com/images/hardware/gaming-hardware/gaming-headsets.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Gaming Headsets for Remote Work 2024" />
-        <meta name="twitter:description" content="Best gaming headsets for developers working remotely, focusing on audio quality and comfort for long coding sessions." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/hardware/gaming-hardware/gaming-headsets.svg" />
-        <link rel="canonical" href="https://techdevdex.com/hardware/gaming-hardware/gaming-headsets-review" />
-      </Head>
+      <SEO
+        title="Gaming Headsets for Remote Work 2024"
+        description="Best gaming headsets for developers working remotely, focusing on audio quality, comfort for long coding sessions, and noise cancellation for professional calls."
+        keywords={[
+          'gaming headsets',
+          'remote work headsets',
+          'developer headsets',
+          'noise cancellation',
+          'audio quality',
+          'professional headsets',
+          'gaming audio',
+          'remote work audio',
+          'developer audio',
+          'headset reviews'
+        ]}
+        type="article"
+        image="/images/hardware/gaming-hardware/gaming-headsets.svg"
+        url="/hardware/gaming-hardware/gaming-headsets-review"
+        section="Gaming Hardware"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Clock, Code, Star, Users, Zap } from 'lucide-react';
@@ -7,42 +7,28 @@ import { ArrowRight, CheckCircle, Clock, Code, Star, Users, Zap } from 'lucide-r
 const AutomationScriptsSetup = () => {
   return (
     <>
-      <Head>
-        <title>Automation Scripts Setup: Automate Your Development Workflow | TechDevDex</title>
-        <meta name="description" content="Set up powerful automation scripts to streamline your development workflow. Learn bash, Python, and PowerShell automation techniques that will save you hours every day." />
-        <meta name="keywords" content="automation scripts, development automation, bash scripting, Python automation, PowerShell automation, workflow automation, developer productivity" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Automation Scripts Setup: Automate Your Development Workflow" />
-        <meta property="og:description" content="Set up powerful automation scripts to streamline your development workflow. Learn bash, Python, and PowerShell automation techniques that will save you hours every day." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/tutorials/productivity-tools/automation-scripts-setup" />
-        <meta property="og:image" content="https://techdevdex.com/images/tutorials/productivity-tools/automation-scripts.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Automation Scripts Setup: Automate Your Development Workflow" />
-        <meta name="twitter:description" content="Set up powerful automation scripts to streamline your development workflow. Learn bash, Python, and PowerShell automation techniques that will save you hours every day." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/tutorials/productivity-tools/automation-scripts.svg" />
-        <link rel="canonical" href="https://techdevdex.com/tutorials/productivity-tools/automation-scripts-setup" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Automation Scripts Setup: Automate Your Development Workflow",
-            "description": "Set up powerful automation scripts to streamline your development workflow. Learn bash, Python, and PowerShell automation techniques that will save you hours every day.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "datePublished": "2024-12-12",
-            "dateModified": "2024-12-12",
-            "image": "https://techdevdex.com/images/tutorials/productivity-tools/automation-scripts.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="Automation Scripts Setup: Automate Your Development Workflow"
+        description="Set up powerful automation scripts to streamline your development workflow. Learn bash, Python, and PowerShell automation techniques that will save you hours every day."
+        keywords={[
+          'automation scripts',
+          'development automation',
+          'bash scripting',
+          'Python automation',
+          'PowerShell automation',
+          'workflow automation',
+          'developer productivity',
+          'script setup',
+          'automation tools',
+          'productivity optimization'
+        ]}
+        type="article"
+        image="/images/tutorials/productivity-tools/automation-scripts.svg"
+        url="/tutorials/productivity-tools/automation-scripts-setup"
+        publishedTime="2024-12-12"
+        section="Productivity Tools"
+        tags={['Automation Scripts', 'Development Automation', 'Productivity']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

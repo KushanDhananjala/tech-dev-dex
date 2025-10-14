@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Filter, Monitor, Search, Star, User } from 'lucide-react';
@@ -67,11 +67,26 @@ const DevelopmentSetup = () => {
 
   return (
     <>
-      <Head>
-        <title>Development Setup - TechDevDex</title>
-        <meta name="description" content="Comprehensive guides for setting up optimal development environments including hardware, ergonomics, and productivity tools." />
-        <meta name="keywords" content="development setup, workstation, monitors, keyboards, ergonomics, home office, productivity" />
-      </Head>
+      <SEO
+        title="Development Setup for Maximum Productivity"
+        description="Comprehensive guides for setting up optimal development environments including hardware, ergonomics, and productivity tools."
+        keywords={[
+          'development setup',
+          'workstation',
+          'monitors',
+          'keyboards',
+          'ergonomics',
+          'home office',
+          'productivity',
+          'development environment',
+          'workstation setup',
+          'productivity tools'
+        ]}
+        type="article"
+        image="/images/hardware/development-setup.svg"
+        url="/hardware/development-setup"
+        section="Development Setup"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

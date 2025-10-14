@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Clock, GitBranch, Star, Users, Zap } from 'lucide-react';
@@ -7,42 +7,28 @@ import { ArrowRight, CheckCircle, Clock, GitBranch, Star, Users, Zap } from 'luc
 const GitWorkflowOptimization = () => {
   return (
     <>
-      <Head>
-        <title>Git Workflow Optimization: Master Collaborative Development | TechDevDex</title>
-        <meta name="description" content="Optimize your Git workflow for better collaboration and productivity. Learn advanced Git techniques, branching strategies, and best practices used by top development teams." />
-        <meta name="keywords" content="Git workflow, Git optimization, collaborative development, Git branching, Git best practices, version control, Git strategies" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Git Workflow Optimization: Master Collaborative Development" />
-        <meta property="og:description" content="Optimize your Git workflow for better collaboration and productivity. Learn advanced Git techniques, branching strategies, and best practices used by top development teams." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/tutorials/productivity-tools/git-workflow-optimization" />
-        <meta property="og:image" content="https://techdevdex.com/images/tutorials/productivity-tools/git-workflow.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Git Workflow Optimization: Master Collaborative Development" />
-        <meta name="twitter:description" content="Optimize your Git workflow for better collaboration and productivity. Learn advanced Git techniques, branching strategies, and best practices used by top development teams." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/tutorials/productivity-tools/git-workflow.svg" />
-        <link rel="canonical" href="https://techdevdex.com/tutorials/productivity-tools/git-workflow-optimization" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Git Workflow Optimization: Master Collaborative Development",
-            "description": "Optimize your Git workflow for better collaboration and productivity. Learn advanced Git techniques, branching strategies, and best practices used by top development teams.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "datePublished": "2024-12-12",
-            "dateModified": "2024-12-12",
-            "image": "https://techdevdex.com/images/tutorials/productivity-tools/git-workflow.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="Git Workflow Optimization: Master Collaborative Development"
+        description="Optimize your Git workflow for better collaboration and productivity. Learn advanced Git techniques, branching strategies, and best practices used by top development teams."
+        keywords={[
+          'Git workflow',
+          'Git optimization',
+          'collaborative development',
+          'Git branching',
+          'Git best practices',
+          'version control',
+          'Git strategies',
+          'Git productivity',
+          'Git efficiency',
+          'Git collaboration'
+        ]}
+        type="article"
+        image="/images/tutorials/productivity-tools/git-workflow.svg"
+        url="/tutorials/productivity-tools/git-workflow-optimization"
+        publishedTime="2024-12-12"
+        section="Productivity Tools"
+        tags={['Git Workflow', 'Collaborative Development', 'Productivity']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

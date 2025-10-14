@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function DockerCiCdPipeline({ content }: DockerCiCdPipelineProps)
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Docker CI/CD Pipeline - TechDevDex</title>
-          <meta name="description" content="Build automated CI/CD pipelines with Docker" />
-        </Head>
+        <SEO
+          title="Docker CI/CD Pipeline"
+          description="Build automated CI/CD pipelines with Docker. Learn to set up continuous integration and deployment using Docker for automated workflows."
+          keywords={[
+            'Docker CI/CD',
+            'Docker pipeline',
+            'CI/CD automation',
+            'Docker deployment',
+            'Docker integration',
+            'Docker workflow',
+            'Docker automation',
+            'Docker CI/CD setup',
+            'Docker pipeline tutorial',
+            'Docker deployment automation'
+          ]}
+          type="article"
+          image="/images/tutorials/docker-setup-guides/docker-cicd.svg"
+          url="/tutorials/docker-setup-guides/docker-ci-cd-pipeline"
+          section="Docker Setup Guides"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +48,17 @@ export default function DockerCiCdPipeline({ content }: DockerCiCdPipelineProps)
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/tutorials/docker-setup-guides/docker-cicd.svg'}
+        url={`/tutorials/docker-setup-guides/docker-ci-cd-pipeline`}
+        publishedTime={content.date}
+        section="Docker Setup Guides"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

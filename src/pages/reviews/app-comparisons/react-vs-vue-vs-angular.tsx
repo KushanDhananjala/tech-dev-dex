@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Star, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const ReactVsVueVsAngular = () => {
   return (
     <>
-      <Head>
-        <title>React vs Vue vs Angular: Frontend Framework Battle - TechDevDex</title>
-        <meta name="description" content="Detailed comparison of React, Vue, and Angular frameworks. Performance, learning curve, ecosystem, and which one to choose for your project." />
-        <meta name="keywords" content="React, Vue, Angular, frontend frameworks, comparison, JavaScript frameworks" />
-      </Head>
+      <SEO
+        title="React vs Vue vs Angular: Frontend Framework Battle"
+        description="Detailed comparison of React, Vue, and Angular frameworks. Performance, learning curve, ecosystem, and which one to choose for your project."
+        keywords={[
+          'React',
+          'Vue',
+          'Angular',
+          'frontend frameworks',
+          'comparison',
+          'JavaScript frameworks',
+          'React vs Vue',
+          'React vs Angular',
+          'Vue vs Angular',
+          'framework comparison'
+        ]}
+        type="article"
+        image="/images/reviews/app-comparisons/react-vue-angular.svg"
+        url="/reviews/app-comparisons/react-vs-vue-vs-angular"
+        section="App Comparisons"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

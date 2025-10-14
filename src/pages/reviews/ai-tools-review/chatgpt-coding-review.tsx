@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Brain, CheckCircle, Clock, Star, User, Zap } from 'lucide-react';
@@ -7,23 +7,26 @@ import { Brain, CheckCircle, Clock, Star, User, Zap } from 'lucide-react';
 const ChatGPTCodingReview = () => {
   return (
     <>
-      <Head>
-        <title>ChatGPT for Coding: Developer&apos;s Perspective Review | TechDevDex</title>
-        <meta name="description" content="In-depth analysis of using ChatGPT for coding tasks, debugging, and code generation. Real developer experience and honest assessment." />
-        <meta name="keywords" content="ChatGPT coding review, AI coding assistant, code generation, debugging with AI, developer tools" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="ChatGPT for Coding: Developer&apos;s Perspective Review" />
-        <meta property="og:description" content="In-depth analysis of using ChatGPT for coding tasks, debugging, and code generation." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/reviews/ai-tools-review/chatgpt-coding-review" />
-        <meta property="og:image" content="https://techdevdex.com/images/reviews/ai-tools-review/chatgpt-coding.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="ChatGPT for Coding: Developer&apos;s Perspective Review" />
-        <meta name="twitter:description" content="In-depth analysis of using ChatGPT for coding tasks, debugging, and code generation." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/reviews/ai-tools-review/chatgpt-coding.svg" />
-        <link rel="canonical" href="https://techdevdex.com/reviews/ai-tools-review/chatgpt-coding-review" />
-      </Head>
+      <SEO
+        title="ChatGPT for Coding: Developer's Perspective Review"
+        description="In-depth analysis of using ChatGPT for coding tasks, debugging, and code generation. Real developer experience and honest assessment."
+        keywords={[
+          'ChatGPT coding review',
+          'AI coding assistant',
+          'code generation',
+          'debugging with AI',
+          'developer tools',
+          'ChatGPT programming',
+          'ChatGPT development',
+          'AI coding tools',
+          'ChatGPT features',
+          'ChatGPT capabilities'
+        ]}
+        type="article"
+        image="/images/reviews/ai-tools-review/chatgpt-coding.svg"
+        url="/reviews/ai-tools-review/chatgpt-coding-review"
+        section="AI Tools Review"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const ThinkPadP1Review = () => {
   return (
     <>
-      <Head>
-        <title>ThinkPad P1: Mobile Workstation Review - TechDevDex</title>
-        <meta name="description" content="Review of Lenovo ThinkPad P1 for professional developers requiring high performance and reliability." />
-        <meta name="keywords" content="ThinkPad P1, Lenovo, mobile workstation, developer laptop, professional laptop" />
-      </Head>
+      <SEO
+        title="ThinkPad P1: Mobile Workstation Review"
+        description="Review of Lenovo ThinkPad P1 for professional developers requiring high performance and reliability."
+        keywords={[
+          'ThinkPad P1',
+          'Lenovo',
+          'mobile workstation',
+          'developer laptop',
+          'professional laptop',
+          'ThinkPad review',
+          'workstation laptop',
+          'Lenovo ThinkPad',
+          'professional development',
+          'mobile workstation review'
+        ]}
+        type="article"
+        image="/images/hardware/laptops-pcs/thinkpad-p1.svg"
+        url="/hardware/laptops-pcs/thinkpad-p1-review"
+        section="Laptops & PCs"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

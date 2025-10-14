@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import { ArrowLeft, Clock, ExternalLink, Star, User } from 'lucide-react';
 import MDXContent from '../../../components/MDXContent';
@@ -7,11 +7,26 @@ import MDXContent from '../../../components/MDXContent';
 const VSCodeReview = () => {
   return (
     <>
-      <Head>
-        <title>Visual Studio Code Review - TechDevDex</title>
-        <meta name="description" content="Comprehensive review of Visual Studio Code, the most popular code editor. Features, extensions, productivity tips, and why developers love it." />
-        <meta name="keywords" content="VS Code, Visual Studio Code, code editor, review, development tools" />
-      </Head>
+      <SEO
+        title="Visual Studio Code Review"
+        description="Comprehensive review of Visual Studio Code, the most popular code editor. Features, extensions, productivity tips, and why developers love it."
+        keywords={[
+          'VS Code',
+          'Visual Studio Code',
+          'code editor',
+          'review',
+          'development tools',
+          'VS Code features',
+          'code editor review',
+          'VS Code performance',
+          'development environment',
+          'VS Code capabilities'
+        ]}
+        type="article"
+        image="/images/reviews/software-reviews/vs-code.svg"
+        url="/reviews/software-reviews/vs-code-review"
+        section="Software Reviews"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

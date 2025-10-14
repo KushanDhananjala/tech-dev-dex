@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const StandingDesk = () => {
   return (
     <>
-      <Head>
-        <title>Standing Desk Setup for Developers | TechDevDex</title>
-        <meta name="description" content="Improve your health and productivity with the perfect standing desk setup for developers. Learn about ergonomics, health benefits, and setup optimization." />
-        <meta name="keywords" content="standing desk, developer health, ergonomics, productivity, workstation setup" />
-      </Head>
+      <SEO
+        title="Standing Desk Setup for Developers"
+        description="Improve your health and productivity with the perfect standing desk setup for developers. Learn about ergonomics, health benefits, and setup optimization."
+        keywords={[
+          'standing desk',
+          'developer health',
+          'ergonomics',
+          'productivity',
+          'workstation setup',
+          'health benefits',
+          'ergonomic setup',
+          'desk setup',
+          'health optimization',
+          'workstation health'
+        ]}
+        type="article"
+        image="/images/hardware/development-setup/standing-desk.svg"
+        url="/hardware/development-setup/standing-desk"
+        section="Development Setup"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

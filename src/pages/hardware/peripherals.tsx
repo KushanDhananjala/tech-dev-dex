@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Filter, Mouse, Search, Star, User } from 'lucide-react';
@@ -78,11 +78,26 @@ const Peripherals = () => {
 
   return (
     <>
-      <Head>
-        <title>Peripherals - TechDevDex</title>
-        <meta name="description" content="Reviews and guides for development peripherals including keyboards, mice, monitors, and desk accessories." />
-        <meta name="keywords" content="peripherals, keyboards, mice, monitors, webcams, desk accessories, development setup" />
-      </Head>
+      <SEO
+        title="Development Peripherals: Keyboards, Mice, Monitors & More"
+        description="Reviews and guides for development peripherals including keyboards, mice, monitors, and desk accessories. Find the best peripherals for your development setup."
+        keywords={[
+          'peripherals',
+          'keyboards',
+          'mice',
+          'monitors',
+          'webcams',
+          'desk accessories',
+          'development setup',
+          'hardware reviews',
+          'development peripherals',
+          'programming accessories'
+        ]}
+        type="article"
+        image="/images/hardware/peripherals.svg"
+        url="/hardware/peripherals"
+        section="Hardware"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

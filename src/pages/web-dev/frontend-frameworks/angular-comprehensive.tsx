@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,27 @@ import { motion } from 'framer-motion';
 const AngularComprehensive = () => {
   return (
     <>
-      <Head>
-        <title>Angular: Enterprise Development - TechDevDex</title>
-        <meta name="description" content="Complete Angular guide covering components, services, routing, and enterprise-level architecture patterns." />
-        <meta name="keywords" content="Angular, TypeScript, enterprise development, components, services, routing" />
-      </Head>
+      <SEO
+        title="Angular: Enterprise Development"
+        description="Complete Angular guide covering components, services, routing, and enterprise-level architecture patterns. Master Angular for large-scale applications."
+        keywords={[
+          'Angular',
+          'TypeScript',
+          'enterprise development',
+          'components',
+          'services',
+          'routing',
+          'Angular framework',
+          'dependency injection',
+          'enterprise architecture',
+          'frontend development'
+        ]}
+        type="article"
+        image="/images/web-dev/frontend-frameworks/angular-guide.svg"
+        url="/web-dev/frontend-frameworks/angular-comprehensive"
+        section="Frontend Frameworks"
+        tags={['Angular', 'TypeScript', 'Enterprise Development']}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

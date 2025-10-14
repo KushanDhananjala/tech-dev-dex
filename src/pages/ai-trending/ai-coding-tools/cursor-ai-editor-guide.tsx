@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const CursorAIEditorGuide = () => {
   return (
     <>
-      <Head>
-        <title>Cursor: AI-First Code Editor Mastery - TechDevDex</title>
-        <meta name="description" content="Complete guide to Cursor editor with AI features, custom configurations, and workflow optimization." />
-        <meta name="keywords" content="Cursor editor, AI code editor, development tools, AI-first development, code editor" />
-      </Head>
+      <SEO
+        title="Cursor: AI-First Code Editor Mastery"
+        description="Complete guide to Cursor editor with AI features, custom configurations, and workflow optimization."
+        keywords={[
+          'Cursor editor',
+          'AI code editor',
+          'development tools',
+          'AI-first development',
+          'code editor',
+          'Cursor AI',
+          'AI development',
+          'code editor guide',
+          'AI coding tools',
+          'Cursor features'
+        ]}
+        type="article"
+        image="/images/ai-ml/ai-coding-tools/cursor-ai-editor.svg"
+        url="/ai-trending/ai-coding-tools/cursor-ai-editor-guide"
+        section="AI Coding Tools"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

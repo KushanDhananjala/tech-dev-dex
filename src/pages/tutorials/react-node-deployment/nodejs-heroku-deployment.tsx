@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function NodejsHerokuDeployment({ content }: NodejsHerokuDeployme
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Node.js Heroku Deployment - TechDevDex</title>
-          <meta name="description" content="Deploy Node.js applications to Heroku" />
-        </Head>
+        <SEO
+          title="Node.js Heroku Deployment"
+          description="Deploy Node.js applications to Heroku platform. Learn to deploy Node.js applications to Heroku with database integration and production optimization."
+          keywords={[
+            'Node.js Heroku deployment',
+            'Heroku platform',
+            'Node.js hosting',
+            'Heroku deployment',
+            'Node.js production',
+            'Heroku hosting',
+            'Node.js deployment guide',
+            'Heroku optimization',
+            'Node.js serverless',
+            'Heroku platform'
+          ]}
+          type="article"
+          image="/images/tutorials/react-node-deployment/heroku-deployment.svg"
+          url="/tutorials/react-node-deployment/nodejs-heroku-deployment"
+          section="React & Node.js Deployment"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +48,17 @@ export default function NodejsHerokuDeployment({ content }: NodejsHerokuDeployme
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/tutorials/react-node-deployment/heroku-deployment.svg'}
+        url={`/tutorials/react-node-deployment/nodejs-heroku-deployment`}
+        publishedTime={content.date}
+        section="React & Node.js Deployment"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

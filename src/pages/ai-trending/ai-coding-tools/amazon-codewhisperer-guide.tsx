@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const AmazonCodeWhispererGuide = () => {
   return (
     <>
-      <Head>
-        <title>Amazon CodeWhisperer: AWS Integration - TechDevDex</title>
-        <meta name="description" content="Complete guide to Amazon CodeWhisperer with AWS services integration and security best practices." />
-        <meta name="keywords" content="Amazon CodeWhisperer, AWS, AI coding, code completion, AWS integration" />
-      </Head>
+      <SEO
+        title="Amazon CodeWhisperer: AWS Integration"
+        description="Complete guide to Amazon CodeWhisperer with AWS services integration and security best practices."
+        keywords={[
+          'Amazon CodeWhisperer',
+          'AWS',
+          'AI coding',
+          'code completion',
+          'AWS integration',
+          'CodeWhisperer guide',
+          'AWS AI tools',
+          'AI development',
+          'AWS coding tools',
+          'CodeWhisperer features'
+        ]}
+        type="article"
+        image="/images/ai-ml/ai-coding-tools/amazon-codewhisperer.svg"
+        url="/ai-trending/ai-coding-tools/amazon-codewhisperer-guide"
+        section="AI Coding Tools"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

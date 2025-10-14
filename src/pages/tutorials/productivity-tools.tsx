@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, BookOpen, Clock, Filter, Search, User } from 'lucide-react';
@@ -62,11 +62,26 @@ const ProductivityTools = () => {
 
   return (
     <>
-      <Head>
-        <title>Productivity Tools - TechDevDex</title>
-        <meta name="description" content="Essential productivity tools and techniques for developers. Learn to optimize your workflow with the best development tools and automation." />
-        <meta name="keywords" content="productivity tools, development workflow, VS Code, Git, automation, developer productivity" />
-      </Head>
+      <SEO
+        title="Productivity Tools"
+        description="Essential productivity tools and techniques for developers. Learn to optimize your workflow with the best development tools and automation."
+        keywords={[
+          'productivity tools',
+          'development workflow',
+          'VS Code',
+          'Git',
+          'automation',
+          'developer productivity',
+          'workflow optimization',
+          'development tools',
+          'productivity techniques',
+          'coding efficiency'
+        ]}
+        type="article"
+        image="/images/tutorials/productivity-tools/productivity-tools.svg"
+        url="/tutorials/productivity-tools"
+        section="Productivity Tools Tutorials"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

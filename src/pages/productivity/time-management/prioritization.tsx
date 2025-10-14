@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const Prioritization = () => {
   return (
     <>
-      <Head>
-        <title>Prioritization Techniques: Master Task Management | TechDevDex</title>
-        <meta name="description" content="Learn effective prioritization methods for better time management. Master techniques like Eisenhower Matrix, MoSCoW, and value-based prioritization for development work." />
-        <meta name="keywords" content="prioritization techniques, task management, time management, productivity, Eisenhower Matrix, MoSCoW" />
-      </Head>
+      <SEO
+        title="Prioritization Techniques: Master Task Management"
+        description="Learn effective prioritization methods for better time management. Master techniques like Eisenhower Matrix, MoSCoW, and value-based prioritization for development work."
+        keywords={[
+          'prioritization techniques',
+          'task management',
+          'time management',
+          'productivity',
+          'Eisenhower Matrix',
+          'MoSCoW',
+          'prioritization methods',
+          'task prioritization',
+          'productivity techniques',
+          'time optimization'
+        ]}
+        type="article"
+        image="/images/productivity/time-management/prioritization.svg"
+        url="/productivity/time-management/prioritization"
+        section="Time Management"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

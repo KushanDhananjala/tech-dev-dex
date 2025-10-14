@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const AndroidFlagshipReview = () => {
   return (
     <>
-      <Head>
-        <title>Android Flagship Review: Best Phones for Developers | TechDevDex</title>
-        <meta name="description" content="Compare the latest Android flagship phones for development work. Features, performance, and developer-friendly options for mobile development." />
-        <meta name="keywords" content="Android flagship review, mobile development, smartphone review, developer phone, Android development" />
-      </Head>
+      <SEO
+        title="Android Flagship Review: Best Phones for Developers"
+        description="Compare the latest Android flagship phones for development work. Features, performance, and developer-friendly options for mobile development."
+        keywords={[
+          'Android flagship review',
+          'mobile development',
+          'smartphone review',
+          'developer phone',
+          'Android development',
+          'Android phones',
+          'mobile development tools',
+          'Android testing',
+          'development hardware',
+          'Android development setup'
+        ]}
+        type="article"
+        image="/images/hardware/mobile-devices/android-flagship.svg"
+        url="/hardware/mobile-devices/android-flagship-review"
+        section="Mobile Devices"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

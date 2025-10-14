@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, CheckCircle, Clock, Server, Star, User, Zap } from 'lucide-react';
@@ -8,47 +8,28 @@ import { motion } from 'framer-motion';
 const PythonDjangoGuide = () => {
   return (
     <>
-      <Head>
-        <title>Django: Python Web Framework | TechDevDex</title>
-        <meta name="description" content="Build robust web applications with Django framework, from basics to advanced features. Complete guide with practical examples and best practices." />
-        <meta name="keywords" content="Django, Python web framework, backend development, web applications, Django REST framework, authentication, database models" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Django: Python Web Framework" />
-        <meta property="og:description" content="Build robust web applications with Django framework, from basics to advanced features. Complete guide with practical examples and best practices." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/web-dev/backend-development/python-django-guide" />
-        <meta property="og:image" content="https://techdevdex.com/images/web-dev/backend-development/django-guide.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Django: Python Web Framework" />
-        <meta name="twitter:description" content="Build robust web applications with Django framework, from basics to advanced features. Complete guide with practical examples and best practices." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/web-dev/backend-development/django-guide.svg" />
-        <link rel="canonical" href="https://techdevdex.com/web-dev/backend-development/python-django-guide" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Django: Python Web Framework",
-            "description": "Build robust web applications with Django framework, from basics to advanced features. Complete guide with practical examples and best practices.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://techdevdex.com/logo.png"
-              }
-            },
-            "datePublished": "2024-11-28",
-            "dateModified": "2024-11-28",
-            "image": "https://techdevdex.com/images/web-dev/backend-development/django-guide.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="Django: Python Web Framework"
+        description="Build robust web applications with Django framework, from basics to advanced features. Complete guide with practical examples and best practices."
+        keywords={[
+          'Django',
+          'Python web framework',
+          'backend development',
+          'web applications',
+          'Django REST framework',
+          'authentication',
+          'database models',
+          'Python development',
+          'web framework',
+          'full-stack development'
+        ]}
+        type="article"
+        image="/images/web-dev/backend-development/django-guide.svg"
+        url="/web-dev/backend-development/python-django-guide"
+        publishedTime="2024-11-28"
+        section="Backend Development"
+        tags={['Django', 'Python', 'Backend Development']}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-green-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

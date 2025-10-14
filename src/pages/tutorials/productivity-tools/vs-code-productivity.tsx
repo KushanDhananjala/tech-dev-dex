@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Clock, Code, Star, Users, Zap } from 'lucide-react';
@@ -7,42 +7,27 @@ import { ArrowRight, CheckCircle, Clock, Code, Star, Users, Zap } from 'lucide-r
 const VSCodeProductivity = () => {
   return (
     <>
-      <Head>
-        <title>VS Code Productivity: Master Your Development Workflow | TechDevDex</title>
-        <meta name="description" content="Boost your coding productivity with VS Code. Learn essential shortcuts, extensions, and workflows that will make you 300% more efficient as a developer." />
-        <meta name="keywords" content="VS Code productivity, Visual Studio Code tips, coding efficiency, developer tools, VS Code shortcuts, VS Code extensions" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="VS Code Productivity: Master Your Development Workflow" />
-        <meta property="og:description" content="Boost your coding productivity with VS Code. Learn essential shortcuts, extensions, and workflows that will make you 300% more efficient as a developer." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/tutorials/productivity-tools/vs-code-productivity" />
-        <meta property="og:image" content="https://techdevdex.com/images/tutorials/productivity-tools/vs-code-productivity.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="VS Code Productivity: Master Your Development Workflow" />
-        <meta name="twitter:description" content="Boost your coding productivity with VS Code. Learn essential shortcuts, extensions, and workflows that will make you 300% more efficient as a developer." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/tutorials/productivity-tools/vs-code-productivity.svg" />
-        <link rel="canonical" href="https://techdevdex.com/tutorials/productivity-tools/vs-code-productivity" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "VS Code Productivity: Master Your Development Workflow",
-            "description": "Boost your coding productivity with VS Code. Learn essential shortcuts, extensions, and workflows that will make you 300% more efficient as a developer.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "datePublished": "2024-12-12",
-            "dateModified": "2024-12-12",
-            "image": "https://techdevdex.com/images/tutorials/productivity-tools/vs-code-productivity.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="VS Code Productivity: Master Your Editor"
+        description="Master VS Code productivity with essential extensions, shortcuts, and configurations. Learn to customize VS Code for maximum coding efficiency and developer productivity."
+        keywords={[
+          'VS Code productivity',
+          'VS Code extensions',
+          'VS Code shortcuts',
+          'VS Code configuration',
+          'coding productivity',
+          'developer tools',
+          'VS Code customization',
+          'code editor optimization',
+          'VS Code tips',
+          'programming efficiency'
+        ]}
+        type="article"
+        image="/images/tutorials/productivity-tools/vs-code-productivity.svg"
+        url="/tutorials/productivity-tools/vs-code-productivity"
+        section="Productivity Tools"
+        tags={['VS Code', 'Productivity', 'Developer Tools']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

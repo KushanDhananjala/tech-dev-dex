@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const GamingMice = () => {
   return (
     <>
-      <Head>
-        <title>Gaming Mice Review: Best Options for Developers | TechDevDex</title>
-        <meta name="description" content="Find the perfect gaming mouse for development and gaming. Compare features, DPI, ergonomics, and find the best mouse for your workflow." />
-        <meta name="keywords" content="gaming mouse review, developer mouse, precision mouse, gaming peripherals, productivity" />
-      </Head>
+      <SEO
+        title="Gaming Mice Review: Best Options for Developers"
+        description="Find the perfect gaming mouse for development and gaming. Compare features, DPI, ergonomics, and find the best mouse for your workflow."
+        keywords={[
+          'gaming mouse review',
+          'developer mouse',
+          'precision mouse',
+          'gaming peripherals',
+          'productivity',
+          'gaming mice',
+          'development mouse',
+          'mouse features',
+          'mouse ergonomics',
+          'mouse comparison'
+        ]}
+        type="article"
+        image="/images/hardware/peripherals/gaming-mice.svg"
+        url="/hardware/peripherals/gaming-mice"
+        section="Peripherals"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

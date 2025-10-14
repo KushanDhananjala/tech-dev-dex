@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Brain, CheckCircle, Clock, Star, Users, Zap } from 'lucide-react';
@@ -7,42 +7,26 @@ import { ArrowRight, Brain, CheckCircle, Clock, Star, Users, Zap } from 'lucide-
 const MojoProgrammingLanguage = () => {
   return (
     <>
-      <Head>
-        <title>Mojo Programming Language: The Future of AI Development | TechDevDex</title>
-        <meta name="description" content="Discover Mojo, the revolutionary programming language designed for AI development. Learn about its Python compatibility, performance benefits, and how it&apos;s shaping the future of AI programming." />
-        <meta name="keywords" content="Mojo programming language, AI development, Python performance, machine learning, AI programming, emerging languages, AI frameworks" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Mojo Programming Language: The Future of AI Development" />
-        <meta property="og:description" content="Discover Mojo, the revolutionary programming language designed for AI development. Learn about its Python compatibility, performance benefits, and how it&apos;s shaping the future of AI programming." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/ai-trending/emerging-languages/mojo-programming-language" />
-        <meta property="og:image" content="https://techdevdex.com/images/ai-ml/emerging-languages/mojo-language.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mojo Programming Language: The Future of AI Development" />
-        <meta name="twitter:description" content="Discover Mojo, the revolutionary programming language designed for AI development. Learn about its Python compatibility, performance benefits, and how it&apos;s shaping the future of AI programming." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/ai-ml/emerging-languages/mojo-language.svg" />
-        <link rel="canonical" href="https://techdevdex.com/ai-trending/emerging-languages/mojo-programming-language" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Mojo Programming Language: The Future of AI Development",
-            "description": "Discover Mojo, the revolutionary programming language designed for AI development. Learn about its Python compatibility, performance benefits, and how it&apos;s shaping the future of AI programming.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "datePublished": "2024-12-12",
-            "dateModified": "2024-12-12",
-            "image": "https://techdevdex.com/images/ai-ml/emerging-languages/mojo-language.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="Mojo Programming Language: The Future of AI Development"
+        description="Discover Mojo, the revolutionary programming language designed for AI development. Learn about its Python compatibility, performance benefits, and how it's shaping the future of AI programming."
+        keywords={[
+          'Mojo programming language',
+          'AI development',
+          'Python performance',
+          'machine learning',
+          'AI programming',
+          'emerging languages',
+          'AI frameworks',
+          'Mojo language',
+          'AI performance',
+          'programming languages'
+        ]}
+        type="article"
+        image="/images/ai-ml/emerging-languages/mojo-language.svg"
+        url="/ai-trending/emerging-languages/mojo-programming-language"
+        section="Emerging Languages"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

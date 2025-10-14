@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, Clock, Code, Star, User, Zap } from 'lucide-react';
@@ -7,23 +7,27 @@ import { CheckCircle, Clock, Code, Star, User, Zap } from 'lucide-react';
 const ResponsiveDesignCSS = () => {
   return (
     <>
-      <Head>
-        <title>Responsive Web Design: Mobile-First Approach | TechDevDex</title>
-        <meta name="description" content="Create responsive websites that work perfectly on all devices using CSS Grid and Flexbox. Complete guide with examples and best practices." />
-        <meta name="keywords" content="responsive web design, CSS Grid, Flexbox, mobile-first design, CSS tutorial, web development" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Responsive Web Design: Mobile-First Approach" />
-        <meta property="og:description" content="Create responsive websites that work perfectly on all devices using CSS Grid and Flexbox." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/tutorials/web-development/responsive-design-css" />
-        <meta property="og:image" content="https://techdevdex.com/images/tutorials/web-development/responsive-design.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Responsive Web Design: Mobile-First Approach" />
-        <meta name="twitter:description" content="Create responsive websites that work perfectly on all devices using CSS Grid and Flexbox." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/tutorials/web-development/responsive-design.svg" />
-        <link rel="canonical" href="https://techdevdex.com/tutorials/web-development/responsive-design-css" />
-      </Head>
+      <SEO
+        title="Responsive Web Design: Mobile-First Approach"
+        description="Create responsive websites that work perfectly on all devices using CSS Grid and Flexbox. Complete guide with examples and best practices."
+        keywords={[
+          'responsive web design',
+          'CSS Grid',
+          'Flexbox',
+          'mobile-first design',
+          'CSS tutorial',
+          'web development',
+          'responsive layout',
+          'CSS media queries',
+          'mobile optimization',
+          'web design'
+        ]}
+        type="article"
+        image="/images/tutorials/web-development/responsive-design.svg"
+        url="/tutorials/web-development/responsive-design-css"
+        section="Web Development"
+        tags={['CSS', 'Responsive Design', 'Web Development']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

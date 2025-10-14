@@ -1,14 +1,33 @@
-import Head from "next/head";
+import SEO from "../components/SEO";
 import { motion } from "framer-motion";
 import { Heart, Lightbulb, Target, Users } from 'lucide-react';
 
 export default function AboutPage() {
   return (
     <>
-      <Head>
-        <title>About | TechDevDex</title>
-        <meta name="description" content="Learn about TechDevDex - your trusted source for tech tutorials, reviews, and AI insights" />
-      </Head>
+      <SEO
+        title="About TechDevDex"
+        description="Learn about TechDevDex - your trusted source for tech tutorials, reviews, and AI insights. Discover our mission to make technology accessible and understandable for developers."
+        keywords={[
+          "about techdevdex",
+          "developer resources",
+          "tech tutorials",
+          "programming guides",
+          "software development",
+          "tech community",
+          "developer platform",
+          "coding tutorials",
+          "tech reviews",
+          "AI insights",
+          "programming education",
+          "developer tools",
+          "tech learning",
+          "coding community"
+        ]}
+        type="website"
+        image="/images/about-og.jpg"
+        url="/about"
+      />
       
       {/* Hero Section */}
       <section className="mb-16">

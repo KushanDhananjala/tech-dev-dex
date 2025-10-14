@@ -1,7 +1,7 @@
 import MDXContentComponent from "../../components/MDXContent";
 import { getMDXContent, MDXContent } from "../../lib/mdx";
 import { GetStaticProps } from "next";
-import Head from "next/head";
+import SEO from "../../components/SEO";
 
 interface ReactNodeDeploymentPageProps {
   content: MDXContent | null;
@@ -11,10 +11,29 @@ export default function ReactNodeDeploymentPage({ content }: ReactNodeDeployment
   if (!content) {
     return (
       <>
-        <Head>
-          <title>React / Node Deployment Guides | TechDevDex</title>
-          <meta name="description" content="Deploy React and Node apps to modern platforms" />
-        </Head>
+        <SEO
+          title="React & Node.js Deployment Guides"
+          description="Deploy React and Node.js applications to modern platforms like Vercel, Netlify, Heroku, and AWS. Complete deployment tutorials for full-stack applications."
+          keywords={[
+            "react deployment",
+            "node.js deployment",
+            "vercel deployment",
+            "netlify deployment",
+            "heroku deployment",
+            "aws deployment",
+            "full stack deployment",
+            "react hosting",
+            "node.js hosting",
+            "web app deployment",
+            "production deployment",
+            "deployment guides",
+            "react production",
+            "node.js production"
+          ]}
+          type="article"
+          image="/images/tutorials/react-node-deployment-og.jpg"
+          url="/tutorials/react-node-deployment"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -29,10 +48,17 @@ export default function ReactNodeDeploymentPage({ content }: ReactNodeDeployment
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage}
+        url={`/tutorials/react-node-deployment`}
+        publishedTime={content.date}
+        section="React & Node.js Deployment"
+        tags={content.tags || []}
+      />
       <MDXContentComponent content={content} />
     </>
   );

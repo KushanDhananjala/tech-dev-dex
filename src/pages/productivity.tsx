@@ -1,13 +1,32 @@
-import Head from "next/head";
+import SEO from "../components/SEO";
 import Link from "next/link";
 
 export default function ProductivityPage() {
   return (
     <>
-      <Head>
-        <title>Productivity | TechDevDex</title>
-        <meta name="description" content="Boost your productivity with tools, tips, and techniques for better workflow" />
-      </Head>
+      <SEO
+        title="Developer Productivity Tools & Techniques"
+        description="Boost your productivity with developer tools, automation scripts, and time management techniques. Learn workflow optimization and productivity strategies for developers."
+        keywords={[
+          "developer productivity",
+          "productivity tools",
+          "automation scripts",
+          "time management",
+          "workflow optimization",
+          "developer efficiency",
+          "productivity techniques",
+          "coding productivity",
+          "development tools",
+          "productivity software",
+          "workflow automation",
+          "developer tips",
+          "productivity hacks",
+          "efficiency tools"
+        ]}
+        type="website"
+        image="/images/productivity-og.jpg"
+        url="/productivity"
+      />
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">

@@ -1,13 +1,32 @@
-import Head from "next/head";
+import SEO from "../components/SEO";
 import Link from "next/link";
 
 export default function WebDevPage() {
   return (
     <>
-      <Head>
-        <title>Web Development | TechDevDex</title>
-        <meta name="description" content="Learn frontend and backend development with our comprehensive guides and tutorials" />
-      </Head>
+      <SEO
+        title="Web Development Guides & Tutorials"
+        description="Learn frontend and backend development with comprehensive guides and tutorials. Master modern frameworks, tools, and best practices for web development."
+        keywords={[
+          "web development",
+          "frontend development",
+          "backend development",
+          "react tutorials",
+          "node.js tutorials",
+          "javascript frameworks",
+          "web development tools",
+          "full stack development",
+          "web dev tutorials",
+          "frontend frameworks",
+          "backend frameworks",
+          "web development guides",
+          "devops deployment",
+          "web development best practices"
+        ]}
+        type="website"
+        image="/images/web-dev-og.jpg"
+        url="/web-dev"
+      />
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">

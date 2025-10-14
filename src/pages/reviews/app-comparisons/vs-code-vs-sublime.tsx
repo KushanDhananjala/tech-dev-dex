@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import { ArrowLeft, Check, Clock, GitCompareArrows, Star, User, X } from 'lucide-react';
 import MDXContent from '../../../components/MDXContent';
@@ -7,11 +7,26 @@ import MDXContent from '../../../components/MDXContent';
 const VSCodeVsSublime = () => {
   return (
     <>
-      <Head>
-        <title>VS Code vs Sublime Text: The Ultimate Comparison - TechDevDex</title>
-        <meta name="description" content="Comprehensive comparison of VS Code vs Sublime Text. Performance, features, pricing, and which code editor to choose for your development workflow." />
-        <meta name="keywords" content="VS Code vs Sublime Text, code editor comparison, development tools, VS Code, Sublime Text" />
-      </Head>
+      <SEO
+        title="VS Code vs Sublime Text: The Ultimate Comparison"
+        description="Comprehensive comparison of VS Code vs Sublime Text. Performance, features, pricing, and which code editor to choose for your development workflow."
+        keywords={[
+          'VS Code vs Sublime Text',
+          'code editor comparison',
+          'development tools',
+          'VS Code',
+          'Sublime Text',
+          'editor comparison',
+          'code editor',
+          'development environment',
+          'editor features',
+          'editor performance'
+        ]}
+        type="article"
+        image="/images/reviews/app-comparisons/vs-code-vs-sublime.svg"
+        url="/reviews/app-comparisons/vs-code-vs-sublime"
+        section="App Comparisons"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

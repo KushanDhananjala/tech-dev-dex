@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const DualMonitorSetup = () => {
   return (
     <>
-      <Head>
-        <title>Dual Monitor Setup for Developers: Complete Guide | TechDevDex</title>
-        <meta name="description" content="Maximize your productivity with the perfect dual monitor configuration for developers. Learn about monitor selection, positioning, and workflow optimization." />
-        <meta name="keywords" content="dual monitor setup, developer productivity, monitor configuration, workspace optimization" />
-      </Head>
+      <SEO
+        title="Dual Monitor Setup for Developers: Complete Guide"
+        description="Maximize your productivity with the perfect dual monitor configuration for developers. Learn about monitor selection, positioning, and workflow optimization."
+        keywords={[
+          'dual monitor setup',
+          'developer productivity',
+          'monitor configuration',
+          'workspace optimization',
+          'monitor setup',
+          'productivity setup',
+          'monitor selection',
+          'workflow optimization',
+          'development setup',
+          'monitor guide'
+        ]}
+        type="article"
+        image="/images/hardware/development-setup/dual-monitor.svg"
+        url="/hardware/development-setup/dual-monitor-setup"
+        section="Development Setup"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

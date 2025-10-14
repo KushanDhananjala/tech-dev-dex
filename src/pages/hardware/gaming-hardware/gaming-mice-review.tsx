@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, Clock, Mouse, Star, User } from 'lucide-react';
@@ -7,23 +7,27 @@ import { CheckCircle, Clock, Mouse, Star, User } from 'lucide-react';
 const GamingMiceReview = () => {
   return (
     <>
-      <Head>
-        <title>Gaming Mice for Programming 2024 | TechDevDex</title>
-        <meta name="description" content="Review of high-precision gaming mice that offer excellent performance for coding and development tasks with customizable DPI, ergonomic design, and programmable buttons." />
-        <meta name="keywords" content="gaming mice, programming mice, development mice, high DPI mice, ergonomic mice, gaming hardware, mouse reviews" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Gaming Mice for Programming 2024" />
-        <meta property="og:description" content="Review of high-precision gaming mice that offer excellent performance for coding and development tasks." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/hardware/gaming-hardware/gaming-mice-review" />
-        <meta property="og:image" content="https://techdevdex.com/images/hardware/gaming-hardware/gaming-mice.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Gaming Mice for Programming 2024" />
-        <meta name="twitter:description" content="Review of high-precision gaming mice that offer excellent performance for coding and development tasks." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/hardware/gaming-hardware/gaming-mice.svg" />
-        <link rel="canonical" href="https://techdevdex.com/hardware/gaming-hardware/gaming-mice-review" />
-      </Head>
+      <SEO
+        title="Gaming Mice for Programming 2024"
+        description="Review of high-precision gaming mice that offer excellent performance for coding and development tasks with customizable DPI, ergonomic design, and programmable buttons."
+        keywords={[
+          'gaming mice',
+          'programming mice',
+          'development mice',
+          'high DPI mice',
+          'ergonomic mice',
+          'gaming hardware',
+          'mouse reviews',
+          'precision mice',
+          'programmable buttons',
+          'wireless gaming mice'
+        ]}
+        type="article"
+        image="/images/hardware/gaming-hardware/gaming-mice.svg"
+        url="/hardware/gaming-hardware/gaming-mice-review"
+        section="Gaming Hardware"
+        tags={['Gaming Mice', 'Hardware', 'Reviews']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

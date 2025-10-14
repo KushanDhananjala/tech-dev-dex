@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const MacBookProM3Review = () => {
   return (
     <>
-      <Head>
-        <title>MacBook Pro M3: Developer&apos;s Choice - TechDevDex</title>
-        <meta name="description" content="Comprehensive review of MacBook Pro M3 for developers, covering performance, battery life, and development workflow." />
-        <meta name="keywords" content="MacBook Pro M3, Apple Silicon, developer laptop, performance review, M3 chip" />
-      </Head>
+      <SEO
+        title="MacBook Pro M3: Developer's Choice"
+        description="Comprehensive review of MacBook Pro M3 for developers, covering performance, battery life, and development workflow."
+        keywords={[
+          'MacBook Pro M3',
+          'Apple Silicon',
+          'developer laptop',
+          'performance review',
+          'M3 chip',
+          'MacBook Pro review',
+          'Apple development',
+          'M3 MacBook',
+          'Apple Silicon development',
+          'MacBook Pro development'
+        ]}
+        type="article"
+        image="/images/hardware/laptops-pcs/macbook-pro-m3.svg"
+        url="/hardware/laptops-pcs/macbook-pro-m3-review"
+        section="Laptops & PCs"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, Clock, Code, Star, User, Zap } from 'lucide-react';
@@ -7,23 +7,27 @@ import { CheckCircle, Clock, Code, Star, User, Zap } from 'lucide-react';
 const CSSAnimationsGuide = () => {
   return (
     <>
-      <Head>
-        <title>CSS Animations and Transitions: Bringing Websites to Life | TechDevDex</title>
-        <meta name="description" content="Create smooth animations and transitions using CSS to enhance user experience. Complete guide with examples and best practices." />
-        <meta name="keywords" content="CSS animations, CSS transitions, web animations, CSS tutorial, web development" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="CSS Animations and Transitions: Bringing Websites to Life" />
-        <meta property="og:description" content="Create smooth animations and transitions using CSS to enhance user experience." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/tutorials/web-development/css-animations-guide" />
-        <meta property="og:image" content="https://techdevdex.com/images/tutorials/web-development/css-animations.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="CSS Animations and Transitions: Bringing Websites to Life" />
-        <meta name="twitter:description" content="Create smooth animations and transitions using CSS to enhance user experience." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/tutorials/web-development/css-animations.svg" />
-        <link rel="canonical" href="https://techdevdex.com/tutorials/web-development/css-animations-guide" />
-      </Head>
+      <SEO
+        title="CSS Animations and Transitions: Bringing Websites to Life"
+        description="Create smooth animations and transitions using CSS to enhance user experience. Complete guide with examples and best practices."
+        keywords={[
+          'CSS animations',
+          'CSS transitions',
+          'web animations',
+          'CSS tutorial',
+          'web development',
+          'CSS keyframes',
+          'animation performance',
+          'CSS transforms',
+          'hover effects',
+          'web design'
+        ]}
+        type="article"
+        image="/images/tutorials/web-development/css-animations.svg"
+        url="/tutorials/web-development/css-animations-guide"
+        section="Web Development"
+        tags={['CSS', 'Animations', 'Web Development']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

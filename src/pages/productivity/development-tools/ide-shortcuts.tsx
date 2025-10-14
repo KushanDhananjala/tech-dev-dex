@@ -1,16 +1,31 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const IDEShortcuts = () => {
   return (
     <>
-      <Head>
-        <title>IDE Shortcuts: Essential Keyboard Shortcuts | TechDevDex</title>
-        <meta name="description" content="Master essential keyboard shortcuts for popular IDEs. Learn VS Code, IntelliJ, Eclipse, and other IDE shortcuts to boost your development productivity." />
-        <meta name="keywords" content="IDE shortcuts, keyboard shortcuts, VS Code, IntelliJ, Eclipse, development productivity, coding efficiency" />
-      </Head>
+      <SEO
+        title="IDE Shortcuts: Essential Keyboard Shortcuts"
+        description="Master essential keyboard shortcuts for popular IDEs. Learn VS Code, IntelliJ, Eclipse, and other IDE shortcuts to boost your development productivity."
+        keywords={[
+          'IDE shortcuts',
+          'keyboard shortcuts',
+          'VS Code',
+          'IntelliJ',
+          'Eclipse',
+          'development productivity',
+          'coding efficiency',
+          'IDE productivity',
+          'keyboard shortcuts guide',
+          'development shortcuts'
+        ]}
+        type="article"
+        image="/images/productivity/development-tools/ide-shortcuts.svg"
+        url="/productivity/development-tools/ide-shortcuts"
+        section="Development Tools"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Clock, Keyboard, Star, Users, Zap } from 'lucide-react';
@@ -7,42 +7,28 @@ import { ArrowRight, CheckCircle, Clock, Keyboard, Star, Users, Zap } from 'luci
 const IDEShortcutsMastery = () => {
   return (
     <>
-      <Head>
-        <title>IDE Shortcuts Mastery: Speed Up Your Coding | TechDevDex</title>
-        <meta name="description" content="Master IDE shortcuts across VS Code, IntelliJ, and other popular editors. Learn essential keyboard shortcuts that will make you 300% faster at coding and navigation." />
-        <meta name="keywords" content="IDE shortcuts, keyboard shortcuts, VS Code shortcuts, IntelliJ shortcuts, coding efficiency, developer productivity, keyboard mastery" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="IDE Shortcuts Mastery: Speed Up Your Coding" />
-        <meta property="og:description" content="Master IDE shortcuts across VS Code, IntelliJ, and other popular editors. Learn essential keyboard shortcuts that will make you 300% faster at coding and navigation." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/tutorials/productivity-tools/ide-shortcuts-mastery" />
-        <meta property="og:image" content="https://techdevdex.com/images/tutorials/productivity-tools/ide-shortcuts.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="IDE Shortcuts Mastery: Speed Up Your Coding" />
-        <meta name="twitter:description" content="Master IDE shortcuts across VS Code, IntelliJ, and other popular editors. Learn essential keyboard shortcuts that will make you 300% faster at coding and navigation." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/tutorials/productivity-tools/ide-shortcuts.svg" />
-        <link rel="canonical" href="https://techdevdex.com/tutorials/productivity-tools/ide-shortcuts-mastery" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "IDE Shortcuts Mastery: Speed Up Your Coding",
-            "description": "Master IDE shortcuts across VS Code, IntelliJ, and other popular editors. Learn essential keyboard shortcuts that will make you 300% faster at coding and navigation.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "datePublished": "2024-12-12",
-            "dateModified": "2024-12-12",
-            "image": "https://techdevdex.com/images/tutorials/productivity-tools/ide-shortcuts.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="IDE Shortcuts Mastery: Speed Up Your Coding"
+        description="Master IDE shortcuts across VS Code, IntelliJ, and other popular editors. Learn essential keyboard shortcuts that will make you 300% faster at coding and navigation."
+        keywords={[
+          'IDE shortcuts',
+          'keyboard shortcuts',
+          'VS Code shortcuts',
+          'IntelliJ shortcuts',
+          'coding efficiency',
+          'developer productivity',
+          'keyboard mastery',
+          'IDE productivity',
+          'coding speed',
+          'shortcut optimization'
+        ]}
+        type="article"
+        image="/images/tutorials/productivity-tools/ide-shortcuts.svg"
+        url="/tutorials/productivity-tools/ide-shortcuts-mastery"
+        publishedTime="2024-12-12"
+        section="Productivity Tools"
+        tags={['IDE Shortcuts', 'Keyboard Mastery', 'Productivity']}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

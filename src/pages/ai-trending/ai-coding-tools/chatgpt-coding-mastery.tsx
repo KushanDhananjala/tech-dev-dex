@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,25 @@ import { motion } from 'framer-motion';
 const ChatGPTCodingMastery = () => {
   return (
     <>
-      <Head>
-        <title>ChatGPT for Coding: Master Class - TechDevDex</title>
-        <meta name="description" content="Learn to use ChatGPT effectively for code generation, debugging, and learning new programming concepts." />
-        <meta name="keywords" content="ChatGPT, AI assistant, coding, debugging, programming, code generation" />
-      </Head>
+      <SEO
+        title="ChatGPT for Coding: Master Class"
+        description="Learn to use ChatGPT effectively for code generation, debugging, and learning new programming concepts. Master AI-assisted development."
+        keywords={[
+          "ChatGPT coding",
+          "AI assistant",
+          "code generation",
+          "debugging with AI",
+          "programming assistance",
+          "AI development",
+          "ChatGPT prompts",
+          "AI coding techniques",
+          "developer productivity",
+          "AI programming"
+        ]}
+        type="article"
+        image="/images/ai-trending/ai-coding-tools/chatgpt-coding-og.jpg"
+        url="/ai-trending/ai-coding-tools/chatgpt-coding-mastery"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

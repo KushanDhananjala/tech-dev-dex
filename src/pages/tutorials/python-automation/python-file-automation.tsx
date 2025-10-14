@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function PythonFileAutomation({ content }: PythonFileAutomationPr
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Python File Automation - TechDevDex</title>
-          <meta name="description" content="Automate file operations with Python" />
-        </Head>
+        <SEO
+          title="Python File Automation"
+          description="Automate file operations with Python. Learn to process files, organize directories, and build file automation workflows with Python."
+          keywords={[
+            'Python file automation',
+            'file automation',
+            'Python file processing',
+            'file operations',
+            'directory automation',
+            'Python automation',
+            'file workflows',
+            'Python file library',
+            'file automation scripts',
+            'Python file tools'
+          ]}
+          type="article"
+          image="/images/tutorials/python-automation/file-automation.svg"
+          url="/tutorials/python-automation/python-file-automation"
+          section="Python Automation"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +48,17 @@ export default function PythonFileAutomation({ content }: PythonFileAutomationPr
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/tutorials/python-automation/file-automation.svg'}
+        url={`/tutorials/python-automation/python-file-automation`}
+        publishedTime={content.date}
+        section="Python Automation"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

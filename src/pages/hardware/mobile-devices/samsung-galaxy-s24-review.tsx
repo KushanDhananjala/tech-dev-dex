@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
@@ -14,10 +14,26 @@ export default function SamsungGalaxyS24Review({ content }: SamsungGalaxyS24Revi
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Samsung Galaxy S24 Review - TechDevDex</title>
-          <meta name="description" content="Samsung Galaxy S24 developer review" />
-        </Head>
+        <SEO
+          title="Samsung Galaxy S24 Review"
+          description="Samsung Galaxy S24 developer review"
+          keywords={[
+            'Samsung Galaxy S24',
+            'Android development',
+            'mobile development',
+            'Android testing',
+            'Galaxy S24 review',
+            'Android hardware',
+            'development device',
+            'Android development tools',
+            'Samsung development',
+            'Galaxy development'
+          ]}
+          type="article"
+          image="/images/hardware/mobile-devices/samsung-galaxy-s24.svg"
+          url="/hardware/mobile-devices/samsung-galaxy-s24-review"
+          section="Mobile Devices"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -32,11 +48,17 @@ export default function SamsungGalaxyS24Review({ content }: SamsungGalaxyS24Revi
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(', ')} />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage || '/images/hardware/mobile-devices/samsung-galaxy-s24.svg'}
+        url={`/hardware/mobile-devices/samsung-galaxy-s24-review`}
+        publishedTime={content.date}
+        section="Mobile Devices"
+        tags={content.tags || []}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

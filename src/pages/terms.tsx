@@ -1,14 +1,31 @@
-import Head from "next/head";
+import SEO from "../components/SEO";
 import { motion } from "framer-motion";
 import { AlertCircle, FileText, Scale, Users } from 'lucide-react';
 
 export default function TermsPage() {
   return (
     <>
-      <Head>
-        <title>Terms of Service | TechDevDex</title>
-        <meta name="description" content="TechDevDex Terms of Service - Read our terms and conditions" />
-      </Head>
+      <SEO
+        title="Terms of Service"
+        description="TechDevDex Terms of Service - Read our terms and conditions for using our platform. Learn about fair use, community guidelines, and user rights."
+        keywords={[
+          "terms of service",
+          "techdevdex terms",
+          "user agreement",
+          "terms and conditions",
+          "legal terms",
+          "platform rules",
+          "user rights",
+          "fair use policy",
+          "community guidelines",
+          "website terms",
+          "service agreement",
+          "legal compliance"
+        ]}
+        type="website"
+        image="/images/terms-og.jpg"
+        url="/terms"
+      />
       
       {/* Hero Section */}
       <section className="mb-16">

@@ -1,7 +1,7 @@
 import MDXContentComponent from "../../../components/MDXContent";
 import { getMDXContent, MDXContent } from "../../../lib/mdx";
 import { GetStaticProps } from "next";
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 
 interface ObsidianReviewPageProps {
   content: MDXContent | null;
@@ -11,10 +11,25 @@ export default function ObsidianReviewPage({ content }: ObsidianReviewPageProps)
   if (!content) {
     return (
       <>
-        <Head>
-          <title>Obsidian Review: The Ultimate Knowledge Management Tool | TechDevDex</title>
-          <meta name="description" content="In-depth review of Obsidian - the powerful note-taking and knowledge management tool." />
-        </Head>
+        <SEO
+          title="Obsidian Review: The Ultimate Knowledge Management Tool"
+          description="In-depth review of Obsidian - the powerful note-taking and knowledge management tool for developers and knowledge workers."
+          keywords={[
+            "obsidian review",
+            "knowledge management",
+            "note taking app",
+            "obsidian features",
+            "obsidian pros and cons",
+            "obsidian for developers",
+            "knowledge graph",
+            "productivity tools",
+            "obsidian vs notion",
+            "obsidian plugins"
+          ]}
+          type="article"
+          image="/images/reviews/productivity-tools-review/obsidian-og.jpg"
+          url="/reviews/productivity-tools-review/obsidian-review"
+        />
         <div className="text-center py-12">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Content Not Found
@@ -29,57 +44,17 @@ export default function ObsidianReviewPage({ content }: ObsidianReviewPageProps)
 
   return (
     <>
-      <Head>
-        <title>{`${content.title} | TechDevDex`}</title>
-        <meta name="description" content={content.description} />
-        <meta name="keywords" content={content.tags.join(", ")} />
-        <meta name="author" content={content.author} />
-        <meta name="robots" content="index, follow" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content={content.title} />
-        <meta property="og:description" content={content.description} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://techdevdex.com/reviews/productivity-tools-review/obsidian-review`} />
-        <meta property="og:image" content={content.featuredImage} />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={content.title} />
-        <meta name="twitter:description" content={content.description} />
-        <meta name="twitter:image" content={content.featuredImage} />
-        
-        {/* Canonical */}
-        <link rel="canonical" href={`https://techdevdex.com/reviews/productivity-tools-review/obsidian-review`} />
-        
-        {/* JSON-LD */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Review",
-              "headline": content.title,
-              "description": content.description,
-              "author": {
-                "@type": "Organization",
-                "name": content.author
-              },
-              "datePublished": content.date,
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": content.rating,
-                "bestRating": 5
-              },
-              "itemReviewed": {
-                "@type": "SoftwareApplication",
-                "name": "Obsidian",
-                "applicationCategory": "Productivity Software"
-              }
-            })
-          }}
-        />
-      </Head>
+      <SEO
+        title={content.title}
+        description={content.description}
+        keywords={content.tags || []}
+        type="article"
+        image={content.featuredImage}
+        url={`/reviews/productivity-tools-review/obsidian-review`}
+        publishedTime={content.date}
+        section="Productivity Tools Review"
+        tags={content.tags || []}
+      />
       <MDXContentComponent content={content} />
     </>
   );

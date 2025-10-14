@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,27 @@ import { motion } from 'framer-motion';
 const Vue3Mastery = () => {
   return (
     <>
-      <Head>
-        <title>Vue 3: Modern Development Guide - TechDevDex</title>
-        <meta name="description" content="Learn Vue 3 with Composition API, TypeScript integration, and best practices for scalable applications." />
-        <meta name="keywords" content="Vue 3, JavaScript, frontend development, Composition API, TypeScript, Vue.js" />
-      </Head>
+      <SEO
+        title="Vue 3: Modern Development Guide"
+        description="Learn Vue 3 with Composition API, TypeScript integration, and best practices for scalable applications. Complete guide to modern Vue.js development."
+        keywords={[
+          'Vue 3',
+          'JavaScript',
+          'frontend development',
+          'Composition API',
+          'TypeScript',
+          'Vue.js',
+          'Vue framework',
+          'reactive programming',
+          'component development',
+          'modern JavaScript'
+        ]}
+        type="article"
+        image="/images/web-dev/frontend-frameworks/vue3-guide.svg"
+        url="/web-dev/frontend-frameworks/vue-3-mastery"
+        section="Frontend Frameworks"
+        tags={['Vue 3', 'JavaScript', 'Frontend Development']}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Brain, CheckCircle, Clock, Star, Users, Zap } from 'lucide-react';
@@ -7,42 +7,26 @@ import { ArrowRight, Brain, CheckCircle, Clock, Star, Users, Zap } from 'lucide-
 const OpenAIAPIIntegration = () => {
   return (
     <>
-      <Head>
-        <title>OpenAI API Integration: Complete Developer&apos;s Guide | TechDevDex</title>
-        <meta name="description" content="Master OpenAI API integration with our comprehensive guide. Learn to build AI-powered applications with GPT-4, DALL-E, and Whisper APIs. Complete tutorial with code examples." />
-        <meta name="keywords" content="OpenAI API, GPT-4 integration, AI development, OpenAI tutorial, AI applications, machine learning API, artificial intelligence, OpenAI SDK" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="OpenAI API Integration: Complete Developer&apos;s Guide" />
-        <meta property="og:description" content="Master OpenAI API integration with our comprehensive guide. Learn to build AI-powered applications with GPT-4, DALL-E, and Whisper APIs. Complete tutorial with code examples." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/ai-trending/ai-integration-tutorials/openai-api-integration" />
-        <meta property="og:image" content="https://techdevdex.com/images/ai-ml/ai-integration-tutorials/openai-integration.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="OpenAI API Integration: Complete Developer&apos;s Guide" />
-        <meta name="twitter:description" content="Master OpenAI API integration with our comprehensive guide. Learn to build AI-powered applications with GPT-4, DALL-E, and Whisper APIs. Complete tutorial with code examples." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/ai-ml/ai-integration-tutorials/openai-integration.svg" />
-        <link rel="canonical" href="https://techdevdex.com/ai-trending/ai-integration-tutorials/openai-api-integration" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "OpenAI API Integration: Complete Developer&apos;s Guide",
-            "description": "Master OpenAI API integration with our comprehensive guide. Learn to build AI-powered applications with GPT-4, DALL-E, and Whisper APIs. Complete tutorial with code examples.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "datePublished": "2024-12-12",
-            "dateModified": "2024-12-12",
-            "image": "https://techdevdex.com/images/ai-ml/ai-integration-tutorials/openai-integration.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="OpenAI API Integration: Complete Developer's Guide"
+        description="Master OpenAI API integration with our comprehensive guide. Learn to build AI-powered applications with GPT-4, DALL-E, and Whisper APIs. Complete tutorial with code examples."
+        keywords={[
+          'OpenAI API',
+          'GPT-4 integration',
+          'AI development',
+          'OpenAI tutorial',
+          'AI applications',
+          'machine learning API',
+          'artificial intelligence',
+          'OpenAI SDK',
+          'AI integration',
+          'OpenAI development'
+        ]}
+        type="article"
+        image="/images/ai-ml/ai-integration-tutorials/openai-integration.svg"
+        url="/ai-trending/ai-integration-tutorials/openai-api-integration"
+        section="AI Integration Tutorials"
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

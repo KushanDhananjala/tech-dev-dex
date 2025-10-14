@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Filter, Gamepad2, Search, Star, User } from 'lucide-react';
@@ -67,11 +67,26 @@ const GamingHardware = () => {
 
   return (
     <>
-      <Head>
-        <title>Gaming Hardware - TechDevDex</title>
-        <meta name="description" content="Reviews of gaming hardware that doubles as excellent development equipment including keyboards, mice, and monitors." />
-        <meta name="keywords" content="gaming hardware, gaming keyboards, gaming mice, gaming monitors, gaming headsets, development setup" />
-      </Head>
+      <SEO
+        title="Gaming Hardware for Development"
+        description="Reviews of gaming hardware that doubles as excellent development equipment including keyboards, mice, and monitors."
+        keywords={[
+          'gaming hardware',
+          'gaming keyboards',
+          'gaming mice',
+          'gaming monitors',
+          'gaming headsets',
+          'development setup',
+          'gaming peripherals',
+          'development hardware',
+          'gaming equipment',
+          'hardware reviews'
+        ]}
+        type="article"
+        image="/images/hardware/gaming-hardware.svg"
+        url="/hardware/gaming-hardware"
+        section="Gaming Hardware"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

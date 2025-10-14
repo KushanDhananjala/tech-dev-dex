@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Brain, CheckCircle, Clock, Star, Users, Zap } from 'lucide-react';
@@ -7,42 +7,28 @@ import { ArrowRight, Brain, CheckCircle, Clock, Star, Users, Zap } from 'lucide-
 const LangChainTutorial = () => {
   return (
     <>
-      <Head>
-        <title>LangChain Tutorial: Build Advanced AI Applications | TechDevDex</title>
-        <meta name="description" content="Master LangChain framework for building sophisticated AI applications. Learn to create chatbots, document Q&A systems, and AI agents with our comprehensive tutorial." />
-        <meta name="keywords" content="LangChain tutorial, AI framework, chatbot development, document Q&A, AI agents, LangChain Python, AI applications, machine learning framework" />
-        <meta name="author" content="TechDevDex" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="LangChain Tutorial: Build Advanced AI Applications" />
-        <meta property="og:description" content="Master LangChain framework for building sophisticated AI applications. Learn to create chatbots, document Q&A systems, and AI agents with our comprehensive tutorial." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://techdevdex.com/ai-trending/ai-integration-tutorials/langchain-tutorial" />
-        <meta property="og:image" content="https://techdevdex.com/images/ai-ml/ai-integration-tutorials/langchain-tutorial.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="LangChain Tutorial: Build Advanced AI Applications" />
-        <meta name="twitter:description" content="Master LangChain framework for building sophisticated AI applications. Learn to create chatbots, document Q&A systems, and AI agents with our comprehensive tutorial." />
-        <meta name="twitter:image" content="https://techdevdex.com/images/ai-ml/ai-integration-tutorials/langchain-tutorial.svg" />
-        <link rel="canonical" href="https://techdevdex.com/ai-trending/ai-integration-tutorials/langchain-tutorial" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "LangChain Tutorial: Build Advanced AI Applications",
-            "description": "Master LangChain framework for building sophisticated AI applications. Learn to create chatbots, document Q&A systems, and AI agents with our comprehensive tutorial.",
-            "author": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "TechDevDex"
-            },
-            "datePublished": "2024-12-12",
-            "dateModified": "2024-12-12",
-            "image": "https://techdevdex.com/images/ai-ml/ai-integration-tutorials/langchain-tutorial.svg"
-          })}
-        </script>
-      </Head>
+      <SEO
+        title="LangChain Tutorial: Build Advanced AI Applications"
+        description="Master LangChain framework for building sophisticated AI applications. Learn to create chatbots, document Q&A systems, and AI agents with our comprehensive tutorial."
+        keywords={[
+          'LangChain tutorial',
+          'AI framework',
+          'chatbot development',
+          'document Q&A',
+          'AI agents',
+          'LangChain Python',
+          'AI applications',
+          'machine learning framework',
+          'RAG',
+          'vector databases'
+        ]}
+        type="article"
+        image="/images/ai-ml/ai-integration-tutorials/langchain-tutorial.svg"
+        url="/ai-trending/ai-integration-tutorials/langchain-tutorial"
+        publishedTime="2024-12-12"
+        section="AI Integration"
+        tags={["LangChain", "AI", "RAG", "Agents"]}
+      />
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@/components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Clock, Filter, Search, User, Users } from 'lucide-react';
@@ -62,11 +62,29 @@ const ProjectManagement = () => {
 
   return (
     <>
-      <Head>
-        <title>Project Management - TechDevDex</title>
-        <meta name="description" content="Comprehensive guides for project management methodologies including Agile, Scrum, Kanban, and team collaboration tools." />
-        <meta name="keywords" content="project management, Agile, Scrum, Kanban, Jira, team collaboration, development workflow" />
-      </Head>
+      <SEO
+        title="Project Management for Developers"
+        description="Comprehensive guides for project management methodologies including Agile, Scrum, Kanban, and team collaboration tools. Learn Jira best practices and remote team management."
+        keywords={[
+          "project management",
+          "agile methodology",
+          "scrum master",
+          "kanban implementation",
+          "jira best practices",
+          "team collaboration",
+          "development workflow",
+          "project management tools",
+          "agile development",
+          "scrum framework",
+          "kanban board",
+          "team management",
+          "remote collaboration",
+          "project planning"
+        ]}
+        type="website"
+        image="/images/productivity/project-management-og.jpg"
+        url="/productivity/project-management"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

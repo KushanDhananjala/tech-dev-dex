@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '../../../components/SEO';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
@@ -8,11 +8,26 @@ import { motion } from 'framer-motion';
 const DellXPSDeveloperReview = () => {
   return (
     <>
-      <Head>
-        <title>Dell XPS 15: Windows Development Powerhouse - TechDevDex</title>
-        <meta name="description" content="In-depth review of Dell XPS 15 for Windows development with focus on performance and build quality." />
-        <meta name="keywords" content="Dell XPS 15, Windows laptop, developer laptop, performance review, Dell XPS" />
-      </Head>
+      <SEO
+        title="Dell XPS 15: Windows Development Powerhouse"
+        description="In-depth review of Dell XPS 15 for Windows development with focus on performance and build quality."
+        keywords={[
+          'Dell XPS 15',
+          'Windows laptop',
+          'developer laptop',
+          'performance review',
+          'Dell XPS',
+          'Windows development',
+          'developer laptop review',
+          'XPS 15 review',
+          'Windows development laptop',
+          'Dell development laptop'
+        ]}
+        type="article"
+        image="/images/hardware/laptops-pcs/dell-xps-15.svg"
+        url="/hardware/laptops-pcs/dell-xps-developer-review"
+        section="Laptops & PCs"
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
