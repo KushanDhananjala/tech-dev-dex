@@ -21,12 +21,12 @@ export default function Ads({ placement }: Props) {
     // Initialize AdSense after component mounts
     const timer = setTimeout(() => {
       if (adRef.current && !ADSENSE_CONFIG.IS_DEVELOPMENT) {
-        initializeAd(adConfig.slot);
+        initializeAd();
       }
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [initializeAd, adConfig.slot]);
+  }, [initializeAd]);
 
   // Development mode - show placeholder
   if (ADSENSE_CONFIG.IS_DEVELOPMENT) {

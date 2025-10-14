@@ -31,7 +31,7 @@ export const ADSENSE_CONFIG = {
 
 // AdSense hook for managing ads
 export const useAdSense = () => {
-  const initializeAd = (adSlot: string) => {
+  const initializeAd = () => {
     if (typeof window !== 'undefined' && (window as unknown as { adsbygoogle?: unknown[] }).adsbygoogle) {
       try {
         const adsbygoogle = (window as unknown as { adsbygoogle?: unknown[] }).adsbygoogle;
