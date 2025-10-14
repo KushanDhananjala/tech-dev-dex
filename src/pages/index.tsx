@@ -1,10 +1,10 @@
+import React from "react";
 import Link from "next/link";
 import menu from "../menu";
 import { motion } from "framer-motion";
-import Head from "next/head";
 import SEO from "../components/SEO";
 import Ads from "../components/ads/Ads";
-import { BookOpen, Stars, Cpu, ArrowRight, Calendar, User, Zap, TrendingUp } from "lucide-react";
+import { ArrowRight, BookOpen, Calendar, Cpu, TrendingUp, User, Zap, Stars } from 'lucide-react';
 
 export default function HomePage() {
   return (

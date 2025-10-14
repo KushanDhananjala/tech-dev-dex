@@ -1,0 +1,53 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="trelloGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0079bf;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0052cc;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="asanaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f06a6a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e74c3c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Trello -->
+  <rect x="50" y="80" width="120" height="80" rx="8" fill="url(#trelloGradient)" stroke="#0079bf" stroke-width="2"/>
+  <text x="110" y="130" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" style="font-weight:bold;">Trello</text>
+  
+  <!-- Asana -->
+  <rect x="230" y="80" width="120" height="80" rx="8" fill="url(#asanaGradient)" stroke="#f06a6a" stroke-width="2"/>
+  <text x="290" y="130" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" style="font-weight:bold;">Asana</text>
+  
+  <!-- Comparison Features -->
+  <rect x="50" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="80" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Kanban</text>
+  
+  <rect x="120" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="150" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Simple</text>
+  
+  <rect x="190" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="220" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Tasks</text>
+  
+  <rect x="260" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="290" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Timeline</text>
+  
+  <rect x="330" y="180" width="60" height="25" rx="4" fill="#6c757d" />
+  <text x="360" y="195" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Complex</text>
+  
+  <!-- VS -->
+  <text x="200" y="160" text-anchor="middle" fill="#6c757d" font-family="Arial, sans-serif" font-size="16" style="font-weight:bold;">VS</text>
+  
+  <!-- Project Management -->
+  <rect x="50" y="220" width="300" height="20" rx="4" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="200" y="235" text-anchor="middle" fill="#495057" font-family="Arial, sans-serif" font-size="12">Project Management Tools Comparison</text>
+  
+  <!-- Performance Indicators -->
+  <circle cx="100" cy="270" r="4" fill="#0079bf" />
+  <text x="110" y="275" fill="#0079bf" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Visual</text>
+  
+  <circle cx="200" cy="270" r="4" fill="#6c757d" />
+  <text x="210" y="275" fill="#6c757d" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">vs</text>
+  
+  <circle cx="300" cy="270" r="4" fill="#f06a6a" />
+  <text x="310" y="275" fill="#f06a6a" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Structured</text>
+</svg>

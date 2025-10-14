@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Ads from "./ads/Ads";
@@ -15,8 +14,6 @@ type Props = {
 export default function Layout({ children, title, description }: Props) {
   const router = useRouter();
   const isHomePage = router.pathname === '/';
-  const siteTitle = title ? `${title} | TechDevDex` : "TechDevDex";
-  const siteDescription = description || "Comprehensive developer resource platform with tutorials, reviews, and guides for modern development technologies.";
 
   return (
     <div className="min-h-screen flex flex-col">

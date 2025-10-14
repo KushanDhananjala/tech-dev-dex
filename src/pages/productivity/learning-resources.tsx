@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, GraduationCap, Clock, User, Filter, Search } from 'lucide-react';
+import { ArrowLeft, Clock, Filter, GraduationCap, Search, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const LearningResources = () => {

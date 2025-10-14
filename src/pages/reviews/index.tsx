@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Tabs from "../../components/ui/Tabs";
-import { Monitor, GitCompareArrows, Cpu, Star, ArrowRight, Clock, User } from "lucide-react";
+import { ArrowRight, Clock, Cpu, GitCompareArrows, Monitor, Star, User } from 'lucide-react';
 import { motion } from "framer-motion";
 
 const subcategories = [

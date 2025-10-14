@@ -1,0 +1,227 @@
+
+> techdevdex@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.5.4 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.8:3000
+   - Experiments (use with caution):
+     ✓ optimizeCss
+
+ ✓ Starting...
+ ✓ Ready in 842ms
+ ○ Compiling / ...
+ ✓ Compiled / in 3s
+[32mInlined 18.76 kB (12% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 145.339901
+ GET / 200 in 3568ms
+ ✓ Compiled /contact in 177ms
+[32mInlined 16.56 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 91.618279
+ GET /contact 200 in 364ms
+ ✓ Compiled /hardware in 96ms
+[32mInlined 14.71 kB (9% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 70.603234
+ GET /hardware 200 in 230ms
+ ✓ Compiled /web-dev in 90ms
+[32mInlined 14.84 kB (9% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 59.893657
+ GET /web-dev 200 in 218ms
+ ✓ Compiled /tutorials/web-development/css-animations-guide in 231ms
+[32mInlined 17.92 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 65.951364
+ GET /tutorials/web-development/css-animations-guide 200 in 384ms
+ ✓ Compiled /tutorials/web-development/html-css-basics in 114ms
+[32mInlined 17.98 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 46.333045
+ GET /tutorials/web-development/html-css-basics 200 in 243ms
+ ✓ Compiled /tutorials/web-development/responsive-design-css in 110ms
+[32mInlined 17.92 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 44.009461
+ GET /tutorials/web-development/responsive-design-css 200 in 223ms
+ ✓ Compiled /tutorials/web-development/javascript-es6-guide in 112ms
+[32mInlined 17.92 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 44.346747
+ GET /tutorials/web-development/javascript-es6-guide 200 in 250ms
+ ✓ Compiled /tutorials/web-development/web-accessibility-guide in 113ms
+[32mInlined 17.92 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 43.000204
+ GET /tutorials/web-development/web-accessibility-guide 200 in 225ms
+ ✓ Compiled /tutorials/web-development/dom-manipulation-js in 97ms
+[32mInlined 17.92 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 45.151337
+ GET /tutorials/web-development/dom-manipulation-js 200 in 212ms
+ ✓ Compiled /tutorials/productivity-tools/terminal-productivity in 121ms
+[32mInlined 19.20 kB (12% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 111.174124
+ GET /tutorials/productivity-tools/terminal-productivity 200 in 321ms
+ ✓ Compiled /hardware/mobile-devices in 161ms
+[32mInlined 17.27 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 46.067092
+ GET /hardware/mobile-devices 200 in 299ms
+ ✓ Compiled /hardware/development-setup in 147ms
+[32mInlined 17.55 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 45.983963
+ GET /hardware/development-setup 200 in 285ms
+ ✓ Compiled /hardware/development-setup/mechanical-keyboard in 115ms
+[32mInlined 16.28 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 64.60206
+ GET /hardware/development-setup/mechanical-keyboard 200 in 281ms
+ ✓ Compiled /hardware/development-setup/office-lighting in 124ms
+[32mInlined 16.28 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 55.598003
+ GET /hardware/development-setup/office-lighting 200 in 269ms
+ ✓ Compiled /hardware/development-setup/dual-monitor-setup in 113ms
+[32mInlined 16.28 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 54.872867
+ GET /hardware/development-setup/dual-monitor-setup 200 in 245ms
+ ✓ Compiled /hardware/development-setup/standing-desk in 113ms
+[32mInlined 16.28 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 52.437056
+ GET /hardware/development-setup/standing-desk 200 in 275ms
+ ✓ Compiled /hardware/development-setup/ultimate-developer-workstation in 101ms
+[32mInlined 16.28 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 48.265685
+ GET /hardware/development-setup/ultimate-developer-workstation 200 in 253ms
+ ✓ Compiled /hardware/peripherals in 161ms
+[32mInlined 17.56 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 78.161241
+ GET /hardware/peripherals 200 in 429ms
+ ✓ Compiled /hardware/mobile-devices/tablet-development in 195ms
+[32mInlined 16.28 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 61.542465
+ GET /hardware/mobile-devices/tablet-development 200 in 355ms
+ ✓ Compiled /hardware/mobile-devices/iphone-15-pro-review in 322ms
+[32mInlined 16.14 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 61.383398
+ GET /hardware/mobile-devices/iphone-15-pro-review 200 in 593ms
+ ✓ Compiled /hardware/mobile-devices/ipad-pro-m4-review in 105ms
+[32mInlined 16.23 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 65.54129
+ GET /hardware/mobile-devices/ipad-pro-m4-review 200 in 244ms
+ ✓ Compiled /hardware/mobile-devices/samsung-galaxy-s24-review in 115ms
+[32mInlined 16.23 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 95.31171
+ GET /hardware/mobile-devices/samsung-galaxy-s24-review 200 in 290ms
+ ✓ Compiled /hardware/mobile-devices/android-flagship-review in 161ms
+[32mInlined 16.28 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 66.054802
+ GET /hardware/mobile-devices/android-flagship-review 200 in 318ms
+ ✓ Compiled /hardware/mobile-devices/surface-pro-11-review in 117ms
+[32mInlined 16.23 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 69.873055
+ GET /hardware/mobile-devices/surface-pro-11-review 200 in 277ms
+ ✓ Compiled /hardware/mobile-devices/android-tablets-development in 120ms
+[32mInlined 16.35 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 106.395685
+ GET /hardware/mobile-devices/android-tablets-development 200 in 299ms
+ ✓ Compiled /hardware/laptops-pcs/gaming-pc-development in 170ms
+[32mInlined 16.08 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 42.116204
+ GET /hardware/laptops-pcs/gaming-pc-development 200 in 294ms
+ ✓ Compiled /hardware/laptops-pcs/budget-laptops-development in 167ms
+[32mInlined 16.07 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 43.049392
+ GET /hardware/laptops-pcs/budget-laptops-development 200 in 278ms
+ ✓ Compiled /hardware/laptops-pcs/dell-xps-developer-review in 142ms
+[32mInlined 16.08 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 47.611993
+ GET /hardware/laptops-pcs/dell-xps-developer-review 200 in 279ms
+ ✓ Compiled /hardware/laptops-pcs/macbook-pro-m3-review in 140ms
+[32mInlined 15.96 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 47.007123
+ GET /hardware/laptops-pcs/macbook-pro-m3-review 200 in 269ms
+ ✓ Compiled /hardware/laptops-pcs/thinkpad-p1-review in 130ms
+[32mInlined 16.08 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 43.278378
+ GET /hardware/laptops-pcs/thinkpad-p1-review 200 in 250ms
+ ✓ Compiled /productivity in 89ms
+[32mInlined 14.84 kB (9% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 38.687969
+ GET /productivity 200 in 193ms
+ ✓ Compiled /reviews in 143ms
+[32mInlined 16.94 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 48.717763
+ GET /reviews 200 in 279ms
+ ✓ Compiled /tutorials in 148ms
+[32mInlined 17.03 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 42.466168
+ GET /tutorials 200 in 283ms
+ ✓ Compiled /ai-ml in 77ms
+[32mInlined 14.71 kB (9% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 37.623833
+ GET /ai-ml 200 in 177ms
+[32mInlined 14.84 kB (9% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 56.795888
+ GET /web-dev 200 in 124ms
+[32mInlined 18.76 kB (12% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 55.257223
+ GET / 200 in 162ms
+ ✓ Compiled /about in 148ms
+[32mInlined 15.81 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 36.689086
+ GET /about 200 in 251ms
+[32mInlined 14.71 kB (9% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 35.835664
+ GET /ai-ml 200 in 103ms
+ ✓ Compiled /ai-trending in 152ms
+[32mInlined 16.41 kB (10% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 70.32894
+ GET /ai-trending 200 in 307ms
+ ✓ Compiled /ai-trending/ai-coding-tools in 205ms
+[32mInlined 17.28 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 98.562585
+ GET /ai-trending/ai-coding-tools 200 in 407ms
+ ✓ Compiled /ai-trending/ai-integration-tutorials in 226ms
+[32mInlined 17.27 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 49.017592
+ GET /ai-trending/ai-integration-tutorials 200 in 371ms
+ ✓ Compiled /ai-trending/ai-integration-tutorials/ai-chatbot-development in 126ms
+[32mInlined 19.20 kB (12% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 73.410321
+ GET /ai-trending/ai-integration-tutorials/ai-chatbot-development 200 in 289ms
+ ✓ Compiled /ai-trending/ai-integration-tutorials/ai-image-generation in 146ms
+[32mInlined 19.20 kB (12% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 47.163107
+ GET /ai-trending/ai-integration-tutorials/ai-image-generation 200 in 289ms
+ ✓ Compiled /ai-trending/ai-integration-tutorials/langchain-tutorial in 140ms
+[32mInlined 19.20 kB (12% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 48.459351
+ GET /ai-trending/ai-integration-tutorials/langchain-tutorial 200 in 272ms
+ ✓ Compiled /ai-trending/ai-integration-tutorials/openai-api-integration in 131ms
+[32mInlined 19.20 kB (12% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 56.345703
+ GET /ai-trending/ai-integration-tutorials/openai-api-integration 200 in 274ms
+[32mInlined 17.92 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 40.335638
+ GET /tutorials/web-development/css-animations-guide 200 in 104ms
+[32mInlined 17.92 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 42.982174
+ GET /tutorials/web-development/dom-manipulation-js 200 in 128ms
+[32mInlined 17.98 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 41.047131
+ GET /tutorials/web-development/html-css-basics 200 in 100ms
+[32mInlined 17.92 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 39.628937
+ GET /tutorials/web-development/javascript-es6-guide 200 in 106ms
+[32mInlined 17.92 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 41.557621
+ GET /tutorials/web-development/responsive-design-css 200 in 110ms
+[32mInlined 17.92 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 47.945339
+ GET /tutorials/web-development/web-accessibility-guide 200 in 109ms
+[32mInlined 14.84 kB (9% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 43.118354
+ GET /web-dev 200 in 122ms
+ ✓ Compiled /web-dev/backend-development in 157ms
+[32mInlined 17.55 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 73.914896
+ GET /web-dev/backend-development 200 in 324ms
+ ✓ Compiled /web-dev/devops-deployment in 162ms
+[32mInlined 17.33 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 43.906151
+ GET /web-dev/devops-deployment 200 in 302ms
+ ✓ Compiled /web-dev/frontend-frameworks in 171ms
+[32mInlined 17.27 kB (11% of original 153.80 kB) of _next/static/chunks/src_styles_globals_5bb75e7e.css.[39m
+Time 47.197387
+ GET /web-dev/frontend-frameworks 200 in 313ms

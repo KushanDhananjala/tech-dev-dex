@@ -2,8 +2,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useTheme } from "./ThemeProvider";
-import { Sun, Moon, Menu, X } from "lucide-react";
 import MegaMenu from "./ui/MegaMenu";
+import { Menu, Moon, Sun, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

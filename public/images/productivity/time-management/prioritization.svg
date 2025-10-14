@@ -1,47 +1,61 @@
-<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="priorityGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
-    </linearGradient>
-  </defs>
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Light background -->
+  <rect width="800" height="400" fill="#F8FAFC"/>
   
-  <!-- Priority Matrix -->
-  <rect x="50" y="80" width="150" height="100" rx="8" fill="url(#priorityGradient)" stroke="#059669" stroke-width="2"/>
-  <text x="125" y="100" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Urgent & Important</text>
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" fill="#1E293B" font-family="Arial" font-size="24" font-weight="bold">Task Prioritization Matrix</text>
   
-  <rect x="210" y="80" width="150" height="100" rx="8" fill="url(#priorityGradient)" stroke="#059669" stroke-width="2"/>
-  <text x="285" y="100" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Important, Not Urgent</text>
+  <!-- Matrix Grid -->
+  <rect x="100" y="80" width="300" height="200" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <line x1="250" y1="80" x2="250" y2="280" stroke="#CBD5E1" stroke-width="2"/>
+  <line x1="100" y1="180" x2="400" y2="180" stroke="#CBD5E1" stroke-width="2"/>
   
-  <rect x="50" y="190" width="150" height="100" rx="8" fill="url(#priorityGradient)" stroke="#059669" stroke-width="2"/>
-  <text x="125" y="210" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Urgent, Not Important</text>
+  <!-- Quadrant 1: Urgent & Important -->
+  <rect x="110" y="90" width="130" height="80" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="175" y="110" text-anchor="middle" fill="#92400E" font-family="Arial" font-size="12" font-weight="bold">URGENT</text>
+  <text x="175" y="125" text-anchor="middle" fill="#92400E" font-family="Arial" font-size="12" font-weight="bold">IMPORTANT</text>
+  <text x="175" y="145" text-anchor="middle" fill="#92400E" font-family="Arial" font-size="10">Do First</text>
+  <text x="175" y="160" text-anchor="middle" fill="#92400E" font-family="Arial" font-size="9">Crises, Deadlines</text>
   
-  <rect x="210" y="190" width="150" height="100" rx="8" fill="url(#priorityGradient)" stroke="#059669" stroke-width="2"/>
-  <text x="285" y="210" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" style="font-weight:bold;">Not Urgent, Not Important</text>
+  <!-- Quadrant 2: Not Urgent & Important -->
+  <rect x="260" y="90" width="130" height="80" fill="#D1FAE5" stroke="#10B981" stroke-width="2"/>
+  <text x="325" y="110" text-anchor="middle" fill="#065F46" font-family="Arial" font-size="12" font-weight="bold">NOT URGENT</text>
+  <text x="325" y="125" text-anchor="middle" fill="#065F46" font-family="Arial" font-size="12" font-weight="bold">IMPORTANT</text>
+  <text x="325" y="145" text-anchor="middle" fill="#065F46" font-family="Arial" font-size="10">Schedule</text>
+  <text x="325" y="160" text-anchor="middle" fill="#065F46" font-family="Arial" font-size="9">Planning, Learning</text>
   
-  <!-- Priority Features -->
-  <rect x="50" y="300" width="60" height="25" rx="4" fill="#6b7280" />
-  <text x="80" y="315" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Eisenhower</text>
+  <!-- Quadrant 3: Urgent & Not Important -->
+  <rect x="110" y="190" width="130" height="80" fill="#FEE2E2" stroke="#EF4444" stroke-width="2"/>
+  <text x="175" y="210" text-anchor="middle" fill="#991B1B" font-family="Arial" font-size="12" font-weight="bold">URGENT</text>
+  <text x="175" y="225" text-anchor="middle" fill="#991B1B" font-family="Arial" font-size="12" font-weight="bold">NOT IMPORTANT</text>
+  <text x="175" y="245" text-anchor="middle" fill="#991B1B" font-family="Arial" font-size="10">Delegate</text>
+  <text x="175" y="260" text-anchor="middle" fill="#991B1B" font-family="Arial" font-size="9">Interruptions</text>
   
-  <rect x="120" y="300" width="60" height="25" rx="4" fill="#6b7280" />
-  <text x="150" y="315" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Matrix</text>
+  <!-- Quadrant 4: Not Urgent & Not Important -->
+  <rect x="260" y="190" width="130" height="80" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="2"/>
+  <text x="325" y="210" text-anchor="middle" fill="#374151" font-family="Arial" font-size="12" font-weight="bold">NOT URGENT</text>
+  <text x="325" y="225" text-anchor="middle" fill="#374151" font-family="Arial" font-size="12" font-weight="bold">NOT IMPORTANT</text>
+  <text x="325" y="245" text-anchor="middle" fill="#374151" font-family="Arial" font-size="10">Eliminate</text>
+  <text x="325" y="260" text-anchor="middle" fill="#374151" font-family="Arial" font-size="9">Time Wasters</text>
   
-  <rect x="190" y="300" width="60" height="25" rx="4" fill="#6b7280" />
-  <text x="220" y="315" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Focus</text>
+  <!-- Axis Labels -->
+  <text x="50" y="180" text-anchor="middle" fill="#374151" font-family="Arial" font-size="14" font-weight="bold" transform="rotate(-90 50 180)">IMPORTANT</text>
+  <text x="400" y="320" text-anchor="middle" fill="#374151" font-family="Arial" font-size="14" font-weight="bold">URGENT</text>
   
-  <rect x="260" y="300" width="60" height="25" rx="4" fill="#6b7280" />
-  <text x="290" y="315" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Strategy</text>
+  <!-- Examples -->
+  <text x="500" y="100" fill="#1E293B" font-family="Arial" font-size="16" font-weight="bold">Examples:</text>
   
-  <rect x="330" y="300" width="60" height="25" rx="4" fill="#6b7280" />
-  <text x="360" y="315" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" style="font-weight:bold;">Decision</text>
+  <text x="500" y="125" fill="#374151" font-family="Arial" font-size="12">• Q1: Bug fixes, deadlines</text>
+  <text x="500" y="145" fill="#374151" font-family="Arial" font-size="12">• Q2: Learning, planning</text>
+  <text x="500" y="165" fill="#374151" font-family="Arial" font-size="12">• Q3: Meetings, emails</text>
+  <text x="500" y="185" fill="#374151" font-family="Arial" font-size="12">• Q4: Social media, TV</text>
   
-  <!-- Performance Indicators -->
-  <circle cx="100" cy="350" r="4" fill="#059669" />
-  <text x="110" y="355" fill="#059669" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Strategic</text>
+  <!-- Benefits -->
+  <text x="500" y="220" fill="#1E293B" font-family="Arial" font-size="16" font-weight="bold">Benefits:</text>
+  <text x="500" y="240" fill="#374151" font-family="Arial" font-size="12">• Focus on high-impact work</text>
+  <text x="500" y="255" fill="#374151" font-family="Arial" font-size="12">• Reduce time on low-value tasks</text>
+  <text x="500" y="270" fill="#374151" font-family="Arial" font-size="12">• Better work-life balance</text>
   
-  <circle cx="200" cy="350" r="4" fill="#047857" />
-  <text x="210" y="355" fill="#047857" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Focused</text>
-  
-  <circle cx="300" cy="350" r="4" fill="#059669" />
-  <text x="310" y="355" fill="#059669" font-family="Arial, sans-serif" font-size="10" style="font-weight:bold;">Efficient</text>
+  <!-- Bottom text -->
+  <text x="400" y="360" text-anchor="middle" fill="#64748B" font-family="Arial" font-size="14">Eisenhower Matrix for Developer Productivity</text>
 </svg>

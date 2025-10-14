@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Code, Clock, User, Star, CheckCircle, Zap, BookOpen } from 'lucide-react';
+import { CheckCircle, Clock, Code, Star, User, Zap } from 'lucide-react';
 
 const CSSAnimationsGuide = () => {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, BookOpen, Clock, User, Filter, Search } from 'lucide-react';
+import { ArrowLeft, BookOpen, Clock, Filter, Search, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const ProductivityTools = () => {

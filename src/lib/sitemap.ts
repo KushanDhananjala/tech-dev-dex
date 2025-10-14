@@ -1,5 +1,4 @@
-import { GetStaticProps } from "next";
-import { getAllMDXContent } from "./mdx";
+import { getAllMDXContent, MDXContent } from "./mdx";
 
 export interface SitemapUrl {
   loc: string;
@@ -281,8 +280,20 @@ export function generateSitemap(): string {
     }
   ];
 
-  // Get all MDX content for individual articles
-  const allContent = getAllMDXContent();
+  // Get all MDX content for individual articles from all categories
+  const categories = ['tutorials', 'reviews', 'hardware', 'productivity', 'ai-trending', 'web-dev'];
+  const allContent: MDXContent[] = [];
+  
+  for (const category of categories) {
+    try {
+      const categoryContent = getAllMDXContent(category);
+      allContent.push(...categoryContent);
+    } catch {
+      // Skip if category doesn't exist
+      continue;
+    }
+  }
+  
   const articlePages: SitemapUrl[] = allContent.map(content => ({
     loc: `${baseUrl}/${content.category.toLowerCase().replace(/\s+/g, '-')}/${content.slug}`,
     lastmod: content.date,

@@ -1,11 +1,7 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  ChevronDown,
-  ArrowRight,
-  TrendingUp
-} from "lucide-react";
+import { ArrowRight, ChevronDown, TrendingUp } from 'lucide-react';
 import menu from "../../menu";
 
 // Icon map for potential future use

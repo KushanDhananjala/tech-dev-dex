@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { GitBranch, Zap, Users, Clock, Star, CheckCircle, ArrowRight, Code, Terminal, GitCommit } from 'lucide-react';
+import { ArrowRight, CheckCircle, Clock, GitBranch, Star, Users, Zap } from 'lucide-react';
 
 const GitWorkflowOptimization = () => {
   return (

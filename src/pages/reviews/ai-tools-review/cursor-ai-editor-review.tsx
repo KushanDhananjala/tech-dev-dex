@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Star, Clock, User, CheckCircle, Zap, Brain, Code } from 'lucide-react';
+import { Brain, CheckCircle, Clock, Star, User, Zap } from 'lucide-react';
 
 const CursorAIEditorReview = () => {
   return (

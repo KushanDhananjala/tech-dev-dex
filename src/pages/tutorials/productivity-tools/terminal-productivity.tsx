@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Terminal, Zap, Keyboard, Settings, Code, Users, Star, Clock, TrendingUp, CheckCircle, ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle, Clock, Star, Terminal, Users, Zap } from 'lucide-react';
 
 const TerminalProductivity = () => {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Mouse, Star, Clock, User, Filter, Search } from 'lucide-react';
+import { ArrowLeft, Clock, Filter, Mouse, Search, Star, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Peripherals = () => {
@@ -16,6 +16,17 @@ const Peripherals = () => {
       category: "Keyboards",
       rating: 5,
       readTime: "18 min",
+      author: "TechDevDex Team",
+      date: "2024-12-01",
+    },
+    {
+      slug: "gaming-keyboards-review",
+      title: "Best Gaming Keyboards for Developers",
+      description: "Comprehensive review of gaming keyboards that excel for programming with mechanical switches, RGB lighting, and programmable keys.",
+      image: "/images/hardware/peripherals/real/mechanical-keyboards.jpg",
+      category: "Keyboards",
+      rating: 4,
+      readTime: "17 min",
       author: "TechDevDex Team",
       date: "2024-12-01",
     },

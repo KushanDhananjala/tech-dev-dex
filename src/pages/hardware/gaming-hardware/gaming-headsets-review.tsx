@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Star, Clock, User, CheckCircle, Zap, Headphones } from 'lucide-react';
+import { CheckCircle, Clock, Headphones, Star, User } from 'lucide-react';
 
 const GamingHeadsetsReview = () => {
   return (

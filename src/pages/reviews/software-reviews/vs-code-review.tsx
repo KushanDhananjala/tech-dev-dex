@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { ArrowLeft, Star, Clock, User, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Clock, ExternalLink, Star, User } from 'lucide-react';
 import MDXContent from '../../../components/MDXContent';
 
 const VSCodeReview = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Code, Clock, User, Star, CheckCircle, BookOpen, Target } from 'lucide-react';
+import { Clock, Star, User } from 'lucide-react';
 
 const HTMLCSSBasics = () => {
   return (

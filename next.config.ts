@@ -12,7 +12,9 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 60,
-    unoptimized: true, // Disable optimization for SVG files
+    unoptimized: false, // Enable optimization for better performance
+    dangerouslyAllowSVG: true, // Allow SVG files
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   
   // Turbopack configuration

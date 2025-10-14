@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CheckCircle, Clock, Users, Star, ArrowRight, Code, Terminal, Zap } from 'lucide-react';
+import { ArrowRight, CheckCircle, Clock, Code, Star, Terminal, Users, Zap } from 'lucide-react';
 
 const BashAutomationGuide = () => {
   return (

@@ -1,0 +1,29 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dockerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0db7ed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2496ed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1e293b"/>
+  
+  <!-- Docker whale -->
+  <g transform="translate(400, 200)">
+    <!-- Whale body -->
+    <ellipse cx="0" cy="0" rx="80" ry="40" fill="url(#dockerGrad)"/>
+    
+    <!-- Whale tail -->
+    <path d="M-80,0 Q-120,-20 -100,-40 Q-80,-20 -80,0" fill="url(#dockerGrad)"/>
+    
+    <!-- Docker containers on whale -->
+    <rect x="-20" y="-30" width="20" height="15" fill="#fff" rx="2"/>
+    <rect x="5" y="-30" width="20" height="15" fill="#fff" rx="2"/>
+    <rect x="-7" y="-10" width="20" height="15" fill="#fff" rx="2"/>
+    
+    <!-- Text -->
+    <text x="0" y="60" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="24" style="font-weight:bold;">Docker Basics</text>
+    <text x="0" y="85" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">Container Fundamentals</text>
+  </g>
+</svg>

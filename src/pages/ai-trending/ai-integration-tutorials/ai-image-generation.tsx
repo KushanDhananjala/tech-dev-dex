@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Brain, Zap, Code, Settings, Users, Star, Clock, TrendingUp, CheckCircle, ArrowRight, ImageIcon } from 'lucide-react';
+import { ArrowRight, CheckCircle, Clock, ImageIcon, Star, Users, Zap } from 'lucide-react';
 
 const AIImageGeneration = () => {
   return (

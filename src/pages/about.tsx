@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { motion } from "framer-motion";
-import { Users, Target, Lightbulb, Heart } from "lucide-react";
+import { Heart, Lightbulb, Target, Users } from 'lucide-react';
 
 export default function AboutPage() {
   return (

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { motion } from "framer-motion";
-import { FileText, Scale, Users, AlertCircle } from "lucide-react";
+import { AlertCircle, FileText, Scale, Users } from 'lucide-react';
 
 export default function TermsPage() {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { ArrowLeft, Star, Clock, User, CheckCircle, Home } from 'lucide-react';
+import { CheckCircle, Clock, Home, Star, User } from 'lucide-react';
 
 const GamingChairsReview = () => {
   return (
@@ -223,6 +223,165 @@ const GamingChairsReview = () => {
                 <div className="mt-4 p-3 bg-blue-50 rounded">
                   <p className="text-sm text-blue-800">
                     <strong>Rating:</strong> 4.3/5 - Great value for developers on a budget
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">3. Secretlab Titan Evo 2022</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-3">Key Features</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                        <span>Premium materials</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                        <span>4D armrests</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                        <span>Magnetic memory foam head pillow</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                        <span>Adjustable lumbar support</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-3">Development Benefits</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-1 flex-shrink-0" />
+                        <span>Exceptional build quality</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-1 flex-shrink-0" />
+                        <span>Perfect for tall developers</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-1 flex-shrink-0" />
+                        <span>5-year warranty</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-1 flex-shrink-0" />
+                        <span>Professional appearance</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="mt-4 p-3 bg-purple-50 rounded">
+                  <p className="text-sm text-purple-800">
+                    <strong>Rating:</strong> 4.8/5 - Premium choice for serious developers
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">4. Noblechairs EPIC</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-3">Key Features</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                        <span>German engineering</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                        <span>High-quality PU leather</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                        <span>4D armrests</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                        <span>Adjustable height and tilt</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-3">Development Benefits</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-1 flex-shrink-0" />
+                        <span>Excellent durability</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-1 flex-shrink-0" />
+                        <span>Comfortable for long sessions</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-1 flex-shrink-0" />
+                        <span>Easy to clean</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-1 flex-shrink-0" />
+                        <span>Professional look</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="mt-4 p-3 bg-orange-50 rounded">
+                  <p className="text-sm text-orange-800">
+                    <strong>Rating:</strong> 4.5/5 - Reliable choice for professional developers
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">5. AKRacing Core Series</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-3">Key Features</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                        <span>Budget-friendly option</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                        <span>Basic ergonomic features</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                        <span>Adjustable height</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                        <span>Multiple color options</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-3">Development Benefits</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-1 flex-shrink-0" />
+                        <span>Great value for money</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-1 flex-shrink-0" />
+                        <span>Good for beginners</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-1 flex-shrink-0" />
+                        <span>Easy assembly</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-1 flex-shrink-0" />
+                        <span>Decent comfort</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="mt-4 p-3 bg-green-50 rounded">
+                  <p className="text-sm text-green-800">
+                    <strong>Rating:</strong> 4.0/5 - Best budget option for new developers
                   </p>
                 </div>
               </div>

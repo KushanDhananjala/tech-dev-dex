@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Code, Clock, User, Star, TrendingUp, CheckCircle, Zap, Award, BookOpen, Target } from 'lucide-react';
+import { ArrowLeft, BookOpen, CheckCircle, Clock, Code, Star, Target, TrendingUp, User, Zap } from 'lucide-react';
 
 const WebDevelopment = () => {
   // Sample tutorial data

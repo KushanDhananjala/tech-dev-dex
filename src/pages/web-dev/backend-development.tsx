@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Server, Star, Clock, User, Filter, Search } from 'lucide-react';
+import { ArrowLeft, Clock, Filter, Search, Server, Star, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const BackendDevelopment = () => {

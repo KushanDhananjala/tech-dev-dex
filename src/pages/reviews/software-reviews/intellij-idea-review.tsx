@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Star, Clock, User, Calendar, Tag } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const IntelliJIDEAReview = () => {
@@ -75,7 +75,7 @@ const IntelliJIDEAReview = () => {
               <div className="max-w-4xl mx-auto prose prose-lg dark:prose-invert">
                 <div className="mb-8">
                   <Image 
-                    src="/images/posts/intellij-review.jpg" 
+                    src="/images/posts/intellij-review.svg" 
                     alt="IntelliJ IDEA Review" 
                     width={800} 
                     height={400} 

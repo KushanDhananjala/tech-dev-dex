@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { motion } from "framer-motion";
-import { Mail, MessageCircle, Send, Clock } from "lucide-react";
+import { Clock, Mail, MessageCircle, Send } from 'lucide-react';
 
 export default function ContactPage() {
   return (

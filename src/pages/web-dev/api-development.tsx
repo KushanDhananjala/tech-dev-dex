@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { ArrowLeft, Zap } from 'lucide-react';
 import MDXContent from '../../components/MDXContent';
+import { ArrowLeft, Zap } from 'lucide-react';
 
 const APIDevelopment = () => {
   return (

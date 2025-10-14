@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Tabs from "../../components/ui/Tabs";
-import { Bot, Languages, PlugZap, Cpu, ArrowRight, Clock, User } from "lucide-react";
+import { ArrowRight, Bot, Clock, Cpu, Languages, PlugZap, User } from 'lucide-react';
 import { motion } from "framer-motion";
 
 const subcategories = [

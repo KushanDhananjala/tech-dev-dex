@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { ArrowLeft, GitCompareArrows, Star, Clock, User, Check, X } from 'lucide-react';
+import { ArrowLeft, Check, Clock, GitCompareArrows, Star, User, X } from 'lucide-react';
 import MDXContent from '../../../components/MDXContent';
 
 const VSCodeVsSublime = () => {

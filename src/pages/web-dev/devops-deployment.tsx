@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Cloud, Star, Clock, User, Filter, Search } from 'lucide-react';
+import { ArrowLeft, Clock, Cloud, Filter, Search, Star, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const DevOpsDeployment = () => {

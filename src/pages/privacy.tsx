@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { motion } from "framer-motion";
-import { Shield, Eye, Lock, Database } from "lucide-react";
+import { Database, Eye, Lock, Shield } from 'lucide-react';
 
 export default function PrivacyPage() {
   return (

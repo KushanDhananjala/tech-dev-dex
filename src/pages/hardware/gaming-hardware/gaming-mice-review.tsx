@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Star, Clock, User, CheckCircle, Zap, Mouse } from 'lucide-react';
+import { CheckCircle, Clock, Mouse, Star, User } from 'lucide-react';
 
 const GamingMiceReview = () => {
   return (

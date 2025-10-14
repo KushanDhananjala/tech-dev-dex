@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { ArrowLeft, Database } from 'lucide-react';
 import MDXContent from '../../components/MDXContent';
+import { ArrowLeft, Database } from 'lucide-react';
 
 const DatabaseManagement = () => {
   return (

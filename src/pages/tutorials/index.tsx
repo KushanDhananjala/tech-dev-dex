@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Tabs from "../../components/ui/Tabs";
-import { Dock, Github, Box, BookOpen, ArrowRight, Clock, User } from "lucide-react";
+import { ArrowRight, BookOpen, Box, Clock, Dock, Github, User } from 'lucide-react';
 import { motion } from "framer-motion";
 
 const subcategories = [

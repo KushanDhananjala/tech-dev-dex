@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Star, Clock, User, Calendar, Tag } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, Star, Tag, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const WebStormReview = () => {
@@ -75,7 +75,7 @@ const WebStormReview = () => {
               <div className="max-w-4xl mx-auto prose prose-lg dark:prose-invert">
                 <div className="mb-8">
                   <Image 
-                    src="/images/posts/webstorm-review.jpg" 
+                    src="/images/posts/webstorm-review.svg" 
                     alt="WebStorm Review" 
                     width={800} 
                     height={400} 

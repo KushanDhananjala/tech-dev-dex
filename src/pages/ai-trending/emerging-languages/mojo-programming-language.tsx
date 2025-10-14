@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Code, Zap, Brain, Settings, Users, Star, Clock, TrendingUp, CheckCircle, ArrowRight } from 'lucide-react';
+import { ArrowRight, Brain, CheckCircle, Clock, Star, Users, Zap } from 'lucide-react';
 
 const MojoProgrammingLanguage = () => {
   return (

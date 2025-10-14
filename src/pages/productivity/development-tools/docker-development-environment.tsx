@@ -1,10 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
 import MDXContentComponent from '../../../components/MDXContent';
 import { getMDXContent, MDXContent } from '../../../lib/mdx';
 import { GetStaticProps } from 'next';
+import { ArrowLeft } from 'lucide-react';
 
 interface DockerDevelopmentEnvironmentProps {
   content: MDXContent | null;
