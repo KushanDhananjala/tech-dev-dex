@@ -73,10 +73,12 @@ export default function MDXContentComponent({ content }: MDXContentProps) {
               <div className="mb-8">
                 <Image
                   src={content.featuredImage}
-                  alt={content.title}
+                  alt={`${content.title} - ${content.description.substring(0, 100)}...`}
                   width={800}
                   height={400}
                   className="w-full h-64 rounded-2xl shadow-lg object-cover"
+                  priority={content.featured}
+                  loading={content.featured ? "eager" : "lazy"}
                 />
               </div>
             )}
