@@ -75,7 +75,7 @@ export default function HardwarePage() {
               Optimal coding environments, workstations, and development configurations.
             </p>
             <Link 
-              href="/tutorials/programming-tips" 
+              href="/hardware/development-setup" 
               className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
             >
               Setup Guide →
@@ -96,10 +96,52 @@ export default function HardwarePage() {
               Keyboards, mice, monitors, and other accessories for developers.
             </p>
             <Link 
-              href="/reviews/gadget-reviews" 
+              href="/hardware/peripherals" 
               className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
             >
               View Peripherals →
+            </Link>
+          </div>
+
+          {/* Mobile Devices */}
+          <div id="mobile-devices" className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
+            <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center text-white mb-4">
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
+              Mobile Devices
+            </h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-4">
+              Smartphones, tablets, and mobile development devices for programmers.
+            </p>
+            <Link 
+              href="/hardware/mobile-devices" 
+              className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
+            >
+              View Mobile →
+            </Link>
+          </div>
+
+          {/* Gaming Hardware */}
+          <div id="gaming-hardware" className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
+            <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center text-white mb-4">
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
+              Gaming Hardware
+            </h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-4">
+              Gaming peripherals, equipment, and high-performance hardware for developers.
+            </p>
+            <Link 
+              href="/hardware/gaming-hardware" 
+              className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
+            >
+              View Gaming →
             </Link>
           </div>
         </div>

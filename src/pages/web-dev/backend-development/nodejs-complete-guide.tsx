@@ -193,9 +193,16 @@ const NodeJSCompleteGuide = () => {
               </p>
 
               <h3>Basic Express Server</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`const express = require('express');
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">javascript</span>
+                </div>
+                <pre className="code-block-content"><code className="language-javascript">{`const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -210,8 +217,7 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(\`Server running on port \${PORT}\`);
-});`}
-                </pre>
+});`}</code></pre>
               </div>
 
               <h2>Database Integration</h2>
@@ -222,9 +228,16 @@ app.listen(PORT, () => {
               </p>
 
               <h3>MongoDB with Mongoose</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`const mongoose = require('mongoose');
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">javascript</span>
+                </div>
+                <pre className="code-block-content"><code className="language-javascript">{`const mongoose = require('mongoose');
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/myapp', {
@@ -248,8 +261,7 @@ const user = new User({
   password: 'hashedPassword'
 });
 
-user.save();`}
-                </pre>
+user.save();`}</code></pre>
               </div>
 
               <h2>Authentication and Security</h2>
@@ -260,9 +272,16 @@ user.save();`}
               </p>
 
               <h3>JWT Authentication</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`const jwt = require('jsonwebtoken');
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">javascript</span>
+                </div>
+                <pre className="code-block-content"><code className="language-javascript">{`const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 // Login endpoint
@@ -280,8 +299,7 @@ app.post('/login', async (req, res) => {
   // Generate JWT
   const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
   res.json({ token });
-});`}
-                </pre>
+});`}</code></pre>
               </div>
 
               <h2>Testing Your Application</h2>
@@ -299,9 +317,16 @@ app.post('/login', async (req, res) => {
               </p>
 
               <h3>Docker Configuration</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`# Dockerfile
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">dockerfile</span>
+                </div>
+                <pre className="code-block-content"><code className="language-dockerfile">{`# Dockerfile
 FROM node:18-alpine
 
 WORKDIR /app
@@ -311,8 +336,7 @@ RUN npm ci --only=production
 COPY . .
 EXPOSE 3000
 
-CMD ["node", "server.js"]`}
-                </pre>
+CMD ["node", "server.js"]`}</code></pre>
               </div>
 
               <h2>Best Practices</h2>

@@ -192,9 +192,16 @@ const GoBackendDevelopment = () => {
               </p>
 
               <h3>Basic Go Program</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`package main
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">go</span>
+                </div>
+                <pre className="code-block-content"><code className="language-go">{`package main
 
 import (
     "fmt"
@@ -214,8 +221,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 // Go modules
 // go mod init myapp
-// go mod tidy`}
-                </pre>
+// go mod tidy`}</code></pre>
               </div>
 
               <h2>Concurrent Programming with Goroutines</h2>
@@ -226,9 +232,16 @@ func handler(w http.ResponseWriter, r *http.Request) {
               </p>
 
               <h3>Goroutines and Channels</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`package main
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">go</span>
+                </div>
+                <pre className="code-block-content"><code className="language-go">{`package main
 
 import (
     "fmt"
@@ -277,8 +290,7 @@ func selectExample() {
             fmt.Println(msg2)
         }
     }
-}`}
-                </pre>
+}`}</code></pre>
               </div>
 
               <h2>Web Frameworks for Go</h2>
@@ -289,9 +301,16 @@ func selectExample() {
               </p>
 
               <h3>Gin Framework Example</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`package main
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">go</span>
+                </div>
+                <pre className="code-block-content"><code className="language-go">{`package main
 
 import (
     "net/http"
@@ -299,9 +318,9 @@ import (
 )
 
 type User struct {
-    ID    int    &#96;json:"id"&#96;
-    Name  string &#96;json:"name"&#96;
-    Email string &#96;json:"email"&#96;
+    ID    int    `json:"id"`
+    Name  string `json:"name"`
+    Email string `json:"email"`
 }
 
 var users = []User{
@@ -345,8 +364,7 @@ func createUser(c *gin.Context) {
     newUser.ID = len(users) + 1
     users = append(users, newUser)
     c.JSON(http.StatusCreated, newUser)
-}`}
-                </pre>
+}`}</code></pre>
               </div>
 
               <h2>Database Integration</h2>
@@ -357,9 +375,16 @@ func createUser(c *gin.Context) {
               </p>
 
               <h3>GORM Example</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`package main
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">go</span>
+                </div>
+                <pre className="code-block-content"><code className="language-go">{`package main
 
 import (
     "gorm.io/driver/postgres"
@@ -368,20 +393,20 @@ import (
 )
 
 type User struct {
-    ID        uint      &#96;gorm:"primaryKey"&#96;
-    Name      string    &#96;gorm:"size:100;not null"&#96;
-    Email     string    &#96;gorm:"uniqueIndex;size:255;not null"&#96;
+    ID        uint      `gorm:"primaryKey"`
+    Name      string    `gorm:"size:100;not null"`
+    Email     string    `gorm:"uniqueIndex;size:255;not null"`
     CreatedAt time.Time
     UpdatedAt time.Time
 }
 
 type Product struct {
-    ID          uint   &#96;gorm:"primaryKey"&#96;
-    Name        string &#96;gorm:"size:100;not null"&#96;
+    ID          uint   `gorm:"primaryKey"`
+    Name        string `gorm:"size:100;not null"`
     Description string
     Price       float64
     UserID      uint
-    User        User   &#96;gorm:"foreignKey:UserID"&#96;
+    User        User   `gorm:"foreignKey:UserID"`
 }
 
 func main() {
@@ -406,8 +431,7 @@ func main() {
     // Query with associations
     var result User
     db.Preload("Products").First(&result, user.ID)
-}`}
-                </pre>
+}`}</code></pre>
               </div>
 
               <h2>Testing in Go</h2>

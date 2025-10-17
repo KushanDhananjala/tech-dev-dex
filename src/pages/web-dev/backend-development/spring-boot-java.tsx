@@ -191,9 +191,16 @@ const SpringBootJava = () => {
               </p>
 
               <h3>Project Setup</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`// pom.xml dependencies
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">xml</span>
+                </div>
+                <pre className="code-block-content"><code className="language-xml">{`// pom.xml dependencies
 <dependencies>
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -220,8 +227,7 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-}`}
-                </pre>
+}`}</code></pre>
               </div>
 
               <h2>Building REST APIs</h2>
@@ -232,9 +238,16 @@ public class Application {
               </p>
 
               <h3>REST Controller Example</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`@RestController
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">java</span>
+                </div>
+                <pre className="code-block-content"><code className="language-java">{`@RestController
 @RequestMapping("/api/users")
 public class UserController {
     
@@ -276,8 +289,7 @@ public class UserController {
         userService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
-}`}
-                </pre>
+}`}</code></pre>
               </div>
 
               <h2>Data Access with Spring Data JPA</h2>
@@ -288,9 +300,16 @@ public class UserController {
               </p>
 
               <h3>Entity and Repository</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`// Entity
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">java</span>
+                </div>
+                <pre className="code-block-content"><code className="language-java">{`// Entity
 @Entity
 @Table(name = "users")
 public class User {
@@ -349,8 +368,7 @@ public class UserService {
     public void deleteById(Long id) {
         userRepository.deleteById(id);
     }
-}`}
-                </pre>
+}`}</code></pre>
               </div>
 
               <h2>Security with Spring Security</h2>
@@ -361,9 +379,16 @@ public class UserService {
               </p>
 
               <h3>Security Configuration</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`@Configuration
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">java</span>
+                </div>
+                <pre className="code-block-content"><code className="language-java">{`@Configuration
 @EnableWebSecurity
 public class SecurityConfig {
     
@@ -419,8 +444,7 @@ public class JwtTokenProvider {
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
     }
-}`}
-                </pre>
+}`}</code></pre>
               </div>
 
               <h2>Microservices with Spring Boot</h2>
@@ -431,9 +455,16 @@ public class JwtTokenProvider {
               </p>
 
               <h3>Service Discovery</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`// Application Properties
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">java</span>
+                </div>
+                <pre className="code-block-content"><code className="language-java">{`// Application Properties
 spring.application.name=user-service
 eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
 eureka.instance.prefer-ip-address=true
@@ -470,8 +501,7 @@ public class UserService {
         List<Order> orders = orderServiceClient.getOrdersByUserId(userId);
         return new UserWithOrders(user, orders);
     }
-}`}
-                </pre>
+}`}</code></pre>
               </div>
 
               <h2>Testing Spring Boot Applications</h2>
@@ -482,9 +512,16 @@ public class UserService {
               </p>
 
               <h3>Testing Examples</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`// Integration Test
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">java</span>
+                </div>
+                <pre className="code-block-content"><code className="language-java">{`// Integration Test
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestDatabase
 class UserControllerIntegrationTest {
@@ -539,8 +576,7 @@ class UserServiceTest {
         assertTrue(result.isPresent());
         assertEquals("test@example.com", result.get().getEmail());
     }
-}`}
-                </pre>
+}`}</code></pre>
               </div>
 
               <h2>Production Deployment</h2>
@@ -551,9 +587,16 @@ class UserServiceTest {
               </p>
 
               <h3>Docker Configuration</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`# Dockerfile
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">dockerfile</span>
+                </div>
+                <pre className="code-block-content"><code className="language-dockerfile">{`# Dockerfile
 FROM openjdk:11-jre-slim
 
 WORKDIR /app
@@ -587,8 +630,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  postgres_data:`}
-                </pre>
+  postgres_data:`}</code></pre>
               </div>
 
               <h2>Best Practices</h2>

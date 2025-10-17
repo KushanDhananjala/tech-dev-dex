@@ -161,8 +161,6 @@ export default function MDXContentComponent({ content }: MDXContentProps) {
               prose-h4:text-sm prose-h4:font-medium prose-h4:mb-2 prose-h4:mt-3 prose-h4:text-slate-700 dark:prose-h4:text-slate-300 prose-h4:leading-loose prose-h4:tracking-normal prose-h4:font-sans
               prose-p:text-slate-700 dark:prose-p:text-slate-300 prose-p:mb-6 prose-p:leading-8 prose-p:text-base prose-p:tracking-normal prose-p:font-sans
               prose-strong:text-slate-900 dark:prose-strong:text-white prose-strong:font-semibold
-              prose-code:text-blue-600 dark:prose-code:text-blue-400 prose-code:bg-slate-100 dark:prose-code:bg-slate-800 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:border prose-code:border-slate-200 dark:prose-code:border-slate-600
-              prose-pre:bg-slate-50 dark:prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-200 dark:prose-pre:border-slate-600 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-0 prose-pre:shadow-sm prose-pre:ring-1 prose-pre:ring-slate-200 dark:prose-pre:ring-slate-600
               prose-blockquote:border-blue-500 prose-blockquote:bg-blue-50 dark:prose-blockquote:bg-blue-900/20 prose-blockquote:text-blue-900 dark:prose-blockquote:text-blue-100 prose-blockquote:my-8 prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-lg prose-blockquote:border-l-4
               prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-a:font-medium prose-a:transition-colors
               prose-li:text-slate-700 dark:prose-li:text-slate-300 prose-li:mb-2 prose-li:leading-8 prose-li:tracking-normal prose-li:font-sans

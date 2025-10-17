@@ -187,9 +187,16 @@ const HTMLCSSBasics = () => {
               Let&apos;s create a simple styled webpage:
             </p>
 
-            <div className="bg-gray-900 rounded-lg p-4 my-6">
-              <pre className="text-green-400 text-sm">
-{`<!DOCTYPE html>
+            <div className="code-block-wrapper">
+              <div className="code-block-header">
+                <div className="code-block-dots">
+                  <span className="dot red"></span>
+                  <span className="dot yellow"></span>
+                  <span className="dot green"></span>
+                </div>
+                <span className="code-block-lang">html</span>
+              </div>
+              <pre className="code-block-content"><code className="language-html">{`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -216,8 +223,7 @@ const HTMLCSSBasics = () => {
     <h1>Welcome to My Website!</h1>
     <p>This is my first styled HTML page with CSS.</p>
 </body>
-</html>`}
-              </pre>
+</html>`}</code></pre>
             </div>
 
             <h2>Next Steps</h2>

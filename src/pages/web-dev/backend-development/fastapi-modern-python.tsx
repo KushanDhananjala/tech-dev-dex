@@ -191,9 +191,16 @@ const FastAPIModernPython = () => {
               </p>
 
               <h3>Installation and Basic Setup</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`# Install FastAPI and Uvicorn
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">python</span>
+                </div>
+                <pre className="code-block-content"><code className="language-python">{`# Install FastAPI and Uvicorn
 pip install fastapi uvicorn
 
 # Create a simple API
@@ -210,8 +217,7 @@ async def read_item(item_id: int, q: str = None):
     return {"item_id": item_id, "q": q}
 
 # Run the server
-# uvicorn main:app --reload`}
-                </pre>
+# uvicorn main:app --reload`}</code></pre>
               </div>
 
               <h2>Type Hints and Data Validation</h2>
@@ -222,9 +228,16 @@ async def read_item(item_id: int, q: str = None):
               </p>
 
               <h3>Pydantic Models</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`from pydantic import BaseModel, EmailStr
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">python</span>
+                </div>
+                <pre className="code-block-content"><code className="language-python">{`from pydantic import BaseModel, EmailStr
 from typing import Optional, List
 from datetime import datetime
 
@@ -248,8 +261,7 @@ class Item(BaseModel):
     description: Optional[str] = None
     price: float
     tax: Optional[float] = None
-    tags: List[str] = []`}
-                </pre>
+    tags: List[str] = []`}</code></pre>
               </div>
 
               <h2>API Endpoints and HTTP Methods</h2>
@@ -260,9 +272,16 @@ class Item(BaseModel):
               </p>
 
               <h3>CRUD Operations</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`from fastapi import FastAPI, HTTPException, Depends
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">python</span>
+                </div>
+                <pre className="code-block-content"><code className="language-python">{`from fastapi import FastAPI, HTTPException, Depends
 from typing import List
 
 app = FastAPI()
@@ -297,8 +316,7 @@ async def delete_item(item_id: int):
     if item_id >= len(items):
         raise HTTPException(status_code=404, detail="Item not found")
     del items[item_id]
-    return {"message": "Item deleted"}`}
-                </pre>
+    return {"message": "Item deleted"}`}</code></pre>
               </div>
 
               <h2>Authentication and Security</h2>
@@ -309,9 +327,16 @@ async def delete_item(item_id: int):
               </p>
 
               <h3>JWT Authentication</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`from fastapi import FastAPI, Depends, HTTPException, status
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">python</span>
+                </div>
+                <pre className="code-block-content"><code className="language-python">{`from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
@@ -353,8 +378,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
             raise credentials_exception
     except JWTError:
         raise credentials_exception
-    return username`}
-                </pre>
+    return username`}</code></pre>
               </div>
 
               <h2>Database Integration</h2>
@@ -365,9 +389,16 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
               </p>
 
               <h3>SQLAlchemy Integration</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`from sqlalchemy import Column, Integer, String, DateTime, create_engine
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">python</span>
+                </div>
+                <pre className="code-block-content"><code className="language-python">{`from sqlalchemy import Column, Integer, String, DateTime, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from fastapi import Depends
@@ -397,8 +428,7 @@ async def create_user(user: UserCreate, db: Session = Depends(get_db)):
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
-    return db_user`}
-                </pre>
+    return db_user`}</code></pre>
               </div>
 
               <h2>Testing FastAPI Applications</h2>
@@ -409,9 +439,16 @@ async def create_user(user: UserCreate, db: Session = Depends(get_db)):
               </p>
 
               <h3>Writing Tests</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`from fastapi.testclient import TestClient
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">python</span>
+                </div>
+                <pre className="code-block-content"><code className="language-python">{`from fastapi.testclient import TestClient
 import pytest
 
 client = TestClient(app)
@@ -440,8 +477,7 @@ def test_read_item():
     assert response.status_code == 200
     data = response.json()
     assert "name" in data
-    assert "price" in data`}
-                </pre>
+    assert "price" in data`}</code></pre>
               </div>
 
               <h2>Deployment and Production</h2>
@@ -452,9 +488,16 @@ def test_read_item():
               </p>
 
               <h3>Docker Configuration</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`# Dockerfile
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">dockerfile</span>
+                </div>
+                <pre className="code-block-content"><code className="language-dockerfile">{`# Dockerfile
 FROM python:3.9-slim
 
 WORKDIR /app
@@ -470,8 +513,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
 pydantic==2.5.0
-sqlalchemy==2.0.23`}
-                </pre>
+sqlalchemy==2.0.23`}</code></pre>
               </div>
 
               <h2>Best Practices</h2>

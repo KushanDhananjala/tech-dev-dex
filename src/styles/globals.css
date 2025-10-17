@@ -256,8 +256,8 @@ a[href*="#"] {
   color: #cbd5e1;
 }
 
-/* Better code block integration */
-.prose pre {
+/* Better code block integration - OVERRIDDEN by custom code blocks */
+.prose pre:not(.code-block-content) {
   margin: 1.5rem 0;
   border-radius: 0.75rem;
   overflow: hidden;
@@ -414,7 +414,39 @@ a[href*="#"] {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
 }
 
+/* Ensure code blocks override prose styles */
+.prose .code-block-wrapper {
+  margin: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  background: white !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
 .code-block-header {
+  background: #f8fafc !important;
+  padding: 4px 8px !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  height: 24px !important;
+  margin: 0 !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+/* Ensure code block header overrides prose styles */
+.prose .code-block-header {
   background: #f8fafc !important;
   padding: 4px 8px !important;
   border-bottom: 1px solid #e2e8f0 !important;
@@ -435,7 +467,24 @@ a[href*="#"] {
   gap: 0.5rem !important;
 }
 
+/* Ensure code block dots overrides prose styles */
+.prose .code-block-dots {
+  @apply flex items-center gap-2;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
 .code-block-dots .dot {
+  @apply w-3 h-3 rounded-full;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  display: inline-block !important;
+}
+
+/* Ensure code block dots base styles override prose styles */
+.prose .code-block-dots .dot {
   @apply w-3 h-3 rounded-full;
   width: 12px !important;
   height: 12px !important;
@@ -448,12 +497,30 @@ a[href*="#"] {
   background-color: #f87171 !important;
 }
 
+/* Ensure code block dots colors override prose styles */
+.prose .code-block-dots .dot.red {
+  @apply bg-red-400;
+  background-color: #f87171 !important;
+}
+
 .code-block-dots .dot.yellow {
   @apply bg-yellow-400;
   background-color: #fbbf24 !important;
 }
 
+/* Ensure code block dots yellow color overrides prose styles */
+.prose .code-block-dots .dot.yellow {
+  @apply bg-yellow-400;
+  background-color: #fbbf24 !important;
+}
+
 .code-block-dots .dot.green {
+  @apply bg-green-400;
+  background-color: #34d399 !important;
+}
+
+/* Ensure code block dots green color overrides prose styles */
+.prose .code-block-dots .dot.green {
   @apply bg-green-400;
   background-color: #34d399 !important;
 }
@@ -466,7 +533,34 @@ a[href*="#"] {
   letter-spacing: 0.05em !important;
 }
 
+/* Ensure code block language overrides prose styles */
+.prose .code-block-lang {
+  @apply text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wide;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
 .code-block-content {
+  background: #ffffff !important;
+  color: #1e293b !important;
+  font-family: 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  padding: 12px !important;
+  margin: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  white-space: pre !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Ensure code block content overrides prose styles */
+.prose .code-block-content {
   background: #ffffff !important;
   color: #1e293b !important;
   font-family: 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace !important;
@@ -493,8 +587,25 @@ a[href*="#"] {
   line-height: inherit !important;
 }
 
+/* Ensure code block content code overrides prose styles */
+.prose .code-block-content code {
+  @apply bg-transparent p-0 text-inherit;
+  font-family: inherit !important;
+  background: transparent !important;
+  padding: 0 !important;
+  color: #1e293b !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
 /* Syntax highlighting overrides for better readability */
 .code-block-content .hljs {
+  background: #ffffff !important;
+  color: #1e293b !important;
+}
+
+/* Ensure syntax highlighting overrides prose styles */
+.prose .code-block-content .hljs {
   background: #ffffff !important;
   color: #1e293b !important;
 }
@@ -504,9 +615,22 @@ a[href*="#"] {
   color: #64748b !important;
 }
 
+/* Ensure syntax highlighting colors override prose styles */
+.prose .code-block-content .hljs-comment,
+.prose .code-block-content .hljs-quote {
+  color: #64748b !important;
+}
+
 .code-block-content .hljs-keyword,
 .code-block-content .hljs-selector-tag,
 .code-block-content .hljs-type {
+  color: #7c3aed !important;
+}
+
+/* Ensure syntax highlighting keyword colors override prose styles */
+.prose .code-block-content .hljs-keyword,
+.prose .code-block-content .hljs-selector-tag,
+.prose .code-block-content .hljs-type {
   color: #7c3aed !important;
 }
 
@@ -515,13 +639,31 @@ a[href*="#"] {
   color: #059669 !important;
 }
 
+/* Ensure syntax highlighting string colors override prose styles */
+.prose .code-block-content .hljs-string,
+.prose .code-block-content .hljs-literal {
+  color: #059669 !important;
+}
+
 .code-block-content .hljs-number,
 .code-block-content .hljs-deletion {
   color: #dc2626 !important;
 }
 
+/* Ensure syntax highlighting number colors override prose styles */
+.prose .code-block-content .hljs-number,
+.prose .code-block-content .hljs-deletion {
+  color: #dc2626 !important;
+}
+
 .code-block-content .hljs-title,
 .code-block-content .hljs-section {
+  color: #2563eb !important;
+}
+
+/* Ensure syntax highlighting title colors override prose styles */
+.prose .code-block-content .hljs-title,
+.prose .code-block-content .hljs-section {
   color: #2563eb !important;
 }
 
@@ -598,7 +740,7 @@ pre.code-block-content {
 }
 
 /* Remove any default margins from prose elements around code blocks */
-.prose pre {
+.prose pre:not(.code-block-content) {
   margin: 0 !important;
 }
 
@@ -628,7 +770,7 @@ code {
   margin-bottom: 0 !important;
 }
 
-.prose pre {
+.prose pre:not(.code-block-content) {
   margin: 0 !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
@@ -733,7 +875,7 @@ pre, code, pre code, .code-block-wrapper, .code-block-header, .code-block-conten
 }
 
 /* Override any prose margins */
-.prose pre, .prose code, .prose .code-block-wrapper {
+.prose pre:not(.code-block-content), .prose code:not(.code-block-content code), .prose .code-block-wrapper {
   margin: 0 !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;

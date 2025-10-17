@@ -180,9 +180,16 @@ const PythonDjangoGuide = () => {
               </p>
 
               <h3>Installation and Project Setup</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`# Install Django
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">bash</span>
+                </div>
+                <pre className="code-block-content"><code className="language-bash">{`# Install Django
 pip install django
 
 # Create a new project
@@ -193,8 +200,7 @@ cd myproject
 python manage.py startapp myapp
 
 # Run the development server
-python manage.py runserver`}
-                </pre>
+python manage.py runserver`}</code></pre>
               </div>
 
               <h2>Django Models</h2>
@@ -205,9 +211,16 @@ python manage.py runserver`}
               </p>
 
               <h3>Defining Models</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`from django.db import models
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">python</span>
+                </div>
+                <pre className="code-block-content"><code className="language-python">{`from django.db import models
 from django.contrib.auth.models import User
 
 class Post(models.Model):
@@ -221,8 +234,7 @@ class Post(models.Model):
         return self.title
     
     class Meta:
-        ordering = ['-created_at']`}
-                </pre>
+        ordering = ['-created_at']`}</code></pre>
               </div>
 
               <h2>Django Views</h2>
@@ -233,9 +245,16 @@ class Post(models.Model):
               </p>
 
               <h3>Function-Based Views</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`from django.shortcuts import render, get_object_or_404
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">python</span>
+                </div>
+                <pre className="code-block-content"><code className="language-python">{`from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from .models import Post
 
@@ -250,8 +269,7 @@ def post_detail(request, pk):
 def api_posts(request):
     posts = Post.objects.all()
     data = [{'title': post.title, 'content': post.content} for post in posts]
-    return JsonResponse(data, safe=False)`}
-                </pre>
+    return JsonResponse(data, safe=False)`}</code></pre>
               </div>
 
               <h2>Django REST Framework</h2>
@@ -262,9 +280,16 @@ def api_posts(request):
               </p>
 
               <h3>API Serializers and Viewsets</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`from rest_framework import serializers, viewsets
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">python</span>
+                </div>
+                <pre className="code-block-content"><code className="language-python">{`from rest_framework import serializers, viewsets
 from rest_framework.permissions import IsAuthenticated
 from .models import Post
 
@@ -279,8 +304,7 @@ class PostViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)`}
-                </pre>
+        serializer.save(author=self.request.user)`}</code></pre>
               </div>
 
               <h2>Authentication and Security</h2>
@@ -291,9 +315,16 @@ class PostViewSet(viewsets.ModelViewSet):
               </p>
 
               <h3>User Authentication</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`from django.contrib.auth import authenticate, login, logout
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">python</span>
+                </div>
+                <pre className="code-block-content"><code className="language-python">{`from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
@@ -309,8 +340,7 @@ def user_login(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'dashboard.html')`}
-                </pre>
+    return render(request, 'dashboard.html')`}</code></pre>
               </div>
 
               <h2>Django Admin Interface</h2>
@@ -321,9 +351,16 @@ def dashboard(request):
               </p>
 
               <h3>Admin Configuration</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`from django.contrib import admin
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">python</span>
+                </div>
+                <pre className="code-block-content"><code className="language-python">{`from django.contrib import admin
 from .models import Post
 
 @admin.register(Post)
@@ -334,8 +371,7 @@ class PostAdmin(admin.ModelAdmin):
     readonly_fields = ['created_at', 'updated_at']
     
     def get_queryset(self, request):
-        return super().get_queryset(request).select_related('author')`}
-                </pre>
+        return super().get_queryset(request).select_related('author')`}</code></pre>
               </div>
 
               <h2>Testing in Django</h2>
@@ -345,9 +381,16 @@ class PostAdmin(admin.ModelAdmin):
               </p>
 
               <h3>Writing Tests</h3>
-              <div className="bg-slate-900 rounded-lg p-6 my-6">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-{`from django.test import TestCase, Client
+              <div className="code-block-wrapper">
+                <div className="code-block-header">
+                  <div className="code-block-dots">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <span className="code-block-lang">python</span>
+                </div>
+                <pre className="code-block-content"><code className="language-python">{`from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from .models import Post
 
@@ -377,8 +420,7 @@ class PostViewTest(TestCase):
     
     def test_post_list_view(self):
         response = self.client.get('/posts/')
-        self.assertEqual(response.status_code, 200)`}
-                </pre>
+        self.assertEqual(response.status_code, 200)`}</code></pre>
               </div>
 
               <h2>Deployment and Production</h2>
