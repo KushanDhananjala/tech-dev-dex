@@ -17,7 +17,7 @@ html, body, #__next { height: 100%; }
   --primary-purple: #7c3aed;
   --primary-teal: #0d9488;
   --primary-emerald: #059669;
-  --primary-orange: #ea580c;
+  --primary-orange: #d97706;
   --primary-rose: #e11d48;
   --primary-indigo: #4f46e5;
   
@@ -250,6 +250,72 @@ a[href*="#"] {
   margin-bottom: 1.25rem;
   line-height: 1.75;
   color: #374151;
+}
+
+/* Table styling */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.prose thead {
+  background: linear-gradient(135deg, #0d9488, #059669);
+  color: white;
+}
+
+.prose th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+}
+
+.prose td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+
+.prose tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.prose tbody tr:hover {
+  background-color: #f1f5f9;
+  transition: background-color 0.2s ease;
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Dark mode table styling */
+.dark .prose table {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.dark .prose thead {
+  background: linear-gradient(135deg, #0d9488, #059669);
+}
+
+.dark .prose td {
+  border-bottom-color: #374151;
+}
+
+.dark .prose tbody tr:nth-child(even) {
+  background-color: #1f2937;
+}
+
+.dark .prose tbody tr:hover {
+  background-color: #374151;
 }
 
 .dark .prose p {

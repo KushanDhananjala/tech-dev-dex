@@ -2,6 +2,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Ads from "./ads/Ads";
 import SEO from "./SEO";
+import PopularTopics from "./PopularTopics";
 import { ReactNode } from "react";
 import { useRouter } from "next/router";
 
@@ -73,32 +74,8 @@ export default function Layout({ children, title, description }: Props) {
                   <Ads placement="sidebar" />
                 </div>
                 
-                {/* Additional Sidebar Content */}
-                <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-                    Popular Topics
-                  </h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors">
-                      <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center text-white text-xs font-bold">
-                        D
-                      </div>
-                      <span className="text-sm text-slate-700 dark:text-slate-300">Docker Setup</span>
-                    </div>
-                    <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors">
-                      <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center text-white text-xs font-bold">
-                        G
-                      </div>
-                      <span className="text-sm text-slate-700 dark:text-slate-300">Git & GitHub</span>
-                    </div>
-                    <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors">
-                      <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center text-white text-xs font-bold">
-                        A
-                      </div>
-                      <span className="text-sm text-slate-700 dark:text-slate-300">AI Tools</span>
-                    </div>
-                  </div>
-                </div>
+                {/* Popular Topics Component */}
+                <PopularTopics />
                 
                 {/* Newsletter Signup */}
                 <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">

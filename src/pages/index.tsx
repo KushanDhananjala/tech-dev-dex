@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import menu from "../menu";
 import { motion } from "framer-motion";
 import SEO from "../components/SEO";
@@ -226,24 +227,29 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0 }}
             className="group"
           >
-            <Link href="/tutorials/docker-setup-guides" className="block">
+            <Link href="/tutorials/docker-setup-guides/docker-beginners-guide" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
-                <div className="h-48 bg-gradient-to-br from-blue-500/10 to-cyan-600/10 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-white">
-                    <BookOpen size={24} />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full">
+                <div className="relative h-48 overflow-hidden">
+                  <Image 
+                    src="/images/tutorials/docker-setup-guides/docker-beginners.svg" 
+                    alt="Docker Setup Guide"
+                    width={400}
+                    height={192}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
                       Tutorial
                     </span>
                   </div>
+                </div>
+                <div className="p-6">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                    Complete Docker Setup Guide for Beginners
+                    Docker Beginners Guide: Complete Setup Tutorial
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
-                    Learn how to install and configure Docker on Windows, macOS, and Linux with step-by-step instructions.
+                    Master Docker from scratch with this comprehensive beginner's guide covering installation, containers, and best practices.
                   </p>
                   <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
                     <div className="flex items-center gap-1">
@@ -266,24 +272,29 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="group"
           >
-            <Link href="/tutorials/git-github-tutorials" className="block">
+            <Link href="/tutorials/git-github-tutorials/git-basics-guide" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
-                <div className="h-48 bg-gradient-to-br from-blue-500/10 to-cyan-600/10 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-white">
-                    <BookOpen size={24} />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full">
+                <div className="relative h-48 overflow-hidden">
+                  <Image 
+                    src="/images/tutorials/git-github-tutorials/git-basics.svg" 
+                    alt="Git & GitHub Tutorial"
+                    width={400}
+                    height={192}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-green-600 text-white text-sm font-medium rounded-full">
                       Tutorial
                     </span>
                   </div>
+                </div>
+                <div className="p-6">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                    Git & GitHub Workflow Best Practices
+                    Git Basics Guide: Essential Version Control
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
-                    Master version control with Git and GitHub workflows, branching strategies, and collaboration techniques.
+                    Learn the fundamentals of Git version control with practical examples, commands, and workflow strategies.
                   </p>
                   <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
                     <div className="flex items-center gap-1">
@@ -307,29 +318,36 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="group"
           >
-            <Link href="/reviews/software-reviews" className="block">
+            <Link href="/reviews/software-reviews/vs-code-review" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
-                <div className="h-48 bg-gradient-to-br from-yellow-500/10 to-orange-600/10 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center text-white">
-                    <Stars size={24} />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-sm font-medium rounded-full">
+                <div className="relative h-48 overflow-hidden">
+                  <Image 
+                    src="/images/reviews/software-reviews/vs-code-review.svg" 
+                    alt="VS Code Review"
+                    width={400}
+                    height={192}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-yellow-600 text-white text-sm font-medium rounded-full">
                       Review
                     </span>
+                  </div>
+                  <div className="absolute top-4 right-4">
                     <div className="flex items-center gap-1">
                       {[...Array(5)].map((_, i) => (
                         <Stars key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                       ))}
                     </div>
                   </div>
+                </div>
+                <div className="p-6">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                    VS Code vs IntelliJ: Complete IDE Comparison
+                    VS Code Review: The Ultimate Developer IDE
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
-                    In-depth comparison of the two most popular IDEs for developers, including features, performance, and pricing.
+                    Comprehensive review of Visual Studio Code, covering features, extensions, performance, and why it's the developer's choice.
                   </p>
                   <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
                     <div className="flex items-center gap-1">
@@ -352,29 +370,36 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="group"
           >
-            <Link href="/reviews/app-comparisons" className="block">
+            <Link href="/reviews/app-comparisons/figma-vs-adobe-xd" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
-                <div className="h-48 bg-gradient-to-br from-yellow-500/10 to-orange-600/10 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center text-white">
-                    <Stars size={24} />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-sm font-medium rounded-full">
+                <div className="relative h-48 overflow-hidden">
+                  <Image 
+                    src="/images/reviews/app-comparisons/figma-vs-adobe-xd.svg" 
+                    alt="Figma vs Adobe XD Design Tools"
+                    width={400}
+                    height={192}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-orange-600 text-white text-sm font-medium rounded-full">
                       Comparison
                     </span>
+                  </div>
+                  <div className="absolute top-4 right-4">
                     <div className="flex items-center gap-1">
                       {[...Array(4)].map((_, i) => (
                         <Stars key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                       ))}
                     </div>
                   </div>
+                </div>
+                <div className="p-6">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                    Figma vs Adobe XD: Design Tool Showdown
+                    Figma vs Adobe XD: Complete Design Tool Comparison
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
-                    Side-by-side comparison of the leading UI/UX design tools, including features, collaboration, and pricing.
+                    In-depth comparison of Figma and Adobe XD for UI/UX design. Features, pricing, collaboration, and which tool is better.
                   </p>
                   <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
                     <div className="flex items-center gap-1">
@@ -398,24 +423,29 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="group"
           >
-            <Link href="/ai-trending/ai-coding-tools" className="block">
+            <Link href="/ai-trending/ai-coding-tools/claude-3-5-sonnet-guide" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
-                <div className="h-48 bg-gradient-to-br from-purple-500/10 to-pink-600/10 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-white">
-                    <Cpu size={24} />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-full">
+                <div className="relative h-48 overflow-hidden">
+                  <Image 
+                    src="/images/ai-ml/ai-coding-tools/claude-3-5-sonnet.svg" 
+                    alt="Claude 3.5 Sonnet AI Assistant"
+                    width={400}
+                    height={192}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-purple-600 text-white text-sm font-medium rounded-full">
                       AI & Tech
                     </span>
                   </div>
+                </div>
+                <div className="p-6">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                    GitHub Copilot vs ChatGPT: AI Coding Tools Review
+                    Claude 3.5 Sonnet: Advanced AI Coding Assistant
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
-                    Explore the latest AI-powered development tools and see which one fits your coding workflow best.
+                    Discover Claude 3.5 Sonnet's powerful AI capabilities for coding, debugging, and software development workflows.
                   </p>
                   <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
                     <div className="flex items-center gap-1">
@@ -438,24 +468,29 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="group"
           >
-            <Link href="/ai-trending/emerging-languages" className="block">
+            <Link href="/ai-trending/emerging-languages/rust-ai-development" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
-                <div className="h-48 bg-gradient-to-br from-purple-500/10 to-pink-600/10 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-white">
-                    <Cpu size={24} />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-full">
+                <div className="relative h-48 overflow-hidden">
+                  <Image 
+                    src="/images/ai-ml/emerging-languages/rust-ai.svg" 
+                    alt="Rust AI Development"
+                    width={400}
+                    height={192}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-indigo-600 text-white text-sm font-medium rounded-full">
                       AI & Tech
                     </span>
                   </div>
+                </div>
+                <div className="p-6">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                    Rust vs Go: Performance Comparison 2024
+                    Rust AI Development: Building Intelligent Systems
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
-                    Discover the latest programming languages and frameworks that are shaping the future of development.
+                    Explore how Rust's performance and safety features make it ideal for AI and machine learning applications.
                   </p>
                   <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
                     <div className="flex items-center gap-1">
