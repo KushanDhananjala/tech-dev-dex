@@ -1,4 +1,4 @@
-import SEO from "../components/SEO";
+import SEO from "../../components/SEO";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";

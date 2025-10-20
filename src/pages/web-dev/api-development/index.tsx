@@ -1,7 +1,7 @@
 import React from 'react';
 import SEO from '@/components/SEO';
 import Link from 'next/link';
-import MDXContent from '../../components/MDXContent';
+import MDXContent from '../../../components/MDXContent';
 import { ArrowLeft, Zap } from 'lucide-react';
 
 const APIDevelopment = () => {
