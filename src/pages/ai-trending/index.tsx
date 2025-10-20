@@ -1,5 +1,6 @@
 import SEO from "../../components/SEO";
 import Link from "next/link";
+import Image from "next/image";
 import Tabs from "../../components/ui/Tabs";
 import { ArrowRight, Bot, Clock, Cpu, Languages, PlugZap, User } from 'lucide-react';
 import { motion } from "framer-motion";
@@ -164,9 +165,11 @@ export default function AITrendingPage() {
             <Link href="/ai-trending/emerging-ai-tech/ai-biotechnology-medical" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                 <div className="relative h-48 overflow-hidden">
-                  <img 
+                  <Image 
                     src="/images/ai-ml/emerging-ai-tech/biotech-ai.svg" 
                     alt="AI Biotechnology and Medical Breakthroughs"
+                    width={400}
+                    height={192}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -215,9 +218,11 @@ export default function AITrendingPage() {
             <Link href="/ai-trending/ai-integration-tutorials" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                 <div className="relative h-48 overflow-hidden">
-                  <img 
+                  <Image 
                     src="/images/posts/ai-integration-guide.svg" 
                     alt="AI Integration Tutorials"
+                    width={400}
+                    height={192}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -259,9 +264,11 @@ export default function AITrendingPage() {
             <Link href="/ai-trending/emerging-ai-tech/ai-climate-solutions" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                 <div className="relative h-48 overflow-hidden">
-                  <img 
+                  <Image 
                     src="/images/ai-ml/emerging-ai-tech/climate-ai.svg" 
                     alt="AI Climate Solutions"
+                    width={400}
+                    height={192}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

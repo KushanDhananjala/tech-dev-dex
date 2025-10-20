@@ -1,5 +1,6 @@
 import SEO from "../../components/SEO";
 import Link from "next/link";
+import Image from "next/image";
 import Tabs from "../../components/ui/Tabs";
 import { ArrowRight, Clock, Cpu, GitCompareArrows, Monitor, Star, User } from 'lucide-react';
 import { motion } from "framer-motion";
@@ -156,9 +157,11 @@ export default function ReviewsPage() {
             <Link href="/reviews/app-comparisons/figma-vs-adobe-xd" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                 <div className="relative h-48 overflow-hidden">
-                  <img 
+                  <Image 
                     src="/images/reviews/app-comparisons/figma-vs-adobe-xd.svg" 
                     alt="Figma vs Adobe XD Design Tools"
+                    width={400}
+                    height={192}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -207,9 +210,11 @@ export default function ReviewsPage() {
             <Link href="/reviews/software-reviews/vs-code-review" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                 <div className="relative h-48 overflow-hidden">
-                  <img 
+                  <Image 
                     src="/images/reviews/software-reviews/vs-code-review.svg" 
                     alt="VS Code Review"
+                    width={400}
+                    height={192}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -258,9 +263,11 @@ export default function ReviewsPage() {
             <Link href="/reviews/gadget-reviews" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                 <div className="relative h-48 overflow-hidden">
-                  <img 
+                  <Image 
                     src="/images/reviews/gadget-reviews/gadget-reviews.svg" 
                     alt="Gadget Reviews"
+                    width={400}
+                    height={192}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

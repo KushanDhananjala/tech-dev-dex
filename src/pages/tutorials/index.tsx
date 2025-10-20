@@ -1,5 +1,6 @@
 import SEO from "../../components/SEO";
 import Link from "next/link";
+import Image from "next/image";
 import Tabs from "../../components/ui/Tabs";
 import { ArrowRight, BookOpen, Box, Clock, Dock, Github, User } from 'lucide-react';
 import { motion } from "framer-motion";
@@ -172,9 +173,11 @@ export default function TutorialsPage() {
             <Link href="/tutorials/docker-setup-guides/docker-beginners-guide" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                 <div className="relative h-48 overflow-hidden">
-                  <img 
+                  <Image 
                     src="/images/tutorials/docker-setup-guides/docker-beginners.svg" 
                     alt="Docker Beginners Guide"
+                    width={400}
+                    height={192}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -216,9 +219,11 @@ export default function TutorialsPage() {
             <Link href="/tutorials/git-github-tutorials/git-basics-guide" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                 <div className="relative h-48 overflow-hidden">
-                  <img 
+                  <Image 
                     src="/images/tutorials/git-github-tutorials/git-basics.svg" 
                     alt="Git & GitHub Tutorial"
+                    width={400}
+                    height={192}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -260,9 +265,11 @@ export default function TutorialsPage() {
             <Link href="/tutorials/python-automation" className="block">
               <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                 <div className="relative h-48 overflow-hidden">
-                  <img 
+                  <Image 
                     src="/images/posts/python-automation.svg" 
                     alt="Python Automation Guide"
+                    width={400}
+                    height={192}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
