@@ -1,5 +1,8 @@
 import SEO from "../components/SEO";
 import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Calendar, User, Star, TrendingUp } from "lucide-react";
 
 export default function ProductivityPage() {
   return (
@@ -144,6 +147,180 @@ export default function ProductivityPage() {
             </Link>
           </div>
         </div>
+
+        {/* Featured Productivity Articles */}
+        <section className="mt-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              Featured Productivity Articles
+            </h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              Boost your productivity with these proven techniques and tools
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Pomodoro Technique Guide */}
+            <motion.article
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0 }}
+              className="group"
+            >
+              <Link href="/productivity/time-management/pomodoro-technique-guide" className="block">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1542831371-29b0f74f94dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                      alt="Pomodoro Technique Guide"
+                      width={400}
+                      height={192}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-red-600 text-white text-sm font-medium rounded-full">
+                        Time Management
+                      </span>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <div className="flex items-center gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                      Pomodoro Technique Guide: Boost Focus & Productivity
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                      Master the Pomodoro Technique to enhance your focus, manage time effectively, and boost overall productivity.
+                    </p>
+                    <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        <span>Dec 16, 2024</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <User className="h-4 w-4" />
+                        <span>Productivity Expert</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.article>
+
+            {/* VS Code Productivity Guide */}
+            <motion.article
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="group"
+            >
+              <Link href="/productivity/development-tools/vs-code-productivity-guide" className="block">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                      alt="VS Code Productivity Guide"
+                      width={400}
+                      height={192}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+                        Development Tools
+                      </span>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <div className="flex items-center gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                      VS Code Productivity: Essential Extensions & Tips
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                      Maximize your coding efficiency with the best VS Code extensions, shortcuts, and productivity tips for developers.
+                    </p>
+                    <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        <span>Dec 14, 2024</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <User className="h-4 w-4" />
+                        <span>Developer</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.article>
+
+            {/* Task Prioritization Matrix */}
+            <motion.article
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="group"
+            >
+              <Link href="/productivity/project-management/task-prioritization-matrix" className="block">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                      alt="Task Prioritization Matrix"
+                      width={400}
+                      height={192}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-green-600 text-white text-sm font-medium rounded-full">
+                        Project Management
+                      </span>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <div className="flex items-center gap-1">
+                        {[...Array(4)].map((_, i) => (
+                          <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                        ))}
+                        <Star className="h-3 w-3 text-yellow-400" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                      Task Prioritization Matrix: Master Your Workflow
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                      Learn how to prioritize tasks effectively using proven frameworks and matrices for better project management.
+                    </p>
+                    <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        <span>Dec 12, 2024</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <User className="h-4 w-4" />
+                        <span>Project Manager</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.article>
+          </div>
+        </section>
       </div>
     </>
   );

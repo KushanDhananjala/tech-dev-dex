@@ -1,5 +1,8 @@
 import SEO from "../components/SEO";
 import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Calendar, User, Star, TrendingUp } from "lucide-react";
 
 export default function HardwarePage() {
   return (
@@ -145,6 +148,180 @@ export default function HardwarePage() {
             </Link>
           </div>
         </div>
+
+        {/* Featured Hardware Reviews */}
+        <section className="mt-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              Featured Hardware Reviews
+            </h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              Our top picks for the best hardware and development setups
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* iPhone 17 Pro Review */}
+            <motion.article
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0 }}
+              className="group"
+            >
+              <Link href="/hardware/mobile-devices/iphone-17-pro-review" className="block">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                      alt="iPhone 17 Pro Review"
+                      width={400}
+                      height={192}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-indigo-600 text-white text-sm font-medium rounded-full">
+                        Mobile
+                      </span>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <div className="flex items-center gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                      iPhone 17 Pro: Developer's Ultimate Review 2025
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                      An in-depth review of the iPhone 17 Pro, focusing on its capabilities and features for developers in 2025.
+                    </p>
+                    <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        <span>Dec 14, 2024</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <User className="h-4 w-4" />
+                        <span>Tech Reviewer</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.article>
+
+            {/* MacBook Pro M4 Review */}
+            <motion.article
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="group"
+            >
+              <Link href="/hardware/laptops-pcs/macbook-pro-m4-review" className="block">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                      alt="MacBook Pro M4 Review"
+                      width={400}
+                      height={192}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+                        Laptop
+                      </span>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <div className="flex items-center gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                      MacBook Pro M4: Ultimate Developer Machine
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                      Complete review of the MacBook Pro M4 for developers, covering performance, battery life, and development workflows.
+                    </p>
+                    <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        <span>Dec 12, 2024</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <User className="h-4 w-4" />
+                        <span>Hardware Expert</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.article>
+
+            {/* Gaming Keyboard Review */}
+            <motion.article
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="group"
+            >
+              <Link href="/hardware/peripherals/mechanical-keyboards-review" className="block">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                      alt="Mechanical Keyboards Review"
+                      width={400}
+                      height={192}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-purple-600 text-white text-sm font-medium rounded-full">
+                        Peripherals
+                      </span>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <div className="flex items-center gap-1">
+                        {[...Array(4)].map((_, i) => (
+                          <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                        ))}
+                        <Star className="h-3 w-3 text-yellow-400" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                      Best Mechanical Keyboards for Developers
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                      Comprehensive review of the best mechanical keyboards for programming, coding, and development work.
+                    </p>
+                    <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        <span>Dec 10, 2024</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <User className="h-4 w-4" />
+                        <span>Hardware Reviewer</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.article>
+          </div>
+        </section>
       </div>
     </>
   );
