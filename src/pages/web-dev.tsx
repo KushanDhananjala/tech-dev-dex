@@ -2,7 +2,7 @@ import SEO from "../components/SEO";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Calendar, User, Star, TrendingUp } from "lucide-react";
+import { Calendar, User, Star } from "lucide-react";
 
 export default function WebDevPage() {
   return (
@@ -167,16 +167,16 @@ export default function WebDevPage() {
               transition={{ duration: 0.6, delay: 0 }}
               className="group"
             >
-              <Link href="/web-dev/frontend-frameworks/nextjs-15-complete-guide" className="block">
+              <Link href="/tutorials/web-development/nextjs-15-complete-guide" className="block">
                 <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                   <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                      alt="Next.js 15 Complete Guide"
-                      width={400}
-                      height={192}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                      <Image
+                        src="/images/tutorials/web-development/nextjs-15-guide.svg"
+                        alt="Next.js 15 Complete Guide"
+                        width={400}
+                        height={192}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
@@ -223,13 +223,13 @@ export default function WebDevPage() {
               <Link href="/tutorials/docker-setup-guides/docker-beginners-guide" className="block">
                 <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                   <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1605745341112-85968b19335a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                      alt="Docker Setup Guide"
-                      width={400}
-                      height={192}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                      <Image
+                        src="/images/tutorials/docker-setup-guides/docker-beginners.svg"
+                        alt="Docker Setup Guide"
+                        width={400}
+                        height={192}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-cyan-600 text-white text-sm font-medium rounded-full">
@@ -266,23 +266,23 @@ export default function WebDevPage() {
               </Link>
             </motion.article>
 
-            {/* React Performance Optimization */}
+            {/* React Complete Guide */}
             <motion.article
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="group"
             >
-              <Link href="/web-dev/frontend-frameworks/react-performance-optimization" className="block">
+              <Link href="/web-dev/frontend-frameworks/react-complete-guide" className="block">
                 <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                   <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                      alt="React Performance Optimization"
-                      width={400}
-                      height={192}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                      <Image
+                        src="/images/web-dev/frontend-frameworks/react-guide.svg"
+                        alt="React Complete Guide"
+                        width={400}
+                        height={192}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-green-600 text-white text-sm font-medium rounded-full">
@@ -291,19 +291,18 @@ export default function WebDevPage() {
                     </div>
                     <div className="absolute top-4 right-4">
                       <div className="flex items-center gap-1">
-                        {[...Array(4)].map((_, i) => (
+                        {[...Array(5)].map((_, i) => (
                           <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                         ))}
-                        <Star className="h-3 w-3 text-yellow-400" />
                       </div>
                     </div>
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                      React Performance Optimization: Advanced Techniques
+                      React: Complete Developer Guide
                     </h3>
                     <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
-                      Learn advanced React performance optimization techniques including memoization, code splitting, and bundle optimization.
+                      Master React from basics to advanced concepts including hooks, context, and performance optimization.
                     </p>
                     <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
                       <div className="flex items-center gap-1">

@@ -2,7 +2,7 @@ import SEO from "../components/SEO";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Calendar, User, Star, TrendingUp } from "lucide-react";
+import { Calendar, User, Star } from "lucide-react";
 
 export default function ProductivityPage() {
   return (
@@ -170,13 +170,13 @@ export default function ProductivityPage() {
               <Link href="/productivity/time-management/pomodoro-technique-guide" className="block">
                 <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                   <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1542831371-29b0f74f94dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                      alt="Pomodoro Technique Guide"
-                      width={400}
-                      height={192}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                      <Image
+                        src="/images/productivity/time-management/pomodoro-technique.svg"
+                        alt="Pomodoro Technique Guide"
+                        width={400}
+                        height={192}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-red-600 text-white text-sm font-medium rounded-full">
@@ -220,16 +220,16 @@ export default function ProductivityPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="group"
             >
-              <Link href="/productivity/development-tools/vs-code-productivity-guide" className="block">
+              <Link href="/tutorials/productivity-tools/vs-code-productivity" className="block">
                 <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                   <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                      alt="VS Code Productivity Guide"
-                      width={400}
-                      height={192}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                      <Image
+                        src="/images/tutorials/productivity-tools/vs-code-productivity.svg"
+                        alt="VS Code Productivity Guide"
+                        width={400}
+                        height={192}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
@@ -276,13 +276,13 @@ export default function ProductivityPage() {
               <Link href="/productivity/project-management/task-prioritization-matrix" className="block">
                 <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                   <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                      alt="Task Prioritization Matrix"
-                      width={400}
-                      height={192}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                      <Image
+                        src="/images/productivity/time-management/prioritization.svg"
+                        alt="Task Prioritization Matrix"
+                        width={400}
+                        height={192}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-green-600 text-white text-sm font-medium rounded-full">

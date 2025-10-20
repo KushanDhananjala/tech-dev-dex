@@ -2,7 +2,7 @@ import SEO from "../components/SEO";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Calendar, User, Star, TrendingUp } from "lucide-react";
+import { Calendar, User, Star } from "lucide-react";
 
 export default function HardwarePage() {
   return (
@@ -172,7 +172,7 @@ export default function HardwarePage() {
                 <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                   <div className="relative h-48 overflow-hidden">
                     <Image
-                      src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                      src="/images/hardware/mobile-devices/real/iphone-17-pro.jpg"
                       alt="iPhone 17 Pro Review"
                       width={400}
                       height={192}
@@ -225,7 +225,7 @@ export default function HardwarePage() {
                 <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                   <div className="relative h-48 overflow-hidden">
                     <Image
-                      src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                      src="/images/hardware/laptops-pcs/real/macbook-pro-m4.jpg"
                       alt="MacBook Pro M4 Review"
                       width={400}
                       height={192}
@@ -278,7 +278,7 @@ export default function HardwarePage() {
                 <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
                   <div className="relative h-48 overflow-hidden">
                     <Image
-                      src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                      src="/images/hardware/peripherals/mechanical-keyboards.svg"
                       alt="Mechanical Keyboards Review"
                       width={400}
                       height={192}
