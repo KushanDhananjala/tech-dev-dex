@@ -30,7 +30,7 @@ export default function IPhone15ProReview({ content }: IPhone15ProReviewProps) {
             'iPhone development'
           ]}
           type="article"
-          image="/images/hardware/mobile-devices/iphone-15-pro.svg"
+          image="/images/hardware/mobile-devices/real/iphone-15-pro.jpg"
           url="/hardware/mobile-devices/iphone-15-pro-review"
           section="Mobile Devices"
         />
@@ -53,7 +53,7 @@ export default function IPhone15ProReview({ content }: IPhone15ProReviewProps) {
         description={content.description}
         keywords={content.tags || []}
         type="article"
-        image={content.featuredImage || '/images/hardware/mobile-devices/iphone-15-pro.svg'}
+        image={content.featuredImage || '/images/hardware/mobile-devices/real/iphone-15-pro.jpg'}
         url={`/hardware/mobile-devices/iphone-15-pro-review`}
         publishedTime={content.date}
         section="Mobile Devices"

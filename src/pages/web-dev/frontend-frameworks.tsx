@@ -44,7 +44,7 @@ const FrontendFrameworks = () => {
     {
       slug: "svelte-modern-framework",
       title: "Svelte: The Modern Framework",
-      description: "Explore Svelte&apos;s unique approach to frontend development with compile-time optimizations and minimal bundle sizes.",
+      description: "Explore Svelte's unique approach to frontend development with compile-time optimizations and minimal bundle sizes.",
       image: "/images/web-dev/frontend-frameworks/svelte-guide.svg",
       category: "Svelte",
       rating: 4,

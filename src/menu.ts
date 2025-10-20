@@ -34,7 +34,7 @@ const menu = {
         { name: "App Comparisons", slug: "app-comparisons", description: "Side-by-side app analysis" },
         { name: "Gadget Reviews", slug: "gadget-reviews", description: "Hardware and tech gadgets" },
         { name: "AI Tools Review", slug: "ai-tools-review", description: "AI-powered development tools" },
-        { name: "Productivity Tools", slug: "productivity-tools-review", description: "Workflow and efficiency tools" },
+        { name: "Productivity Tools Review", slug: "productivity-tools-review", description: "Workflow and efficiency tools" },
       ],
     },
     {
@@ -45,7 +45,8 @@ const menu = {
       children: [
         { name: "AI Coding Tools", slug: "ai-coding-tools", description: "AI-powered development assistants" },
         { name: "AI Integration", slug: "ai-integration-tutorials", description: "Adding AI to your applications" },
-        { name: "Emerging Languages", slug: "emerging-languages", description: "Latest AI innovations" },
+        { name: "Emerging Languages", slug: "emerging-languages", description: "Latest programming languages" },
+        { name: "Emerging AI Tech", slug: "emerging-ai-tech", description: "Cutting-edge AI technologies" },
       ],
     },
     {

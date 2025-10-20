@@ -9,9 +9,31 @@ const MobileDevices = () => {
   // Sample review data
   const reviews = [
     {
+      slug: "iphone-17-pro-review",
+      title: "iPhone 17 Pro: Developer's Ultimate Review 2025",
+      description: "Comprehensive iPhone 17 Pro review for developers. A18 Pro chip performance, iOS 18 development capabilities, and productivity features.",
+      image: "/images/hardware/mobile-devices/real/iphone-17-pro.jpg",
+      category: "Smartphones",
+      rating: 5,
+      readTime: "18 min",
+      author: "TechDevDex Team",
+      date: "2025-01-15",
+    },
+    {
+      slug: "samsung-galaxy-s25-review",
+      title: "Samsung Galaxy S25: Developer's Complete Review 2025",
+      description: "Comprehensive Samsung Galaxy S25 review for developers. Snapdragon 8 Gen 4 performance, Android 15 development capabilities.",
+      image: "/images/hardware/mobile-devices/real/samsung-galaxy-s25.jpg",
+      category: "Smartphones",
+      rating: 5,
+      readTime: "20 min",
+      author: "TechDevDex Team",
+      date: "2025-01-15",
+    },
+    {
       slug: "iphone-15-pro-review",
-      title: "iPhone 15 Pro: Developer&apos;s Perspective",
-      description: "Comprehensive review of iPhone 15 Pro from a developer&apos;s perspective, focusing on performance and development capabilities.",
+      title: "iPhone 15 Pro: Developer's Perspective",
+      description: "Comprehensive review of iPhone 15 Pro from a developer's perspective, focusing on performance and development capabilities.",
       image: "/images/hardware/mobile-devices/real/iphone-15-pro.jpg",
       category: "Smartphones",
       rating: 5,
@@ -23,7 +45,7 @@ const MobileDevices = () => {
       slug: "samsung-galaxy-s24-review",
       title: "Samsung Galaxy S24: Android Development",
       description: "In-depth review of Samsung Galaxy S24 for Android development and productivity tasks.",
-      image: "/images/hardware/mobile-devices/galaxy-s24.svg",
+      image: "/images/hardware/mobile-devices/real/samsung-galaxy-s24.jpg",
       category: "Smartphones",
       rating: 4,
       readTime: "12 min",
@@ -83,7 +105,7 @@ const MobileDevices = () => {
           'mobile productivity'
         ]}
         type="article"
-        image="/images/hardware/mobile-devices.svg"
+        image="/images/hardware/mobile-devices/real/iphone-17-pro.jpg"
         url="/hardware/mobile-devices"
         section="Hardware"
       />
@@ -136,8 +158,8 @@ const MobileDevices = () => {
           >
             <Link href={`/hardware/mobile-devices/${reviews[0].slug}`} className="block">
               <div className="flex flex-col lg:flex-row">
-                <div className="lg:w-1/2 h-64 lg:h-auto bg-gradient-to-br from-blue-500/10 to-cyan-600/10 flex items-center justify-center p-6">
-                  <Image src={reviews[0].image} alt={reviews[0].title} width={300} height={200} className="max-h-full max-w-full object-contain" />
+                <div className="lg:w-1/2 h-64 lg:h-80 bg-gradient-to-br from-blue-500/10 to-cyan-600/10 flex items-center justify-center p-6">
+                  <Image src={reviews[0].image} alt={reviews[0].title} width={400} height={300} className="max-h-full max-w-full object-contain" />
                 </div>
                 <div className="lg:w-1/2 p-8 flex flex-col justify-center">
                   <div className="flex items-center gap-2 mb-3">

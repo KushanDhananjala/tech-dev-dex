@@ -26,6 +26,13 @@ const subcategories = [
     icon: <PlugZap size={24} />,
     color: "from-blue-500 to-cyan-500"
   },
+  { 
+    name: "Emerging AI Tech", 
+    slug: "emerging-ai-tech",
+    description: "Cutting-edge AI technologies shaping the future",
+    icon: <Cpu size={24} />,
+    color: "from-indigo-500 to-purple-500"
+  },
 ];
 
 export default function AITrendingPage() {
@@ -84,6 +91,7 @@ export default function AITrendingPage() {
             { label: "AI Coding Tools", href: "/ai-trending/ai-coding-tools", icon: <Bot size={16} /> },
             { label: "Emerging Languages", href: "/ai-trending/emerging-languages", icon: <Languages size={16} /> },
             { label: "Integrations", href: "/ai-trending/ai-integration-tutorials", icon: <PlugZap size={16} /> },
+            { label: "Emerging AI Tech", href: "/ai-trending/emerging-ai-tech", icon: <Cpu size={16} /> },
           ]}
         />
       </div>

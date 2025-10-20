@@ -30,7 +30,7 @@ export default function SurfacePro11Review({ content }: SurfacePro11ReviewProps)
             'Surface Pro development'
           ]}
           type="article"
-          image="/images/hardware/mobile-devices/surface-pro-11.svg"
+          image="/images/hardware/mobile-devices/real/surface-pro-11.jpg"
           url="/hardware/mobile-devices/surface-pro-11-review"
           section="Mobile Devices"
         />
@@ -53,7 +53,7 @@ export default function SurfacePro11Review({ content }: SurfacePro11ReviewProps)
         description={content.description}
         keywords={content.tags || []}
         type="article"
-        image={content.featuredImage || '/images/hardware/mobile-devices/surface-pro-11.svg'}
+        image={content.featuredImage || '/images/hardware/mobile-devices/real/surface-pro-11.jpg'}
         url={`/hardware/mobile-devices/surface-pro-11-review`}
         publishedTime={content.date}
         section="Mobile Devices"

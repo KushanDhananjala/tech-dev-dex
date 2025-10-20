@@ -138,7 +138,7 @@ export default function MDXContentComponent({ content }: MDXContentProps) {
             </div>
           </div>
           
-          {content.tags.length > 0 && (
+          {content.tags && content.tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {content.tags.map((tag: string, index: number) => (
                 <span
@@ -168,7 +168,7 @@ export default function MDXContentComponent({ content }: MDXContentProps) {
               prose-table:text-sm prose-th:bg-slate-50 dark:prose-th:bg-slate-800 prose-th:font-semibold prose-td:border-slate-200 dark:prose-td:border-slate-700 prose-table:my-8
               prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8 prose-img:border prose-img:border-slate-200 dark:prose-img:border-slate-700 prose-img:w-full prose-img:h-auto
               prose-hr:my-12 prose-hr:border-slate-200 dark:prose-hr:border-slate-700">
-          <div dangerouslySetInnerHTML={{ __html: marked(processStarRatings(content.content)) }} />
+          <div dangerouslySetInnerHTML={{ __html: marked(processStarRatings(content.content || '')) }} />
         </div>
       </article>
     </div>

@@ -30,7 +30,7 @@ export default function SamsungGalaxyS24Review({ content }: SamsungGalaxyS24Revi
             'Galaxy development'
           ]}
           type="article"
-          image="/images/hardware/mobile-devices/samsung-galaxy-s24.svg"
+          image="/images/hardware/mobile-devices/real/samsung-galaxy-s24.jpg"
           url="/hardware/mobile-devices/samsung-galaxy-s24-review"
           section="Mobile Devices"
         />
@@ -53,7 +53,7 @@ export default function SamsungGalaxyS24Review({ content }: SamsungGalaxyS24Revi
         description={content.description}
         keywords={content.tags || []}
         type="article"
-        image={content.featuredImage || '/images/hardware/mobile-devices/samsung-galaxy-s24.svg'}
+        image={content.featuredImage || '/images/hardware/mobile-devices/real/samsung-galaxy-s24.jpg'}
         url={`/hardware/mobile-devices/samsung-galaxy-s24-review`}
         publishedTime={content.date}
         section="Mobile Devices"

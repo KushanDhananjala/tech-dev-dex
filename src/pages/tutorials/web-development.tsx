@@ -8,6 +8,18 @@ const WebDevelopment = () => {
   // Sample tutorial data
   const tutorials = [
     {
+      id: 'nextjs-15-complete-guide',
+      title: 'Next.js 15 Complete Guide: Building Modern Web Applications',
+      description: 'Master Next.js 15 with React 19, Server Components, App Router, and performance optimizations. Complete guide to building modern web applications.',
+      author: 'TechDevDex Team',
+      date: '2025-01-15',
+      readTime: '25 min',
+      difficulty: 'Advanced',
+      category: 'React Framework',
+      image: '/images/tutorials/web-development/nextjs-15-guide.svg',
+      featured: true
+    },
+    {
       id: 'html-css-basics',
       title: 'HTML & CSS Fundamentals: Building Your First Website',
       description: 'Learn the basics of HTML and CSS to create beautiful, responsive websites from scratch.',
@@ -81,7 +93,7 @@ const WebDevelopment = () => {
     }
   ];
 
-  const categories = ['All', 'Frontend Basics', 'JavaScript', 'CSS', 'Accessibility'];
+  const categories = ['All', 'React Framework', 'Frontend Basics', 'JavaScript', 'CSS', 'Accessibility'];
   const difficulties = ['All', 'Beginner', 'Intermediate', 'Advanced'];
 
   return (

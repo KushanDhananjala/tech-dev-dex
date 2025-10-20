@@ -11,7 +11,7 @@ const AIToolsReview = () => {
     {
       slug: "github-copilot-review",
       title: "GitHub Copilot: AI-Powered Code Assistant",
-      description: "Comprehensive review of GitHub Copilot&apos;s features, performance, and impact on developer productivity.",
+      description: "Comprehensive review of GitHub Copilot's features, performance, and impact on developer productivity.",
       image: "/images/reviews/ai-tools-review/github-copilot-review.svg",
       category: "AI Coding",
       rating: 5,
@@ -21,7 +21,7 @@ const AIToolsReview = () => {
     },
     {
       slug: "chatgpt-coding-review",
-      title: "ChatGPT for Coding: Developer&apos;s Perspective",
+      title: "ChatGPT for Coding: Developer's Perspective",
       description: "In-depth analysis of using ChatGPT for coding tasks, debugging, and code generation.",
       image: "/images/reviews/ai-tools-review/chatgpt-coding.svg",
       category: "AI Assistant",
@@ -33,7 +33,7 @@ const AIToolsReview = () => {
     {
       slug: "amazon-codewhisperer-review",
       title: "Amazon CodeWhisperer: AWS Integration Review",
-      description: "Review of Amazon&apos;s AI coding companion with focus on AWS integration and security features.",
+      description: "Review of Amazon's AI coding companion with focus on AWS integration and security features.",
       image: "/images/reviews/ai-tools-review/codewhisperer.svg",
       category: "AI Coding",
       rating: 4,
@@ -44,7 +44,7 @@ const AIToolsReview = () => {
     {
       slug: "tabnine-review",
       title: "Tabnine: AI Code Completion Review",
-      description: "Comprehensive review of Tabnine&apos;s AI-powered code completion and its impact on development speed.",
+      description: "Comprehensive review of Tabnine's AI-powered code completion and its impact on development speed.",
       image: "/images/reviews/ai-tools-review/tabnine.svg",
       category: "Code Completion",
       rating: 4,
@@ -55,7 +55,7 @@ const AIToolsReview = () => {
     {
       slug: "cursor-ai-editor-review",
       title: "Cursor: AI-First Code Editor Review",
-      description: "Review of Cursor, the AI-first code editor that&apos;s changing how developers write code.",
+      description: "Review of Cursor, the AI-first code editor that's changing how developers write code.",
       image: "/images/reviews/ai-tools-review/cursor-editor.svg",
       category: "AI Editor",
       rating: 5,

@@ -1,0 +1,96 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="neuralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="#F8FAFC"/>
+  
+  <!-- Brain -->
+  <path d="M200 50 C180 40, 160 50, 150 70 C140 90, 150 110, 160 130 C170 150, 180 160, 200 170 C220 160, 230 150, 240 130 C250 110, 260 90, 250 70 C240 50, 220 40, 200 50 Z" 
+        fill="url(#brainGradient)" 
+        stroke="#6366F1" 
+        stroke-width="2"/>
+  
+  <!-- Neural Network Nodes -->
+  <circle cx="180" cy="80" r="8" fill="url(#neuralGradient)" filter="url(#glow)">
+    <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="220" cy="90" r="6" fill="url(#neuralGradient)" filter="url(#glow)">
+    <animate attributeName="r" values="6;10;6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="190" cy="120" r="7" fill="url(#neuralGradient)" filter="url(#glow)">
+    <animate attributeName="r" values="7;11;7" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="210" cy="140" r="5" fill="url(#neuralGradient)" filter="url(#glow)">
+    <animate attributeName="r" values="5;9;5" dur="2.2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Neural Connections -->
+  <line x1="180" y1="80" x2="220" y2="90" stroke="#10B981" stroke-width="2" opacity="0.7">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <line x1="220" y1="90" x2="190" y2="120" stroke="#10B981" stroke-width="2" opacity="0.7">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" repeatCount="indefinite"/>
+  </line>
+  <line x1="190" y1="120" x2="210" y2="140" stroke="#10B981" stroke-width="2" opacity="0.7">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/>
+  </line>
+  
+  <!-- Computer Interface -->
+  <rect x="50" y="200" width="120" height="80" rx="10" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+  <rect x="60" y="210" width="100" height="50" fill="#0F172A"/>
+  
+  <!-- Screen Content -->
+  <rect x="70" y="220" width="20" height="15" fill="#10B981" opacity="0.8"/>
+  <rect x="95" y="220" width="20" height="15" fill="#3B82F6" opacity="0.8"/>
+  <rect x="120" y="220" width="20" height="15" fill="#F59E0B" opacity="0.8"/>
+  
+  <!-- Data Flow Lines -->
+  <path d="M200 170 Q150 190, 120 200" stroke="#8B5CF6" stroke-width="3" fill="none" stroke-dasharray="5,5">
+    <animate attributeName="stroke-dashoffset" values="0;10" dur="1s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- AI Processing Unit -->
+  <rect x="280" y="200" width="100" height="80" rx="10" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+  <circle cx="320" cy="220" r="15" fill="url(#neuralGradient)" filter="url(#glow)">
+    <animate attributeName="r" values="15;20;15" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <text x="320" y="250" text-anchor="middle" fill="#F1F5F9" font-family="Arial" font-size="12" font-weight="bold">AI</text>
+  
+  <!-- Connection to AI -->
+  <path d="M200 170 Q240 190, 280 200" stroke="#8B5CF6" stroke-width="3" fill="none" stroke-dasharray="5,5">
+    <animate attributeName="stroke-dashoffset" values="0;10" dur="1.2s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- Data Visualization -->
+  <rect x="60" y="270" width="15" height="15" fill="#10B981" opacity="0.6"/>
+  <rect x="80" y="270" width="15" height="20" fill="#3B82F6" opacity="0.6"/>
+  <rect x="100" y="270" width="15" height="10" fill="#F59E0B" opacity="0.6"/>
+  <rect x="120" y="270" width="15" height="25" fill="#EF4444" opacity="0.6"/>
+  
+  <!-- Floating Elements -->
+  <circle cx="100" cy="50" r="4" fill="#8B5CF6" opacity="0.6">
+    <animate attributeName="cy" values="50;40;50" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="300" cy="60" r="3" fill="#10B981" opacity="0.6">
+    <animate attributeName="cy" values="60;50;60" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="350" cy="80" r="5" fill="#F59E0B" opacity="0.6">
+    <animate attributeName="cy" values="80;70;80" dur="2.8s" repeatCount="indefinite"/>
+  </circle>
+</svg>

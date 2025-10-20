@@ -9,8 +9,19 @@ const LaptopsPCs = () => {
   // Sample review data
   const reviews = [
     {
+      slug: "macbook-pro-m4-review",
+      title: "MacBook Pro M4: Ultimate Developer Machine 2025",
+      description: "Comprehensive MacBook Pro M4 review for developers. M4 chip performance, development capabilities, and productivity features for 2025.",
+      image: "/images/hardware/laptops-pcs/real/macbook-pro-m4.jpg",
+      category: "Laptops",
+      rating: 5,
+      readTime: "22 min",
+      author: "TechDevDex Team",
+      date: "2025-01-15",
+    },
+    {
       slug: "macbook-pro-m3-review",
-      title: "MacBook Pro M3: Developer&apos;s Choice",
+      title: "MacBook Pro M3: Developer's Choice",
       description: "Comprehensive review of MacBook Pro M3 for developers, covering performance, battery life, and development workflow.",
       image: "/images/hardware/laptops-pcs/real/macbook-pro-m3.jpg",
       category: "Laptops",

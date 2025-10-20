@@ -30,7 +30,7 @@ export default function AndroidTabletsDevelopment({ content }: AndroidTabletsDev
             'tablet development workflow'
           ]}
           type="article"
-          image="/images/hardware/mobile-devices/android-tablets.svg"
+          image="/images/hardware/mobile-devices/real/android-tablets.jpg"
           url="/hardware/mobile-devices/android-tablets-development"
           section="Mobile Devices"
         />
@@ -53,7 +53,7 @@ export default function AndroidTabletsDevelopment({ content }: AndroidTabletsDev
         description={content.description}
         keywords={content.tags || []}
         type="article"
-        image={content.featuredImage || '/images/hardware/mobile-devices/android-tablets.svg'}
+        image={content.featuredImage || '/images/hardware/mobile-devices/real/android-tablets.jpg'}
         url={`/hardware/mobile-devices/android-tablets-development`}
         publishedTime={content.date}
         section="Mobile Devices"

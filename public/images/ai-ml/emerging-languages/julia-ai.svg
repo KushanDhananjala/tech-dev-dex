@@ -1,0 +1,119 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="juliaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#389826;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#cb3c33;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGradient)"/>
+  
+  <!-- Animated background elements -->
+  <g opacity="0.2">
+    <circle cx="70" cy="50" r="20" fill="white">
+      <animate attributeName="r" values="20;30;20" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="330" cy="70" r="15" fill="white">
+      <animate attributeName="r" values="15;25;15" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="50" cy="230" r="25" fill="white">
+      <animate attributeName="r" values="25;35;25" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="350" cy="250" r="18" fill="white">
+      <animate attributeName="r" values="18;28;18" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Main card -->
+  <rect x="50" y="60" width="300" height="180" rx="20" fill="url(#cardGradient)" filter="url(#glow)"/>
+  
+  <!-- Julia logo representation -->
+  <g transform="translate(200, 130)">
+    <!-- Julia flame logo -->
+    <path d="M-25,-20 L-15,-30 L-5,-20 L5,-30 L15,-20 L25,-30 L20,-10 L30,0 L20,10 L25,30 L15,20 L5,30 L-5,20 L-15,30 L-25,20 L-20,10 L-30,0 L-20,-10 Z" 
+          fill="url(#juliaGradient)" opacity="0.9"/>
+    
+    <!-- Performance indicators -->
+    <g opacity="0.8">
+      <!-- Speed lines -->
+      <line x1="-40" y1="-15" x2="-30" y2="-15" stroke="white" stroke-width="2">
+        <animate attributeName="x2" values="-30;-25;-30" dur="1s" repeatCount="indefinite"/>
+      </line>
+      <line x1="-40" y1="-5" x2="-30" y2="-5" stroke="white" stroke-width="2">
+        <animate attributeName="x2" values="-30;-25;-30" dur="1s" begin="0.2s" repeatCount="indefinite"/>
+      </line>
+      <line x1="-40" y1="5" x2="-30" y2="5" stroke="white" stroke-width="2">
+        <animate attributeName="x2" values="-30;-25;-30" dur="1s" begin="0.4s" repeatCount="indefinite"/>
+      </line>
+      
+      <!-- Performance graph -->
+      <polyline points="30,-20 35,-15 40,-10 45,-5 50,0" stroke="white" stroke-width="3" fill="none">
+        <animate attributeName="stroke-dasharray" values="0,100;100,0;0,100" dur="2s" repeatCount="indefinite"/>
+      </polyline>
+    </g>
+    
+    <!-- Animated pulse -->
+    <circle cx="0" cy="0" r="35" fill="none" stroke="white" stroke-width="2" opacity="0.6">
+      <animate attributeName="r" values="35;45;35" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Code symbols -->
+  <g opacity="0.7">
+    <!-- Julia syntax -->
+    <text x="100" y="100" font-family="monospace" font-size="12" fill="white" transform="rotate(-10 100 100)">
+      <animate attributeName="y" values="100;95;100" dur="3s" repeatCount="indefinite"/>
+      function
+    </text>
+    <text x="300" y="200" font-family="monospace" font-size="10" fill="white" transform="rotate(10 300 200)">
+      <animate attributeName="y" values="200;195;200" dur="2.5s" repeatCount="indefinite"/>
+      end
+    </text>
+    <text x="150" y="250" font-family="monospace" font-size="14" fill="white" transform="rotate(-5 150 250)">
+      <animate attributeName="y" values="250;245;250" dur="2s" repeatCount="indefinite"/>
+      AI
+    </text>
+  </g>
+  
+  <!-- ML/AI symbols -->
+  <g opacity="0.6">
+    <!-- Neural network nodes -->
+    <circle cx="120" cy="180" r="4" fill="white"/>
+    <circle cx="130" cy="175" r="4" fill="white"/>
+    <circle cx="125" cy="185" r="4" fill="white"/>
+    <line x1="120" y1="180" x2="130" y2="175" stroke="white" stroke-width="1"/>
+    <line x1="130" y1="175" x2="125" y2="185" stroke="white" stroke-width="1"/>
+    
+    <!-- Data flow arrows -->
+    <path d="M 280 180 L 290 180 L 285 175 M 290 180 L 285 185" stroke="white" stroke-width="2" fill="none">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Title text -->
+  <text x="200" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">
+    Julia for AI Development
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="200" y="270" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white" opacity="0.8">
+    High-Performance Machine Learning
+  </text>
+</svg>

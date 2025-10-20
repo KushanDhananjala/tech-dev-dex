@@ -9,9 +9,31 @@ const AIIntegrationTutorials = () => {
   // Sample tutorial data
   const tutorials = [
     {
+      slug: "gpt-4o-integration",
+      title: "GPT-4o Integration: Building Multimodal AI Applications",
+      description: "Complete guide to integrating OpenAI's GPT-4o for multimodal AI applications. Learn vision, audio, and text processing with practical examples.",
+      image: "/images/ai-ml/ai-integration-tutorials/gpt-4o-integration.svg",
+      category: "Multimodal AI",
+      rating: 5,
+      readTime: "25 min",
+      author: "TechDevDex Team",
+      date: "2025-01-15",
+    },
+    {
+      slug: "llama-3-1-integration",
+      title: "Llama 3.1 Integration: Building AI-Powered Applications",
+      description: "Complete guide to integrating Meta's Llama 3.1 models into your applications. Learn API integration, fine-tuning, and deployment strategies.",
+      image: "/images/ai-ml/ai-integration-tutorials/llama-3-1-integration.svg",
+      category: "LLM Integration",
+      rating: 5,
+      readTime: "22 min",
+      author: "TechDevDex Team",
+      date: "2025-01-15",
+    },
+    {
       slug: "openai-api-integration",
       title: "OpenAI API Integration: Complete Guide",
-      description: "Learn to integrate OpenAI&apos;s GPT models into your applications with practical examples and best practices.",
+      description: "Learn to integrate OpenAI's GPT models into your applications with practical examples and best practices.",
       image: "/images/ai-ml/ai-integration-tutorials/openai-integration.svg",
       category: "API Integration",
       rating: 5,

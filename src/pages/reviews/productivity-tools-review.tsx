@@ -11,7 +11,7 @@ const ProductivityToolsReview = () => {
     {
       slug: "notion-productivity-review",
       title: "Notion: All-in-One Productivity Platform",
-      description: "Comprehensive review of Notion&apos;s features for project management, note-taking, and team collaboration.",
+      description: "Comprehensive review of Notion's features for project management, note-taking, and team collaboration.",
       image: "/images/reviews/productivity-tools-review/notion-review.svg",
       category: "Productivity",
       rating: 5,
@@ -22,7 +22,7 @@ const ProductivityToolsReview = () => {
     {
       slug: "obsidian-review",
       title: "Obsidian: Knowledge Management Review",
-      description: "In-depth analysis of Obsidian&apos;s note-taking capabilities and knowledge graph features.",
+      description: "In-depth analysis of Obsidian's note-taking capabilities and knowledge graph features.",
       image: "/images/reviews/productivity-tools-review/obsidian.svg",
       category: "Note Taking",
       rating: 4,

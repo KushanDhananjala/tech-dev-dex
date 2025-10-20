@@ -9,6 +9,17 @@ const AICodingTools = () => {
   // Sample content data
   const tools = [
     {
+      slug: "claude-3-5-sonnet-guide",
+      title: "Claude 3.5 Sonnet: Advanced AI Coding Assistant",
+      description: "Complete guide to Claude 3.5 Sonnet for developers. Learn advanced coding techniques, API integration, and real-world applications.",
+      image: "/images/ai-ml/ai-coding-tools/claude-3-5-sonnet.svg",
+      category: "AI Assistant",
+      rating: 5,
+      readTime: "18 min",
+      author: "TechDevDex Team",
+      date: "2025-01-15",
+    },
+    {
       slug: "github-copilot-complete-guide",
       title: "GitHub Copilot: Complete Developer Guide",
       description: "Master GitHub Copilot with advanced techniques, best practices, and real-world examples for maximum productivity.",

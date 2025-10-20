@@ -22,7 +22,7 @@ const AndroidFlagshipReview = () => {
           'Android development setup'
         ]}
         type="article"
-        image="/images/hardware/mobile-devices/android-flagship.svg"
+        image="/images/hardware/mobile-devices/real/android-tablets.jpg"
         url="/hardware/mobile-devices/android-flagship-review"
         section="Mobile Devices"
       />
@@ -64,11 +64,11 @@ const AndroidFlagshipReview = () => {
           {/* Featured Image */}
           <div className="mb-8">
             <Image
-              src="/images/hardware/mobile-devices/android-flagship.svg"
+              src="/images/hardware/mobile-devices/real/android-tablets.jpg"
               alt="Android Flagship Review for Developers"
               width={800}
-              height={400}
-              className="w-full h-auto rounded-lg shadow-lg"
+              height={450}
+              className="w-full h-80 rounded-lg shadow-lg object-contain"
             />
           </div>
 

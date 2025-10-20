@@ -22,7 +22,7 @@ const TabletDevelopment = () => {
           'device management'
         ]}
         type="article"
-        image="/images/hardware/mobile-devices/tablet-development.svg"
+        image="/images/hardware/mobile-devices/real/android-tablets.jpg"
         url="/hardware/mobile-devices/tablet-development"
         section="Mobile Devices"
       />
@@ -64,11 +64,11 @@ const TabletDevelopment = () => {
           {/* Featured Image */}
           <div className="mb-8">
             <Image
-              src="/images/hardware/mobile-devices/tablet-development.svg"
+              src="/images/hardware/mobile-devices/real/android-tablets.jpg"
               alt="Tablet Development Setup Guide"
               width={800}
-              height={400}
-              className="w-full h-auto rounded-lg shadow-lg"
+              height={450}
+              className="w-full h-80 rounded-lg shadow-lg object-contain"
             />
           </div>
 

@@ -9,6 +9,17 @@ const EmergingLanguages = () => {
   // Sample content data
   const articles = [
     {
+      slug: "julia-ai-development",
+      title: "Julia for AI Development: High-Performance Machine Learning",
+      description: "Complete guide to using Julia for AI and machine learning development. Learn about Julia's performance advantages, ML ecosystem, and real-world applications.",
+      image: "/images/ai-ml/emerging-languages/julia-ai.svg",
+      category: "AI Development",
+      rating: 5,
+      readTime: "20 min",
+      author: "TechDevDex Team",
+      date: "2025-01-15",
+    },
+    {
       slug: "mojo-programming-language",
       title: "Mojo: The Future of AI Programming",
       description: "Explore Mojo, the new programming language designed specifically for AI development with Python compatibility and superior performance.",
@@ -33,7 +44,7 @@ const EmergingLanguages = () => {
     {
       slug: "rust-ai-development",
       title: "Rust for AI Development",
-      description: "Learn how Rust&apos;s memory safety and performance make it ideal for AI and machine learning applications.",
+      description: "Learn how Rust's memory safety and performance make it ideal for AI and machine learning applications.",
       image: "/images/ai-ml/emerging-languages/rust-ai.svg",
       category: "AI Development",
       rating: 4,

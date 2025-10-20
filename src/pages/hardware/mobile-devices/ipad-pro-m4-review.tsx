@@ -30,7 +30,7 @@ export default function IPadProM4Review({ content }: IPadProM4ReviewProps) {
             'iPad Pro development'
           ]}
           type="article"
-          image="/images/hardware/mobile-devices/ipad-pro-m4.svg"
+          image="/images/hardware/mobile-devices/real/ipad-pro-m4.jpg"
           url="/hardware/mobile-devices/ipad-pro-m4-review"
           section="Mobile Devices"
         />
@@ -53,7 +53,7 @@ export default function IPadProM4Review({ content }: IPadProM4ReviewProps) {
         description={content.description}
         keywords={content.tags || []}
         type="article"
-        image={content.featuredImage || '/images/hardware/mobile-devices/ipad-pro-m4.svg'}
+        image={content.featuredImage || '/images/hardware/mobile-devices/real/ipad-pro-m4.jpg'}
         url={`/hardware/mobile-devices/ipad-pro-m4-review`}
         publishedTime={content.date}
         section="Mobile Devices"

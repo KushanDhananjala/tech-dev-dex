@@ -82,9 +82,30 @@ export default function AIMLPage() {
             </Link>
           </div>
 
-          {/* Emerging AI Tech */}
+          {/* Emerging Languages */}
           <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
             <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center text-white mb-4">
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
+              Emerging Languages
+            </h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-4">
+              Discover the latest programming languages and frameworks for AI development.
+            </p>
+            <Link 
+              href="/ai-trending/emerging-languages" 
+              className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
+            >
+              Explore Languages →
+            </Link>
+          </div>
+
+          {/* Emerging AI Tech */}
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
+            <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center text-white mb-4">
               <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
               </svg>
@@ -93,13 +114,13 @@ export default function AIMLPage() {
               Emerging AI Tech
             </h3>
             <p className="text-slate-600 dark:text-slate-400 mb-4">
-              Stay updated with the latest AI innovations and emerging technologies.
+              Stay updated with cutting-edge AI technologies and breakthrough innovations.
             </p>
             <Link 
-              href="/ai-trending/emerging-languages" 
+              href="/ai-trending/emerging-ai-tech" 
               className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
             >
-              Explore Trends →
+              Explore AI Tech →
             </Link>
           </div>
         </div>
