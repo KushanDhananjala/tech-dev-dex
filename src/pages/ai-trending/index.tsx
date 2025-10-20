@@ -154,48 +154,151 @@ export default function AITrendingPage() {
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {subcategories.map((article, idx) => (
-            <motion.article
-              key={article.slug}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="group"
-            >
-              <Link href={`/ai-trending/${article.slug}`} className="block">
-                <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
-                  <div className="h-48 bg-gradient-to-br from-purple-500/10 to-pink-600/10 flex items-center justify-center">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${article.color} rounded-xl flex items-center justify-center text-white`}>
-                      {article.icon}
-                    </div>
+          {/* AI Biotechnology */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0 }}
+            className="group"
+          >
+            <Link href="/ai-trending/emerging-ai-tech/ai-biotechnology-medical" className="block">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="/images/ai-ml/emerging-ai-tech/biotech-ai.svg" 
+                    alt="AI Biotechnology and Medical Breakthroughs"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-purple-600 text-white text-sm font-medium rounded-full">
+                      AI & Tech
+                    </span>
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-full">
-                        AI & Tech
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                      {article.name}
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
-                      {article.description}
-                    </p>
-                    <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        <span>12 min read</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <User className="h-4 w-4" />
-                        <span>AI Expert</span>
-                      </div>
+                  <div className="absolute top-4 right-4">
+                    <div className="flex items-center gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-yellow-400 text-sm">★</span>
+                      ))}
                     </div>
                   </div>
                 </div>
-              </Link>
-            </motion.article>
-          ))}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    AI Biotechnology and Medical Breakthroughs
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                    Revolutionary AI applications in biotechnology and medicine. Learn about AI drug discovery, medical imaging, and personalized medicine.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      <span>25 min read</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      <span>AI Researcher</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.article>
+
+          {/* AI Integration Tutorials */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="group"
+          >
+            <Link href="/ai-trending/ai-integration-tutorials" className="block">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="/images/posts/ai-integration-guide.svg" 
+                    alt="AI Integration Tutorials"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+                      Tutorial
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    AI Integration Tutorials: Complete Guide
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                    Learn how to integrate AI APIs, models, and services into your applications with practical examples and real-world use cases.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      <span>25 min read</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      <span>AI Expert</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.article>
+
+          {/* AI Climate Solutions */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="group"
+          >
+            <Link href="/ai-trending/emerging-ai-tech/ai-climate-solutions" className="block">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="/images/ai-ml/emerging-ai-tech/climate-ai.svg" 
+                    alt="AI Climate Solutions"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-green-600 text-white text-sm font-medium rounded-full">
+                      Climate Tech
+                    </span>
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    <div className="flex items-center gap-1">
+                      {[...Array(4)].map((_, i) => (
+                        <span key={i} className="text-yellow-400 text-sm">★</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    AI Climate Solutions and Environmental Tech
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                    AI applications in climate change mitigation and environmental protection. Learn about AI for carbon capture, climate modeling, and green technology.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      <span>20 min read</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      <span>Climate Expert</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.article>
         </div>
       </section>
     </>

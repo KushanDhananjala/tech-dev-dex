@@ -146,53 +146,158 @@ export default function ReviewsPage() {
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {subcategories.map((review, idx) => (
-            <motion.article
-              key={review.slug}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="group"
-            >
-              <Link href={`/reviews/${review.slug}`} className="block">
-                <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
-                  <div className="h-48 bg-gradient-to-br from-yellow-500/10 to-orange-600/10 flex items-center justify-center">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${review.color} rounded-xl flex items-center justify-center text-white`}>
-                      {review.icon}
-                    </div>
+          {/* Figma vs Adobe XD */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0 }}
+            className="group"
+          >
+            <Link href="/reviews/app-comparisons/figma-vs-adobe-xd" className="block">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="/images/reviews/app-comparisons/figma-vs-adobe-xd.svg" 
+                    alt="Figma vs Adobe XD Design Tools"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-orange-600 text-white text-sm font-medium rounded-full">
+                      Comparison
+                    </span>
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-sm font-medium rounded-full">
-                        Review
-                      </span>
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                        ))}
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                      {review.name}
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
-                      {review.description}
-                    </p>
-                    <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        <span>8 min read</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <User className="h-4 w-4" />
-                        <span>Editor</span>
-                      </div>
+                  <div className="absolute top-4 right-4">
+                    <div className="flex items-center gap-1">
+                      {[...Array(4)].map((_, i) => (
+                        <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                      ))}
                     </div>
                   </div>
                 </div>
-              </Link>
-            </motion.article>
-          ))}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    Figma vs Adobe XD: Complete Design Tool Comparison
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                    In-depth comparison of Figma and Adobe XD for UI/UX design. Features, pricing, collaboration, and which tool is better.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      <span>12 min read</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      <span>Designer</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.article>
+
+          {/* VS Code Review */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="group"
+          >
+            <Link href="/reviews/software-reviews/vs-code-review" className="block">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="/images/reviews/software-reviews/vs-code-review.svg" 
+                    alt="VS Code Review"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-yellow-600 text-white text-sm font-medium rounded-full">
+                      Review
+                    </span>
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    <div className="flex items-center gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    VS Code Review: The Ultimate Developer IDE
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                    Comprehensive review of Visual Studio Code, covering features, extensions, performance, and why it's the developer's choice.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      <span>10 min read</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      <span>Editor</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.article>
+
+          {/* Gadget Reviews */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="group"
+          >
+            <Link href="/reviews/gadget-reviews" className="block">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="/images/reviews/gadget-reviews/gadget-reviews.svg" 
+                    alt="Gadget Reviews"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-purple-600 text-white text-sm font-medium rounded-full">
+                      Hardware
+                    </span>
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    <div className="flex items-center gap-1">
+                      {[...Array(4)].map((_, i) => (
+                        <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    Gadget Reviews: Essential Hardware for Developers
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                    Unbiased reviews of keyboards, laptops, chairs, and gadgets that enhance productivity for developers and tech professionals.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      <span>18 min read</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      <span>Reviewer</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.article>
         </div>
       </section>
     </>

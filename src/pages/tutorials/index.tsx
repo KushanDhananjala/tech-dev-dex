@@ -162,48 +162,137 @@ export default function TutorialsPage() {
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {subcategories.slice(0, 3).map((tutorial, idx) => (
-            <motion.article
-              key={tutorial.slug}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="group"
-            >
-              <Link href={`/tutorials/${tutorial.slug}`} className="block">
-                <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
-                  <div className="h-48 bg-gradient-to-br from-blue-500/10 to-purple-600/10 flex items-center justify-center">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${tutorial.color} rounded-xl flex items-center justify-center text-white`}>
-                      {tutorial.icon}
-                    </div>
+          {/* Docker Beginners Guide */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0 }}
+            className="group"
+          >
+            <Link href="/tutorials/docker-setup-guides/docker-beginners-guide" className="block">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="/images/tutorials/docker-setup-guides/docker-beginners.svg" 
+                    alt="Docker Beginners Guide"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+                      Tutorial
+                    </span>
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full">
-                        Tutorial
-                      </span>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    Docker Beginners Guide: From Zero to Container
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                    Complete beginner's guide to Docker containers, covering installation, basic commands, and your first containerized application.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      <span>20 min read</span>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                      {tutorial.name}
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
-                      {tutorial.description}
-                    </p>
-                    <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        <span>15 min read</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <User className="h-4 w-4" />
-                        <span>Expert</span>
-                      </div>
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      <span>Expert</span>
                     </div>
                   </div>
                 </div>
-              </Link>
-            </motion.article>
-          ))}
+              </div>
+            </Link>
+          </motion.article>
+
+          {/* Git & GitHub Tutorial */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="group"
+          >
+            <Link href="/tutorials/git-github-tutorials/git-basics-guide" className="block">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="/images/tutorials/git-github-tutorials/git-basics.svg" 
+                    alt="Git & GitHub Tutorial"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-green-600 text-white text-sm font-medium rounded-full">
+                      Tutorial
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    Git Basics Guide: Essential Version Control
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                    Learn the fundamentals of Git version control with practical examples, commands, and workflow strategies.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      <span>18 min read</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      <span>Expert</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.article>
+
+          {/* Python Automation */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="group"
+          >
+            <Link href="/tutorials/python-automation" className="block">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="/images/posts/python-automation.svg" 
+                    alt="Python Automation Guide"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-yellow-600 text-white text-sm font-medium rounded-full">
+                      Tutorial
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    Python Automation: Complete Guide to Automating Tasks
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                    Learn how to automate repetitive tasks with Python scripts, from file operations to web scraping and API interactions.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      <span>22 min read</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      <span>Expert</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.article>
         </div>
       </section>
     </>
