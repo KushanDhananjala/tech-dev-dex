@@ -11,8 +11,8 @@ export default function HomePage() {
   return (
     <>
       <SEO
-        title="Developer Resources & Tutorials"
-        description="Comprehensive developer resource platform with tutorials, reviews, and guides for modern development technologies. Learn programming, AI, DevOps, and productivity tools."
+        title="Tech Tutorials, Reviews & Guides"
+        description="Comprehensive tech resource platform with tutorials, reviews, and guides for software development, AI/ML, hardware, and productivity tools."
         keywords={[
           "developer resources",
           "programming tutorials",

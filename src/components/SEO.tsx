@@ -37,8 +37,8 @@ export default function SEO({
   const fullUrl = url ? `${siteUrl}${url}` : `${siteUrl}${router.asPath}`;
   const fullImage = image.startsWith("http") ? image : `${siteUrl}${image}`;
   
-  const fullTitle = title ? `${title} | TechDevDex` : "TechDevDex - Developer Resources & Tutorials";
-  const fullDescription = description || "Comprehensive developer resource platform with tutorials, reviews, and guides for modern development technologies.";
+  const fullTitle = title ? `${title} | TechDevDex` : "TechDevDex - Tech Tutorials, Reviews & Guides";
+  const fullDescription = description || "Comprehensive tech resource platform with tutorials, reviews, and guides for software development, AI/ML, hardware, and productivity tools.";
   
   const allKeywords = [
     "developer resources",
@@ -143,7 +143,7 @@ export default function SEO({
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="apple-mobile-web-app-title" content="TechDevDex" />
       <meta name="application-name" content="TechDevDex" />
-      <meta name="msapplication-tooltip" content="Developer Resources & Tutorials" />
+      <meta name="msapplication-tooltip" content="Tech Tutorials, Reviews & Guides" />
       <meta name="msapplication-starturl" content="/" />
       
       {/* Favicon */}

@@ -1,7 +1,7 @@
 {
-  "name": "TechDevDex - Developer Resources & Tutorials",
+  "name": "TechDevDex - Tech Tutorials, Reviews & Guides",
   "short_name": "TechDevDex",
-  "description": "Comprehensive developer resource platform with tutorials, reviews, and guides for modern development technologies.",
+  "description": "Comprehensive tech resource platform with tutorials, reviews, and guides for software development, AI/ML, hardware, and productivity tools.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
