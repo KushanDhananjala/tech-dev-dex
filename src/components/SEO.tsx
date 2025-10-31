@@ -54,10 +54,29 @@ export default function SEO({
     ...keywords
   ];
 
+  // Organization schema - always included
+  // This tells Google your site name for search results
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TechDevDex",
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/images/logo.png` // Your logo file - used in Google search results
+    }
+    // Uncomment below and add your social media URLs when you have them:
+    // ,"sameAs": [
+    //   "https://twitter.com/yourhandle",
+    //   "https://www.linkedin.com/company/yourcompany"
+    // ]
+  };
+
+  // Main structured data (WebSite or Article)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": type === "article" ? "Article" : "WebSite",
-    "name": fullTitle,
+    "name": type === "article" ? fullTitle : "TechDevDex",
     "description": fullDescription,
     "url": fullUrl,
     "image": fullImage,
@@ -75,6 +94,7 @@ export default function SEO({
       }
     },
     ...(type === "article" && {
+      "headline": fullTitle,
       "datePublished": publishedTime,
       "dateModified": modifiedTime || publishedTime,
       "articleSection": section,
@@ -135,7 +155,15 @@ export default function SEO({
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3B82F6" />
       <meta name="theme-color" content="#3B82F6" />
       
-      {/* Structured Data */}
+      {/* Structured Data - Organization (for site name in search results) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema)
+        }}
+      />
+      
+      {/* Structured Data - WebSite or Article */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
