@@ -1,0 +1,62 @@
+---
+title: "Edge AI on Microcontrollers: Practical Guide for 2025"
+description: "Deploy efficient on-device ML with TinyML, quantization, and deployment workflows for STM32, ESP32, and Raspberry Pi Pico."
+author: "TechDevDex Team"
+date: "2025-01-15"
+category: "Emerging AI Tech"
+tags: ["TinyML", "Edge AI", "Microcontrollers", "Quantization", "On-device ML"]
+readTime: "14 min"
+featured: true
+rating: 5
+featuredImage: "/images/ai-ml/emerging-ai-tech/brain-computer-interface.svg"
+---
+
+## Why Edge AI now?
+Running ML locally reduces latency, increases privacy, and cuts cloud costs. With toolchains like TensorFlow Lite Micro and ONNX Runtime for MCUs, models can run in tens of kilobytes of RAM.
+
+### Hardware targets
+- STM32 (Cortex-M4/M7): balanced performance and toolchain support
+- ESP32 (Xtensa/RISC-V): Wi‑Fi/BLE plus decent DSP
+- Raspberry Pi Pico (RP2040): dual M0+ cores, robust community
+
+### Model design tips
+- Prefer small CNNs or depthwise separable convolutions
+- Use 1D conv or MFCC for audio; small CNNs for vision; random forest for tabular
+- Target INT8 quantization from the start
+
+### Quantization recipe
+1. Train with quantization-aware training or post-training quantization
+2. Calibrate with a representative dataset (100–1000 samples)
+3. Validate accuracy drop (<2–3% ideally)
+
+### Tooling
+- TensorFlow Lite Micro for bare-metal and RTOS targets
+- Edge Impulse for dataset management and deployment
+- CMSIS-NN for efficient kernels on Arm Cortex‑M
+
+### Deployment workflow
+1. Collect and label data (Edge Impulse or custom scripts)
+2. Train in Python; export TFLite INT8
+3. Convert to C array or use model blob
+4. Integrate with inference loop and sensor IO
+5. Measure latency and power; iterate
+
+### Performance checklist
+- Use fixed-point INT8 ops; avoid float at runtime
+- Batch size 1, fuse ops where possible
+- Pin buffers statically; avoid dynamic allocation in hot paths
+
+### Example use cases
+- Wake-word detection on ESP32
+- Vibration anomaly detection on STM32
+- Gesture recognition with IMU on RP2040
+
+### Production considerations
+- OTA update strategy and model versioning
+- Fallback model on checksum failure
+- On-device metrics (latency, confidence, error counts)
+
+## Conclusion
+Edge AI is viable today with the right model constraints and toolchain. Start small, measure, and iterate.
+
+

@@ -20,6 +20,18 @@ const AppComparisons = () => {
       featured: true
     },
     {
+      id: 'zed-vs-vscode',
+      title: 'Zed vs VS Code: Which Editor Wins for Developers in 2025?',
+      description: 'Latency, extensions, collaboration, and remote dev: a practical comparison of Zed and VS Code for daily workflows.',
+      author: 'TechDevDex Team',
+      date: '2025-01-13',
+      readTime: '15 min',
+      rating: 4,
+      category: 'Code Editors',
+      image: '/images/reviews/software-reviews/vs-code-review.svg',
+      featured: true
+    },
+    {
       id: 'react-vs-vue-vs-angular',
       title: 'React vs Vue vs Angular: Frontend Framework Battle',
       description: 'Detailed comparison of the three most popular frontend frameworks. Performance, learning curve, and ecosystem analysis.',

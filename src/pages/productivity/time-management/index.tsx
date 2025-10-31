@@ -63,6 +63,17 @@ const TimeManagement = () => {
       author: "TechDevDex Team",
       date: "2024-11-10",
     },
+    {
+      slug: "deep-work-developers",
+      title: "Deep Work for Developers: Systems for Focus in 2025",
+      description: "Practical routines, environment design, and tooling to sustain deep focus and ship faster.",
+      image: "/images/productivity/time-management/pomodoro-technique.svg",
+      category: "Focus",
+      rating: 4,
+      readTime: "12 min",
+      author: "TechDevDex Team",
+      date: "2025-01-14",
+    },
   ];
 
   return (

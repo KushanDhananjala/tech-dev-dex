@@ -2,7 +2,7 @@ import SEO from "../../components/SEO";
 import Link from "next/link";
 import Image from "next/image";
 import Tabs from "../../components/ui/Tabs";
-import { ArrowRight, Clock, Cpu, GitCompareArrows, Monitor, Star, User } from 'lucide-react';
+import { ArrowRight, Clock, Cpu, GitCompareArrows, Monitor, Star, User, Bot, Zap } from 'lucide-react';
 import { motion } from "framer-motion";
 
 const subcategories = [
@@ -26,6 +26,20 @@ const subcategories = [
     description: "Hardware reviews and tech gadget recommendations",
     icon: <Cpu size={24} />,
     color: "from-purple-500 to-pink-500"
+  },
+  { 
+    name: "AI Tools Review", 
+    slug: "ai-tools-review",
+    description: "AI-powered development tools and assistants",
+    icon: <Bot size={24} />,
+    color: "from-indigo-500 to-purple-500"
+  },
+  { 
+    name: "Productivity Tools Review", 
+    slug: "productivity-tools-review",
+    description: "Workflow and efficiency tools review",
+    icon: <Zap size={24} />,
+    color: "from-amber-500 to-orange-500"
   },
 ];
 
@@ -85,6 +99,8 @@ export default function ReviewsPage() {
             { label: "Software", href: "/reviews/software-reviews", icon: <Monitor size={16} /> },
             { label: "App Comparisons", href: "/reviews/app-comparisons", icon: <GitCompareArrows size={16} /> },
             { label: "Gadgets", href: "/reviews/gadget-reviews", icon: <Cpu size={16} /> },
+            { label: "AI Tools", href: "/reviews/ai-tools-review", icon: <Bot size={16} /> },
+            { label: "Productivity", href: "/reviews/productivity-tools-review", icon: <Zap size={16} /> },
           ]}
         />
       </div>
@@ -246,6 +262,52 @@ export default function ReviewsPage() {
                     <div className="flex items-center gap-1">
                       <User className="h-4 w-4" />
                       <span>Editor</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.article>
+
+          {/* Zed vs VS Code */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="group"
+          >
+            <Link href="/reviews/app-comparisons/zed-vs-vscode" className="block">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                <div className="relative h-48 overflow-hidden">
+                  <Image 
+                    src="/images/reviews/software-reviews/vs-code-review.svg" 
+                    alt="Zed vs VS Code"
+                    width={400}
+                    height={192}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-orange-600 text-white text-sm font-medium rounded-full">
+                      Comparison
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    Zed vs VS Code: Which Editor Wins for Developers in 2025?
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                    Latency, extensions, collaboration, and remote dev: a practical comparison for daily workflows.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      <span>15 min read</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      <span>TechDevDex Team</span>
                     </div>
                   </div>
                 </div>

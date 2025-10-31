@@ -1,0 +1,81 @@
+---
+title: "Advanced TypeScript Patterns: 2025 Edition"
+description: "Master discriminated unions, branded types, type-safe builders, and functional utilities for robust frontend and backend apps."
+author: "TechDevDex Team"
+date: "2025-01-16"
+category: "Web Development"
+tags: ["TypeScript", "Patterns", "Types", "Generics", "Functional"]
+readTime: "18 min"
+featured: true
+rating: 5
+featuredImage: "/images/tutorials/web-development/nextjs-15-guide.svg"
+---
+
+## Discriminated unions
+Create safe state machines with a `kind` field to enable exhaustive checks.
+
+```ts
+type LoadState =
+  | { kind: 'idle' }
+  | { kind: 'loading' }
+  | { kind: 'success'; data: string }
+  | { kind: 'error'; message: string };
+
+function render(state: LoadState) {
+  switch (state.kind) {
+    case 'idle': return 'Idle';
+    case 'loading': return 'Loading…';
+    case 'success': return state.data;
+    case 'error': return state.message;
+  }
+}
+```
+
+## Branded types
+Prevent accidental mixing of primitives.
+
+```ts
+type Brand<T, B> = T & { __brand: B };
+type UserId = Brand<string, 'UserId'>;
+
+function getUser(id: UserId) {/* … */}
+```
+
+## Type-safe builder
+
+```ts
+type WithTitle = { title: string };
+type WithBody = { body: string };
+
+type Article = WithTitle & WithBody;
+
+const builder = () => {
+  let a = {} as Partial<Article>;
+  return {
+    title(t: string) { a.title = t; return this; },
+    body(b: string) { a.body = b; return this; },
+    build(): Article { return { title: a.title!, body: a.body! }; }
+  };
+};
+```
+
+## Functional utilities
+Prefer small, composable helpers with precise types.
+
+```ts
+export function mapValues<T extends object, R>(
+  obj: T,
+  fn: <K extends keyof T>(v: T[K], k: K) => R
+): { [K in keyof T]: R } {
+  const out = {} as { [K in keyof T]: R };
+  (Object.keys(obj) as Array<keyof T>).forEach(k => {
+    out[k] = fn(obj[k], k);
+  });
+  return out;
+}
+```
+
+## Conclusion
+Use strong types to express invariants. Lean on unions, brands, and small utilities to keep code safe and maintainable.
+
+

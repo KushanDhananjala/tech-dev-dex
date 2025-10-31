@@ -74,6 +74,18 @@ const EmergingAITech = () => {
       author: "TechDevDex Team",
       date: "2025-01-01",
     }
+    ,
+    {
+      slug: "ai-edge-microcontrollers",
+      title: "Edge AI on Microcontrollers: Practical Guide for 2025",
+      description: "Deploy efficient on-device ML with TinyML, quantization, and workflows for STM32, ESP32, and RP2040.",
+      image: "/images/ai-ml/emerging-ai-tech/brain-computer-interface.svg",
+      category: "Edge AI",
+      rating: 5,
+      readTime: "14 min",
+      author: "TechDevDex Team",
+      date: "2025-01-15",
+    }
   ];
 
   const [searchTerm, setSearchTerm] = useState('');

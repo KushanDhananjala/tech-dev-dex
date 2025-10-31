@@ -20,6 +20,18 @@ const WebDevelopment = () => {
       featured: true
     },
     {
+      id: 'typescript-advanced-patterns',
+      title: 'Advanced TypeScript Patterns: 2025 Edition',
+      description: 'Master discriminated unions, branded types, type-safe builders, and functional utilities for robust frontend and backend apps.',
+      author: 'TechDevDex Team',
+      date: '2025-01-16',
+      readTime: '18 min',
+      difficulty: 'Advanced',
+      category: 'TypeScript',
+      image: '/images/tutorials/web-development/nextjs-15-guide.svg',
+      featured: true
+    },
+    {
       id: 'html-css-basics',
       title: 'HTML & CSS Fundamentals: Building Your First Website',
       description: 'Learn the basics of HTML and CSS to create beautiful, responsive websites from scratch.',
@@ -93,7 +105,7 @@ const WebDevelopment = () => {
     }
   ];
 
-  const categories = ['All', 'React Framework', 'Frontend Basics', 'JavaScript', 'CSS', 'Accessibility'];
+  const categories = ['All', 'React Framework', 'TypeScript', 'Frontend Basics', 'JavaScript', 'CSS', 'Accessibility'];
   const difficulties = ['All', 'Beginner', 'Intermediate', 'Advanced'];
 
   return (

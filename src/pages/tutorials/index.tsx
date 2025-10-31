@@ -2,7 +2,7 @@ import SEO from "../../components/SEO";
 import Link from "next/link";
 import Image from "next/image";
 import Tabs from "../../components/ui/Tabs";
-import { ArrowRight, BookOpen, Box, Clock, Dock, Github, User } from 'lucide-react';
+import { ArrowRight, BookOpen, Box, Clock, Dock, Github, User, Code, Zap } from 'lucide-react';
 import { motion } from "framer-motion";
 
 const subcategories = [
@@ -40,6 +40,20 @@ const subcategories = [
     description: "Best practices and problem-solving techniques",
     icon: <BookOpen size={24} />,
     color: "from-purple-500 to-pink-500"
+  },
+  { 
+    name: "Web Development", 
+    slug: "web-development",
+    description: "Frontend and backend development tutorials",
+    icon: <Code size={24} />,
+    color: "from-indigo-500 to-purple-500"
+  },
+  { 
+    name: "Productivity Tools", 
+    slug: "productivity-tools",
+    description: "Development workflow optimization",
+    icon: <Zap size={24} />,
+    color: "from-amber-500 to-orange-500"
   },
 ];
 
@@ -101,6 +115,8 @@ export default function TutorialsPage() {
             { label: "React/Node", href: "/tutorials/react-node-deployment", icon: <Box size={16} /> },
             { label: "Python", href: "/tutorials/python-automation", icon: <Box size={16} /> },
             { label: "Tips", href: "/tutorials/programming-tips", icon: <Box size={16} /> },
+            { label: "Web Dev", href: "/tutorials/web-development", icon: <Code size={16} /> },
+            { label: "Productivity", href: "/tutorials/productivity-tools", icon: <Zap size={16} /> },
           ]}
         />
       </div>
@@ -248,6 +264,52 @@ export default function TutorialsPage() {
                     <div className="flex items-center gap-1">
                       <User className="h-4 w-4" />
                       <span>Expert</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.article>
+
+          {/* Advanced TypeScript Patterns */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="group"
+          >
+            <Link href="/tutorials/web-development/typescript-advanced-patterns" className="block">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                <div className="relative h-48 overflow-hidden">
+                  <Image 
+                    src="/images/tutorials/web-development/nextjs-15-guide.svg" 
+                    alt="Advanced TypeScript Patterns"
+                    width={400}
+                    height={192}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-indigo-600 text-white text-sm font-medium rounded-full">
+                      TypeScript
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    Advanced TypeScript Patterns: 2025 Edition
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                    Master discriminated unions, branded types, type-safe builders, and functional utilities for robust apps.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      <span>18 min read</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" />
+                      <span>TechDevDex Team</span>
                     </div>
                   </div>
                 </div>
